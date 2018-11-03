@@ -14,13 +14,17 @@
         <style>
             html, body {
                 color: #fff;
-                background-color: #636b6f;
+                background:#636b6f;
                 font-family: 'Great Vibes', Helvetica, serif;
                 font-weight: 200;
                 height: 100vh;
                 margin: 0;
             }
-
+            body {
+                background-image: url('/i/heroic-colas.jpg');
+                background-position: top left cover;
+                text-shadow: #000 2px -2px 5px, #94ffa5 3px -3px 3px;
+            }
             .full-height {
                 height: 100vh;
             }
@@ -47,6 +51,7 @@
 
             .title {
                 font-size: 84px;
+                font-weight:100;
             }
 
             .links {
@@ -85,7 +90,7 @@
             @endif
 
             <div class="content">
-                <div class="title m-b-md">
+                <div class="title m-b-md" style="background-image: ">
                     Heisenbeans
                 </div>
 
