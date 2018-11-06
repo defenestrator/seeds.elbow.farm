@@ -13,17 +13,15 @@
         <!-- Styles -->
         <style>
             html, body {
-                color: #fff;
-                background:#636b6f;
+                color: #1a1a1a;
+                background:#fafafa;
                 font-family: 'Great Vibes', Helvetica, serif;
                 font-weight: 200;
                 height: 100vh;
                 margin: 0;
             }
             body {
-                background-image: url('/i/heroic-colas.jpg');
-                background-position: top left cover;
-                text-shadow: #000 2px -2px 5px, #94ffa5 3px -3px 3px;
+                background-image: radial-gradient(ellipse, rgba(255,255,255,1.0) 75%, rgba(220,220,220,0.8));
             }
             .full-height {
                 height: 100vh;
@@ -47,11 +45,15 @@
 
             .content {
                 text-align: center;
+                height:100%;
+                width:100%;
             }
 
             .title {
-                font-size: 84px;
+                font-size: 64px;
                 font-weight:100;
+                margin-top:1.0em;
+                text-shadow: #000 2px -2px 5px, #94ffa5 3px -3px 3px;
             }
 
             .links {
@@ -59,7 +61,7 @@
                 color: black;
             }
             .links > a {
-                color: #94ffa5;
+                color: #3f844e;
                 padding: 0 25px;
                 font-size: 13px;
                 font-weight: 600;
@@ -91,11 +93,14 @@
 
             <div class="content">
                 <div class="title m-b-md" style="background-image: ">
-                    Heisenbeans
+                    <img src="/i/heisenhead.png">
+                    <div>Heisenbeans</div>
                 </div>
 
                 <div class="links">
-                    <a href="#">Soon</a>
+                    <a href="/testers">Testers</a>
+                    <a href="/breeders">Breeders</a>
+                    <a href="/strains">Strains</a>
                 </div>
             </div>
         </div>
