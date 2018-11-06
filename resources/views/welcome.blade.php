@@ -21,7 +21,7 @@
                 margin: 0;
             }
             body {
-                background-image: radial-gradient(ellipse, rgba(255,255,255,1.0) 75%, rgba(220,220,220,0.8));
+                background-image: radial-gradient(circle, rgba(255,255,255,1.0) 50%, rgba(220,220,220,0.8));
             }
             .full-height {
                 height: 100vh;

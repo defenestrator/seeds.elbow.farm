@@ -9,8 +9,8 @@
 @import '~bootstrap/scss/bootstrap';
 
 body {
-  background:#fff radial-gradient(rgba(255,255,255,1.0) 75%, rgba(220,220,220,0.8)) no-repeat;
-  height:100%;
+  background:#fff radial-gradient(circle, rgba(255,255,255,1.0) 50%, rgba(220,220,220,0.8)) no-repeat;
+  min-height:100vh;
 }
 
 .navbar-laravel {
