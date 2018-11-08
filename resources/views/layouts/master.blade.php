@@ -38,12 +38,17 @@
                 <ul class="navbar-nav ml-auto">
                     <!-- Authentication Links -->
                     @guest
-                    <li><a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></li>
-                    <li><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li>
                     <li><a class="nav-link" href="{{ route('welcome') }}">{{ __('Welcome') }}</a></li>
-
-
+                    <li><a class="nav-link" href="{{ route('testers') }}">Testers</a></li>
+                    <li><a class="nav-link" href="{{ route('breeders') }}">Breeders</a></li>
+                    <li><a class="nav-link" href="{{ route('strains') }}">Strains</a></li>
+                    <li><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li>
+                    <li><a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></li>
                     @else
+                        <li><a class="nav-link" href="{{ route('welcome') }}">{{ __('Welcome') }}</a></li>
+                        <li><a class="nav-link" href="{{ route('testers') }}">Testers</a></li>
+                        <li><a class="nav-link" href="{{ route('breeders') }}">Breeders</a></li>
+                        <li><a class="nav-link" href="{{ route('strains') }}">Strains</a></li>
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }} <span class="caret"></span>

@@ -28,7 +28,7 @@ class TesterController extends Controller
             'contact-name' => 'required|min:2',
             'contact-email' => 'required|email',
             'contact-msg' => 'required|min:7',
-            'journal-link' => 'required|URL'
+            'journal-link' => 'required|active_url'
         ]);
 
 //        if (config('app.env') !== 'testing' ||config('app.env') !== 'local') {
