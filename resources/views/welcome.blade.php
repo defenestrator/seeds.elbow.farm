@@ -96,8 +96,8 @@
                     <div>Heisenbeans</div>
                 </div>
 
-                <div class="links">
-                    <a href="/testers"><h2>Become a Tester</h2></a> |
+                <div class="links" style="margin-bottom:1em;">
+                    <a href="/testers">Become a Tester</a> |
                     <a href="/breeders">Breeders</a> |
                     <a href="/strains">Strains</a>
                     <br>
