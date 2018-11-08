@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);/*!
+@import url(https://fonts.googleapis.com/css?family=Great+Vibes);@import url(https://fonts.googleapis.com/css?family=Open+Sans);/*!
  * Bootstrap v4.1.3 (https://getbootstrap.com/)
  * Copyright 2011-2018 The Bootstrap Authors
  * Copyright 2011-2018 Twitter, Inc.
@@ -10469,11 +10469,20 @@ a.text-dark:focus {
 body {
   background: #fff radial-gradient(circle, white 50%, gainsboro) no-repeat;
   min-height: 100vh;
+  font-family: "Open Sans", sans-serif;
 }
 
 .navbar-laravel {
   background-color: #fff;
   -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
           box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+  text-transform: uppercase;
+}
+
+h1 {
+  font-family: "Great Vibes", serif;
+  font-size: 64px;
+  font-weight: 100;
+  text-shadow: #000 2px -2px 5px, #94ffa5 3px -3px 3px;
 }
 
