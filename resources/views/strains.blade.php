@@ -16,6 +16,8 @@
 @section('content')
     <div class="container text-center">
         <h1>Coming Soon</h1>
+        <div class="col-sm-6 offset-sm-3"><img style="width:100%;" src="/i/cake.jpg"></div>
+
     </div>
 @stop
 

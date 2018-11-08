@@ -17,10 +17,8 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <!-- Contact form Section Start -->
-            <div class="col-sm-6 offset-sm-3">
+            <div class="col-sm-6">
                 <h3>Simply fill out this form and we will send you beans.<a href="#limitations" alt="some restrictions apply" title="disclaimer">*</a></h3>
-                <!-- Notifications -->
                 <div id="errors">
                     @if ($errors->any())
                         <div class="alert alert-danger">
@@ -59,6 +57,7 @@
                     </div>
                 </form>
             </div>
+            <div class="col-sm-3"><img style="width:100%;" src="/i/tester.jpg" alt="Become an official Heisenbeans Tester!" title="Become an official Heisenbeans Tester!"></div>
         </div>
 
 
