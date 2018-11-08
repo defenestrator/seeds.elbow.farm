@@ -18,7 +18,7 @@
     <div class="container">
         <div class="row">
             <!-- Contact form Section Start -->
-            <div class="col-sm-6">
+            <div class="col-sm-6 offset-sm-3">
                 <h3>Simply fill out this form and we will send you beans.<a href="#limitations" alt="some restrictions apply" title="disclaimer">*</a></h3>
                 <!-- Notifications -->
                 <div id="errors">
