@@ -18,7 +18,10 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-6">
-                <h3>Simply fill out this form and we will send you beans.<a href="#limitations" alt="some restrictions apply" title="disclaimer">*</a></h3>
+                <h3>Please apply here.<a href="#limitations" alt="some restrictions apply" title="disclaimer">*</a></h3>
+                <h4>If we like your journal we may send you some gear!</h4>
+                <p>Not every grower will be accepted, tester slots are limited.</p>
+                <p>Thank you!</p>
                 <div id="errors">
                     @if ($errors->any())
                         <div class="alert alert-danger">
@@ -49,7 +52,7 @@
                     </div>
                     <div class="form-group">
                         <input type="text" name="journal-link" class="form-control input-lg"
-                               placeholder="URL to existing grow journal, e.g. 'https://example.com/journals/your-journal'" value="{{ old('journal-link') }}"required>
+                               placeholder="URL to grow journal" value="{{ old('journal-link') }}"required>
                     </div>
                     <div class="form-group">*We are currently accepting testers from the United States and Canada. Thank you.</div>
                     <div class="input-group">
