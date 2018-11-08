@@ -74,7 +74,7 @@
             }
         </style>
     </head>
-    <body>
+    <body style="background:#fff radial-gradient(rgba(255,255,255,1.0) 50%, rgba(220,220,220,1.0)) no-repeat;">
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
@@ -93,7 +93,7 @@
             @endif
 
             <div class="content">
-                <div class="title m-b-md" style="background-image: ">
+                <div class="title m-b-md">
                     <img src="/i/heisenhead.png">
                     <div>Heisenbeans</div>
                 </div>
