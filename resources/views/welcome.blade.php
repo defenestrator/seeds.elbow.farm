@@ -97,9 +97,9 @@
                 </div>
 
                 <div class="links">
-                    <a href="/testers"><h2>Become a Tester!</h2></a>
-                    {{--<a href="/breeders">Breeders</a>--}}
-                    {{--<a href="/strains">Strains</a>--}}
+                    <a href="/testers"><h2>Become a Tester</h2></a> |
+                    <a href="/breeders">Breeders</a> |
+                    <a href="/strains">Strains</a>
                     <br>
                 </div>
                 <div><a href="/testers"><img style="box-shadow: #000 2px -2px 5px, #94ffa5 3px -3px 3px;border-radius:1em; width:85%; max-width:640px;" src="/i/heroic-colas.jpg"></a></div>

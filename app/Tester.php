@@ -9,6 +9,7 @@ class Tester extends Model
     protected $fillable = [
         'name',
         'email_address',
-        'message'
+        'message',
+        ''
     ];
 }

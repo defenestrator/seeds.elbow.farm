@@ -49,6 +49,10 @@
                                   rows="6"
                                   placeholder="Please enter your mailing address" required>{{ old('contact-msg') }}</textarea>
                     </div>
+                    <div class="form-group">
+                        <input type="text" name="journal-link" class="form-control input-lg"
+                               placeholder="URL to existing grow journal, e.g. 'https://example.com/journals/your-journal'" value="{{ old('journal-link') }}"required>
+                    </div>
                     <div class="form-group">*We are currently accepting testers from the United States and Canada. Thank you.</div>
                     <div class="input-group">
                         <button class="btn btn-primary input-lg" type="submit">Submit</button>

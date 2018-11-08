@@ -27,7 +27,8 @@ class TesterController extends Controller
         $request->validate([
             'contact-name' => 'required|min:2',
             'contact-email' => 'required|email',
-            'contact-msg' => 'required|min:7'
+            'contact-msg' => 'required|min:7',
+            'journal-link' => 'required|URL'
         ]);
 
 //        if (config('app.env') !== 'testing' ||config('app.env') !== 'local') {
@@ -38,10 +39,10 @@ class TesterController extends Controller
 
         // Save the message to DB
         $data = Tester::create([
-            'name' => $request
-                ->get('contact-name'),
+            'name' => $request->get('contact-name'),
             'email_address' => $request->get('contact-email'),
             'message' => $request->get('contact-msg'),
+            'journal_link' => $request->get('journal-link')
         ]);
 
         $this->mail->to('heisen@heisenbeans.com')->send(new TesterRequestNotification($data));
