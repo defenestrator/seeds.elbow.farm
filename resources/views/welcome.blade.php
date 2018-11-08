@@ -99,8 +99,8 @@
 
                 <div class="links">
                     <a href="/testers">Testers</a>
-                    <a href="/breeders">Breeders</a>
-                    <a href="/strains">Strains</a>
+                    {{--<a href="/breeders">Breeders</a>--}}
+                    {{--<a href="/strains">Strains</a>--}}
                 </div>
             </div>
         </div>
