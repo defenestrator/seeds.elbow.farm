@@ -98,7 +98,7 @@
                 </div>
 
                 <div class="links">
-                    <a href="/testers">Testers</a>
+                    <a href="/testers">Become a Tester!</a>
                     {{--<a href="/breeders">Breeders</a>--}}
                     {{--<a href="/strains">Strains</a>--}}
                 </div>
