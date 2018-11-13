@@ -4,10 +4,10 @@ namespace Heisen;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Breeder extends Model
+class ShippingAddress extends Model
 {
     protected $fillable = [
-        'name', 'image', 'description'
+        'address_1', 'address_2', 'city', 'state', 'postcode', 'country', 'user_id'
     ];
 
     public function users()
