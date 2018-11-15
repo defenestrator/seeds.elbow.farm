@@ -59,6 +59,7 @@
                     <div class="form-group">
                         <select name="contact-state" form="contact" class="form-control input-lg"
                                 placeholder="email" value="{{ old('contact-state') }}" required>
+                            <option value="">State/Province</option>
                             <optgroup label="States:"><strong>States:</strong></optgroup>
                             @foreach($states as $state)
                             <option label="{{$state}}" value="{{$state}}">{{$state}}</option>
