@@ -23,7 +23,7 @@
                 <img style="width:25%;" src="/i/heisenhead.png"></div>
             <div class="col-sm-6">
                 <h3>Shoreline Genetics</h3>
-                <img style="width:25%;" src="/i/shorelineLogo.png"></div>
+                <img style="width:25%;" src="/i/shoreline-logo.png"></div>
         </div>
 
     </div>
