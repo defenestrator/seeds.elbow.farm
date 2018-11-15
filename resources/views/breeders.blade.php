@@ -15,8 +15,17 @@
 
 @section('content')
     <div class="container text-center">
-        <h1>Coming Soon</h1>
-        <div class="col-sm-6 offset-sm-3"><img style="width:100%;" src="/i/glue.jpg"></div>
+        <h1>Breeders</h1>
+        <h2>Coming Soon</h2>
+        <div class="row">
+            <div class="col-sm-6">
+                <h3>Heisenbeans</h3>
+                <img style="width:25%;" src="/i/heisenhead.png"></div>
+            <div class="col-sm-6">
+                <h3>Shoreline Genetics</h3>
+                <img style="width:25%;" src="/i/shorelineLogo.png"></div>
+        </div>
+
     </div>
 @stop
 
