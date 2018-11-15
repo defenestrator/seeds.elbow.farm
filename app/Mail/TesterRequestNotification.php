@@ -33,7 +33,7 @@ class TesterRequestNotification extends Mailable
      */
     public function build()
     {
-        return $this->view('mail.tester-form')
+        return $this->markdown('mail.tester.request')
             ->with([
                 'data' => $this->tester
             ]);

@@ -21,7 +21,7 @@
                 <h3>Please apply here.<a href="#limitations" alt="some restrictions apply" title="disclaimer">*</a></h3>
                 <h4>If we like your journal we may send you some gear!</h4>
                 <p>Not every grower will be accepted, tester slots are limited.</p>
-                <p>Thank you!</p>
+                <p>Thank you.</p>
                 <div id="errors">
                     @if ($errors->any())
                         <div class="alert alert-danger">
@@ -33,30 +33,61 @@
                         </div>
                     @endif
                 </div>
-                <form class="contact" id="contact" style="margin-bottom:2em; " action="{{route('tester_request')}}" method="POST">
+                <form class="contact" id="contact" style="margin-bottom:2em; " action="{{route('tester-request')}}" method="POST">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                     <div class="form-group">
                         <input type="text" name="contact-name"
-                               class="form-control input-lg" placeholder="name"
+                               class="form-control input-lg" placeholder="Name"
                                value="{{ old('contact-name') }}" required>
                     </div>
                     <div class="form-group">
                         <input type="email" name="contact-email" class="form-control input-lg"
-                               placeholder="email" value="{{ old('contact-email') }}"required>
+                               placeholder="Email" value="{{ old('contact-email') }}"required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="contact-address-1" class="form-control input-lg"
+                               placeholder="Street Address" value="{{ old('contact-address-1') }}"required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="contact-address-2" class="form-control input-lg"
+                               placeholder="Apt/Ste/Unit # (optional)" value="{{ old('contact-address-2') }}">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="contact-city" class="form-control input-lg"
+                               placeholder="City" value="{{ old('contact-city') }}"required>
+                    </div>
+                    <div class="form-group">
+                        <select name="contact-state" form="contact" class="form-control input-lg"
+                                placeholder="email" value="{{ old('contact-state') }}" required>
+                            <optgroup label="States:"><strong>States:</strong></optgroup>
+                            @foreach($states as $state)
+                            <option label="{{$state}}" value="{{$state}}">{{$state}}</option>
+                            @endforeach
+                            <optgroup label="-----------">-----------</optgroup>
+                            <optgroup label="Provinces:">Provinces:</optgroup>
+                            @foreach($provinces as $province)
+                                <option label="{{$province}}" value="{{$province}}">{{$province}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="postcode" class="form-control input-lg"
+                               placeholder="Postal Code" value="{{ old('postcode') }}" required>
                     </div>
                     <div class="form-group">
                         <textarea name="contact-msg"
                                   class="form-control input-lg"
                                   rows="6"
-                                  placeholder="Please enter your mailing address" required>{{ old('contact-msg') }}</textarea>
+                                  placeholder="Write us a personal message (optional)">{{ old('contact-msg') }}</textarea>
                     </div>
                     <div class="form-group">
                         <input type="text" name="journal-link" class="form-control input-lg"
-                               placeholder="URL to grow journal" value="{{ old('journal-link') }}"required>
+                               placeholder="URL to grow journal" value="{{ old('journal-link') }}" required>
                     </div>
-                    <div class="form-group">*We are currently accepting testers from the United States and Canada. Thank you.</div>
+                    <div class="form-group"><a href="#limitations" alt="some restrictions apply" title="disclaimer">*</a>
+                        We are currently accepting testers from the United States and Canada.</div>
                     <div class="input-group">
-                        <button class="btn btn-primary input-lg" type="submit">Submit</button>
+                        <button style="width:100%;" class="btn btn-primary input-lg" type="submit">Submit</button>
                     </div>
                 </form>
             </div>
