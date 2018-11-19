@@ -60,7 +60,7 @@
                         <select name="contact-state" form="contact" class="form-control input-lg"
                                 placeholder="email" value="{{ old('contact-state') }}" required>
                             <option value="">State/Province</option>
-                            <optgroup label="States:"><strong>States:</strong></optgroup>
+                            <optgroup label="States:">States:</optgroup>
                             @foreach($states as $state)
                             <option label="{{$state}}" value="{{$state}}">{{$state}}</option>
                             @endforeach
@@ -92,7 +92,7 @@
                     </div>
                 </form>
             </div>
-            <div class="col-sm-3"><img style="width:100%;" src="/i/tester.jpg" alt="Become an official Heisenbeans Tester!" title="Become an official Heisenbeans Tester!"></div>
+            <div class="col-sm-3"><img style="width:100%;" src="/i/tester.jpg" alt="Become an official Heisenbeans Gear Tester!" title="Become an official Heisenbeans Tester!"></div>
         </div>
 
 

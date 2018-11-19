@@ -99,7 +99,7 @@
                 </div>
 
                 <div class="links" style="margin-bottom:1em;">
-                    <a href="/testers">Become a Tester</a> |
+                    <a href="/testers">Testers</a> |
                     <a href="/breeders">Breeders</a> |
                     <a href="/strains">Strains</a>
                     <br>
