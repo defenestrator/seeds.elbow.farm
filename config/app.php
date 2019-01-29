@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Heisenbeans - Feminized Seeds'),
+    'name' => env('APP_NAME', 'Heisenbeans - Seeds'),
 
     /*
     |--------------------------------------------------------------------------
