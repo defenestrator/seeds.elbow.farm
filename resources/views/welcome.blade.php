@@ -5,10 +5,10 @@
         <h1>Heisenbeans</h1>
     </div>
     <div class="row justify-content-center">
-        <h2>Exceptional Genetics</h2>
+        <h2><a style="text-align:center;" href="https://www.instagram.com/heisenbeans/"><h2>Follow us on IG <i class="fa fa-instagram" aria-hidden="true"></i></a></h2>
     </div>
     <div class="row justify-content-center">
-        <h3> <a href="https://www.instagram.com/heisenbeans/">Follow us on IG </a> <a href="https://www.instagram.com/heisenbeans/"><i class="fa fa-instagram" aria-hidden="true"></i></a></h3>
+
         <hr>
     </div>
     <div class="row justify-content-center hero">
