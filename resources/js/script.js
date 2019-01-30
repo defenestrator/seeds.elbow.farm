@@ -32,5 +32,17 @@ Vue.component('example-component', require('./components/ExampleComponent.vue'))
  */
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    mounted() {
+        "use strict";
+        // Async loading of css.
+        const fa=document.createElement('link');
+        fa.href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css';
+        fa.rel='stylesheet';
+        const swa=document.createElement('link');
+        swa.href='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.3.1/sweetalert2.min.css';
+        swa.rel='stylesheet';
+        document.getElementsByTagName('head')[0].appendChild(fa);
+        document.getElementsByTagName('head')[0].appendChild(swa);
+    }
 });
