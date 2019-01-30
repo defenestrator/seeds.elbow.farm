@@ -10486,3 +10486,20 @@ h1 {
   text-shadow: #000 2px -2px 5px, #94ffa5 3px -3px 3px;
 }
 
+.info {
+  margin: 1em;
+}
+
+.info > a > img,
+.hero > a > img {
+  -webkit-box-shadow: #000 2px -2px 5px, #94ffa5 3px -3px 3px;
+          box-shadow: #000 2px -2px 5px, #94ffa5 3px -3px 3px;
+  border-radius: 1em;
+  max-width: 640px;
+  width: 100%;
+}
+
+.hero > a > img {
+  max-width: 960px;
+}
+
