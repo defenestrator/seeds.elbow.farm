@@ -33,8 +33,9 @@ class Breeder extends Model
         'name', 'image', 'description'
     ];
 
-    public function users()
+    public function strains()
     {
-        return $this->belongsTo(User::class);
+        return $this->hasMany(Heisen\Strains::class);
     }
+
 }

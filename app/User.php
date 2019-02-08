@@ -7,6 +7,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Auth\MustVerifyEmail as VerifyEmail;
 use Spatie\Permission\Traits\HasRoles;
+use Spatie\Permission\Traits\HasPermissions;
 /**
  * Heisen\User
  *
@@ -37,7 +38,7 @@ class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable;
     use VerifyEmail;
-    use HasRoles;
+    use HasPermissions;
     /**
      * The attributes that are mass assignable.
      *
@@ -59,4 +60,5 @@ class User extends Authenticatable implements MustVerifyEmail
     public function shippingAddresses() {
         return $this->hasMany(ShippingAddress::class);
     }
+
 }

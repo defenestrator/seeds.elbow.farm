@@ -8,10 +8,9 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Heisen\Tester;
 
-class TesterRequestNotification extends Mailable
+class TesterRequestNotification extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
-
     /**
      * @var Tester
      */

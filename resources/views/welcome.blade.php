@@ -4,11 +4,10 @@
     <div class="row justify-content-center">
         <h1>Heisenbeans</h1>
     </div>
-
     <div class="row justify-content-center">
-
-        <hr>
+        <h2>Exceptional Genetics</h2>
     </div>
+    <hr>
     <div class="row justify-content-center hero">
         <a href="/testers"><img src="/i/heroic-colas.jpg"></a>
     </div>

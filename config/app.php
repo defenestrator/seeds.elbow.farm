@@ -171,6 +171,7 @@ return [
         Heisen\Providers\AuthServiceProvider::class,
         // Heisen\Providers\BroadcastServiceProvider::class,
         Heisen\Providers\EventServiceProvider::class,
+        Heisen\Providers\HorizonServiceProvider::class,
         Heisen\Providers\RouteServiceProvider::class,
 
     ],
