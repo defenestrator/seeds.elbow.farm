@@ -49,8 +49,4 @@ class Strain extends Model
         return $this->belongsTo(Breeder::class);
     }
 
-    public function seed_types()
-    {
-        return $this->hasOne(SeedType::class);
-    }
 }

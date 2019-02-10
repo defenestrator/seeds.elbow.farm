@@ -4,6 +4,8 @@ namespace Heisen\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
+use Heisen\Repos\StrainCache;
+use Heisen\Repos\StrainQuery;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -24,7 +26,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-            //
+        //
     }
 
 }

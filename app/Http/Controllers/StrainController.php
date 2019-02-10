@@ -3,9 +3,16 @@
 namespace Heisen\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Heisen\Strain;
+use Cache;
 
 class StrainController extends Controller
 {
+    protected $strain;
+    public function __construct (Strain $strain)
+    {
+        $this->strain = $strain;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +20,15 @@ class StrainController extends Controller
      */
     public function index()
     {
-        return view('strains');
+        // if (Cache::has('strains')) {
+        //     $strains = Cache::get('strains');
+        //     return view('strains',['strains' => $strains]);
+        // }
+
+        $strains = Cache::remember('strains', 60, function() {
+            $this->strain->with(['breeders']);
+        });
+        return view('strains',['strains' => $strains]);
     }
 
     /**
