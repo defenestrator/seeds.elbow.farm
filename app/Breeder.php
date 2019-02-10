@@ -26,6 +26,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Breeder whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Breeder whereUserId($value)
  * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Heisen\Strain[] $strains
  */
 class Breeder extends Model
 {
@@ -35,7 +36,7 @@ class Breeder extends Model
 
     public function strains()
     {
-        return $this->hasMany(Heisen\Strains::class);
+        return $this->hasMany(Strain::class);
     }
 
 }

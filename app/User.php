@@ -33,6 +33,8 @@ use Spatie\Permission\Traits\HasPermissions;
  * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\User whereRememberToken($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\User whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Permission\Models\Permission[] $permissions
+ * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\User permission($permissions)
  */
 class User extends Authenticatable implements MustVerifyEmail
 {

@@ -16,6 +16,16 @@
 @section('content')
     <div class="container text-center">
         <h1>Available Strains</h1>
+        @foreach(array_chunk(array_slice($strains, 0, 48), 3) as $strainRow)
+        <div class="row">
+            @foreach($strainRow as $strain)
+            <div class="col-md-4">
+                <h3>{{$strain['name']}}</h3>
+            <img style=width:100%;" src="{{$strain['image']}}">
+            </div>
+            @endforeach
+        </div>
+        @endforeach
         <div class="row">
             <div class="col-sm-6">
                 <h4>Wedding Cake S1 Feminized Seeds</h4>
