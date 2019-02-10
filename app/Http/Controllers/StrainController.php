@@ -9,11 +9,10 @@ use Cache;
 class StrainController extends Controller
 {
     protected $strain;
-    protected $cache;
-    public function __construct (Strain $strain, Cache $cache)
+
+    public function __construct (Strain $strain)
     {
         $this->strain = $strain;
-        $this->cache = $cache;
     }
     /**
      * Display a listing of the resource.
@@ -23,8 +22,9 @@ class StrainController extends Controller
     public function index()
     {
         $strains = Cache::remember('strains', 666, function() {
-            return $this->strain->with(['breeders'])->get()->toArray();
+            return $this->strain->with(['breeder'])->get()->toArray();
         });
+        
         return view('strains',compact('strains'));
     }
 

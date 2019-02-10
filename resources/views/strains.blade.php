@@ -19,12 +19,14 @@
         @foreach(array_chunk(array_slice($strains, 0, 48), 3) as $strainRow)
         <div class="row">
             @foreach($strainRow as $strain)
-            <div class="col-md-4">
-                <h3>{{$strain['name']}}</h3>
-            <img style=width:100%;" src="{{$strain['image']}}">
+            <div class="col-md-4 info">
+                <h4><a href="/strain{{$strain['id']}}">{{$strain['name']}}</a></h4>
+                <a href="/strain/{{$strain['id']}}"><img src="{{ $strain['image'] }}"></a>
+            <h4><a href="/breeder/{{$strain['breeder']['id']}}">{{$strain['breeder']['name']}}</h4></a>
             </div>
             @endforeach
         </div>
+        <hr>
         @endforeach
         <div class="row">
             <div class="col-sm-6">

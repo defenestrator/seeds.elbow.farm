@@ -44,7 +44,7 @@ class Strain extends Model
         'name', 'seed_type_id', 'image', 'genetics', 'description', 'breeder_id'
     ];
 
-    public function breeders()
+    public function breeder()
     {
         return $this->belongsTo(Breeder::class);
     }
