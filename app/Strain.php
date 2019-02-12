@@ -39,6 +39,8 @@ use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
  * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Strain whereSeedTypeId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Strain whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read \Heisen\Breeder $breeder
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\MediaLibrary\Models\Media[] $media
  */
 class Strain extends Model
 {

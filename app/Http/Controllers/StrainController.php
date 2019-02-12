@@ -24,7 +24,7 @@ class StrainController extends Controller
         $strains = Cache::remember('strains', 666, function() {
             return $this->strain->with(['breeder'])->get()->toArray();
         });
-        
+
         return view('strains',compact('strains'));
     }
 
@@ -35,7 +35,7 @@ class StrainController extends Controller
      */
     public function create()
     {
-        //
+        return 'hi';
     }
 
     /**

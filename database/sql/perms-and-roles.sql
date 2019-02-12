@@ -48,30 +48,10 @@ VALUES
 	(18,'delete-tester','web','2019-02-10 15:33:54','2019-02-10 15:33:54'),
 	(19,'create-user','web','2019-02-10 15:33:56','2019-02-10 15:33:56'),
 	(20,'edit-user','web','2019-02-10 15:33:57','2019-02-10 15:33:57'),
-	(21,'delete-user','web','2019-02-10 15:33:59','2019-02-10 15:33:59');
+	(21,'delete-user','web','2019-02-10 15:33:59','2019-02-10 15:33:59'),
+    (22,'admin','web','2019-02-10 15:33:20','2019-02-10 15:33:20');
 
 /*!40000 ALTER TABLE `permissions` ENABLE KEYS */;
-UNLOCK TABLES;
-
-
-# Dump of table roles
-# ------------------------------------------------------------
-LOCK TABLES `roles` WRITE;
-/*!40000 ALTER TABLE `roles` DISABLE KEYS */;
-
-INSERT INTO `roles` (`id`, `name`, `guard_name`, `created_at`, `updated_at`)
-VALUES
-	(1,'admin','web','2019-02-10 15:33:20','2019-02-10 15:33:20'),
-	(2,'customer','web','2019-02-10 15:33:21','2019-02-10 15:33:21'),
-	(3,'vendor','web','2019-02-10 15:33:23','2019-02-10 15:33:23'),
-	(4,'author','web','2019-02-10 15:33:24','2019-02-10 15:33:24'),
-	(5,'publisher','web','2019-02-10 15:33:26','2019-02-10 15:33:26'),
-	(6,'moderator','web','2019-02-10 15:33:27','2019-02-10 15:33:27');
-
-/*!40000 ALTER TABLE `roles` ENABLE KEYS */;
-UNLOCK TABLES;
-
-
 
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -79,3 +59,4 @@ UNLOCK TABLES;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+

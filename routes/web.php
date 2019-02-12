@@ -18,4 +18,5 @@ Route::get('/testers/mail/preview', 'TesterController@preview')->name('preview-t
 Route::get('/breeders', 'BreederController@index')->name('breeders');
 
 Route::get('/strains', 'StrainController@index')->name('strains');
+Route::get('strains/create', 'StrainController@create')->middleware('permission:admin');
 
