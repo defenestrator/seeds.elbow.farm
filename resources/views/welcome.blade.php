@@ -9,8 +9,8 @@
         <h2>Exceptional Genetics</h2>
     </div>
     <hr>
-    <div class="row justify-content-center hero">
-        <a href="/testers"><img src="/i/heroic-colas.jpg"></a>
+    <div class="row justify-content-center info">
+            <a href="/testers"><img src="/i/heroic-colas.jpg"></a>
     </div>
     <hr>
     <div class="row justify-content-center">

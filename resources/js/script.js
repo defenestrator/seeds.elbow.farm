@@ -33,8 +33,12 @@ Vue.component('editor', require('./components/Editor.vue'));
 
 const app = new Vue({
     el: '#app',
-    mounted() {
+    mounted () {
         "use strict";
+        const mainFont = document.createElement('link');
+        mainFont.href ='https://fonts.googleapis.com/css?family=Great+Vibes|Open+Sans|Roboto+Condensed:300';
+        mainFont.rel = 'stylesheet';
+        document.getElementsByTagName('head')[0].appendChild(mainFont)
         // Async loading of css.
         const fa=document.createElement('link');
         fa.href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css';

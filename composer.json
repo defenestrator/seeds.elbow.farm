@@ -7,6 +7,7 @@
     "require": {
         "php": "^7.1.3",
         "barryvdh/laravel-debugbar": "^3.2",
+        "beyondcode/laravel-mailbox": "^1.1",
         "doctrine/dbal": "^2.8",
         "fideloper/proxy": "^4.0",
         "guzzlehttp/guzzle": "^6.3",
@@ -21,7 +22,8 @@
         "spatie/laravel-medialibrary": "^7.5",
         "spatie/laravel-permission": "^2.26",
         "spatie/laravel-responsecache": "^4.4",
-        "vinkla/instagram": "^9.1"
+        "vinkla/instagram": "^9.1",
+        "writingink/wink": "^0.0.12"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.5",

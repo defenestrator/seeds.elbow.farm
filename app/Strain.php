@@ -3,6 +3,8 @@
 namespace Heisen;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 
 /**
  * Heisen\Strain
@@ -40,6 +42,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Strain extends Model
 {
+    use HasMediaTrait;
+
     protected $fillable = [
         'name', 'seed_type_id', 'image', 'genetics', 'description', 'breeder_id'
     ];

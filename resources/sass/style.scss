@@ -1,7 +1,5 @@
 
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Great+Vibes');
-@import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
 // Variables
 @import 'variables';
@@ -13,31 +11,36 @@ body {
   background:#fff radial-gradient(rgba(255,255,255,1.0) 50%, rgba(220,220,220,1.0)) no-repeat;
   min-height:100vh;
   font-family:$font-family-sans-serif;
+  font-size:1.2em;
 }
 
 .navbar-laravel {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
   text-transform: uppercase;
+  font-family:'Open Sans';
 }
 
 h1 {
   font-family: $font-family-serif;
   font-size:64px;
   font-weight:100;
-  text-shadow: #000 2px -2px 5px, #94ffa5 3px -3px 3px;
+  text-shadow: #000 1px 1px 2px, #94ffa5 2px 2px 2px;
 }
-
+h2, h3 {
+    font-family: $font-family-sans-serif;
+    font-weight: 600;
+}
 .info {
- margin-top: 1em;
+ margin: 0.5rem 0;
 }
 
-.info > a > img, .hero > a > img {
-  box-shadow: #000 2px -2px 5px, #94ffa5 3px -3px 3px;
-  border-radius:1em;
-  max-width:640px;
+.info > img, .info > a > img {
+  box-shadow: #000 1px 1px 2px, #94ffa5 2px 2px 2px;
+  border-radius:0.25rem;
+  max-width:660px;
   width:100%;
+  margin: 0.5rem 0;
 }
-.hero > a > img {
-  max-width:960px;
-}
+
+
