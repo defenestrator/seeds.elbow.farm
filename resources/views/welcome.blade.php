@@ -4,7 +4,8 @@
     <div class="row justify-content-center">
         <h1>Heisenbeans</h1>
     </div>
-    <div class="row justify-content-center">
+
+     <div class="row justify-content-center">
         <h2>Exceptional Genetics</h2>
     </div>
     <hr>
