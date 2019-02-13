@@ -18,7 +18,14 @@ Route::get('/testers/mail/preview', 'TesterController@preview')->name('preview-t
 Route::get('/breeders', 'BreederController@index')->name('breeders');
 
 Route::get('/strains', 'StrainController@index')->name('strains');
-Route::get('strains/create', 'StrainController@create')->middleware('role:admin');
-Route::get('api/strains', 'StrainController@list')->name('strains.create')->middleware('role:admin');
-Route::post('api/strains', 'StrainController@store')->middleware('role:admin');
+
+Route::prefix('/admin/')->name('admin.')->middleware('role:admin')->group( function () {
+    Route::get('strains/new', 'StrainController@create')->name('strains.create');
+    Route::get('strains/', 'StrainController@list')->name('strains.list');
+    Route::get('strains/{id}', 'StrainController@edit')->name('strains.edit');
+    Route::post('strains/', 'StrainController@store')->name('strains.store');
+    Route::post('strains/{id}', 'StrainController@update')->name('strains.update');
+    Route::delete('strains/', 'StrainController@destroy')->name('strains.delete');
+});
+
 

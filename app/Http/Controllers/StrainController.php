@@ -33,7 +33,7 @@ class StrainController extends Controller
     * @return \Illuminate\Http\Response
     */
     public function list() {
-        return $this->strain->withBreeder()->withMedia()->paginate(20)->get();
+        return view('strains.index', ['content' => $this->strain->with(['breeder'])->get()]);
     }
     /**
      * Show the form for creating a new resource.
@@ -55,15 +55,16 @@ class StrainController extends Controller
     {
         $request->validate([
             'name' => 'required|min:2|max:140',
-
+            'image' => 'required|image',
             // 'slug' => 'required|unique:strains',
             'description' => 'min:2|max:1400'
         ]);
-        // dd($request->image);
-        $newStrain = $this->strain->addMedia($request->image)->new([
+
+        $image = $this->header($request);
+        $newStrain = $this->strain->new([
             'name' => $request->name,
             'description' => $request->description,
-            'image' => 'http://i.heisenbeans.com/images/heisenhead.png'
+            'image' => $image->large,
             // 'slug' => $request->slug
         ]);
         $newStrain->save();
@@ -88,7 +89,7 @@ class StrainController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('strains.edit', ['strain' => $this->strain->find($id)->first()]);
     }
 
     /**
@@ -99,8 +100,15 @@ class StrainController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
+
     {
-        //
+        $file = $request->image;
+        $image = $this->header($file);
+        return $this->save([
+            'image' => $image,
+            'description' => $request->description,
+            'name' => $request->name
+        ], $id);
     }
 
     /**

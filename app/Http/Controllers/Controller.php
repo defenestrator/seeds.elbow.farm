@@ -6,7 +6,10 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-
+use Heisen\Image as ImageModel;
+use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image;
+use Storage;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
@@ -26,25 +29,21 @@ class Controller extends BaseController
         ]);
     }
 
-    public function header(Request $request)
+    public function header($file)
     {
-        $request->validate([
-            'header_photo' => 'required|image'
-        ]);
-
-        $large = $this->large($request->file('header_photo'));
-        $thumbnail = $this->thumbnail($request->file('header_photo'));
-        $stamp = $this->stamp($request->file('header_photo'));
+        $large = $this->large($file);
+        $thumb = $this->thumb($file);
+        $small = $this->small($file);
 
         $record = ImageModel::create([
-            'thumbnail' => $thumbnail,
-            'stamp' => $stamp,
+            'thumb' => $thumb,
+            'small' => $small,
             'large' => $large
         ]);
         return response()->json([
             'image_id' => $record->id,
-            'thumbnail' => $thumbnail,
-            'stamp' => $stamp,
+            'thumb' => $thumb,
+            'small' => $small,
             'large' => $large,
             'success' => true,
         ]);
@@ -69,7 +68,7 @@ class Controller extends BaseController
         return $location;
     }
 
-    public function thumbnail($img)
+    public function thumb($img)
     {
         $resize = Image::make($img)
             ->resize(575, 575, function ($constraint) {
@@ -87,7 +86,7 @@ class Controller extends BaseController
         return $location;
     }
 
-    public function stamp($img)
+    public function small($img)
     {
         $resize = Image::make($img)
             ->resize(200, 200, function ($constraint) {

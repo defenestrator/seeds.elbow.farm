@@ -20,7 +20,6 @@ class CreateImagesTable extends Migration
             $table->text('thumb');
             $table->timestamps();
         });
-
     }
 
     /**

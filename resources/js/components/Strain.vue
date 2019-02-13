@@ -27,7 +27,7 @@
     </div>
     <div class="container">
         <hr>
-        <form class="form-horizontal new-content" v-if="! index" role="form">
+        <form class="form-horizontal new-content" v-if="! index" role="form" enctype="multipart/form-data">
                                 <!-- Header Photo Button -->
             <div class="form-group">
                 <div class="container">
@@ -356,15 +356,15 @@ export default {
         /**
          * Update the showcase photo.
          */
-        getImage() {
-            // e.preventDefault();
+        getImage(e) {
+            e.preventDefault();
 
             if ( ! this.$refs.image.files.length) {
                 return;
             }
-            this.newContentItem.image = this.$refs.image.files[0];
-            console.log("data: " + this.newContentItem.image, "input: " + this.$refs.image.files[0])
-            return this.newContentItem.image
+            console.log(this.$refs.image.files[0])
+            return this.newContentItem.image = this.$refs.image.files[0];
+
             // var self = this;
 
             // this.startProcessing();

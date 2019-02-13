@@ -29,4 +29,8 @@ class SeedType extends Model
         'name', 'description'
     ];
 
+    public function strain()
+    {
+        return $this->hasMany(Strain::class);
+    }
 }
