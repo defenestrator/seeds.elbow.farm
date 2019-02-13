@@ -1,12 +1,12 @@
 <?php
 
-namespace Heisen\Http\Controllers;
+namespace Heisen\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
+use Heisen\Http\Controllers\Controller;
 use Heisen\Strain;
-use Cache;
 
-class StrainController extends Controller
+class StrainApiController extends Controller
 {
     protected $strain;
 
@@ -21,11 +21,10 @@ class StrainController extends Controller
      */
     public function index()
     {
-        $strains = Cache::remember('strains', 666, function() {
-            return $this->strain->with(['breeder'])->get()->toArray();
-        });
 
-        return view('strains',compact('strains'));
+        // $strains = Cache::remember('strains', 666, function() {
+            return $this->strain->with(['breeder'])->get();
+        // });
     }
 
     /**
@@ -35,7 +34,7 @@ class StrainController extends Controller
      */
     public function create()
     {
-        return view('strains.create');
+        //
     }
 
     /**

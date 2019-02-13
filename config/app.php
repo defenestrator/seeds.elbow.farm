@@ -173,7 +173,7 @@ return [
         Heisen\Providers\EventServiceProvider::class,
         Heisen\Providers\HorizonServiceProvider::class,
         Heisen\Providers\RouteServiceProvider::class,
-
+        Spatie\Permission\PermissionServiceProvider::class,
     ],
 
     /*

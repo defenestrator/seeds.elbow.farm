@@ -18,6 +18,7 @@ window.Vue = require('vue');
  */
 
 Vue.component('editor', require('./components/Editor.vue'));
+Vue.component('strain', require('./components/Strain.vue'));
 
 // const files = require.context('./', true, /\.vue$/i)
 

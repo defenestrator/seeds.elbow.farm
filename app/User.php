@@ -6,7 +6,10 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Auth\MustVerifyEmail as VerifyEmail;
-use Spatie\Permission\Traits\HasPermissions;
+use Spatie\Permission\Traits\HasRoles;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
+
 /**
  * Heisen\User
  *
@@ -34,14 +37,12 @@ use Spatie\Permission\Traits\HasPermissions;
  * @mixin \Eloquent
  * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Permission\Models\Permission[] $permissions
  * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\User permission($permissions)
- * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Permission\Models\Role[] $roles
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\User role($roles, $guard = null)
  */
 class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable;
     use VerifyEmail;
-    use HasPermissions;
+    use HasRoles;
     /**
      * The attributes that are mass assignable.
      *
