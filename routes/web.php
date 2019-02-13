@@ -19,6 +19,6 @@ Route::get('/breeders', 'BreederController@index')->name('breeders');
 
 Route::get('/strains', 'StrainController@index')->name('strains');
 Route::get('strains/create', 'StrainController@create')->middleware('role:admin');
-Route::get('api/strains', 'Api\StrainApiController@index')->name('strains.create')->middleware('role:admin');
-Route::get('api/photo', 'Api\StrainApiController@addMedia')->middleware('role:admin');
+Route::get('api/strains', 'StrainController@list')->name('strains.create')->middleware('role:admin');
+Route::post('api/strains', 'StrainController@store')->middleware('role:admin');
 

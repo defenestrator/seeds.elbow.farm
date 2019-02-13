@@ -27,7 +27,14 @@ class StrainController extends Controller
 
         return view('strains',compact('strains'));
     }
-
+    /**
+    * Display a listing of the resource.
+    *
+    * @return \Illuminate\Http\Response
+    */
+    public function list() {
+        return $this->strain->withBreeder()->withMedia()->paginate(20)->get();
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -46,7 +53,20 @@ class StrainController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|min:2|max:140',
+
+            // 'slug' => 'required|unique:strains',
+            'description' => 'min:2|max:1400'
+        ]);
+        // dd($request->image);
+        $newStrain = $this->strain->addMedia($request->image)->new([
+            'name' => $request->name,
+            'description' => $request->description,
+            'image' => 'http://i.heisenbeans.com/images/heisenhead.png'
+            // 'slug' => $request->slug
+        ]);
+        $newStrain->save();
     }
 
     /**

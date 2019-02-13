@@ -54,16 +54,13 @@ class Strain extends Model
     {
         return $this->belongsTo(Breeder::class);
     }
-    
+
     public function scopeWithBreeder($query) {
-        return $this->getMedia($query);
-    }
-    public function scopeAddMedia($query) {
-        return $this->addMediaFromRequest($query);
+        return $this->whereBreederId($query);
     }
 
-    public function scopeWithMedia($query) {
-        return $this->getMedia($query);
+    public function scopeAddMedia($query) {
+        return $this->addMediaFromRequest($query);
     }
 
 }

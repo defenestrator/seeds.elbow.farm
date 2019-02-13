@@ -14,7 +14,7 @@
 @stop
 
 @section('content')
-<strain></strain>
+<strain content_type="strains" user="{{ Auth::user() }}"></strain>
 @endsection
 
 @section('bottom')

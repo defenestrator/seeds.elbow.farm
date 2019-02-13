@@ -1,11 +1,11 @@
 <template>
 <div class="row">
     <div class="container">
-        <button @click.prevent="toggleIndex" id="create" class="btn btn-create">
+        <button @click.prevent="toggleIndex" id="create" class="btn btn-warning">
             <span v-if="index">Create</span>
             <span v-if="! index">Index</span>
         </button>
-        <div v-show="! index">
+        <div v-if="! index">
             <button @click.prevent="createNewContentItem" class="btn btn-primary" :disabled="! newContentItem.name">
                 New
             </button>
@@ -28,6 +28,21 @@
     <div class="container">
         <hr>
         <form class="form-horizontal new-content" v-if="! index" role="form">
+                                <!-- Header Photo Button -->
+            <div class="form-group">
+                <div class="container">
+                    <label type="button" class="btn btn-primary btn-upload" :disabled="newContentItem.busy">
+                        <span>Select Header Photo</span>
+                        <input v-validate="'mimes:jpg,jpeg,png,gif'" ref="image" type="file" class="form-control" name="image" v-on:change="getImage()">
+                    </label>
+                    <span class="help">This is optional, a default picture will be placed.</span><br>
+                    <span v-show="errors.has('image')" class="help is-danger">{{ errors.first('image') }}</span>
+                    <div role="img" class="header-photo-preview"
+                         :style="previewStyle">
+
+                    </div>
+                </div>
+            </div>
             <div class="form-group">
                 <div v-show="newContentItem.id" class="col-md-2 hidden-sm hidden-xs">
                     <button :class="{'btn': true, 'btn-primary': true, 'is-danger': newContentItem.saveError }" @click.prevent="update" :disabled="newContentItem.saved">
@@ -43,7 +58,6 @@
                             <span v-else>
                                 <i class="fa fa-btn fa-check-circle"></i>Updated
                             </span>
-
                     </button>
                 </div>
                 <div v-show="! newContentItem.id" class="col-md-2 hidden-sm hidden-xs">
@@ -91,21 +105,7 @@
                     <trumbowyg id="trumbowyg" :config="trumbowygConfig" name="description" v-model="newContentItem.description"></trumbowyg>
                 </div>
             </div>
-            <!-- Header Photo Button -->
-            <div class="form-group">
-                <div class="container">
-                    <label type="button" class="btn btn-primary btn-upload" :disabled="newContentItem.busy">
-                        <span>Select Header Photo</span>
-                        <input v-validate="'mimes:jpg,jpeg,png,gif'" ref="image" type="file" class="form-control" name="image" @change="update_header">
-                    </label>
-                    <span class="help">This is optional, a default picture will be placed.</span><br>
-                    <span v-show="errors.has('image')" class="help is-danger">{{ errors.first('image') }}</span>
-                    <div role="img" class="header-photo-preview"
-                         :style="previewStyle">
 
-                    </div>
-                </div>
-            </div>
             <div class="form-group">
                 <div v-show="! newContentItem.id" class="col-md-2 col-sm-12">
                     <button :class="{'btn': true, 'btn-primary': true, 'is-danger': newContentItem.saveError }" @click.prevent="save" :disabled="newContentItem.saved || newContentItem.saveBusy ">
@@ -136,31 +136,19 @@
 // Import this component
 import trumbowyg from 'vue-trumbowyg';
 
-// Import editor css
-import 'trumbowyg/dist/ui/trumbowyg.css';
-
 import VeeValidate from 'vee-validate';
 Vue.use(VeeValidate);
 export default {
-    props: ['user', 'dev', 'content-type'],
+    props: ['user', 'content_type'],
     validator: null,
-    created() {
-
-    },
-    mounted() {
-        this.getIndex()
-        let csrf = window.axios.defaults.headers.common['X-CSRF-TOKEN']
-    },
-    components: {
-        trumbowyg
-    },
     data() {
         return {
             csrf: '',
             index: true,
-            contents: [],
+            contents: null,
+            contentType: this.content_type,
             newContentItem:  {
-                image:'https://i.heisenbeans.com/images/heisenhead.png',
+                image: null,
                 name: '',
                 description: '',
                 slug: '',
@@ -171,15 +159,13 @@ export default {
                 saveError: false,
                 saved: true,
                 serverErrors: null,
-                publishBusy: false,
-                published: null,
                 publicationId: null,
                 errors: null
             },
             trumbowygConfig: {
                 id: 'trumbowyg',
                 autogrow: true,
-                svgPath: '/images/icons.svg',
+                svgPath: '/images/vendor/trumbowyg/dist/ui/icons.svg',
                 btnsDef: {
                     image: {
                         dropdown: ['insertImage', 'upload'],
@@ -211,12 +197,19 @@ export default {
             }
         }
     },
+    mounted() {
+        this.getIndex()
+        let csrf = window.axios.defaults.headers.common['X-CSRF-TOKEN']
+    },
+    components: {
+        trumbowyg
+    },
     watch: {
         name(value) {
             this.validator.validate('name', value);
         },
         description(value) {
-            this.validator.validate('genus', value);
+            this.validator.validate('description', value);
         },
 
         /**
@@ -245,7 +238,7 @@ export default {
         getIndex() {
             axios.get('/api/strains', {})
             .then(result  => {
-                this.contents = result.data.data
+                this.contents = result.data
                 return this.contents
             })
             .catch(error => {
@@ -259,11 +252,7 @@ export default {
             this.getIndex()
             return this.index = true
         },
-        // confirmNavAway() {
-        //     window.onbeforeunload = function() {
-        //         return 'You may lose unsaved changes!'
-        //     }
-        },
+
         save() {
             this.newContentItem.saveError = false
             this.newContentItem.saveBusy = true
@@ -358,34 +347,43 @@ export default {
                 });
             }
         },
+        startProcessing() {
+            this.saveBusy = true;
+        },
+        stopProcessing() {
+            this.saveBusy = false;
+        },
         /**
          * Update the showcase photo.
          */
-        update_header(e) {
-            e.preventDefault();
+        getImage() {
+            // e.preventDefault();
 
             if ( ! this.$refs.image.files.length) {
                 return;
             }
+            this.newContentItem.image = this.$refs.image.files[0];
+            console.log("data: " + this.newContentItem.image, "input: " + this.$refs.image.files[0])
+            return this.newContentItem.image
+            // var self = this;
 
-            var self = this;
-
-            this.newContentItem.startProcessing();
+            // this.startProcessing();
 
             // We need to gather a fresh FormData instance with the profile photo appended to
             // the data so we can POST it up to the server. This will allow us to do async
             // uploads of the profile photos. We will update the user after this action.
-            axios.post(this.urlForUpdate, this.gatherFormData())
-                .then(result  => {
-                    this.newContentItem.image = result.data.large
-                    this.newContentItem.thumbnail = result.data.thumbnail
-                    this.newContentItem.image_id = result.data.image_id
-                    self.newContentItem.finishProcessing();
-                },
-                (error) => {
-                    self.newContentItem.setErrors(error.response.data.errors);
-                }
-        );
+            // axios.post(this.urlForUpdate, this.gatherFormData())
+            //     .then(result  => {
+            //         this.newContentItem.image = result.data.large
+            //         this.newContentItem.thumbnail = result.data.thumbnail
+            //         this.newContentItem.image_id = result.data.image_id
+            //         self.finishProcessing();
+            //     },
+            //     (error) => {
+            //         self.newContentItem.setErrors(error.response.data.errors);
+            //     }
+            // );
+            // this.stopProcessing();
         },
         /**
          * Gather the form data for the photo upload.
@@ -393,7 +391,7 @@ export default {
         gatherFormData() {
             const data = new FormData();
 
-            data.append('image', this.$refs.image.files[0]);
+            data.append('newContentItem.image', this.$refs.image.files[0]);
 
             return data;
         },
@@ -408,7 +406,7 @@ export default {
         },
         clear() {
             this.newContentItem = {
-                image:'https://i.heisenbeans.com/images/heisenhead.png',
+                image: null,
                 name: '',
                 slug: '',
                 description: '',
@@ -424,7 +422,7 @@ export default {
                 errors: null
             }
         },
-        edit(id){
+        edit(id) {
             this.saveBusy = true
             this.index = false
             this.newContentItem.id = id
@@ -440,7 +438,7 @@ export default {
                 return Promise.reject(error)
             })
         },
-
+    },
 
     created() {
         this.validator = new VeeValidate.Validator({
@@ -461,7 +459,7 @@ export default {
          */
         previewStyle() {
             if (this.newContentItem.image == '' ) {
-                return `background-image: url(${this.newContentItem.image}); display:none; `;
+                return `background-image: url(${this.newContentItem.image});`;
             }
             return `background-image: url(${this.newContentItem.image}); `;
         }
@@ -469,6 +467,7 @@ export default {
 }
 </script>
 <style>
+@import url('https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.14.0/ui/trumbowyg.min.css');
     .help.is-danger {
     color : #ef6f6c;
     }
