@@ -37,7 +37,7 @@ const app = new Vue({
     mounted () {
         "use strict";
         const mainFont = document.createElement('link');
-        mainFont.href ='https://fonts.googleapis.com/css?family=Great+Vibes|Open+Sans|Roboto+Condensed:300';
+        mainFont.href ='https://fonts.googleapis.com/css?family=Great+Vibes|Roboto+Condensed:300';
         mainFont.rel = 'stylesheet';
         document.getElementsByTagName('head')[0].appendChild(mainFont)
         // Async loading of css.
