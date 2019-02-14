@@ -40,13 +40,14 @@ class Controller extends BaseController
             'small' => $small,
             'large' => $large
         ]);
-        return response()->json([
+        
+        return [
             'image_id' => $record->id,
             'thumb' => $thumb,
             'small' => $small,
             'large' => $large,
             'success' => true,
-        ]);
+        ];
     }
 
     public function large($image)

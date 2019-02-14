@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateImagesTable extends Migration
+class RecreateImagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,9 +15,9 @@ class CreateImagesTable extends Migration
     {
         Schema::create('images', function (Blueprint $table) {
             $table->increments('id');
-            $table->text('large');
-            $table->text('small');
-            $table->text('thumb');
+            $table->text('large')->nullable();
+            $table->text('small')->nullable();
+            $table->text('thumb')->nullable();
             $table->timestamps();
         });
     }

@@ -17,49 +17,57 @@
 @section('content')
 {{-- {{dd($strain)}} --}}
 <div class="container">
-<form class="form-horizontal new-content" role="form" enctype="multipart/form-data" method="POST" action="{{route('admin.strains.update', 1)}}">
-    @csrf
-    <!-- Header Photo Button -->
-            <div class="form-group">
-                <div class="container">
-                    <label type="button" class="btn btn-primary btn-upload">
-                        <span>Select Header Photo</span>
-                        <input ref="image" type="file" class="form-control" name="image" value="{{$strain->image}}">
-                    </label>
-                    <div role="img" class="header-photo-preview">
-                    <img src="{{$strain->image}}" />
+    <div class="row">
+        <div class="col-md-8">
+            <form class="form-horizontal new-content" role="form" enctype="multipart/form-data" method="POST" action="{{route('admin.strains.update', $strain->id)}}">
+                @csrf
+                <div class="form-group">
+                    <!-- Header Photo Button -->
+                    <input type="file" class="inputfile" name="image" value="{{$strain->image}}" />
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12"><p>Name:</p>
+                    <input id="name" name="name" class="form-control input" type="text" placeholder="name" value="{{$strain->name}}">
                     </div>
                 </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-12"><p>Name:</p>
-                <input id="name" name="name" class="form-control input" type="text" placeholder="name" value="{{$strain->name}}">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <p>Description:</p>
+                    <textarea name="description" class="form-control">{{$strain->description}}</textarea>
+                    </div>
                 </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-12">
-                    <p>Description:</p>
-                <textarea id=description name="description" class="form-control text-body">{{$strain->description}}</textarea>
-                </div>
-            </div>
 
-            <div class="form-group row">
-                <div class="col-md-2 col-sm-12">
-                    <button class="btn btn-primary">Submit</button>
+                <div class="form-group row">
+                    <div class="col-md-2 col-sm-12">
+                        <button class="btn btn-primary">Submit</button>
+                    </div>
+
                 </div>
+            </form>
+            <form class="form-horizontal new-content" role="form" method="POST" action="{{route('admin.strains.delete', $strain->id)}}">
+                @csrf
                 <div class="col-md-2 col-sm-12">
                     <button class="btn btn-danger">
                         Delete
                     </button>
                 </div>
+            </form>
+        </div>
+        <div class="col-md-4">
+            <div role="img" class="header-photo-preview">
+                <img style="width:100%;" src="{{$strain->image}}" />
             </div>
-        </form>
+        </div>
     </div>
+</div>
 @endsection
 
 @section('bottom')
 @stop
 
 @section('page_scripts')
+<script>
+
+</script>
 
 @stop

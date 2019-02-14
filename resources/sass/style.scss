@@ -15,7 +15,8 @@ body {
   font-size:1.2em;
   color:#677789;
 }
-
+[v-cloak] main > * { display:none }
+[v-cloak]::before { content: "loading" }
 .navbar-laravel {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);

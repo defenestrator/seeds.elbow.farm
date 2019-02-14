@@ -37,6 +37,8 @@ use Spatie\Permission\Models\Permission;
  * @mixin \Eloquent
  * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Permission\Models\Permission[] $permissions
  * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\User permission($permissions)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Permission\Models\Role[] $roles
+ * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\User role($roles, $guard = null)
  */
 class User extends Authenticatable implements MustVerifyEmail
 {

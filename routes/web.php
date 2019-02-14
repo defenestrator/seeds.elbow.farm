@@ -22,10 +22,12 @@ Route::get('/strains', 'StrainController@index')->name('strains');
 Route::prefix('/admin/')->name('admin.')->middleware('role:admin')->group( function () {
     Route::get('strains/new', 'StrainController@create')->name('strains.create');
     Route::get('strains/', 'StrainController@list')->name('strains.list');
+
     Route::get('strains/{id}', 'StrainController@edit')->name('strains.edit');
+
     Route::post('strains/', 'StrainController@store')->name('strains.store');
     Route::post('strains/{id}', 'StrainController@update')->name('strains.update');
-    Route::delete('strains/', 'StrainController@destroy')->name('strains.delete');
+    Route::post('strains/destroy/{id}', 'StrainController@destroy')->name('strains.delete');
 });
 
 

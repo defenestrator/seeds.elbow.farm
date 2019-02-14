@@ -79,7 +79,7 @@
         </div>
     </nav>
     @yield('top')
-    <main class="py-4">
+    <main class="py-4" v-cloak>
         @yield('message')
         @yield('content')
         @yield('bottom')

@@ -33,7 +33,7 @@ class StrainController extends Controller
     * @return \Illuminate\Http\Response
     */
     public function list() {
-        return view('strains.index', ['content' => $this->strain->with(['breeder'])->get()]);
+        return view('strains.list', ['content' => $this->strain->with(['breeder'])->get()]);
     }
     /**
      * Show the form for creating a new resource.
@@ -60,14 +60,14 @@ class StrainController extends Controller
             'description' => 'min:2|max:1400'
         ]);
 
-        $image = $this->header($request);
-        $newStrain = $this->strain->new([
+        $image = $this->header($request->image);
+        $newStrain = $this->strain->create([
             'name' => $request->name,
             'description' => $request->description,
-            'image' => $image->large,
+            'image' => $image['large'],
             // 'slug' => $request->slug
         ]);
-        $newStrain->save();
+        return redirect()->to('/admin/strains/'. $newStrain->id);
     }
 
     /**
@@ -89,7 +89,7 @@ class StrainController extends Controller
      */
     public function edit($id)
     {
-        return view('strains.edit', ['strain' => $this->strain->find($id)->first()]);
+        return view('strains.edit', ['strain' => $this->strain->findOrFail($id)]);
     }
 
     /**
@@ -102,13 +102,26 @@ class StrainController extends Controller
     public function update(Request $request, $id)
 
     {
-        $file = $request->image;
-        $image = $this->header($file);
-        return $this->save([
-            'image' => $image,
+        $strain = $this->strain->find($id);
+        // dd($request->description);
+        if($request->image) {
+            $image = $this->header($request->image);
+            $strain->update([
+                'image' => $image['large'],
+                'breeder_id' => 1,
+                'seed_type_id' => 1,
+                'description' => $request->description,
+                'name' => $request->name
+            ]);
+            return back();
+            }
+        $strain->update([
+            'breeder_id' => 1,
+            'seed_type_id' => 1,
             'description' => $request->description,
             'name' => $request->name
-        ], $id);
+        ]);
+        return back();
     }
 
     /**
@@ -119,6 +132,8 @@ class StrainController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $damned = $this->strain->findOrFail($id);
+        $damned->delete();
+        return redirect()->to(route('admin.strains.list'))->with(['message' => 'Killed!']);
     }
 }
