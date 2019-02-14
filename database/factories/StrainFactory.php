@@ -5,7 +5,7 @@ use Faker\Generator as Faker;
 $factory->define(Heisen\Strain::class, function (Faker $faker) {
     return [
         'breeder_id' => $faker->numberBetween(1,2),
-        'seed_type_id' => $faker->numberBetween(1,3),
+        'feminized' => $faker->boolean,
         'name'=> $faker->unique()->name(),
         'image'=> $faker->imageUrl(),
         'genetics'=> $faker->sentence(),

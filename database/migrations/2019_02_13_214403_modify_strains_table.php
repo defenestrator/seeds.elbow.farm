@@ -18,9 +18,13 @@ class ModifyStrainsTable extends Migration
             $table->string('name')->default('Anonymous Coward')->change();
             $table->string('genetics')->default('Bagseed X Big Bud')->change();
             $table->longText('description')->nullable('Add a description or people will think this is random bagseed')->change();
-            $table->dropColumn('seed_type_id');
-            $table->addColumn('feminized')->boolean()->default(false);
+            $table->addColumn('boolean', 'feminized')->default(false);
         });
+        if (Schema::hasColumn('strains', 'seed_type_id')) {
+            Schema::table('strains', function (Blueprint $table) {
+               $table->dropColumn(['seed_type_id']);
+            });
+        }
         Schema::dropIfExists('seed_type');
     }
 

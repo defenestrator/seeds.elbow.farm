@@ -54,17 +54,24 @@ class StrainController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|min:2|max:140',
-            'image' => 'required|image',
-            // 'slug' => 'required|unique:strains',
-            'description' => 'min:2|max:1400'
+            'name'                      => 'required|min:2|max:140',
+            'image'                     => 'required|image',
+            'retail_price'              => 'required|number|min:2',
+            'flowering_time_min_weeks'  => 'number',
+            'flowering_time_max_weeks'  => 'number',
+            'description'               => 'min:2|max:1400'
         ]);
 
         $image = $this->header($request->image);
         $newStrain = $this->strain->create([
-            'name' => $request->name,
-            'description' => $request->description,
-            'image' => $image['large'],
+            'breeder_id'                => 1,
+            'feminized'                 => $request->feminized,
+            'retail_price'              => $request->retail_price,
+            'flowering_time_min_weeks'  => $request->flowering_time_min_weeks,
+            'flowering_time_max_weeks'  => $request->flowering_time_max_weeks,
+            'description'               => $request->description,
+            'name'                      => $request->name,
+            'image'                     => $image['large'],
             // 'slug' => $request->slug
         ]);
         return redirect()->to('/admin/strains/'. $newStrain->id);
@@ -102,24 +109,38 @@ class StrainController extends Controller
     public function update(Request $request, $id)
 
     {
+        $request->validate([
+            'name'                      => 'required|min:2|max:140',
+            'image'                     => 'required|image',
+            'retail_price'              => 'required|number|min:2',
+            'flowering_time_min_weeks'  => 'number',
+            'flowering_time_max_weeks'  => 'number',
+            'description'               => 'min:2|max:1500'
+        ]);
+
         $strain = $this->strain->find($id);
-        // dd($request->description);
         if($request->image) {
             $image = $this->header($request->image);
             $strain->update([
-                'image' => $image['large'],
-                'breeder_id' => 1,
-                'seed_type_id' => 1,
-                'description' => $request->description,
-                'name' => $request->name
+                'image'                     => $image['large'],
+                'breeder_id'                => 1,
+                'feminized'                 => $request->feminized,
+                'retail_price'              => $request->retail_price,
+                'flowering_time_min_weeks'  => $request->flowering_time_min_weeks,
+                'flowering_time_max_weeks'  => $request->flowering_time_max_weeks,
+                'description'               => $request->description,
+                'name'                      => $request->name
             ]);
             return back();
             }
         $strain->update([
-            'breeder_id' => 1,
-            'seed_type_id' => 1,
-            'description' => $request->description,
-            'name' => $request->name
+            'breeder_id'                => 1,
+            'feminized'                 => $request->feminized,
+            'retail_price'              => $request->retail_price,
+            'flowering_time_min_weeks'  => $request->flowering_time_min_weeks,
+            'flowering_time_max_weeks'  => $request->flowering_time_max_weeks,
+            'description'               => $request->description,
+            'name'                      => $request->name
         ]);
         return back();
     }
