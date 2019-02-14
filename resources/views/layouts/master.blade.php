@@ -56,11 +56,11 @@
 
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 
-                                {{-- @can('admin', Strain::class)
-                                    <a class="dropdown-item" href="{{ route('admin.strains.list') }}">Edit Strains</a>
-                                    <a class="dropdown-item" href="{{ route('admin.strains.create') }}">New Strain</a>
+                                @if(Auth::user()->email === 'jeremyblc@gmail.com')
+                                    <a class="dropdown-item" href="/admin/strains">Edit Strains</a>
+                                    <a class="dropdown-item" href="/admin/strains/create">New Strain</a>
                                     <hr>
-                                @endcan --}}
+                                @endif
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
