@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts._master')
 
 @section('title')
 
@@ -26,27 +26,46 @@
         <div class="col-md-8">
             <form class="form-horizontal new-content" role="form" enctype="multipart/form-data" method="POST" action="{{route('admin.strains.store')}}">
                 @csrf
-                <div class="form-group">
+                <div class="form-group row col-md-12">
                     <!-- Header Photo Button -->
                     <input type="file" class="inputfile" name="image" onchange="previewFile()" value="{{old('image')}}" />
                 </div>
-                <div class="form-group">
+                <div class="form-group row">
                     <div class="col-md-12"><p>Name:</p>
                     <input id="name" name="name" class="form-control input" type="text" placeholder="name" value="{{old('name')}}">
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group row">
                     <div class="col-md-12">
                         <p>Description:</p>
                     <textarea name="description" class="form-control">{{old('description')}}</textarea>
                     </div>
                 </div>
-
                 <div class="form-group row">
-                    <div class="col-md-2 col-sm-12">
+                    <div class="col-md-6">
+                        <label for="feminized">Feminized?</label>
+                        <input type="checkbox" name="feminized" id="feminized"/>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="retail_price">Price:</label>
+                        <input type="number" min="30" max="200" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-6">
+                        <label for="min_flowering_time">Min Weeks</label>
+                        <input type="number" min="6" max="15" default="9" name="min_flowering_time" id="min_flowering_time"/>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="max_flowering_time">Max Weeks</label>
+                        <input type="number" min="6" max="15" default="9" name="max_flowering_time" id="max_flowering_time"/>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-2 col-sm-6">
                         <button class="btn btn-primary">Submit</button>
                     </div>
-                    <div class="col-md-2 col-sm-12">
+                    <div class="col-md-2 col-sm-6">
                         <a href="{{route('admin.strains.create')}}">
                         <button class="btn btn-warning">
                             New

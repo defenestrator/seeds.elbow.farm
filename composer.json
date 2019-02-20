@@ -26,6 +26,7 @@
         "writingink/wink": "^0.0.12"
     },
     "require-dev": {
+        "arcanedev/log-viewer": "^4.6",
         "barryvdh/laravel-ide-helper": "^2.5",
         "beyondcode/laravel-dump-server": "^1.0",
         "filp/whoops": "^2.0",

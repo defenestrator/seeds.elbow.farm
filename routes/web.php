@@ -21,7 +21,7 @@ Route::get('/strains', 'StrainController@index')->name('strains');
 
 Route::prefix('/admin/')->name('admin.')->middleware('role:admin')->group( function () {
 
-    Route::get('strains/new', 'StrainController@create')->name('strains.create');
+    Route::get('strains/create', 'StrainController@create')->name('strains.create');
 
     Route::get('strains/', 'StrainController@list')->name('strains.list');
 

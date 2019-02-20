@@ -7,7 +7,7 @@ use Heisen\Tester;
 use Heisen\Mail\TesterRequestNotification;
 use Illuminate\Contracts\Mail\Mailer;
 
-class TesterController extends Controller
+class TesterController extends LocationController
 {
 
     private $mail;

@@ -1,12 +1,11 @@
 <?php
-
 namespace Heisen\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Heisen\Strain;
-use Cache;
+use Illuminate\Support\Facades\Cache;
 
-class StrainController extends Controller
+class StrainController extends ImageController
 {
     protected $strain;
 
@@ -14,6 +13,7 @@ class StrainController extends Controller
     {
         $this->strain = $strain;
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -27,6 +27,7 @@ class StrainController extends Controller
 
         return view('strains',compact('strains'));
     }
+
     /**
     * Display a listing of the resource.
     *
@@ -35,6 +36,7 @@ class StrainController extends Controller
     public function list() {
         return view('strains.list', ['content' => $this->strain->with(['breeder'])->get()]);
     }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -62,7 +64,8 @@ class StrainController extends Controller
             'description'               => 'min:2|max:1400'
         ]);
 
-        $image = $this->header($request->image);
+        $image = $this->generateImages($request->image);
+
         $newStrain = $this->strain->create([
             'breeder_id'                => 1,
             'feminized'                 => $request->feminized,
@@ -74,6 +77,7 @@ class StrainController extends Controller
             'image'                     => $image['large'],
             // 'slug' => $request->slug
         ]);
+
         return redirect()->to('/admin/strains/'. $newStrain->id);
     }
 
@@ -85,7 +89,9 @@ class StrainController extends Controller
      */
     public function show($id)
     {
-        //
+        $strain = $this->strain->whereId($id);
+
+        return view('strains.show', ['strain' => $strain]);
     }
 
     /**
@@ -107,20 +113,21 @@ class StrainController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-
     {
-        $request->validate([
-            'name'                      => 'required|min:2|max:140',
-            'image'                     => 'required|image',
-            'retail_price'              => 'required|number|min:2',
-            'flowering_time_min_weeks'  => 'number',
-            'flowering_time_max_weeks'  => 'number',
-            'description'               => 'min:2|max:1500'
-        ]);
-
         $strain = $this->strain->find($id);
+
         if($request->image) {
-            $image = $this->header($request->image);
+            $request->validate([
+                'name'                      => 'required|min:2|max:140',
+                'image'                     => 'required|image',
+                'retail_price'              => 'required|number|min:2',
+                'flowering_time_min_weeks'  => 'number',
+                'flowering_time_max_weeks'  => 'number',
+                'description'               => 'min:2|max:1500'
+            ]);
+
+            $image = $this->generateImages($request->image);
+
             $strain->update([
                 'image'                     => $image['large'],
                 'breeder_id'                => 1,
@@ -133,6 +140,14 @@ class StrainController extends Controller
             ]);
             return back();
             }
+
+        $request->validate([
+            'name'                      => 'required|min:2|max:140',
+            'retail_price'              => 'required|number|min:2',
+            'flowering_time_min_weeks'  => 'number',
+            'flowering_time_max_weeks'  => 'number',
+            'description'               => 'min:2|max:1500'
+        ]);
         $strain->update([
             'breeder_id'                => 1,
             'feminized'                 => $request->feminized,
