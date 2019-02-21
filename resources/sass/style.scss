@@ -5,11 +5,11 @@
 @import 'variables';
 
 // Bootstrap
-@import '/node_modules/bootstrap/scss/bootstrap/bootstrap.scss';
+@import '~bootstrap/scss/bootstrap/bootstrap.scss';
 
-@import '/node_modules/trumbowyg/dist/ui/trumbowyg.min.css';
+@import '~trumbowyg/dist/ui/trumbowyg.min.css';
 
-@import '/node_modules/font-awesome/css/font-awesome.min.css';
+@import '~font-awesome/css/font-awesome.min.css';
 
 body {
   background:#fff radial-gradient(rgba(255,255,255,1.0) 50%, rgba(220,220,220,1.0)) no-repeat;
