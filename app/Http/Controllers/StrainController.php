@@ -86,7 +86,7 @@ class StrainController extends ImageController
             'image_id'                  => $image['id'],
             'published'                 => $pub
         ]);
-        Cache::remember('strain:'. $newStrain->id);
+        Cache::put('strain:'. $newStrain->id, $newStrain, 666);
         return redirect()->to('/admin/strains/'. $newStrain->id);
     }
 

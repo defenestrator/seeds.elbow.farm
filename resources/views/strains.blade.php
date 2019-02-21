@@ -22,7 +22,7 @@
             <div class="col-md-4 info">
                 <h4><a href="/strain{{$strain['id']}}">{{$strain['name']}}</a></h4>
                 <a href="/strains/{{$strain['id']}}"><img src="{{ $strain['image'] }}"></a>
-                <button class="btn btn-primary" disabled>Preorder Soon!</button>
+                <button class="btn btn-primary" disabled>Soon!</button>
             </div>
             @endforeach
         </div>
