@@ -7,11 +7,14 @@ use Illuminate\Http\Request;
 class ImageController extends Controller
 {
 
-    public $options = [
+    protected $options = [
         'visibility'    => 'public',
         'Cache-Control' => 'max-age=31536000'
     ];
 
+    protected $small = 200;
+    protected $thumb = 640;
+    protected $large = 1280;
     /**
      * wysiwygImageUpload
      *
@@ -25,7 +28,7 @@ class ImageController extends Controller
             'image' => 'required|image|mimes:jpeg,jpg,png,bmp,gif,svg'
         ]);
 
-        $large = $this->largeImage($request->image);
+        $large = $this->processImage($request->image, $this->large);
 
         return response()->json([
             'large' => $large,
@@ -42,104 +45,43 @@ class ImageController extends Controller
      */
     public function generateImages($file)
     {
-        try {
+        $smallImage = $this->processImage($file, $this->small);
+        $thumbImage = $this->processImage($file, $this->thumb);
+        $largeImage = $this->processImage($file, $this->large);
 
-            $thumb = $this->thumbImage($file);
-            $small = $this->smallImage($file);
-            $large = $this->largeImage($file);
+        $record = ImageModel::create([
+            'small' => $smallImage,
+            'thumb' => $thumbImage,
+            'large' => $largeImage
+        ]);
 
-            $record = ImageModel::create([
-                'thumb' => $thumb,
-                'small' => $small,
-                'large' => $large
-            ]);
-
-            return [
-                'image_id' => $record->id,
-                'thumb' => $thumb,
-                'small' => $small,
-                'large' => $large,
-                'success' => true,
-            ];
-        } catch (Exception $e) {
-            Log::error('Creation of ImageModel record failed.');
-        }
+        return $record;
     }
 
-
     /**
-     * largeImage
+     * processImage
      *
      * @param  mixed $image
+     * @param  mixed $size
      *
      * @return void
      */
-    public function largeImage($image)
+    public function processImage($image, $size)
     {
         $resize = Image::make($image)
-            ->resize(1280, 1280, function ($constraint) {
+            ->resize($size, $size, function ($constraint) {
                 $constraint->aspectRatio();
                 $constraint->upsize();
             })->encode('jpg', 70)->stream();
         $hash = md5($resize->__toString());
 
-        if (config('app.env') == 'production') {
+        if ( config('app.env') == 'production' ) {
             Storage::disk('s3')->put('/images/'.$hash.'.jpg' , $resize->__toString(), $this->options);
-            $location =  Storage::disk('s3')->url('images/'.$hash.'.jpg');
+            $filePath=  Storage::disk('s3')->url('images/'.$hash.'.jpg');
         } else {
             Storage::disk('local')->put('/public/images/'.$hash.'.jpg' , $resize->__toString());
-            $location =  Storage::disk('local')->url('images/'.$hash.'.jpg');
+            $filePath = Storage::disk('local')->url('images/'.$hash.'.jpg');
         }
-        return $location;
-    }
-
-    /**
-     * thumbImage
-     *
-     * @param  mixed $img
-     *
-     * @return void
-     */
-    public function thumbImage($img)
-    {
-        $resize = Image::make($img)
-            ->resize(575, 575, function ($constraint) {
-                $constraint->aspectRatio();
-                $constraint->upsize();
-            })->encode('jpg', 75)->stream();
-        $hash = md5($resize->__toString());
-        if (config('app.env') == 'production') {
-            Storage::disk('s3')->put('/images/'.$hash.'.jpg' , $resize->__toString(), $this->options);
-            $location =  Storage::disk('s3')->url('images/'.$hash.'.jpg');
-        } else {
-            Storage::disk('local')->put('/public/images/'.$hash.'.jpg' , $resize->__toString());
-            $location =  Storage::disk('local')->url('images/'.$hash.'.jpg');
-        }
-        return $location;
-    }
-
-    /**
-     * smallImage
-     *
-     * @param  mixed $img
-     *
-     * @return void
-     */
-    public function smallImage($img)
-    {
-        $resize = Image::make($img)
-            ->resize(200, 200, function ($constraint) {
-                $constraint->aspectRatio();
-                $constraint->upsize();
-            })->encode('jpg', 80);
-        $hash = md5($resize->__toString());
-        if (config('app.env') == 'production') {
-            Storage::disk('s3')->put('/images/'.$hash.'.jpg' , $resize->__toString(), $this->options);
-            $location =  Storage::disk('s3')->url('images/'.$hash.'.jpg');
-        } else {
-            Storage::disk('local')->put('/public/images/'.$hash.'.jpg' , $resize->__toString());
-            $location =  Storage::disk('local')->url('images/'.$hash.'.jpg');
-        }
-        return $location;
+        return $filePath;
     }
 }
