@@ -22,7 +22,7 @@ class StrainController extends ImageController
     public function index()
     {
         $strains = Cache::remember('strains', 60, function() {
-            return $this->strain->where('published', '=', true)->with(['breeder'])->orderBy('updated_at', 'desc')->get()->toArray();
+            return $this->strain->where('published', '=', true)->orderBy('updated_at', 'desc')->get()->toArray();
         });
 
         return view('strains',compact('strains'));
@@ -34,7 +34,7 @@ class StrainController extends ImageController
     * @return \Illuminate\Http\Response
     */
     public function list() {
-        return view('strains.list', ['content' => $this->strain->with(['breeder'])->orderBy('updated_at', 'desc')->get()]);
+        return view('strains.list', ['content' => $this->strain->orderBy('updated_at', 'desc')->get()]);
     }
 
     /**
@@ -98,10 +98,13 @@ class StrainController extends ImageController
      */
     public function show($id)
     {
-        return "Yes!";
-        $strain = Cache::remember('strain:'. $id, 666, function(){
-            return $this->strain->with(['breeder', 'seedPacks'])->whereId($id);
-        });
+        if (Cache::has('strain:'. $id)) {
+           $strain = Cache::get('strain:'. $id);
+        } else {
+            $strain = $this->strain->whereId($id)->first();
+            Cache::put('strain:'. $id, $strain, 666);
+        }
+
         return view('strains.show', compact('strain'));
     }
 

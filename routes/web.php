@@ -18,13 +18,13 @@ Route::get('/testers/mail/preview', 'TesterController@preview')->name('preview-t
 Route::get('/breeders', 'BreederController@index')->name('breeders');
 
 Route::get('/strains', 'StrainController@index')->name('strains');
-Route::get('/strains/{$id}', 'StrainController@show')->name('strains.show');
+Route::get('/strains/{id}', 'StrainController@show')->name('strains.show');
 
 Route::prefix('/admin/')->name('admin.')->middleware('role:admin')->group( function () {
 
-    Route::get('strains/create', 'StrainController@create')->name('strains.create');
+    Route::get('/strains/create', 'StrainController@create')->name('strains.create');
 
-    Route::get('strains/', 'StrainController@list')->name('strains.list');
+    Route::get('/strains/', 'StrainController@list')->name('strains.list');
 
     Route::get('strains/{id}', 'StrainController@edit')->name('strains.edit');
 
