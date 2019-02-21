@@ -60,6 +60,7 @@ class ImageController extends Controller
             'large' => $largeImage,
         ]);
 
+
         return $record;
     }
 

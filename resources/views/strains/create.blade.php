@@ -17,14 +17,24 @@
 @section('content')
 
 <div class="container">
+    @if ($errors->any())
+    <div class="row col-md-12 alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
     <div class="row">
         <div class="col-md-12">
             <h1>New Strain</h1>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-4">
-            <img id="preview" src="" />
+        <div class="col-md-4 info">
+            <img id="preview" src="{{old('image')}}" />
         </div>
         <div class="col-md-8">
             <form class="form-horizontal new-content" role="form" enctype="multipart/form-data" method="POST" action="{{route('admin.strains.store')}}">

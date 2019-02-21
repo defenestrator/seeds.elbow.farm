@@ -43,6 +43,11 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Strain whereInventory($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Strain wherePublished($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Strain whereQtyPerPack($value)
+ * @property int $seed_pack_id
+ * @property int|null $image_id
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Heisen\SeedPack[] $seedPacks
+ * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Strain whereImageId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Strain whereSeedPackId($value)
  */
 class Strain extends Model
 {
@@ -51,6 +56,7 @@ class Strain extends Model
         'name',
         'feminized',
         'image',
+        'image_id',
         'genetics',
         'description',
         'breeder_id',
@@ -58,13 +64,16 @@ class Strain extends Model
         'flowering_time_max_weeks',
         'flowering_time_min_weeks',
         'published',
-        'inventory',
-        'qty_per_pack'
     ];
 
     public function breeder()
     {
         return $this->belongsTo(Breeder::class);
+    }
+
+    public function seedPacks()
+    {
+        return $this->hasMany(SeedPack::class);
     }
 
 }

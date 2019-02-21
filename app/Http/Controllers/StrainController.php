@@ -22,7 +22,7 @@ class StrainController extends ImageController
     public function index()
     {
         $strains = Cache::remember('strains', 60, function() {
-            return $this->strain->where('published', '=', true)->with(['breeder'])->get()->toArray();
+            return $this->strain->where('published', '=', true)->with(['breeder'])->orderBy('updated_at', 'desc')->get()->toArray();
         });
 
         return view('strains',compact('strains'));
@@ -34,7 +34,7 @@ class StrainController extends ImageController
     * @return \Illuminate\Http\Response
     */
     public function list() {
-        return view('strains.list', ['content' => $this->strain->with(['breeder'])->get()]);
+        return view('strains.list', ['content' => $this->strain->with(['breeder'])->orderBy('updated_at', 'desc')->get()]);
     }
 
     /**
@@ -59,20 +59,20 @@ class StrainController extends ImageController
         $request->validate([
             'name'                      => 'required|min:2|max:140',
             'image'                     => 'required|image',
-            'description'               => 'min:20|max:1400'
+            'description'               => 'max:1400'
         ]);
 
         $image = $this->generateImages($request->image);
 
         $fem = false;
-        $published = false;
+        $pub = false;
 
         if ( $request->feminized == 'on' ) {
             $fem = true;
         }
 
         if ( $request->published == 'on' ) {
-            $published = true;
+            $pub = true;
         }
 
         $newStrain = $this->strain->create([
@@ -83,10 +83,10 @@ class StrainController extends ImageController
             'description'               => $request->description,
             'name'                      => $request->name,
             'image'                     => $image['large'],
-            'image_id'                      => $image['id'],
-            'qty_per_pack'              => 12,
-            'published'                 => $published
+            'image_id'                  => $image['id'],
+            'published'                 => $pub
         ]);
+        Cache::remember('strain:'. $newStrain->id);
         return redirect()->to('/admin/strains/'. $newStrain->id);
     }
 
@@ -98,9 +98,11 @@ class StrainController extends ImageController
      */
     public function show($id)
     {
-        $strain = $this->strain->whereId($id);
-
-        return view('strains.show', ['strain' => $strain]);
+        return "Yes!";
+        $strain = Cache::remember('strain:'. $id, 666, function(){
+            return $this->strain->with(['breeder', 'seedPacks'])->whereId($id);
+        });
+        return view('strains.show', compact('strain'));
     }
 
     /**
@@ -133,16 +135,16 @@ class StrainController extends ImageController
      */
     public function update(Request $request, $id)
     {
-        // $request->validate([
-        //     'image'                     => 'image',
-        //     'name'                      => 'required|min:2|max:140',
-        //     'retail_price'              => 'required',
-        //     'description'               => 'min:2|max:1500'
-        // ]);
+        $request->validate([
+            'image'                     => 'image',
+            'name'                      => 'required|min:2|max:140',
+            'description'               => 'max:1400'
+        ]);
 
         $strain = $this->strain->find($id);
 
         $image = $strain->image;
+
         $imageId = $strain->id;
 
         if ($request->image) {
@@ -153,20 +155,20 @@ class StrainController extends ImageController
 
         $fem = false;
 
-        $published = false;
+        $pub = false;
 
         if($request->feminized == 'on') {
             $fem = true;
         }
 
         if ( $request->published == 'on' ) {
-            $published = true;
+            $pub = true;
         }
 
         $new = $strain->update([
             'breeder_id'                => 1,
             'feminized'                 => $fem,
-            'published'                 => $published,
+            'published'                 => $pub,
             'flowering_time_min_weeks'  => $request->min_flowering_time,
             'flowering_time_max_weeks'  => $request->max_flowering_time,
             'description'               => $request->description,
@@ -174,6 +176,8 @@ class StrainController extends ImageController
             'image'                     => $image,
             'image_id'                  => $imageId,
         ]);
+        Cache::forget('strains');
+        Cache::forget('strain:'. $strain->id);
         return back();
     }
 
@@ -187,6 +191,8 @@ class StrainController extends ImageController
     {
         $damned = $this->strain->findOrFail($id);
         $damned->delete();
+        Cache::forget('strains');
+        Cache::forget('strain:'.$damned->id);
         return redirect()->to(route('admin.strains.list'))->with(['message' => 'Killed!']);
     }
 }

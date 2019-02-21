@@ -17,8 +17,22 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\SeedPack whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\SeedPack whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property int $strain_id
+ * @property string $available_since
+ * @property int $qty_per_pack
+ * @property int $price
+ * @property int $inventory
+ * @property-read \Heisen\Strain $strain
+ * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\SeedPack whereAvailableSince($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\SeedPack whereInventory($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\SeedPack wherePrice($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\SeedPack whereQtyPerPack($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\SeedPack whereStrainId($value)
  */
 class SeedPack extends Model
 {
-    //
+    public function strain()
+    {
+        return $this->belongsTo(Strain::class);
+    }
 }

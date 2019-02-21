@@ -31,14 +31,15 @@
         @endforeach
         <div class="row">
             <div class="col-sm-6">
-                <h4>Wedding Cake S1 Feminized Seeds</h4>
+
+                {{-- <h4>Wedding Cake S1 Feminized Seeds</h4>
                 <h5>* OUT OF STOCK *</h5>
                 <img style="width:100%;" src="/i/cake.jpg">
             </div>
             <div class="col-sm-6">
                 <h3>Gorilla Glue #4 S1 Feminized Seeds</h3>
                 <h5>* OUT OF STOCK *</h5>
-                <img style="width:100%;" src="/i/glue.jpg">
+                <img style="width:100%;" src="/i/glue.jpg"> --}}
             </div>
         </div>
 
