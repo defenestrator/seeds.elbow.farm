@@ -1,4 +1,4 @@
-@extends('log-viewer::bootstrap-4._master')
+@extends('layouts._master')
 
 @section('top')
     <div class="container">
