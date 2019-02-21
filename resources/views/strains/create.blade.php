@@ -54,10 +54,6 @@
                         <label for="published">Published?</label>
                         <input type="checkbox" name="published" id="published" value="{{old('published')}}" />
                     </div>
-                    <div class="col-md-4">
-                        <label for="retail_price">Price:</label>
-                        <input name="retail_price" type="number" min="30" max="200" value="{{old('retail_price')}}" />
-                    </div>
                 </div>
                 <div class="form-group row">
                     <div class="col-md-6">

@@ -54,8 +54,9 @@ class CreateTables extends Migration
 
         Schema::create('strains', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('seed_type_id')->default(1);
+            $table->unsignedInteger('seed_pack_id')->default(1);
             $table->unsignedInteger('breeder_id')->default(1);
+            $table->unsignedInteger('image_id')->nullable();
             $table->string('name');
             $table->string('image')->default('i.heisenbeans.com/images/heisenhead.png');
             $table->longText('genetics')->nullable();

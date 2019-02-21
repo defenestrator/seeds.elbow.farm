@@ -59,8 +59,7 @@ class StrainController extends ImageController
         $request->validate([
             'name'                      => 'required|min:2|max:140',
             'image'                     => 'required|image',
-            'retail_price'              => 'required',
-            'description'               => 'min:2|max:1400'
+            'description'               => 'min:20|max:1400'
         ]);
 
         $image = $this->generateImages($request->image);
@@ -79,12 +78,12 @@ class StrainController extends ImageController
         $newStrain = $this->strain->create([
             'breeder_id'                => 1,
             'feminized'                 => $fem,
-            'retail_price'              => $request->retail_price,
             'flowering_time_min_weeks'  => $request->min_flowering_time,
             'flowering_time_max_weeks'  => $request->max_flowering_time,
             'description'               => $request->description,
             'name'                      => $request->name,
             'image'                     => $image['large'],
+            'image_id'                      => $image['id'],
             'qty_per_pack'              => 12,
             'published'                 => $published
         ]);
@@ -144,10 +143,12 @@ class StrainController extends ImageController
         $strain = $this->strain->find($id);
 
         $image = $strain->image;
+        $imageId = $strain->id;
 
         if ($request->image) {
-            $images = $this->generateImages($request->image);
-            $image = $images['large'];
+            $images  = $this->generateImages($request->image);
+            $image   = $images['large'];
+            $imageId = $images['id'];
         }
 
         $fem = false;
@@ -170,7 +171,8 @@ class StrainController extends ImageController
             'flowering_time_max_weeks'  => $request->max_flowering_time,
             'description'               => $request->description,
             'name'                      => $request->name,
-            'image'                     => $image
+            'image'                     => $image,
+            'image_id'                  => $imageId,
         ]);
         return back();
     }

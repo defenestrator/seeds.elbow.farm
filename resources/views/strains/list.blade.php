@@ -35,7 +35,6 @@
         <tr>
             <th>Pic</th>
             <th>Name</th>
-            <th>Price</th>
             <th>Public</th>
             <th>Page</th>
             <th>Edit</th>
@@ -46,8 +45,7 @@
         <tr class="table-hover">
             <td><img src="{{$strain->image}}" style="width:100px;"/></td>
             <td><strong>{{ $strain->name }}</strong></td>
-            <td>${{$strain->retail_price}}</td>
-            <td>@if ($strain->published == 1) Yes @else No @endif</td>
+            <td>@if ($strain->published == 1) <span class="primary">Yes</span> @else <span class="danger">No</span> @endif</td>
             <td><a href="/strains/{{$strain->id}}"><button role="button" class="btn btn-primary">View</button></a></td>
             <td><a href="{{route('admin.strains.edit', $strain->id)}}"><button role="button" class="btn btn-warning">Edit</button></a></td>
         </tr>
