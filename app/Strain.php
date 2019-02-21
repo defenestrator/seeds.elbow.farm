@@ -37,6 +37,12 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Strain whereUpdatedAt($value)
  * @mixin \Eloquent
  * @property-read \Heisen\Breeder $breeder
+ * @property int $qty_per_pack
+ * @property int $inventory
+ * @property int $published
+ * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Strain whereInventory($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Strain wherePublished($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Strain whereQtyPerPack($value)
  */
 class Strain extends Model
 {
@@ -51,6 +57,9 @@ class Strain extends Model
         'retail_price',
         'flowering_time_max_weeks',
         'flowering_time_min_weeks',
+        'published',
+        'inventory',
+        'qty_per_pack'
     ];
 
     public function breeder()

@@ -5,8 +5,11 @@
 @import 'variables';
 
 // Bootstrap
-@import '~bootstrap/scss/bootstrap';
-@import '~trumbowyg/dist/ui/trumbowyg.min.css';
+@import '/node_modules/bootstrap/scss/bootstrap/bootstrap.scss';
+
+@import '/node_modules/trumbowyg/dist/ui/trumbowyg.min.css';
+
+@import '/node_modules/font-awesome/css/font-awesome.min.css';
 
 body {
   background:#fff radial-gradient(rgba(255,255,255,1.0) 50%, rgba(220,220,220,1.0)) no-repeat;
@@ -58,4 +61,24 @@ input[type="checkbox"] {
     display: inline-block;
     top: -3px;
     position: relative;
+}
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
 }

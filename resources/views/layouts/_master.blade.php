@@ -10,7 +10,6 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link rel="icon" href="/favicon-100.png" sizes="100x100">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/5.0.10/css/font-awesome.min.css">
     <!-- deferred loading of js -->
     <script src="{{ mix('js/script.js') }}" defer></script>
     <!-- Styles -->
@@ -33,9 +32,7 @@
     </main>
 </div>
 @yield('page_scripts')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" crossorigin="anonymous"></script>
 @yield('modals')
 @yield('scripts')
-<script async await src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.3.1/sweetalert2.min.js"></script>
 </body>
 </html>

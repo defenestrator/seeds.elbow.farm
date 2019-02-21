@@ -31,7 +31,7 @@ Route::prefix('/admin/')->name('admin.')->middleware('role:admin')->group( funct
 
     Route::post('strains/{id}', 'StrainController@update')->name('strains.update');
 
-    Route::post('strains/destroy/{id}', 'StrainController@destroy')->name('strains.delete');
+    Route::get('strains/destroy/{id}', 'StrainController@destroy')->name('strains.delete');
 });
 
 

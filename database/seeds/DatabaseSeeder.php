@@ -21,9 +21,9 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        factory(Heisen\User::class, 50)->create();
-        factory(Heisen\ShippingAddress::class, 120)->create();
-        factory(Heisen\Strain::class, 50)->create();
+        factory(Heisen\User::class, 10)->create();
+        factory(Heisen\ShippingAddress::class, 20)->create();
+        factory(Heisen\Strain::class, 12)->create();
         factory(Heisen\Breeder::class, 2)->create();
         // factory(Heisen\Tester::class, 50)->create();
     }

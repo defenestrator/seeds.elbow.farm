@@ -7,6 +7,8 @@
 
 require('./bootstrap');
 
+// import swal from 'sweetalert';
+
 window.Vue = require('vue');
 
 /**
@@ -34,20 +36,24 @@ Vue.component('strain', require('./components/Strain.vue'));
 
 const app = new Vue({
     el: '#app',
+    created () {
+    },
+    methods() {
+
+    },
     mounted () {
-        "use strict";
         const mainFont = document.createElement('link');
         mainFont.href ='https://fonts.googleapis.com/css?family=Great+Vibes|Roboto+Condensed:300';
         mainFont.rel = 'stylesheet';
         document.getElementsByTagName('head')[0].appendChild(mainFont)
         // Async loading of css.
-        const fa=document.createElement('link');
-        fa.href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css';
-        fa.rel='stylesheet';
-        const swa=document.createElement('link');
-        swa.href='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.3.1/sweetalert2.min.css';
-        swa.rel='stylesheet';
-        document.getElementsByTagName('head')[0].appendChild(fa);
-        document.getElementsByTagName('head')[0].appendChild(swa);
+        // const fa=document.createElement('link');
+        // fa.href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css';
+        // fa.rel='stylesheet';
+        // const swa=document.createElement('link');
+        // swa.href='htps://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.3.1/sweetalert2.min.css';
+        // swa.rel='stylesheet';
+        // document.getElementsByTagName('head')[0].appendChild(fa);
+        // document.getElementsByTagName('head')[0].appendChild(swa);
     }
 });

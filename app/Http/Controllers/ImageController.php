@@ -3,6 +3,9 @@
 namespace Heisen\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Heisen\Image as ImageModel;
+use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Storage;
 
 class ImageController extends Controller
 {
@@ -46,13 +49,15 @@ class ImageController extends Controller
     public function generateImages($file)
     {
         $smallImage = $this->processImage($file, $this->small);
+
         $thumbImage = $this->processImage($file, $this->thumb);
+
         $largeImage = $this->processImage($file, $this->large);
 
         $record = ImageModel::create([
             'small' => $smallImage,
             'thumb' => $thumbImage,
-            'large' => $largeImage
+            'large' => $largeImage,
         ]);
 
         return $record;

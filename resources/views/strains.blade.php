@@ -22,7 +22,8 @@
             <div class="col-md-4 info">
                 <h4><a href="/strain{{$strain['id']}}">{{$strain['name']}}</a></h4>
                 <a href="/strain/{{$strain['id']}}"><img src="{{ $strain['image'] }}"></a>
-            <h4><a href="/breeder/{{$strain['breeder']['id']}}">{{$strain['breeder']['name']}}</h4></a>
+                <button class="btn btn-primary">${{$strain['retail_price']}} - Buy Now!</button>
+            - by <a href="/breeder/{{$strain['breeder']['id']}}">{{$strain['breeder']['name']}}</a>
             </div>
             @endforeach
         </div>
