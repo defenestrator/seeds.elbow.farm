@@ -20,11 +20,8 @@ class DatabaseSeeder extends Seeder
                 'remember_token' => str_random(10),
             ]
         );
-
-        factory(Heisen\User::class, 10)->create();
-        factory(Heisen\ShippingAddress::class, 20)->create();
+        factory(Heisen\ShippingAddress::class, 220)->create();
         factory(Heisen\Strain::class, 12)->create();
         factory(Heisen\Breeder::class, 2)->create();
-        // factory(Heisen\Tester::class, 50)->create();
     }
 }

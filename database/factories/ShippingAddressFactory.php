@@ -57,7 +57,7 @@ $factory->define(Heisen\ShippingAddress::class, function (Faker $faker) {
         49 => 'Wyoming'
     );
     return [
-        'user_id' => $faker->numberBetween(1,10),
+        'user_id' => $faker->numberBetween(1,136),
         'ship_to_name' => $faker->name(),
         'address_1' => $faker->streetAddress,
         'address_2' => $faker->buildingNumber,
