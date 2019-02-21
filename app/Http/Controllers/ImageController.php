@@ -83,7 +83,7 @@ class ImageController extends Controller
 
         if ( config('app.env') == 'production' ) {
             Storage::disk('s3')->put('/images/'.$hash.'.jpg' , $resize->__toString(), $this->options);
-            $filePath=  Storage::disk('s3')->url('images/'.$hash.'.jpg');
+            $filePath=  'http://i.heisenbeans.com/images/'.$hash.'.jpg';
         } else {
             Storage::disk('local')->put('/public/images/'.$hash.'.jpg' , $resize->__toString());
             $filePath = Storage::disk('local')->url('images/'.$hash.'.jpg');
