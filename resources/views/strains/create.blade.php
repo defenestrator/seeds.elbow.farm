@@ -58,11 +58,11 @@
                 <div class="form-group row">
                     <div class="col-md-4">
                         <label for="feminized">Feminized?</label>
-                        <input type="checkbox" name="feminized" id="feminized" value="{{old('feminized')}}" />
+                        <input type="checkbox" name="feminized" id="feminized" />
                     </div>
                     <div class="col-md-4">
                         <label for="published">Published?</label>
-                        <input type="checkbox" name="published" id="published" value="{{old('published')}}" />
+                        <input type="checkbox" name="published" id="published" />
                     </div>
                 </div>
                 <div class="form-group row">
