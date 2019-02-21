@@ -168,7 +168,7 @@ class CreateTables extends Migration
         Schema::create('seed_packs', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('strain_id');
-            $table->date('Y-m-d' ,'available_since')->default(now('America/Denver'));
+            $table->date('available_since')->default(now('America/Denver'));
             $table->unsignedInteger('qty_per_pack')->default(12);
             $table->unsignedInteger('price')->default(100);
             $table->unsignedInteger('inventory')->default(0);

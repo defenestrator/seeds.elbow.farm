@@ -166,7 +166,6 @@ class StrainController extends ImageController
             'breeder_id'                => 1,
             'feminized'                 => $fem,
             'published'                 => $published,
-            'retail_price'              => $request->retail_price,
             'flowering_time_min_weeks'  => $request->min_flowering_time,
             'flowering_time_max_weeks'  => $request->max_flowering_time,
             'description'               => $request->description,
