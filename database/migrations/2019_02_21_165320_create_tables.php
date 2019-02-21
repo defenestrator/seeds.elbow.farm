@@ -61,7 +61,6 @@ class CreateTables extends Migration
             $table->string('image')->default('i.heisenbeans.com/images/heisenhead.png');
             $table->longText('genetics')->nullable();
             $table->longText('description')->nullable();
-            $table->unsignedInteger('retail_price')->default(100);
             $table->boolean('feminized')->default(false);
             $table->boolean('published')->default(false);
             $table->unsignedInteger('flowering_time_min_weeks')->default(9);
