@@ -20,7 +20,7 @@
         <div class="row">
             @foreach($strainRow as $strain)
             <div class="col-md-4 info">
-                <h4><a href="/strain/{{$strain['id']}}">{{$strain['name']}}</a></h4>
+                <h4><a href="/strains/{{$strain['id']}}">{{$strain['name']}}</a></h4>
                 <a href="/strains/{{$strain['id']}}"><img src="{{ $strain['image'] }}"></a>
 
                     <form action="POST" target="/cart">
