@@ -18,7 +18,6 @@ body {
 }
 
 .navbar-heisen {
-  height:68px;
   text-transform: uppercase;
   font-size:1.0rem;
   font-family:$font-family-sans-serif;
@@ -87,6 +86,7 @@ input[type="checkbox"] {
 }
 .cart-slider-button{
     margin:1rem;
+    margin-right:1.5rem;
     background-color:#677789;
     color:white;
     padding:0.8rem;
