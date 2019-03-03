@@ -8,8 +8,9 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title', config('app.name'))</title>
     <!-- Fonts -->
-    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
     <link rel="icon" href="/favicon-100.png" sizes="100x100">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Great+Vibes|Roboto+Condensed:300">
     <!-- deferred loading of js -->
     <script src="{{ mix('js/script.js') }}" defer></script>
     <!-- Styles -->
@@ -20,6 +21,16 @@
 <body>
 <div id="app">
     @include('partials._site-nav')
+    <div class="d-flex flex-row-reverse cart-slider-wrapper">
+        <div id="cart-slider" class="cart-slider">
+            <div style="color:white;" class="container">
+            <h2 >Your Shopping Cart</h2>
+             <p>is currently under development.</p>
+            </div>
+        </div>
+        <i class="fa fa-2x fa-dark fa-shopping-cart cart-slider-button" v-on:click="toggleCartSlider()"></i>
+</div>
+
     @yield('top')
     <main class="py-4">
         @yield('message')

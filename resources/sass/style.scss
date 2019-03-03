@@ -6,24 +6,21 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
-
+@import '~bootstrap-vue/src/index.scss';
 @import '~trumbowyg/dist/ui/trumbowyg.min.css';
-
 @import '~font-awesome/css/font-awesome.min.css';
 
 body {
   background:#fff radial-gradient(rgba(255,255,255,1.0) 50%, rgba(220,220,220,1.0)) no-repeat;
   min-height:100vh;
   font-family:$font-family-sans-serif;
-  font-size:1.1rem;
   color:#677789;
 }
 
-.navbar-laravel {
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+.navbar-heisen {
+  height:68px;
   text-transform: uppercase;
-  font-size:1rem;
+  font-size:1.0rem;
   font-family:$font-family-sans-serif;
 }
 
@@ -82,3 +79,32 @@ input[type="checkbox"] {
     cursor: inherit;
     display: block;
 }
+
+.cart-slider-wrapper{
+    top:0;
+    position:sticky;
+    z-index:40;
+}
+.cart-slider-button{
+    margin:1rem;
+    background-color:#677789;
+    color:white;
+    padding:0.8rem;
+    border-radius:50%;
+    z-index:50;
+}
+
+.cart-slider {
+    position: absolute;
+    color:white;
+    width:0;
+    height:0;
+    z-index:40;
+    border:1px solid white;
+    border-bottom-left-radius:1.333em;
+    border-top:none;
+    border-right:none;
+    background-color:#677789;
+    transition: all 0.25s ease-in-out;
+}
+

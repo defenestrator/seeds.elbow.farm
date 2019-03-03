@@ -17,7 +17,9 @@
         <a style="text-align:center;" href="https://www.instagram.com/heisenbeans/">Follow us on IG</a>
     </div>
     <div class="row justify-content-center">
-        <a style="text-align:center;" href="https://www.instagram.com/heisenbeans/"><img src="http://i.heisenbeans.com/images/app-icon2-small.png"></a>
+        <a style="text-align:center;" href="https://www.instagram.com/heisenbeans/">
+            <img src="http://i.heisenbeans.com/images/app-icon2-small.png">
+        </a>
     </div>
             @foreach(array_chunk(array_slice($posts, 0, 3), 3) as $postRow)
                 <div class="row justify-content-center">

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-light navbar-elbow">
+<nav class="navbar navbar-expand-md navbar-light navbar-heisen">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
             <img src="/i/heisenhead-60.png">
@@ -6,15 +6,14 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <!-- Left Side Of Navbar -->
-            <ul class="navbar-nav mr-auto">
-
+            <!-- Left side of Navbar -->
+            <ul class="navbar-nav mr-auto" style="padding-left:1rem; padding-right:2em;">
+                <li><a class="nav-link" href="#"></a></li>
             </ul>
-
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-auto">
+
                 @include('partials._guest-nav')
                 @guest
                 <li><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li>
@@ -24,5 +23,6 @@
                 @endguest
             </ul>
         </div>
+
     </div>
 </nav>
