@@ -42,7 +42,8 @@ const app = new Vue({
         return {
             products: [],
             selectedPack: 6,
-            cart: {}
+            cart: {},
+            cartActive: false
         }
     },
     created () {
@@ -59,20 +60,28 @@ const app = new Vue({
         },
         toggleCartSlider() {
             const cartSlider = document.getElementById('cart-slider')
+
             if(cartSlider.offsetWidth === 1) {
                 cartSlider.style.height = '75vh'
                 cartSlider.style.width = '80%'
+                this.cartActive = true
             } else {
             cartSlider.style.height = '0'
             cartSlider.style.width = '0'
+            this.cartActive = false
             }
-            console.log(cartSlider.offsetWidth)
-
-            // if (!cartSlider.classList.contains('cart-slider-active')) {
-            //     cartSlider.classList.add('cart-slider-active')
-            // } else {
-            //     cartSlider.classList.remove('cart-slider-active')
-            // }
+        }
+    },
+    watch: {
+    cartActive: function (val) {
+        const cartSliderButton = document.getElementById('cart-slider-button')
+        if(val === true) {
+                cartSliderButton.classList.add('fa-window-close')
+                cartSliderButton.classList.remove('fa-shopping-cart')
+            } else {
+                cartSliderButton.classList.remove('fa-window-close')
+                cartSliderButton.classList.add('fa-shopping-cart')
+            }
         }
     },
     created() {

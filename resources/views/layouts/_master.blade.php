@@ -28,7 +28,7 @@
              <p>is currently under development.</p>
             </div>
         </div>
-        <i class="fa fa-lg fa-dark fa-shopping-cart cart-slider-button" v-on:click="toggleCartSlider()"></i>
+        <i class="fa fa-lg fa-dark fa-shopping-cart cart-slider-button" id="cart-slider-button" v-on:click="toggleCartSlider()"></i>
 </div>
 
     @yield('top')
