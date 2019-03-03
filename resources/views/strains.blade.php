@@ -20,8 +20,9 @@
         <div class="row">
             @foreach($strainRow as $strain)
             <div class="col-md-4 info">
-                <h4><a href="/strain{{$strain['id']}}">{{$strain['name']}}</a></h4>
+                <h4><a href="/strain/{{$strain['id']}}">{{$strain['name']}}</a></h4>
                 <a href="/strains/{{$strain['id']}}"><img src="{{ $strain['image'] }}"></a>
+
                     <form action="POST" target="/cart">
                             @csrf
                             <div class="form-group">
@@ -53,6 +54,7 @@
                                     </label>
                                 </div>
                             </div>
+                            <p><sup>*</sup> Disabled: under development <sup>*</sup></p>
                             <div class="form-group">
                                 <label for="quantity-{{$strain['id']}}">qty:</label>
                                 <input
@@ -76,6 +78,7 @@
                                     v-on:click.stop.prevent="addToCart($event)" disabled>
                                     ADD TO CART
                                 </button>
+
                             </div>
                     </form>
             </div>
