@@ -23,12 +23,12 @@
     @include('partials._site-nav')
     <div class="d-flex flex-row-reverse cart-slider-wrapper">
         <div id="cart-slider" class="cart-slider">
-            <div style="color:white;" class="container">
+            <div class="container cart-slider-contents">
             <h2 >Your Shopping Cart</h2>
              <p>is currently under development.</p>
             </div>
         </div>
-        <i class="fa fa-2x fa-dark fa-shopping-cart cart-slider-button" v-on:click="toggleCartSlider()"></i>
+        <i class="fa fa-lg fa-dark fa-shopping-cart cart-slider-button" v-on:click="toggleCartSlider()"></i>
 </div>
 
     @yield('top')

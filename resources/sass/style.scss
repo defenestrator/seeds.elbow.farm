@@ -84,15 +84,6 @@ input[type="checkbox"] {
     position:sticky;
     z-index:40;
 }
-.cart-slider-button{
-    margin:1rem;
-    margin-right:1.5rem;
-    background-color:#677789;
-    color:white;
-    padding:0.8rem;
-    border-radius:50%;
-    z-index:50;
-}
 
 .cart-slider {
     position: absolute;
@@ -107,4 +98,20 @@ input[type="checkbox"] {
     background-color:#677789;
     transition: all 0.25s ease-in-out;
 }
+
+.cart-slider-button{
+    margin:1rem;
+    margin-right:1.5rem;
+    background-color:#677789;
+    color:white;
+    padding:0.8rem;
+    border-radius:50%;
+    z-index:50;
+}
+
+.cart-slider-contents {
+    padding:1.33rem;
+    color:white;
+}
+
 
