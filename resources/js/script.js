@@ -63,12 +63,12 @@ const app = new Vue({
         },
         fireModal() {
             let overlay = document.getElementById('modal-overlay')
-console.log(this.pageHeight)
+console.log(document.body.clientHeight)
             if(overlay.style.display === 'block') {
                 return overlay.style.display = 'none'
             }
             overlay.style.display = 'block'
-            overlay.style.height = this.pageHeight
+            overlay.style.height = document.body.clientHeight + 'px'
 
         },
         toggleCartSlider() {
@@ -83,7 +83,7 @@ console.log(this.pageHeight)
     watch: {
     cartActive: function (val) {
         if(val === true) {
-                this.cartSlider.style.height = '98vh'
+                this.cartSlider.style.height = '90vh'
                 this.cartSlider.style.width = '80%'
                 this.cartSliderButton.classList.add('fa-window-close')
                 this.cartSliderButton.classList.remove('fa-shopping-cart')
@@ -103,7 +103,7 @@ console.log(this.pageHeight)
     mounted () {
         let body = document.body
         let html = document.documentElement
-        this.pageHeight = Math.max( body.scrollHeight, body.offsetHeight,
+        this.pageHeight = Math.max(body.scrollHeight, body.offsetHeight,
         html.clientHeight, html.scrollHeight, html.offsetHeight ).toString() + 'px'
         this.cartSlider = document.getElementById('cart-slider')
         this.cartSliderButton = document.getElementById('cart-slider-button')
