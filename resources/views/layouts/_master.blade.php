@@ -20,6 +20,7 @@
 </head>
 <body>
 <div id="app">
+<div id="modal-overlay" class="modal-overlay" v-on:click="toggleCartSlider()"></div>
     @include('partials._site-nav')
     <div class="d-flex flex-row-reverse cart-slider-wrapper">
         <div id="cart-slider" class="cart-slider">

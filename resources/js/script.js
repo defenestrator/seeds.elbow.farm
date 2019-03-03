@@ -42,8 +42,11 @@ const app = new Vue({
         return {
             products: [],
             selectedPack: 6,
+            pageHeight: '',
             cart: {},
-            cartActive: false
+            cartActive: false,
+            cartSlider: null,
+            cartSliderButton: null
         }
     },
     created () {
@@ -58,29 +61,39 @@ const app = new Vue({
             console.log(pack)
 
         },
-        toggleCartSlider() {
-            const cartSlider = document.getElementById('cart-slider')
+        fireModal() {
+            let overlay = document.getElementById('modal-overlay')
+console.log(this.pageHeight)
+            if(overlay.style.display === 'block') {
+                return overlay.style.display = 'none'
+            }
+            overlay.style.display = 'block'
+            overlay.style.height = this.pageHeight
 
-            if(cartSlider.offsetWidth === 1) {
-                cartSlider.style.height = '75vh'
-                cartSlider.style.width = '80%'
+        },
+        toggleCartSlider() {
+            this.fireModal()
+            if(this.cartSlider.offsetWidth === 1) {
                 this.cartActive = true
             } else {
-            cartSlider.style.height = '0'
-            cartSlider.style.width = '0'
             this.cartActive = false
             }
         }
     },
     watch: {
     cartActive: function (val) {
-        const cartSliderButton = document.getElementById('cart-slider-button')
         if(val === true) {
-                cartSliderButton.classList.add('fa-window-close')
-                cartSliderButton.classList.remove('fa-shopping-cart')
+                this.cartSlider.style.height = '98vh'
+                this.cartSlider.style.width = '80%'
+                this.cartSliderButton.classList.add('fa-window-close')
+                this.cartSliderButton.classList.remove('fa-shopping-cart')
+                this.cartSliderButton.style.backgroundColor = 'transparent'
             } else {
-                cartSliderButton.classList.remove('fa-window-close')
-                cartSliderButton.classList.add('fa-shopping-cart')
+                this.cartSliderButton.classList.remove('fa-window-close')
+                this.cartSliderButton.classList.add('fa-shopping-cart')
+                this.cartSlider.style.height = '0'
+                this.cartSlider.style.width = '0'
+                this.cartSliderButton.style.backgroundColor = 'hsla(212,25%, 27%, 0.95)'
             }
         }
     },
@@ -88,6 +101,13 @@ const app = new Vue({
         this.products = [...document.getElementsByClassName('add-to-cart')];
     },
     mounted () {
-        console.log(this.products)
+        let body = document.body
+        let html = document.documentElement
+        this.pageHeight = Math.max( body.scrollHeight, body.offsetHeight,
+        html.clientHeight, html.scrollHeight, html.offsetHeight ).toString() + 'px'
+        this.cartSlider = document.getElementById('cart-slider')
+        this.cartSliderButton = document.getElementById('cart-slider-button')
+
+
     }
 });

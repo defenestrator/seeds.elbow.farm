@@ -95,23 +95,32 @@ input[type="checkbox"] {
     border-bottom-left-radius:1.333em;
     border-top:none;
     border-right:none;
-    background-color:#677789;
+    background-color:hsla(212,25%, 27%, 0.95);
     transition: all 0.25s ease-in-out;
 }
 
 .cart-slider-button{
     margin:1rem;
     margin-right:1.5rem;
-    background-color:#677789;
+    background-color:hsla(212,25%, 27%, 0.95);
     color:white;
     padding:0.8rem;
     border-radius:50%;
     z-index:50;
+    transition: all 0.25s ease-in-out;
 }
 
 .cart-slider-contents {
     padding:1.33rem;
     color:white;
+}
+.modal-overlay {
+    z-index:30;
+    position:absolute;
+    left:0;
+    opacity:0.1;
+    width:100%;
+    display:none;
 }
 
 
