@@ -83,16 +83,14 @@ console.log(document.body.clientHeight)
     watch: {
     cartActive: function (val) {
         if(val === true) {
-                this.cartSlider.style.height = '90vh'
-                this.cartSlider.style.width = '80%'
+            this.cartSlider.classList.add('cart-slider-active')
                 this.cartSliderButton.classList.add('fa-window-close')
                 this.cartSliderButton.classList.remove('fa-shopping-cart')
                 this.cartSliderButton.style.backgroundColor = 'transparent'
             } else {
                 this.cartSliderButton.classList.remove('fa-window-close')
                 this.cartSliderButton.classList.add('fa-shopping-cart')
-                this.cartSlider.style.height = '0'
-                this.cartSlider.style.width = '0'
+                this.cartSlider.classList.remove('cart-slider-active')
                 this.cartSliderButton.style.backgroundColor = 'hsla(212,25%, 27%, 0.95)'
             }
         }

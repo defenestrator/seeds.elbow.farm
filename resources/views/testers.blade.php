@@ -101,6 +101,11 @@
 @stop
 
 @section('bottom')
+<div class="container">
+    <div class="row justify-content-center info">
+            <a href="/testers"><img src="/i/heroic-colas.jpg"></a>
+    </div>
+</div>
 @stop
 
 @section('page_scripts')

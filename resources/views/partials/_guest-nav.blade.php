@@ -5,5 +5,5 @@
 </li>
 <li><a class="nav-link" href="{{ route('testers') }}">Testers</a></li>
 {{-- <li><a class="nav-link" href="{{ route('breeders') }}">Breeders</a></li> --}}
-<li><a class="nav-link" href="{{ route('strains') }}">Strains</a></li>
+{{-- <li><a class="nav-link" href="{{ route('strains') }}">Strains</a></li> --}}
 

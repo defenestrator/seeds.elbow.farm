@@ -101,7 +101,7 @@ input[type="checkbox"] {
 
 .cart-slider-button{
     margin:1rem;
-    margin-right:1.5rem;
+    margin-right:2rem;
     background-color:hsla(212,25%, 27%, 0.95);
     color:white;
     padding:0.8rem;
@@ -123,4 +123,34 @@ input[type="checkbox"] {
     display:none;
 }
 
+.cart-slider-active {
+    height:100vh;
+    width:75%
+}
 
+@include media-breakpoint-up(sm) {
+    .cart-slider-active {
+        height:87.25vh;
+        width:66.666667%;
+    }
+}
+
+@include media-breakpoint-up(md) {
+    .cart-slider-active {
+        height:75vh;
+        width:50%;
+    }
+}
+
+@include media-breakpoint-up(lg) {
+    .cart-slider-active {
+        height:66.666667vh;
+        width:25%;
+    }
+}
+
+.navbar-toggler {
+    padding: 0.25rem;
+    border-radius:50%;
+    margin:1rem;
+}
