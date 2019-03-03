@@ -24,7 +24,7 @@
     <div class="d-flex flex-row-reverse cart-slider-wrapper">
         <div id="cart-slider" class="cart-slider">
             <div class="container cart-slider-contents">
-            <h2 >Your Shopping Cart</h2>
+            <h4>Shopping Cart</h4>
              <p>is currently under development.</p>
             </div>
         </div>
