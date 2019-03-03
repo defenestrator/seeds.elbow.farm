@@ -16,7 +16,7 @@
             @foreach($strainRow as $strain)
             <div class="col-md-4 info">
                 <h4><a href="/strains/{{$strain['id']}}">{{$strain['name']}}</a></h4>
-                <a href="/strains/{{$strain['id']}}"><img src="{{ $strain['image'] }}"></a>
+                <a href="/strains/{{$strain['id']}}"><div style="min-height:330px; max-height:440px; background-position:cover; background-repeat:no-repeat; background-image:url('{{ $strain["image"] }}'"></div></a>
 
                     <form action="POST" target="/cart">
                             @csrf
