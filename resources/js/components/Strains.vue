@@ -13,7 +13,7 @@ export default {
   },
   computed: {
     filteredProducts: function () {
-        var filterKey = this.searchQuery && this.searchQuery.toLowerCase()
+        var filterKey = _.trim(this.searchQuery && this.searchQuery.toLowerCase())
         var products =  this.products
         if (filterKey) {
         products = this.products.filter(function (row) {
