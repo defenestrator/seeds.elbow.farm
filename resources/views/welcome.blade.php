@@ -9,13 +9,10 @@
         <h2>Exceptional Genetics</h2>
     </div>
     <hr>
-        <div class="container text-center">
-        <h3>Available Strains</h3>
     <strains
         :products="{{ $strains }}"
         >
     </strains>
-    </div>
     <hr>
     <div class="row justify-content-center">
         <a style="text-align:center;" href="https://www.instagram.com/heisenbeans/">Follow us on IG</a>

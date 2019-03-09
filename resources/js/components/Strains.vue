@@ -52,11 +52,15 @@ export default {
 </script>
 
 <template>
-<div class="container">
-    <form id="search">
-    Search: <input name="query" v-model="searchQuery">
-    </form>
-    <hr>
+<div class="container text-center">
+        <h3>Available Strains</h3>
+    <div class="row">
+        <div class="col-md-4 offset-md-4" style="margin-bottom:1em;">
+            <form id="search">
+                <input type="text" class="form-control" name="query" placeholder="Search to filter strains" v-model="searchQuery" />
+            </form>
+        </div>
+    </div>
     <div class="row" v-bind:key="products" v-for="products in filteredProducts">
         <div class="col-md-4 info" v-bind:key="item" v-for="item in products">
             <h4><a :href="'/strains/' + item.id">{{item.name}}</a></h4>
@@ -73,7 +77,7 @@ export default {
                                 <label
                                     class="custom-control-label"
                                     :for="'seed-pack-6-' + item.id">
-                                    6 for $60
+                                    6 seeds $60
                                 </label>
                             </div>
                             <div class="custom-control custom-radio custom-control-inline">
@@ -87,13 +91,13 @@ export default {
                                 <label
                                     class="custom-control-label"
                                     :for="'seed-pack-12-' + item.id">
-                                    12 for $100
+                                    12 seeds $100
                                 </label>
                             </div>
                         </div>
                         <p><sup>*</sup> Disabled: under development <sup>*</sup></p>
                         <div class="form-group form-inline">
-                            <label :for="'quantity-' + item.id" class="form-label">qty:</label>
+                            <label :for="'quantity-' + item.id" class="form-label"></label>
                             <input
                                 class="form-control"
                                 type="number"
@@ -123,9 +127,7 @@ export default {
                 <p>{{item.description}}</p>
         <hr>
         </div>
-
     </div>
-
 </div>
 </template>
 
