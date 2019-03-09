@@ -87,6 +87,10 @@ input[type="checkbox"] {
     transition: all 0.25s ease-in-out;
 }
 
+input[type=text], input[type=number], textarea {
+    font-size: calc(16px);
+}
+
 .cart-slider {
     color:white;
     display:none;

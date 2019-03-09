@@ -92,19 +92,21 @@ export default {
                             </div>
                         </div>
                         <p><sup>*</sup> Disabled: under development <sup>*</sup></p>
-                        <div class="form-group">
-                            <label :for="'quantity-' + item.id">qty:</label>
+                        <div class="form-group form-inline">
+                            <label :for="'quantity-' + item.id" class="form-label">qty:</label>
                             <input
+                                class="form-control"
                                 type="number"
                                 :name="'quantity-' + item.id"
                                 value="1"
                                 min="1"
                                 max="10"
                                 :id="'quantity-' + item.id"/>
+                            &nbsp;
                             <button
                                 role="button"
                                 :id="'buy-now-' + item.id"
-                                class="btn btn-primary">
+                                class="btn btn-primary" disabled>
                                 BUY NOW
                             </button>
                             &nbsp;
