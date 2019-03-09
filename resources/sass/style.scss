@@ -82,13 +82,13 @@ input[type="checkbox"] {
 
 .cart-slider-wrapper{
     top:0;
+    z-index:30;
     position:sticky;
-    z-index:40;
     transition: all 0.25s ease-in-out;
 }
 
 input[type=text], input[type=number], textarea {
-    font-size: calc(16px);
+    font-size: 16px;
 }
 
 .cart-slider {
@@ -97,7 +97,7 @@ input[type=text], input[type=number], textarea {
     right:0;
     width:0;
     height:0;
-    z-index:40;
+    z-index:50;
     border:1px solid white;
     border-bottom-left-radius:1.333em;
     border-top:none;
@@ -121,10 +121,11 @@ input[type=text], input[type=number], textarea {
 
 .cart-slider-contents {
     padding:1.33rem;
+    z-index:50;
     color:white;
 }
 .modal-overlay {
-    z-index:30;
+    z-index:40;
     position:absolute;
     left:0;
     opacity:0.1;

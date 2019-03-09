@@ -58,18 +58,7 @@ const app = new Vue({
             console.log(pack)
 
         },
-        fireModal() {
-            let overlay = document.getElementById('modal-overlay')
-            if(overlay.style.display === 'block') {
-                return overlay.style.display = 'none'
-            }
-            overlay.style.display = 'block'
-            overlay.style.height = document.body.clientHeight + 'px'
-
-        },
         toggleCartSlider() {
-            this.fireModal()
-            console.log('cartSlider: ' + this.cartSlider.offsetWidth)
             if(this.cartSlider.offsetWidth === 0) {
                 this.cartActive = true
             } else {
@@ -80,7 +69,6 @@ const app = new Vue({
     watch: {
     cartActive: function (val) {
         if(val === true) {
-                this.cartSlider.style.display = 'block'
                 this.cartSlider.classList.add('cart-slider-active')
                 this.cartSlider.style.display = 'block'
                 this.cartSliderButton.classList.add('fa-window-close')
@@ -91,8 +79,8 @@ const app = new Vue({
                 this.cartSliderButton.classList.remove('fa-window-close')
                 this.cartSliderButton.classList.add('fa-shopping-cart')
                 this.cartSlider.classList.remove('cart-slider-active')
-                this.cartSlider.style.display = 'none'
                 this.cartSliderButton.style.backgroundColor = 'hsla(212,25%, 27%, 0.95)'
+                this.cartSlider.style.display = 'none'
             }
         }
     },
