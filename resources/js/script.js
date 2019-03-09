@@ -70,17 +70,14 @@ const app = new Vue({
     cartActive: function (val) {
         if(val === true) {
                 this.cartSlider.classList.add('cart-slider-active')
-                this.cartSlider.style.display = 'block'
-                this.cartSliderButton.classList.add('fa-window-close')
                 this.cartSliderButton.classList.remove('fa-shopping-cart')
+                this.cartSliderButton.classList.add('fa-window-close')
                 this.cartSliderButton.style.backgroundColor = 'transparent'
             } else {
-
                 this.cartSliderButton.classList.remove('fa-window-close')
                 this.cartSliderButton.classList.add('fa-shopping-cart')
                 this.cartSlider.classList.remove('cart-slider-active')
                 this.cartSliderButton.style.backgroundColor = 'hsla(212,25%, 27%, 0.95)'
-                this.cartSlider.style.display = 'none'
             }
         }
     },
