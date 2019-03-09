@@ -34,7 +34,7 @@
                     @endif
                 </div>
                 <form class="contact" id="contact" style="margin-bottom:2em; " action="{{route('tester-request')}}" method="POST">
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                    @csrf
                     <div class="form-group">
                         <input type="text" name="contact-name"
                                class="form-control input-lg" placeholder="Name"
