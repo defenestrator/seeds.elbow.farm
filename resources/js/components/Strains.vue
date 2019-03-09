@@ -59,12 +59,17 @@ export default {
         <h3>Available Strains</h3>
     <div class="row text-center">
         <div class="col-md-4 offset-md-4" style="margin-bottom:1em;">
-            <form id="search" class="form-inline">
-                <input type="text" class="form-control" name="query" placeholder="Search to filter strains" v-model="searchQuery" />
-                <label for="query" class="form-control form-label" :disabled="searchQuery != ''">
-                    <i class="fa fa-lg fa-dark fa-close" id="clear_filter" v-on:click="clearSearchQuery()">
-                    </i> CLEAR
-                </label>&nbsp;
+            <form id="search">
+                <div class="input-group">
+
+                <input type="text" class="form-control form-inline" name="query" placeholder="Search to filter strains" v-model="searchQuery" autofocus />
+               <div v-if="searchQuery !== ''" class="input-group-addon">
+               <button v-on:click="clearSearchQuery()" for="query" class="btn btn-info input-group-addon form-inline">
+                     <i class="fa fa-close" id="clear_filter">
+                    </i>
+               </button>
+               </div>
+                </div>
             </form>
         </div>
     </div>
