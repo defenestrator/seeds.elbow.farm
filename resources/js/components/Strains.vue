@@ -100,6 +100,7 @@ export default {
                             <label :for="'quantity-' + item.id" class="form-label"></label>
                             <input
                                 class="form-control"
+                                style="width:auto;"
                                 type="number"
                                 :name="'quantity-' + item.id"
                                 value="1"
