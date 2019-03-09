@@ -15,6 +15,7 @@ body {
   min-height:100vh;
   font-family:$font-family-sans-serif;
   color:#677789;
+  transition: all 0.25s ease-in-out;
 }
 
 .navbar-heisen {
@@ -83,11 +84,13 @@ input[type="checkbox"] {
     top:0;
     position:sticky;
     z-index:40;
+    transition: all 0.25s ease-in-out;
 }
 
 .cart-slider {
-    position: absolute;
     color:white;
+    display:none;
+    right:0;
     width:0;
     height:0;
     z-index:40;
@@ -100,6 +103,8 @@ input[type="checkbox"] {
 }
 
 .cart-slider-button{
+    position: absolute;
+    right:0;
     margin:1rem;
     margin-right:2rem;
     background-color:hsla(212,25%, 27%, 0.95);
@@ -125,7 +130,8 @@ input[type="checkbox"] {
 
 .cart-slider-active {
     height:100vh;
-    width:75%
+    width:75%;
+    transition: all 0.25s ease-in-out;
 }
 
 @include media-breakpoint-up(sm) {

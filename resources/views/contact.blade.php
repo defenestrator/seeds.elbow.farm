@@ -11,13 +11,13 @@
 @stop
 
 @section('top')
-    <div class="container text-center"><h1>Send us a message</h1></div>
+
 @stop
 
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-sm-6 offset-3">
+            <div class="col-sm-6 offset-sm-3">
                 <div id="errors">
                     @if ($errors->any())
                         <div class="alert alert-danger">
@@ -29,6 +29,7 @@
                         </div>
                     @endif
                 </div>
+                <div class="container text-center"><h1>Send us a message</h1></div>
                 <form class="contact" id="contact" style="margin-bottom:2em; " action="{{route('contact.store')}}" method="POST">
                     @csrf
                     <div class="form-group">

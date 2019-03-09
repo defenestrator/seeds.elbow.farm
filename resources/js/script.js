@@ -40,7 +40,6 @@ const app = new Vue({
     el: '#app',
     data() {
         return {
-            pageHeight: '',
             cart: {},
             cartActive: false,
             cartSlider: null,
@@ -61,7 +60,6 @@ const app = new Vue({
         },
         fireModal() {
             let overlay = document.getElementById('modal-overlay')
-console.log(document.body.clientHeight)
             if(overlay.style.display === 'block') {
                 return overlay.style.display = 'none'
             }
@@ -71,7 +69,8 @@ console.log(document.body.clientHeight)
         },
         toggleCartSlider() {
             this.fireModal()
-            if(this.cartSlider.offsetWidth === 1) {
+            console.log('cartSlider: ' + this.cartSlider.offsetWidth)
+            if(this.cartSlider.offsetWidth === 0) {
                 this.cartActive = true
             } else {
             this.cartActive = false
@@ -81,14 +80,18 @@ console.log(document.body.clientHeight)
     watch: {
     cartActive: function (val) {
         if(val === true) {
-            this.cartSlider.classList.add('cart-slider-active')
+                this.cartSlider.style.display = 'block'
+                this.cartSlider.classList.add('cart-slider-active')
+                this.cartSlider.style.display = 'block'
                 this.cartSliderButton.classList.add('fa-window-close')
                 this.cartSliderButton.classList.remove('fa-shopping-cart')
                 this.cartSliderButton.style.backgroundColor = 'transparent'
             } else {
+
                 this.cartSliderButton.classList.remove('fa-window-close')
                 this.cartSliderButton.classList.add('fa-shopping-cart')
                 this.cartSlider.classList.remove('cart-slider-active')
+                this.cartSlider.style.display = 'none'
                 this.cartSliderButton.style.backgroundColor = 'hsla(212,25%, 27%, 0.95)'
             }
         }
@@ -97,13 +100,8 @@ console.log(document.body.clientHeight)
         this.products = [...document.getElementsByClassName('add-to-cart')];
     },
     mounted () {
-        let body = document.body
-        let html = document.documentElement
-        this.pageHeight = Math.max(body.scrollHeight, body.offsetHeight,
-        html.clientHeight, html.scrollHeight, html.offsetHeight ).toString() + 'px'
         this.cartSlider = document.getElementById('cart-slider')
         this.cartSliderButton = document.getElementById('cart-slider-button')
-
 
     }
 });
