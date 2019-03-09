@@ -74,7 +74,7 @@ export default {
         </div>
     </div>
     <div class="row" v-bind:key="products" v-for="products in filteredProducts">
-        <div class="col-md-4 info" v-bind:key="item" v-for="item in products">
+        <div class="col-sm-4 info" v-bind:key="item" v-for="item in products">
             <h4><a :href="'/strains/' + item.id">{{item.name}}</a></h4>
             <a :href="'/strains/' + item.id"><img :src="item.image"></a>
                 <form action="POST" target="/cart">
@@ -108,10 +108,11 @@ export default {
                             </div>
                         </div>
                         <p><sup>*</sup> Disabled: under development <sup>*</sup></p>
-                        <div class="form-group form-inline">
-                            <label :for="'quantity-' + item.id" class="form-label"></label>
+                        <div class="form-group form-inline" style="justify-content: center;">
+                            <label :for="'quantity-' + item.id" class="form-label form-inline"></label>
                             <input
-                                class="form-control form-inline"
+                                class="form-control form-inline input-group-sm"
+                                style="width:60px;"
                                 type="number"
                                 :name="'quantity-' + item.id"
                                 value="1"
@@ -122,14 +123,15 @@ export default {
                             <button
                                 role="button"
                                 :id="'buy-now-' + item.id"
-                                class="btn btn-primary form-inline" disabled>
+                                class="btn btn-primary form-inline input-group-sm"
+                                disabled>
                                 BUY
                             </button>
                             &nbsp;
                             <button
                                 role="button"
                                 :id="'add-to-cart-' + item.id"
-                                class="btn btn-outline-gray add-to-cart"
+                                class="btn btn-outline-gray form-inline input-group-sm"
                                 v-on:click.stop.prevent="addToCart($event)">
                                 ADD TO CART
                             </button>
