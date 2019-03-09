@@ -111,8 +111,7 @@ export default {
                         <div class="form-group form-inline">
                             <label :for="'quantity-' + item.id" class="form-label"></label>
                             <input
-                                class="form-control"
-                                style="width:auto;"
+                                class="form-control form-inline"
                                 type="number"
                                 :name="'quantity-' + item.id"
                                 value="1"
@@ -123,14 +122,14 @@ export default {
                             <button
                                 role="button"
                                 :id="'buy-now-' + item.id"
-                                class="btn btn-primary" disabled>
-                                BUY NOW
+                                class="btn btn-primary form-inline" disabled>
+                                BUY
                             </button>
                             &nbsp;
                             <button
                                 role="button"
                                 :id="'add-to-cart-' + item.id"
-                                class="btn btn-default add-to-cart"
+                                class="btn btn-outline-gray add-to-cart"
                                 v-on:click.stop.prevent="addToCart($event)">
                                 ADD TO CART
                             </button>
