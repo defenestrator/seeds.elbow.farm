@@ -58,7 +58,7 @@
                                   placeholder="How can we help you?" required>{{ old('contact_msg') }}</textarea>
                     </div>
                     <div class="form-group">
-                        {!! Recaptcha::render() !!}
+                        {{-- {!! Recaptcha::render() !!} --}}
                     </div>
                     <div class="input-group">
                         <button style="width:100%;" class="btn btn-primary input-lg" type="submit">Submit</button>
