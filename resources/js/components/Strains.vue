@@ -46,6 +46,9 @@ export default {
     console.log(pack)
 
     },
+    clearSearchQuery() {
+        this.searchQuery = ''
+    }
   },
 }
 
@@ -54,10 +57,14 @@ export default {
 <template>
 <div class="container text-center">
         <h3>Available Strains</h3>
-    <div class="row">
+    <div class="row text-center">
         <div class="col-md-4 offset-md-4" style="margin-bottom:1em;">
-            <form id="search">
+            <form id="search" class="form-inline">
                 <input type="text" class="form-control" name="query" placeholder="Search to filter strains" v-model="searchQuery" />
+                <label for="query" class="form-control form-label" :disabled="searchQuery != ''">
+                    <i class="fa fa-lg fa-dark fa-close" id="clear_filter" v-on:click="clearSearchQuery()">
+                    </i> CLEAR
+                </label>&nbsp;
             </form>
         </div>
     </div>
