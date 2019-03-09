@@ -22,8 +22,8 @@ export default {
           })
         })
       }
-      return products
-    }
+      return _.chunk(products, 3)
+    },
   },
   filters: {
     capitalize: function (str) {
@@ -45,7 +45,7 @@ export default {
 
     console.log(pack)
 
-        }
+    },
   },
 }
 
@@ -57,9 +57,8 @@ export default {
     Search: <input name="query" v-model="searchQuery">
     </form>
     <hr>
-    <div class="row" v-bind:key="item" v-for="item in filteredProducts">
-
-        <div class="col info">
+    <div class="row" v-bind:key="products" v-for="products in filteredProducts">
+        <div class="col-md-4 info" v-bind:key="item" v-for="item in products">
             <h4><a :href="'/strains/' + item.id">{{item.name}}</a></h4>
             <a :href="'/strains/' + item.id"><img :src="item.image"></a>
                 <form action="POST" target="/cart">
