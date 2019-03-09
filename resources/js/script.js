@@ -40,8 +40,6 @@ const app = new Vue({
     el: '#app',
     data() {
         return {
-            products: [],
-            selectedPack: 6,
             pageHeight: '',
             cart: {},
             cartActive: false,

@@ -42,6 +42,7 @@ use Spatie\Permission\Models\Permission;
  */
 class User extends Authenticatable implements MustVerifyEmail
 {
+    
     use Notifiable;
     use VerifyEmail;
     use HasRoles;

@@ -22,9 +22,14 @@ class WelcomeController extends Controller
         $this->instagram = new Instagram($this->token);
     }
 
-    public function index() {
-        $strains = Cache::remember('strains', 60, function() {
-            return $this->strain->where('published', '=', true)->orderBy('updated_at', 'desc')->get()->toArray();
+    public function index()
+    {
+        $result = Cache::remember('strains', 60, function() {
+            return $this->strain->where('published', '=', true)->orderBy('updated_at', 'desc')->get();
+        });
+        $strains = $result->map( function($value) {
+            $value->selectedPack = 6;
+            return $value;
         });
 
         $posts = $this->instagram->media();

@@ -39,7 +39,7 @@ class TesterController extends LocationController
 //                'g-recaptcha-response' => 'required|recaptcha'
 //            ]);
 //        }
-//        dd($request->get('postcode'));
+
         if (in_array($request->get('postcode'), $this->provinces)) {
             $this->country = 'Canada';
         }

@@ -15,6 +15,8 @@ Route::get('/testers', 'TesterController@index')->name('testers');
 Route::post('/testers', 'TesterController@create')->name('tester-request');
 Route::get('/testers/mail/preview', 'TesterController@preview')->name('preview-tester-email');
 
+Route::get('/contact', 'ContactController@create')->name('contact.create');
+Route::post('/contact', 'ContactController@store')->name('contact.store');
 Route::get('/breeders', 'BreederController@index')->name('breeders');
 
 Route::get('/strains', 'StrainController@index')->name('strains');

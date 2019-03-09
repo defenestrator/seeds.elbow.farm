@@ -21,11 +21,14 @@ class StrainController extends ImageController
      */
     public function index()
     {
-        $strains = Cache::remember('strains', 60, function() {
-            return $this->strain->where('published', '=', true)->orderBy('updated_at', 'desc')->get()->toArray();
+        $result = Cache::remember('strains', 60, function() {
+            return $this->strain->where('published', '=', true)->orderBy('updated_at', 'desc')->get();
         });
-
-        return view('strains',compact('strains'));
+        $strains = $result->map( function($value) {
+            $value->selectedPack = 6;
+            return $value;
+        });
+        return view('strains', compact('strains'));
     }
 
     /**
