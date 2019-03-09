@@ -118,9 +118,7 @@ export default {
 
                         </div>
                 </form>
-
-
-
+                <p>{{item.description}}</p>
         <hr>
         </div>
 
