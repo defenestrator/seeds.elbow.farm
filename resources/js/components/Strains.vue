@@ -74,7 +74,7 @@ export default {
     <div class="row" v-bind:key="products" v-for="products in filteredProducts">
         <div class="col-sm-4 info" v-bind:key="item" v-for="item in products">
             <h4><a :href="'/strains/' + item.id">{{item.name}}</a></h4>
-            <a :href="'/strains/' + item.id"><img :src="item.image"></a>
+            <a :href="'/strains/' + item.id"><img :src="item.image" :alt="item.name" :title="item.name"></a>
             <h5 style="margin-top:1em;">Premium {{item.feminized | feminize}} seeds</h5>
                 <form action="POST" target="/cart">
                         <div class="form-group">
@@ -106,7 +106,7 @@ export default {
                                 </label>
                             </div>
                         </div>
-                        <p><strong> Genetics: </strong> {{ item.genetics }}</p>
+                        <p><strong> Genetics:</strong> {{ item.genetics }}</p>
                         <p><sup>*</sup> Disabled: under development <sup>*</sup></p>
                         <div class="form-group form-inline" style="justify-content: center;">
                             <label :for="'quantity-' + item.id" class="form-label form-inline"></label>
