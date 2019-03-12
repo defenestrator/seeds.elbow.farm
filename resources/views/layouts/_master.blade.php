@@ -37,7 +37,7 @@
         @yield('bottom')
         <div class="container">
             <hr>
-            <p class="footer small">&copy; Heisenbeans {{ date('F jS, Y') }}</p>
+            <p class="footer small">&copy; Heisenbeans &trade; {{ date('F jS, Y') }}</p>
         </div>
     </main>
 </div>
