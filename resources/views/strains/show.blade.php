@@ -18,7 +18,7 @@
     <div class="row">
         <div class="col-md-8">
         <h1>{{ $strain->name }}</h1>
-        <p><img src="{{$strain->image}}" alt="{{$strain->name}}" title="{{$strain->name}}" /> </p>
+        <p class="info"><img src="{{$strain->image}}" alt="{{$strain->name}}" title="{{$strain->name}}" /> </p>
         <p>{{$strain->genetics}}</p>
 
         <p>{{$strain->description}}</p>
