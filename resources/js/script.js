@@ -10,8 +10,8 @@ require('./bootstrap');
 // import swal from 'sweetalert';
 
 window.Vue = require('vue');
-import { currency } from './currency'
-import store from './store'
+// import { currency } from './currency'
+// import store from './store'
 
 /**
  * The following block of code may be used to automatically register your
