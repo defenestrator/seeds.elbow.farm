@@ -106,6 +106,7 @@ export default {
                                 </label>
                             </div>
                         </div>
+                        <p><strong> Genetics: </strong> {{ item.genetics }}</p>
                         <p><sup>*</sup> Disabled: under development <sup>*</sup></p>
                         <div class="form-group form-inline" style="justify-content: center;">
                             <label :for="'quantity-' + item.id" class="form-label form-inline"></label>
