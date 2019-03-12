@@ -16,7 +16,7 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-sm-12">
+        <div class="col-sm-12 pagetitle">
             <h1>{{ $strain->name }}</h1>
         </div>
     </div>

@@ -14,7 +14,7 @@
 @stop
 
 @section('content')
-<div class="container text-center">
+<div class="container text-center pagetitle">
     <h1>Available Strains</h1>
     <strains
         :products="{{ $strains }}"
