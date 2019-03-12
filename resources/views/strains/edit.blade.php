@@ -27,11 +27,6 @@
         <div class="col-md-4 info">
             <img style="" id="preview" src="{{$strain->image}}" />
         </div>
-    {{-- </div> --}}
-    {{-- <div class="row">
-        <div class="col-md-4 info" id="original">
-            <img style="width:100%;" id="existing_preview" src="{{$strain->image}}" />
-        </div> --}}
         <div class="col-md-8">
             <form class="form-horizontal new-content" role="form" enctype="multipart/form-data" method="POST" action="{{route('admin.strains.update', $strain->id)}}">
                 @csrf
@@ -45,6 +40,11 @@
                 <div class="form-group row">
                     <div class="col-md-12"><p>Name:</p>
                     <input id="name" name="name" class="form-control input" type="text" placeholder="name" value="{{$strain->name}}">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-12"><p>Genetics:</p>
+                    <input id="genetics" name="genetics" class="form-control input" type="text" placeholder="genetics" value="{{$strain->genetics}}">
                     </div>
                 </div>
                 <div class="form-group row">

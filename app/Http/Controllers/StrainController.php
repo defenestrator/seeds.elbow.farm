@@ -26,6 +26,12 @@ class StrainController extends ImageController
         });
         $strains = $result->map( function($value) {
             $value->selectedPack = 6;
+
+            if ( $value->feminized === 1 ) {
+                   $value->feminized = "feminized";
+            } else {
+                $value->feminized = 'regular';
+            }
             return $value;
         });
         return view('strains', compact('strains'));
@@ -105,6 +111,11 @@ class StrainController extends ImageController
            $strain = Cache::get('strain:'. $id);
         } else {
             $strain = $this->strain->whereId($id)->first();
+            if ( $strain->feminized === 1 ) {
+                   $strain->feminized = "feminized";
+            } else {
+                $strain->feminized = "regular";
+            }
             Cache::put('strain:'. $id, $strain, 666);
         }
 
@@ -179,6 +190,7 @@ class StrainController extends ImageController
             'flowering_time_max_weeks'  => $request->max_flowering_time,
             'description'               => $request->description,
             'name'                      => $request->name,
+            'genetics'                  => $request->genetics,
             'image'                     => $image,
             'image_id'                  => $imageId,
         ]);

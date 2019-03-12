@@ -28,11 +28,11 @@ export default {
     capitalize: function (str) {
       return str.charAt(0).toUpperCase() + str.slice(1)
     },
-    booleanize: function(num) {
+    feminize: function(num) {
         if (num === 1) {
-            return true
+            return "feminized"
         }
-        return false
+        return "regular"
     }
   },
   methods: {
@@ -75,6 +75,7 @@ export default {
         <div class="col-sm-4 info" v-bind:key="item" v-for="item in products">
             <h4><a :href="'/strains/' + item.id">{{item.name}}</a></h4>
             <a :href="'/strains/' + item.id"><img :src="item.image"></a>
+            <h5 style="margin-top:1em;">Premium {{item.feminized | feminize}} seeds</h5>
                 <form action="POST" target="/cart">
                         <div class="form-group">
                             <div class="form-group custom-control custom-radio custom-control-inline">
