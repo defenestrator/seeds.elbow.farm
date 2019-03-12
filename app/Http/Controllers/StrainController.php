@@ -21,7 +21,7 @@ class StrainController extends ImageController
      */
     public function index()
     {
-        $result = Cache::remember('strains', 60, function() {
+        $result = Cache::remember('strains', 666, function() {
             return $this->strain->where('published', '=', true)->orderBy('updated_at', 'desc')->get();
         });
         $strains = $result->map( function($value) {
@@ -95,6 +95,7 @@ class StrainController extends ImageController
             'image_id'                  => $image['id'],
             'published'                 => $pub
         ]);
+        Cache::forget('strains');
         Cache::put('strain:'. $newStrain->id, $newStrain, 666);
         return redirect()->to('/admin/strains/'. $newStrain->id);
     }

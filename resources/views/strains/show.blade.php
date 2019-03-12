@@ -22,8 +22,9 @@
     </div>
     <div class="row">
         <div class="col-sm-8 info">
-
-            <img src="{{$strain->image}}" title="{{$strain->name}}" alt="{{$strain->name}}">
+            <img src="{{$strain->image}}"
+                title="Picture of {{$strain->name}}, {{ $strain->feminized }} seeds for sale"
+                alt="Picture of {{$strain->name}}, {{ $strain->feminized }} seeds for sale">
         </div>
     <div class="col-sm-4 info">
     <div class="card">
