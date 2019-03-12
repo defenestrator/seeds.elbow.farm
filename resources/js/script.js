@@ -35,7 +35,6 @@ files.keys().map(key => {
  */
 
 const app = new Vue({
-    store,
     el: '#app',
     data() {
         return {
