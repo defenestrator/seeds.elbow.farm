@@ -16,10 +16,16 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-sm-12">
             <h1>{{ $strain->name }}</h1>
         </div>
-    <div style="margin-top:3em;" class="col-md-4">
+    </div>
+    <div class="row">
+        <div class="col-sm-8 info">
+
+            <img src="{{$strain->image}}" title="{{$strain->name}}" alt="{{$strain->name}}">
+        </div>
+    <div class="col-sm-4 info">
     <div class="card">
         <div class="card-body">
             <h5 class="card-title">
