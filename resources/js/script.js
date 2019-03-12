@@ -10,10 +10,8 @@ require('./bootstrap');
 // import swal from 'sweetalert';
 
 window.Vue = require('vue');
-
-import BootstrapVue from 'bootstrap-vue'
-
-Vue.use(BootstrapVue);
+import { currency } from './currency'
+import store from './store'
 
 /**
  * The following block of code may be used to automatically register your
@@ -37,6 +35,7 @@ files.keys().map(key => {
  */
 
 const app = new Vue({
+    store,
     el: '#app',
     data() {
         return {

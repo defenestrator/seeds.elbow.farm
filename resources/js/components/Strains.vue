@@ -1,5 +1,4 @@
 <script>
-// register the grid component
 export default {
   props: {
     products: Array
@@ -38,8 +37,7 @@ export default {
   },
   methods: {
     addToCart(e) {
-    let productId = e.target.id.split('-')[3]
-    let selectedPack = 6
+    this.user.cart.addProductId(this.product.id, thus.user.id)
     console.log(productId)
     let pack = this.selectedPack
 

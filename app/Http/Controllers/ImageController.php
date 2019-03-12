@@ -12,7 +12,7 @@ class ImageController extends Controller
 
     protected $options = [
         'visibility'    => 'public',
-        'Cache-Control' => 'max-age=31536000'
+        'Cache-Control' => 'public, max-age = 31536000'
     ];
 
     protected $small = 200;
