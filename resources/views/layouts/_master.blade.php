@@ -10,7 +10,6 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.googleapis.com">
     <link rel="icon" href="/favicon-100.png" sizes="100x100">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Great+Vibes|Roboto+Condensed:300">
     <!-- deferred loading of js -->
     <script src="{{ mix('js/script.js') }}" defer></script>
     <!-- Styles -->
