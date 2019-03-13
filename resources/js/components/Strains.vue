@@ -112,7 +112,7 @@ export default {
                             <label :for="'quantity-' + item.id" class="form-label form-inline"></label>
                             <input
                                 class="form-control form-inline input-group-sm"
-                                style="width:60px;"
+                                style=""
                                 type="number"
                                 :name="'quantity-' + item.id"
                                 value="1"
