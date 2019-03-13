@@ -17,7 +17,6 @@
                             users just yet, but there will be updates every day for the foreseeable future. Keep it
                             tight, friends.
                         </p>
-                    <p>You are logged in!</p>
                 </div>
             </div>
         </div>

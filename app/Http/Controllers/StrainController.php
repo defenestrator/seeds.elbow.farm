@@ -26,12 +26,6 @@ class StrainController extends ImageController
         });
         $strains = $result->map( function($value) {
             $value->selectedPack = 6;
-
-            if ( $value->feminized === 1 ) {
-                   $value->feminized = "feminized";
-            } else {
-                $value->feminized = 'regular';
-            }
             return $value;
         });
         return view('strains', compact('strains'));

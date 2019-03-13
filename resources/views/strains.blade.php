@@ -16,10 +16,8 @@
 @section('content')
 <div class="container text-center pagetitle">
     <h1>Available Strains</h1>
-    <strains
-        :products="{{ $strains }}"
-        >
-    </strains>
+</div>
+    <strains :products="{{ $strains }}" />
 </div>
 @stop
 
