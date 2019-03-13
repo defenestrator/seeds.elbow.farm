@@ -50,6 +50,11 @@
                     </div>
                 </div>
                 <div class="form-group row">
+                    <div class="col-md-12"><p>Genetics:</p>
+                        <input id="genetics" name="genetics" class="form-control input" type="text" placeholder="genetics" value="{{$strain->genetics}}">
+                    </div>
+                </div>
+                <div class="form-group row">
                     <div class="col-md-12">
                         <p>Description:</p>
                     <textarea name="description" class="form-control" >{{old('description')}}</textarea>
