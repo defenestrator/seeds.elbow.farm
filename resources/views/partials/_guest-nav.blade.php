@@ -6,5 +6,5 @@
 <li><a class="nav-link" href="{{ route('strains') }}">Strains</a></li>
 <li><a class="nav-link" href="{{ route('contact.create') }}">Contact</a></li>
 <li><a class="nav-link" href="{{ route('testers') }}">Testers</a></li>
-<li><a class="nav-link" href="https://chuckersparadise.com" target="_blank">Chucker's Paradise</a></li>
+<li><a class="nav-link" href="https://chuckersparadise.com/threads/heisenbeans-genetics.6/" target="_blank">Forum</a></li>
 
