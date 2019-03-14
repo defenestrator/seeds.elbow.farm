@@ -74,6 +74,7 @@ export default {
     </div>
     <div class="row" v-bind:key="products" v-for="products in filteredProducts">
         <div class="col-sm-4 info strainlisting" v-bind:key="item" v-for="item in products">
+            <hr>
             <h4><a :href="'/strains/' + item.id">{{item.name}}</a></h4>
             <a :href="'/strains/' + item.id"><img :src="item.image" :alt="item.name" :title="item.name"></a>
             <h5 style="margin-top:1em;">Premium {{item.feminized | feminize}} seeds</h5>
@@ -97,24 +98,22 @@ export default {
                 <p><strong> Genetics:</strong> {{ item.genetics }}</p>
                 <p><sup>*</sup> Disabled: under development <sup>*</sup></p>
                 <div class="form-group form-inline" style="justify-content: center;">
-                    <label :for="'quantity-' + item.id" class="form-label form-inline"></label>
-                    <input class="form-control form-inline input-group-sm" style="" type="number" :name="'quantity-' + item.id"
+                    <input class="form-control form-inline input-group-sm" style="max-width:60px;margin-bottom:0.1rem;" type="number" :name="'quantity-' + item.id"
                         value="1" min="1" max="10" :id="'quantity-' + item.id" />
                     &nbsp;
-                    <button role="button" :id="'buy-now-' + item.id" class="btn btn-primary form-inline input-group-sm"
+                    <button style="margin-bottom:0.1rem;" role="button" :id="'buy-now-' + item.id" class="btn btn-primary form-inline input-group-sm"
                         disabled>
                         BUY
                     </button>
                     &nbsp;
-                    <button role="button" :id="'add-to-cart-' + item.id" class="btn btn-outline-gray form-inline input-group-sm"
+                    <button style="margin-bottom:0.1rem;" role="button" :id="'add-to-cart-' + item.id" class="btn btn-outline-gray form-inline input-group-sm"
                         v-on:click.stop.prevent="addToCart($event)">
                         ADD TO CART
                     </button>
 
                 </div>
             </form>
-            <p class="straindescription">{{item.description}}</p>
-            <hr>
+            <p style="margin-bottom:3rem;" class="straindescription"><a :href="'/strains/' + item.id" :title="item.name + ' details page'">{{item.description}}</a></p>
         </div>
     </div>
 </div>
