@@ -76,6 +76,9 @@ const app = new Vue({
             }
         }
     },
+    filters: {
+
+    },
     watch: {
     cartActive: function (val) {
         if(val === true) {

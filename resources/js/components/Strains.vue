@@ -73,7 +73,7 @@ export default {
         </div>
     </div>
     <div class="row" v-bind:key="products" v-for="products in filteredProducts">
-        <div class="col-sm-4 info" v-bind:key="item" v-for="item in products">
+        <div class="col-sm-4 info strainlisting" v-bind:key="item" v-for="item in products">
             <h4><a :href="'/strains/' + item.id">{{item.name}}</a></h4>
             <a :href="'/strains/' + item.id"><img :src="item.image" :alt="item.name" :title="item.name"></a>
             <h5 style="margin-top:1em;">Premium {{item.feminized | feminize}} seeds</h5>
@@ -113,7 +113,7 @@ export default {
 
                 </div>
             </form>
-            <p>{{item.description}}</p>
+            <p class="straindescription">{{item.description}}</p>
             <hr>
         </div>
     </div>
