@@ -62,7 +62,6 @@ class StrainController extends ImageController
         $request->validate([
             'name'                      => 'required|min:2|max:140',
             'image'                     => 'required|image',
-            'description'               => 'max:1400'
         ]);
 
         $image = $this->generateImages($request->image);
@@ -149,8 +148,7 @@ class StrainController extends ImageController
     {
         $request->validate([
             'image'                     => 'image',
-            'name'                      => 'required|min:2|max:140',
-            'description'               => 'max:1400'
+            'name'                      => 'required|min:2|max:140'
         ]);
 
         $strain = $this->strain->find($id);
