@@ -48,9 +48,10 @@ files.keys().map(key => {
 
 const app = new Vue({
     el: '#app',
+    store,	
     data() {
         return {
-            cart: {},
+	    cart: {},
             cartActive: false,
             cartSlider: null,
             cartSliderButton: null
