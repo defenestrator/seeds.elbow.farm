@@ -63,9 +63,20 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $hidden = [
         'password', 'remember_token',
     ];
-
-    public function shippingAddresses() {
+    
+    public function shippingAddresses() 
+    {
         return $this->hasMany(ShippingAddress::class);
+    }
+    
+    public function invoices() 
+    {
+        return $this->hasMany(Invoice::class);
+    }
+    
+    public function payments() 
+    {
+        return $this->hasManyThrough(Invoice::class);
     }
 
 }

@@ -5,6 +5,7 @@ namespace Heisen\Http\Controllers;
 use Illuminate\Http\Request;
 use Heisen\Image as ImageModel;
 use Intervention\Image\Facades\Image;
+use Heisen\Requests\ImageRequest;
 use Illuminate\Support\Facades\Storage;
 
 class ImageController extends Controller
@@ -18,6 +19,7 @@ class ImageController extends Controller
     protected $small = 200;
     protected $thumb = 640;
     protected $large = 1280;
+    
     /**
      * wysiwygImageUpload
      *
@@ -25,12 +27,9 @@ class ImageController extends Controller
      *
      * @return void
      */
-    public function wysiwygImageUpload(Request $request)
+    public function wysiwygImageUpload(ImageRequest $request)
     {
-        $request->validate([
-            'image' => 'required|image|mimes:jpeg,jpg,png,bmp,gif,svg'
-        ]);
-
+        
         $large = $this->processImage($request->image, $this->large);
 
         return response()->json([

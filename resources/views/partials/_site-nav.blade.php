@@ -13,7 +13,6 @@
             </ul>
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-auto">
-
                 @include('partials._guest-nav')
                 @guest
                 <li><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li>
@@ -23,6 +22,5 @@
                 @endguest
             </ul>
         </div>
-
     </div>
 </nav>

@@ -59,7 +59,6 @@ export default {
         <div class="col-md-4 offset-md-4" style="margin-bottom:1em;">
             <form id="search">
                 <div class="input-group">
-
                     <input type="text" class="form-control form-inline" name="query" placeholder="Search to filter strains"
                         v-model="searchQuery" autofocus />
                     <div v-if="searchQuery !== ''" class="input-group-addon">
@@ -75,22 +74,22 @@ export default {
     <div class="row" v-bind:key="products" v-for="products in filteredProducts">
         <div class="col-sm-4 info strainlisting" v-bind:key="item" v-for="item in products">
             <hr>
-            <h4><a :href="'/strains/' + item.id">{{item.name}}</a></h4>
-            <a :href="'/strains/' + item.id"><img :src="item.image" :alt="item.name" :title="item.name"></a>
+            <h4><a :href="'/strains/' + item.uuid">{{item.name}}</a></h4>
+            <a :href="'/strains/' + item.uuid"><img :src="item.image" :alt="item.name" :title="item.name"></a>
             <h5 style="margin-top:1em;">Premium {{item.feminized | feminize}} seeds</h5>
             <form action="POST" target="/cart">
                 <div class="form-group">
                     <div class="form-group custom-control custom-radio custom-control-inline">
-                        <input type="radio" class="custom-control-input" :id="'seed-pack-6-' + item.id" :name="'seed-pack-' + item.id"
+                        <input type="radio" class="custom-control-input" :id="'seed-pack-6-' + item.uuid" :name="'seed-pack-' + item.uuid"
                             v-model.number="item.selectedPack" value="6" checked />
-                        <label class="custom-control-label" :for="'seed-pack-6-' + item.id">
+                        <label class="custom-control-label" :for="'seed-pack-6-' + item.uuid">
                             6 seeds $60
                         </label>
                     </div>
                     <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" class="custom-control-input" :id="'seed-pack-12-' + item.id" :name="'seed-pack-' + item.id"
+                        <input type="radio" class="custom-control-input" :id="'seed-pack-12-' + item.uuid" :name="'seed-pack-' + item.uuid"
                             v-model.number="item.selectedPack" value="12" />
-                        <label class="custom-control-label" :for="'seed-pack-12-' + item.id">
+                        <label class="custom-control-label" :for="'seed-pack-12-' + item.uuid">
                             12 seeds $100
                         </label>
                     </div>
@@ -98,15 +97,15 @@ export default {
                 <p><strong> Genetics:</strong> {{ item.genetics }}</p>
                 <p><sup>*</sup> Disabled: under development <sup>*</sup></p>
                 <div class="form-group form-inline" style="justify-content: center;">
-                    <input class="form-control form-inline input-group-sm" style="max-width:60px;margin-bottom:0.1rem;" type="number" :name="'quantity-' + item.id"
-                        value="1" min="1" max="10" :id="'quantity-' + item.id" />
+                    <input class="form-control form-inline input-group-sm" style="max-width:60px;margin-bottom:0.1rem;" type="number" :name="'quantity-' + item.uuid"
+                        value="1" min="1" max="10" :id="'quantity-' + item.uuid" />
                     &nbsp;
-                    <button style="margin-bottom:0.1rem;" role="button" :id="'buy-now-' + item.id" class="btn btn-primary form-inline input-group-sm"
+                    <button style="margin-bottom:0.1rem;" role="button" :id="'buy-now-' + item.uuid" class="btn btn-primary form-inline input-group-sm"
                         disabled>
                         BUY
                     </button>
                     &nbsp;
-                    <button style="margin-bottom:0.1rem;" role="button" :id="'add-to-cart-' + item.id" class="btn btn-outline-gray form-inline input-group-sm"
+                    <button style="margin-bottom:0.1rem;" role="button" :id="'add-to-cart-' + item.uuid" class="btn btn-outline-gray form-inline input-group-sm"
                         v-on:click.stop.prevent="addToCart($event)">
                         ADD TO CART
                     </button>

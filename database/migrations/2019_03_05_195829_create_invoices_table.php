@@ -47,5 +47,7 @@ class CreateInvoicesTable extends Migration
     public function down()
     {
         Schema::dropIfExists('invoices');
+        Schema::dropIfExists('payment_methods');
+        Schema::dropIfExists('invoice_seed_packs');
     }
 }

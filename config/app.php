@@ -173,11 +173,9 @@ return [
         Heisen\Providers\AuthServiceProvider::class,
         // Heisen\Providers\BroadcastServiceProvider::class,
         Heisen\Providers\EventServiceProvider::class,
-        Heisen\Providers\HorizonServiceProvider::class,
         Heisen\Providers\RouteServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
-        Intervention\Image\ImageServiceProvider::class,
-        Greggilbert\Recaptcha\RecaptchaServiceProvider::class
+        Intervention\Image\ImageServiceProvider::class
     ],
 
     /*
@@ -227,7 +225,6 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Image' => Intervention\Image\Facades\Image::class,
-        'Recaptcha' => Greggilbert\Recaptcha\Facades\Recaptcha::class,
     ],
 
 ];

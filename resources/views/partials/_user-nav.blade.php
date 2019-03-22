@@ -4,7 +4,6 @@
     </a>
 
     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-
         @if(in_array(Auth::user()->email , ['jeremyblc@gmail.com', 'mike@elbowfarm.com', 'heisen@heisenbeans.com']))
             <a class="dropdown-item nav-link" href="/admin/strains"><i class="fa fa-edit"></i> Edit Strains</a>
             <a class="dropdown-item nav-link" href="/admin/strains/create"><i class="fa fa-plus-circle"></i> New Strain</a>
@@ -25,7 +24,5 @@
         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
             @csrf
         </form>
-
-
     </div>
 </li>

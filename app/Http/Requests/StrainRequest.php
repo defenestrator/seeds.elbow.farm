@@ -13,10 +13,7 @@ class StrainRequest extends FormRequest
      */
     public function authorize()
     {
-        if (Auth::user()->can('create-strain')) {
-            return true;
-        }
-        return false;
+        return Auth::user()->can('create-strain');
     }
 
     /**
@@ -27,7 +24,8 @@ class StrainRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name'                      => 'required|min:2|max:140',
+            'image'                     => 'required|image',
         ];
     }
 }

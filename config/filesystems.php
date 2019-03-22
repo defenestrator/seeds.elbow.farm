@@ -62,6 +62,11 @@ return [
             'region' => env('AWS_DEFAULT_REGION'),
             'bucket' => env('AWS_BUCKET'),
             'url' => env('AWS_URL'),
+            'cache' => [
+                'store' => 'redis',
+                'expire' => 31356000,
+                'prefix' => '{heisen_image_cache}'
+                ],
         ],
 
     ],

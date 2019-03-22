@@ -28,11 +28,18 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\SeedPack wherePrice($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\SeedPack whereQtyPerPack($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\SeedPack whereStrainId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\SeedPack whereInvoiceId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\SeedPack whereUuid($value)
  */
 class SeedPack extends Model
 {
     public function strain()
     {
         return $this->belongsTo(Strain::class);
+    }
+    
+    public function invoices()
+    {
+        return $this->hasMany(Invoice::class);
     }
 }

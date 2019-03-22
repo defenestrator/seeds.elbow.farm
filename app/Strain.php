@@ -75,5 +75,4 @@ class Strain extends Model
     {
         return $this->hasMany(SeedPack::class);
     }
-
 }
