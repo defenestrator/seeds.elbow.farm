@@ -23,9 +23,9 @@ class StrainController extends Controller
     {
 
         $strains = Cache::remember('strains', 666, function() {
-            $results = $this->strain->where('published', '=', true)
-            ->select('name', 'description', 'uuid', 'image','feminized', 's1','flowering_time_max_weeks','flowering_time_min_weeks','published',)
-            ->orderBy('updated_at', 'desc')->keyBy('uuid')
+            $results = $this->strain->select('name', 'description', 'uuid', 'image','feminized', 's1','flowering_time_max_weeks','flowering_time_min_weeks','published',)
+            ->where('published', '=', true)            
+            ->orderBy('updated_at', 'desc')
             ->get();
             
             $strains = $results->map( function($value) {
@@ -34,7 +34,7 @@ class StrainController extends Controller
                 $value->perPack = 6;
                 $value->quantity = 1;
                 return $value;
-            });
+            })->keyBy('uuid');
         });
         return view('strains', compact('strains'));
     }
