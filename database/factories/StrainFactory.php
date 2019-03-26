@@ -7,6 +7,7 @@ $factory->define(Heisen\Strain::class, function (Faker $faker) {
         'breeder_id' => $faker->numberBetween(1,2),
         'image_id' => $faker->numberBetween(1,20),
         'feminized' => $faker->boolean,
+        's1' => $faker->boolean,
         'name'=> $faker->unique()->name(),
         'image'=> $faker->imageUrl(),
         'genetics'=> $faker->sentence(),

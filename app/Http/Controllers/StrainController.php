@@ -23,7 +23,11 @@ class StrainController extends Controller
     {
 
         $strains = Cache::remember('strains', 666, function() {
-            $results = $this->strain->where('published', '=', true)->orderBy('updated_at', 'desc')->get();
+            $results = $this->strain->where('published', '=', true)
+            ->select('name', 'description', 'uuid', 'image','feminized', 's1','flowering_time_max_weeks','flowering_time_min_weeks','published',)
+            ->orderBy('updated_at', 'desc')->keyBy('uuid');
+            ->get();
+            
             $strains = $results->map( function($value) {
                 $value->breeder = $value->breeder->name;
                 $value->price = 60;

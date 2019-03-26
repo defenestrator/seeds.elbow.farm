@@ -57,12 +57,12 @@ class Strain extends BaseModel
     protected $fillable = [
         'name',
         'feminized',
+        's1',
         'image',
         'image_id',
         'genetics',
         'description',
         'breeder_id',
-        'retail_price',
         'flowering_time_max_weeks',
         'flowering_time_min_weeks',
         'published',
