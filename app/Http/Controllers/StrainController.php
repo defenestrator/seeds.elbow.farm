@@ -21,12 +21,16 @@ class StrainController extends Controller
      */
     public function index()
     {
-        $result = Cache::remember('strains', 666, function() {
-            return $this->strain->with(['seed_packs','breeder'])->where('published', '=', true)->orderBy('updated_at', 'desc')->get();
-        });
-        $strains = $result->map( function($value) {
-            $value->selectedPack = 6;
-            return $value;
+
+        $strains = Cache::remember('strains', 666, function() {
+            $results = $this->strain->where('published', '=', true)->orderBy('updated_at', 'desc')->get();
+            $strains = $results->map( function($value) {
+                $value->breeder = $value->breeder->name;
+                $value->price = 60;
+                $value->perPack = 6;
+                $value->quantity = 1;
+                return $value;
+            });
         });
         return view('strains', compact('strains'));
     }

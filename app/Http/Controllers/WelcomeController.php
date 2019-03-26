@@ -24,15 +24,22 @@ class WelcomeController extends Controller
 
     public function index()
     {
-        $result = Cache::remember('strains', 60, function() {
-            return $this->strain->where('published', '=', true)->orderBy('updated_at', 'desc')->get();
+        $results = Cache::remember('strains', 60, function() {
+            return $this->strain->with(['breeder', 'seedPacks'])->where('published', '=', true)->orderBy('updated_at', 'desc')->get();
         });
-        $strains = $result->map( function($value) {
-            $value->selectedPack = 6;
-            return $value;
-        });
+        $strains = $results->map( function($value) {
+                $value->price = 60;
+                $value->perPack = 6;
+                $value->quantity = 1;
+                return $value;
+            });
 
-        $posts = $this->instagram->media();
+        $posts = [];
+
+        if (config('app.env') === 'production' && config('app.url') === 'https://heisenbeans.com') {
+            $posts = $this->instagram->media();
+        }
+
         return view('welcome', compact('posts', 'strains'));
     }
 }

@@ -6,7 +6,7 @@
     </div>
 
      <div class="row justify-content-center">
-        <h2>Exceptional Genetics</h2>
+        <h2>Feminized Fire</h2>
     </div>
     <hr>
     <strains :products="{{ $strains }}" />

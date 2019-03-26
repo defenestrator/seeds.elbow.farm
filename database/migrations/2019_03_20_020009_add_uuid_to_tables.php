@@ -8,19 +8,19 @@ use Ramsey\Uuid\Exception\UnsatisfiedDependencyException;
 
 class AddUuidToTables extends Migration
 {
-    public function makeUuid() 
+    public function makeUuid()
     {
         $uuid ='';
-        
+
         try {
-            $uuid= Uuid::uuid1()->toString();
+            $uuid = Uuid::uuid1()->toString();
         } catch (UnsatisfiedDependencyException $e) {
             echo 'Caught exception: ' . $e->getMessage() . "\n";
         }
-                
+
         return $uuid;
     }
-    
+
     /**
      * Run the migrations.
      *
@@ -33,20 +33,24 @@ class AddUuidToTables extends Migration
         ];
         foreach($tableNames as $tableName) {
             Schema::table($tableName, function (Blueprint $table) {
-                $table->uuid('uuid')->after('id')->nullable();
+                $table->uuid('uuid')->after('id')->unique()->nullable();
             });
-            $uuid = $this->makeUuid();
-            DB::table($tableName)->where('uuid', '=', null)->update(['uuid' => $uuid]);      
+            $records = DB::table($tableName)->where('uuid', '=', null)->get();
+            foreach($records as $record) {
+                DB::table($tableName)
+                ->where('id', '=', $record->id)
+                ->update(['uuid' => $this->makeUuid()]);
+            }
         }
-              
+
         Schema::table('invoices', function (Blueprint $table) {
             $table->text('customer_notes')->after('total')->nullable();
         });
-        
+
         Schema::table('payment_methods', function (Blueprint $table) {
             $table->text('account')->after('name')->nullable();
             $table->text('notes')->after('name')->nullable();
-        });        
+        });
     }
 
     /**

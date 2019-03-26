@@ -7,7 +7,7 @@ export default {
         return {
             columns: 3,
             searchQuery: '',
-            selectedPack: 6
+            perPack: 6
         }
     },
     computed: {
@@ -39,7 +39,7 @@ export default {
         addToCart(e) {
             this.user.cart.addProductId(this.product.id, thus.user.id)
             console.log(productId)
-            let pack = this.selectedPack
+            let pack = this.perPack
 
             console.log(pack)
 
@@ -54,7 +54,7 @@ export default {
 
 <template>
 <div class="container text-center">
-    <h3>Available Strains</h3>
+    <h3>Featured Seeds</h3>
     <div class="row text-center">
         <div class="col-md-4 offset-md-4" style="margin-bottom:1em;">
             <form id="search">
@@ -78,7 +78,7 @@ export default {
             <a :href="'/strains/' + item.uuid"><img :src="item.image" :alt="item.name" :title="item.name"></a>
             <h5 style="margin-top:1em;">Premium {{item.feminized | feminize}} seeds</h5>
             <form action="POST" target="/cart">
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <div class="form-group custom-control custom-radio custom-control-inline">
                         <input type="radio" class="custom-control-input" :id="'seed-pack-6-' + item.uuid" :name="'seed-pack-' + item.uuid"
                             v-model.number="item.selectedPack" value="6" checked />
@@ -93,11 +93,12 @@ export default {
                             12 seeds $100
                         </label>
                     </div>
-                </div>
+                </div> -->
                 <p><strong> Genetics:</strong> {{ item.genetics }}</p>
+                <p>6 seeds $60</p>
                 <p><sup>*</sup> Disabled: under development <sup>*</sup></p>
                 <div class="form-group form-inline" style="justify-content: center;">
-                    <input class="form-control form-inline input-group-sm" style="max-width:60px;margin-bottom:0.1rem;" type="number" :name="'quantity-' + item.uuid"
+                    <input v-model.number="item.quantity" class="form-control form-inline input-group-sm" style="max-width:60px;margin-bottom:0.1rem;" type="number" :name="'quantity-' + item.uuid"
                         value="1" min="1" max="10" :id="'quantity-' + item.uuid" />
                     &nbsp;
                     <button style="margin-bottom:0.1rem;" role="button" :id="'buy-now-' + item.uuid" class="btn btn-primary form-inline input-group-sm"
@@ -106,7 +107,7 @@ export default {
                     </button>
                     &nbsp;
                     <button style="margin-bottom:0.1rem;" role="button" :id="'add-to-cart-' + item.uuid" class="btn btn-outline-gray form-inline input-group-sm"
-                        v-on:click.stop.prevent="addToCart($event)">
+                        v-on:click.stop.prevent="addToCart($event)" disabled>
                         ADD TO CART
                     </button>
 

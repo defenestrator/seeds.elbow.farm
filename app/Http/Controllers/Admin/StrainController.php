@@ -26,7 +26,7 @@ class StrainController extends ImageController
         return view('strains.list', ['content' => $this->strain->orderBy('updated_at', 'desc')->get()]);
     }
 
-    
+
     /**
      * Show the form for creating a new resource.
      *
@@ -47,20 +47,13 @@ class StrainController extends ImageController
     {
         $image = $this->generateImages($request->image);
 
-        $fem = false;
-        $pub = false;
-
-        if ( $request->feminized == 'on' ) {
-            $fem = true;
-        }
-
         if ( $request->published == 'on' ) {
             $pub = true;
         }
 
         $newStrain = $this->strain->create([
             'breeder_id'                => 1,
-            'feminized'                 => $fem,
+            'feminized'                 => true,
             'flowering_time_min_weeks'  => $request->min_flowering_time,
             'flowering_time_max_weeks'  => $request->max_flowering_time,
             'description'               => $request->description,
