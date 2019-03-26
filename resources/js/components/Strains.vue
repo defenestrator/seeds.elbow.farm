@@ -72,7 +72,7 @@ export default {
             </form>
         </div>
     </div>
-    <div class="row" v-bind:key="products" v-for="products in filteredProducts">
+    <div class="row" v-bind:key="products.uuid" v-for="products in filteredProducts">
         <div class="col-sm-4 info strainlisting" v-bind:key="item" v-for="item in products">
             <hr>
             <h4><a :href="'/strains/' + item.uuid">{{item.name}}</a></h4>
