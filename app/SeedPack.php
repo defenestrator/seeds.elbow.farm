@@ -30,6 +30,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\SeedPack whereStrainId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\SeedPack whereInvoiceId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\SeedPack whereUuid($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Heisen\Invoice[] $invoices
  */
 class SeedPack extends BaseModel
 {

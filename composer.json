@@ -16,6 +16,7 @@
         "php-ffmpeg/php-ffmpeg": "^0.13.0",
         "php-http/message": "^1.7",
         "predis/predis": "^1.1",
+        "ramsey/uuid": "^3.8",
         "spatie/laravel-permission": "^2.26",
         "spatie/laravel-responsecache": "^4.4",
         "vinkla/instagram": "^9.1"

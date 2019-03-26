@@ -48,6 +48,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read \Illuminate\Database\Eloquent\Collection|\Heisen\SeedPack[] $seedPacks
  * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Strain whereImageId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Strain whereSeedPackId($value)
+ * @property string|null $uuid
+ * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Strain whereUuid($value)
  */
 class Strain extends BaseModel
 {

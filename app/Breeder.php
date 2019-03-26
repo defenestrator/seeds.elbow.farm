@@ -27,6 +27,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Breeder whereUserId($value)
  * @mixin \Eloquent
  * @property-read \Illuminate\Database\Eloquent\Collection|\Heisen\Strain[] $strains
+ * @property string|null $uuid
+ * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Breeder whereUuid($value)
  */
 class Breeder extends Model
 {

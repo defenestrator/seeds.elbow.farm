@@ -9,6 +9,8 @@ use Illuminate\Auth\MustVerifyEmail as VerifyEmail;
 use Spatie\Permission\Traits\HasRoles;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+use Ramsey\Uuid\Uuid;
+use Ramsey\Uuid\Exception\UnsatisfiedDependencyException;
 
 /**
  * Heisen\User
@@ -38,8 +40,13 @@ use Spatie\Permission\Models\Permission;
  * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\User permission($permissions)
  * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Permission\Models\Role[] $roles
  * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\User role($roles, $guard = null)
+ * @property string|null $uuid
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Heisen\Invoice[] $invoices
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Heisen\Payments[] $payments
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Permission\Models\Permission[] $permissions
+ * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\User whereUuid($value)
  */
-class User extends Authenticatable extends BaseModel implements MustVerifyEmail 
+class User extends Authenticatable implements MustVerifyEmail 
 {
     
     use Notifiable;
@@ -63,6 +70,21 @@ class User extends Authenticatable extends BaseModel implements MustVerifyEmail
     protected $hidden = [
         'password', 'remember_token',
     ];
+    
+    public function makeUuid() 
+    {
+        $uuid ='';
+        
+        try {
+            $uuid= Uuid::uuid1()->toString();
+        } catch (UnsatisfiedDependencyException $e) {            
+            // Some dependency was not met. Either the method cannot be called on a
+            // 32-bit system, or it can, but it relies on Moontoast\Math to be present.
+            echo 'Caught exception: ' . $e->getMessage() . "\n";
+        }
+                
+        return $uuid;
+    }
         
     public function shippingAddresses() 
     {
@@ -76,7 +98,7 @@ class User extends Authenticatable extends BaseModel implements MustVerifyEmail
     
     public function payments() 
     {
-        return $this->hasManyThrough(Invoice::class);
+        return $this->hasManyThrough(Payments::class, Invoice::class);
     }
 
 }

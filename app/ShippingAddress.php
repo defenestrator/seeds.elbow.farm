@@ -34,6 +34,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\ShippingAddress whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\ShippingAddress whereUserId($value)
  * @mixin \Eloquent
+ * @property-read \Heisen\User $user
  */
 class ShippingAddress extends Model
 {
