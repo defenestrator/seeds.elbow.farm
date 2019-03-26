@@ -16,7 +16,7 @@ export default new Vuex.Store({
     cart,
     products,
     actions,
-    mutations.
+    mutations,
     strict: logger,
     plugins	
   }
