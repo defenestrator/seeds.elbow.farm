@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace Heisen\Providers;
 
 use Laravel\Horizon\Horizon;
 use Illuminate\Support\Facades\Gate;
