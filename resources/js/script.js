@@ -10,8 +10,8 @@ require('./bootstrap');
 import swal from 'sweetalert';
 
 window.Vue = require('vue');
-// import { currency } from './currency'
-// import store from './store'
+import { currency } from './currency'
+import store from './store'
 
 const mainFont = document.createElement('link');
         mainFont.href ='https://fonts.googleapis.com/css?family=Great+Vibes|Roboto+Condensed:300';
