@@ -8,11 +8,17 @@ use Ramsey\Uuid\Exception\UnsatisfiedDependencyException;
 
 class AddUuidToTables extends Migration
 {
-    protected $uuid;
-    
-    public function __construct (Uuid $uuid) 
+    public function makeUuid() 
     {
-        $this->uuid = $uuid;
+        $uuid ='';
+        
+        try {
+            $uuid= Uuid::uuid1()->toString();
+        } catch (UnsatisfiedDependencyException $e) {
+            echo 'Caught exception: ' . $e->getMessage() . "\n";
+        }
+                
+        return $uuid;
     }
     
     /**
@@ -27,9 +33,10 @@ class AddUuidToTables extends Migration
         ];
         foreach($tableNames as $tableName) {
             Schema::table($tableName, function (Blueprint $table) {
-                $table->uuid('uuid')->after('id')->unique()->nullable();
+                $table->uuid('uuid')->after('id')->nullable();
             });
-            DB::table($tableName)->where('uuid' === null)->update('uuid' => $uuid->uuid1());      
+            $uuid = $this->makeUuid();
+            DB::table($tableName)->where('uuid', '=', null)->update(['uuid' => $uuid]);      
         }
               
         Schema::table('invoices', function (Blueprint $table) {
