@@ -22,7 +22,7 @@ class AddUuidToTables extends Migration
      */
     public function up()
     {
-        protected $tableNames = [
+        $tableNames = [
             'users', 'strains', 'breeders', 'invoices', 'payment_methods'
         ];
         foreach($tableNames as $tableName) {
