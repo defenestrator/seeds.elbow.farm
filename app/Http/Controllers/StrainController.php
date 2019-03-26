@@ -35,8 +35,8 @@ class StrainController extends Controller
                 $value->quantity = 1;
                 return $value;
             });
-                        
-            return $strains = $result->keyBy('uuid');        
+                 
+            return $strains = $result->wrap($result->keyBy('uuid'));
             
         });
         return view('strains', compact('strains'));
