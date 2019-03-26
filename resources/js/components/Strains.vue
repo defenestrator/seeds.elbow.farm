@@ -1,7 +1,7 @@
 <script>
 export default {
     props: {
-        products: Object
+        products: Array
     },
     data: function () {
         return {
@@ -14,6 +14,7 @@ export default {
         filteredProducts: function () {
             var filterKey = _.trim(this.searchQuery && this.searchQuery.toLowerCase())
             var products = this.products
+            console.log(this.products)
             if (filterKey) {
                 products = this.products.filter(function (row) {
                     return Object.keys(row).some(function (key) {
@@ -37,7 +38,7 @@ export default {
     },
     methods: {
         addToCart(e) {
-            this.user.cart.addProductId(this.product.id, thus.user.id)
+            this.user.cart.addProductId(this.product.id, this.user.id)
             console.log(productId)
             let pack = this.perPack
 
