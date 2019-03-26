@@ -23,18 +23,20 @@ class StrainController extends Controller
     {
 
         $strains = Cache::remember('strains', 666, function() {
-            $results = $this->strain->select('name', 'description', 'uuid', 'image','feminized', 's1','flowering_time_max_weeks','flowering_time_min_weeks','published',)
-            ->where('published', '=', true)            
+            $result= $this->strain
+            ->where('published', '=', true)
+            ->with(['breeder', 'seedPacks'])            
             ->orderBy('updated_at', 'desc')
             ->get();
             
-            $strains = $results->map( function($value) {
-                $value->breeder = $value->breeder->name;
+            $result->map( function($value) {
                 $value->price = 60;
                 $value->perPack = 6;
                 $value->quantity = 1;
                 return $value;
-            })->keyBy('uuid');
+            });
+            $strains = $result->keyBy('uuid');
+        
         });
         return view('strains', compact('strains'));
     }
