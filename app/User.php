@@ -35,17 +35,17 @@ use Spatie\Permission\Models\Permission;
  * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\User whereRememberToken($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\User whereUpdatedAt($value)
  * @mixin \Eloquent
- * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Permission\Models\Permission[] $permissions
  * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\User permission($permissions)
  * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Permission\Models\Role[] $roles
  * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\User role($roles, $guard = null)
  */
-class User extends Authenticatable implements MustVerifyEmail
+class User extends Authenticatable extends BaseModel implements MustVerifyEmail 
 {
     
     use Notifiable;
     use VerifyEmail;
     use HasRoles;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -63,7 +63,7 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $hidden = [
         'password', 'remember_token',
     ];
-    
+        
     public function shippingAddresses() 
     {
         return $this->hasMany(ShippingAddress::class);

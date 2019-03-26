@@ -31,7 +31,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\SeedPack whereInvoiceId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\SeedPack whereUuid($value)
  */
-class SeedPack extends Model
+class SeedPack extends BaseModel
 {
     public function strain()
     {

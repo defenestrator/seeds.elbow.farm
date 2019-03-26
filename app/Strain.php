@@ -49,7 +49,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Strain whereImageId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Strain whereSeedPackId($value)
  */
-class Strain extends Model
+class Strain extends BaseModel
 {
 
     protected $fillable = [
