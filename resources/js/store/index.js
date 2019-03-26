@@ -18,5 +18,6 @@ export default new Vuex.Store({
     actions,
     mutations,
     strict: logger,
-    plugins	
+    plugins
   }
+}
