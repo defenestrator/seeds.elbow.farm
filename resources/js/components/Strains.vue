@@ -48,9 +48,6 @@ export default {
             this.searchQuery = ''
         }
     },
-    mounted: {
-        console.log(this.products)
-    }
 }
 
 </script>
