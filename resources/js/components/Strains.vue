@@ -14,7 +14,6 @@ export default {
         filteredProducts: function () {
             var filterKey = _.trim(this.searchQuery && this.searchQuery.toLowerCase())
             var products = this.products
-            console.log(this.products)
             if (filterKey) {
                 products = this.products.filter(function (row) {
                     return Object.keys(row).some(function (key) {
