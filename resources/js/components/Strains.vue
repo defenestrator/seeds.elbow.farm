@@ -99,7 +99,7 @@ export default {
                 <p><sup>*</sup> Disabled: under development <sup>*</sup></p>
                 <div class="form-group form-inline" style="justify-content: center;">
                     <input v-model.number="item.quantity" class="form-control form-inline input-group-sm" style="max-width:60px;margin-bottom:0.1rem;" type="number" :name="'quantity-' + item.uuid"
-                        value="1" min="1" max="10" :id="'quantity-' + item.uuid" />
+                        min="1" max="10" :id="'quantity-' + item.uuid" />
                     &nbsp;
                     <button style="margin-bottom:0.1rem;" role="button" :id="'buy-now-' + item.uuid" class="btn btn-primary form-inline input-group-sm"
                         disabled>
