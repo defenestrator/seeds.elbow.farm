@@ -4,6 +4,7 @@ namespace Heisen\Http\Controllers;
 use Illuminate\Http\Request;
 use Heisen\Strain;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Collection;
 
 class StrainController extends Controller
 {
@@ -35,10 +36,11 @@ class StrainController extends Controller
                 $value->quantity = 1;
                 return $value;
             });
-                 
-            return $strains = $result->wrap($result->keyBy('uuid'));
+            
+            return $strains = $result->keyBy('uuid');
             
         });
+        $strains = Collection::wrap($strains);
         return view('strains', compact('strains'));
     }
 
