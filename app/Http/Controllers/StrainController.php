@@ -41,6 +41,7 @@ class StrainController extends Controller
             
         });
         $strains = Collection::wrap($strains);
+        dd($strains);
         return view('strains', compact('strains'));
     }
 

@@ -1,7 +1,7 @@
 <script>
 export default {
     props: {
-        products: Object
+        products: Array
     },
     data: function () {
         return {
