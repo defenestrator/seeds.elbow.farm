@@ -40,7 +40,6 @@ class StrainController extends Controller
             return $strains = $result->keyBy('uuid');
             
         });
-        $strains = Collection::wrap($strains);
         return view('strains', compact('strains'));
     }
 
