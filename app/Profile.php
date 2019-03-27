@@ -31,6 +31,10 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Profile whereUserId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Profile whereUserTitle($value)
  * @mixin \Eloquent
+ * @property int $public
+ * @property string $chuckers_paradise
+ * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Profile whereChuckersParadise($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Profile wherePublic($value)
  */
 class Profile extends Model
 {

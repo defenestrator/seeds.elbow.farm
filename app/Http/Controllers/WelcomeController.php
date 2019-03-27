@@ -12,8 +12,10 @@ class WelcomeController extends Controller
     protected $token = '';
     protected $instagram = null;
     protected $strain;
+
     /**
      * WelcomeController constructor.
+     * @param Strain $strain
      */
     public function __construct(Strain $strain)
     {

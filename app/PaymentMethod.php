@@ -19,6 +19,12 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\PaymentMethod whereImage($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\PaymentMethod whereName($value)
  * @mixin \Eloquent
+ * @property string|null $uuid
+ * @property string|null $notes
+ * @property string|null $account
+ * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\PaymentMethod whereAccount($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\PaymentMethod whereNotes($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\PaymentMethod whereUuid($value)
  */
 class PaymentMethod extends Model
 {

@@ -34,11 +34,16 @@ use Illuminate\Database\Eloquent\Model;
  */
 class SeedPack extends BaseModel
 {
+    protected $attributes = [
+        'price' => 60,
+        'qty_per_pack' => 6
+    ];
+    
     public function strain()
     {
         return $this->belongsTo(Strain::class);
     }
-    
+
     public function invoices()
     {
         return $this->hasMany(Invoice::class);

@@ -25,6 +25,10 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Invoice whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Invoice whereUserId($value)
  * @mixin \Eloquent
+ * @property string|null $uuid
+ * @property string|null $customer_notes
+ * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Invoice whereCustomerNotes($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Invoice whereUuid($value)
  */
 class Invoice extends Model
 {

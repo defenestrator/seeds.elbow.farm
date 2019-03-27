@@ -50,6 +50,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Strain whereSeedPackId($value)
  * @property string|null $uuid
  * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Strain whereUuid($value)
+ * @property int $s1
+ * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Strain whereS1($value)
  */
 class Strain extends BaseModel
 {
@@ -66,6 +68,9 @@ class Strain extends BaseModel
         'flowering_time_max_weeks',
         'flowering_time_min_weeks',
         'published',
+    ];
+    protected $attributes = [
+        'feminized' => true
     ];
 
     public function breeder()
