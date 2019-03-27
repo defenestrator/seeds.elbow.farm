@@ -24,15 +24,22 @@ class WelcomeController extends Controller
 
     public function index()
     {
-        $results = Cache::remember('strains', 60, function() {
-            return $this->strain->with(['breeder', 'seedPacks'])->where('published', '=', true)->orderBy('updated_at', 'desc')->get();
-        });
-        $strains = $results->map( function($value) {
+        $strains = Cache::remember('strains', 60, function() {
+            $strains = $this->strain
+            ->where('published', '=', true)
+            ->with(['breeder', 'seedPacks'])
+            ->orderBy('updated_at', 'desc')
+            ->get();
+
+            $strains->map( function($value) {
                 $value->price = 60;
                 $value->perPack = 6;
                 $value->quantity = 1;
                 return $value;
             });
+            return $strains;
+        });
+
 
         $posts = [];
 
