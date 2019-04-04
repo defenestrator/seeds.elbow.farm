@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,32 +18,34 @@
     <!-- Page level Styles -->
     @yield('page_styles', '')
 </head>
-<body>
-<div id="app">
-    @include('partials._site-nav')
-    <div class="d-flex flex-row-reverse cart-slider-wrapper">
-        <div id="cart-slider" class="cart-slider">
-            <div class="container cart-slider-contents">
-            <h4>Shopping Cart</h4>
-             <p>is currently under development.</p>
-            </div>
-        </div>
-        <i class="fa fa-lg fa-dark fa-shopping-cart cart-slider-button" id="cart-slider-button" v-on:click="toggleCartSlider()"></i>
-</div>
 
-    @yield('top')
-    <main class="py-4">
-        @yield('message')
-        @yield('content')
-        @yield('bottom')
-        <div class="container">
-            <hr>
-            <p class="footer small">&copy; Heisenbeans &trade; {{ date('F jS, Y') }}</p>
+<body>
+    <div id="app">
+        @include('partials._site-nav')
+        <div class="d-flex flex-row-reverse cart-slider-wrapper">
+            <div id="cart-slider" class="cart-slider">
+                <div class="container cart-slider-contents">
+                    <h4>Shopping Cart</h4>
+                    <p>is currently under development.</p>
+                </div>
+            </div>
+            <i class="fa fa-lg fa-dark fa-shopping-cart cart-slider-button" id="cart-slider-button"
+                v-on:click="toggleCartSlider()"></i>
         </div>
-    </main>
-</div>
-@yield('page_scripts')
-@yield('modals')
-@yield('scripts')
+        @yield('top')
+        <main class="py-4">
+            @yield('message')
+            @yield('content')
+            @yield('bottom')
+            <div class="container">
+                <hr>
+                <p class="footer small">&copy; Heisenbeans &trade; {{ date('F jS, Y') }}</p>
+            </div>
+        </main>
+    </div>
+    @yield('page_scripts')
+    @yield('modals')
+    @yield('scripts')
 </body>
+
 </html>

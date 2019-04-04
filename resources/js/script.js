@@ -10,7 +10,9 @@ require('./bootstrap');
 import swal from 'sweetalert';
 
 window.Vue = require('vue');
+
 import { currency } from './currency'
+
 import store from './store'
 
 const mainFont = document.createElement('link');
@@ -47,41 +49,41 @@ files.keys().map(key => {
  */
 
 
+import addToCart from './addToCart'
+
 const app = new Vue({
     el: '#app',
     store,
+    addToCart,
+    mixins: [addToCart],
     swal,
     currency,
+    created() {
+
+        this.products = [...document.getElementsByClassName('add-to-cart')];
+    },
     data() {
         return {
-        selectedPack: 6,
-	    cart: {},
             cartActive: false,
             cartSlider: null,
-            cartSliderButton: null
+            cartSliderButton: null,
+            selectedPack: 6,
+            cart: {},
         }
     },
-    created () {
-    },
     methods: {
-        addToCart(e) {
-            let productId = e.target.id.split('-')[3]
-            console.log(productId)
-        },
         toggleCartSlider() {
-            if(this.cartSlider.offsetWidth === 0) {
+            if (this.cartSlider.offsetWidth === 0) {
                 this.cartActive = true
             } else {
-            this.cartActive = false
+                this.cartActive = false
             }
         }
     },
-    filters: {
 
-    },
     watch: {
-    cartActive: function (val) {
-        if(val === true) {
+        cartActive: function (val) {
+            if (val === true) {
                 this.cartSlider.classList.add('cart-slider-active')
                 this.cartSliderButton.classList.remove('fa-shopping-cart')
                 this.cartSliderButton.classList.add('fa-window-close')
@@ -94,10 +96,8 @@ const app = new Vue({
             }
         }
     },
-    created() {
-        this.products = [...document.getElementsByClassName('add-to-cart')];
-    },
-    mounted () {
+
+    mounted() {
         this.cartSlider = document.getElementById('cart-slider')
         this.cartSliderButton = document.getElementById('cart-slider-button')
 

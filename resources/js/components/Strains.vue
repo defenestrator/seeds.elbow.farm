@@ -1,4 +1,5 @@
 <script>
+import addToCart from '../addToCart'
 export default {
   props: {
     products: Array
@@ -42,17 +43,11 @@ export default {
     }
   },
   methods: {
-    addToCart(e) {
-      this.user.cart.addProductId(this.product.id, this.user.id);
-      console.log(productId);
-      let pack = this.perPack;
-
-      console.log(pack);
-    },
     clearSearchQuery() {
       this.searchQuery = "";
     }
-  }
+  },
+  mixins:[addToCart]
 };
 </script>
 
@@ -147,7 +142,6 @@ export default {
               role="button"
               :id="'buy-now-' + item.uuid"
               class="btn btn-primary form-inline input-group-sm"
-              disabled
             >BUY</button>
             &nbsp;
             <button
@@ -155,8 +149,7 @@ export default {
               role="button"
               :id="'add-to-cart-' + item.uuid"
               class="btn btn-outline-gray form-inline input-group-sm"
-              v-on:click.stop.prevent="addToCart($event)"
-              disabled
+              v-on:click.stop.prevent="addToCart(item)"
             >ADD TO CART</button>
           </div>
         </form>
