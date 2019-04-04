@@ -7,6 +7,7 @@ use Heisen\Strain;
 use Heisen\Http\Requests\StrainRequest;
 use Illuminate\Support\Facades\Cache;
 
+
 class StrainController extends ImageController
 {
     protected $strain;
