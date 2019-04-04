@@ -4,8 +4,9 @@ namespace Heisen\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use Heisen\Strain;
-use Heisen\Requests\StrainRequest;
+use Heisen\Http\Requests\StrainRequest;
 use Illuminate\Support\Facades\Cache;
+
 
 class StrainController extends ImageController
 {
