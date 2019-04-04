@@ -50,8 +50,11 @@ files.keys().map(key => {
 const app = new Vue({
     el: '#app',
     store,
+    swal,
+    currency,
     data() {
         return {
+        selectedPack: 6,
 	    cart: {},
             cartActive: false,
             cartSlider: null,
@@ -63,12 +66,7 @@ const app = new Vue({
     methods: {
         addToCart(e) {
             let productId = e.target.id.split('-')[3]
-            let selectedPack = 6
             console.log(productId)
-            let pack = this.selectedPack
-
-            console.log(pack)
-
         },
         toggleCartSlider() {
             if(this.cartSlider.offsetWidth === 0) {

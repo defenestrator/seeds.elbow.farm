@@ -26,10 +26,10 @@ body {
 }
 
 h1 {
-  font-family: $font-family-serif;
+  font-family: $font-family-cursive;
   font-size:48px;
   font-weight:100;
-  text-shadow: #000 1px 1px 2px, #94ffa5 2px 2px 2px;
+  text-shadow: #666 1px 1px 2px, #94ffa5 1px 1px 2px;
   color:#344456;
 }
 
@@ -178,4 +178,16 @@ form, input[type=text], input[type=number], input[type=select], textarea {
 
 .btn-outline-gray {
     border: 1px solid #9aaabc;
+}
+
+.input-group>.custom-file,
+.input-group>.custom-select,
+.input-group>.form-control,
+.input-group>.form-control-plaintext,
+.form-control:focus {
+    box-shadow: 1px 1px 2px #666, 1px 1px 2px #94ffa5;
+}
+
+.form-control:focus {
+    border-color:$green;
 }
