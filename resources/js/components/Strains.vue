@@ -1,84 +1,111 @@
 <script>
 export default {
-    props: {
-        products: Array
+  props: {
+    products: Array
+  },
+  data: function() {
+    return {
+      columns: 3,
+      searchQuery: "",
+      perPack: 6
+    };
+  },
+  computed: {
+    filteredProducts: function() {
+      var filterKey = _.trim(
+        this.searchQuery && this.searchQuery.toLowerCase()
+      );
+      var products = this.products;
+      if (filterKey) {
+        products = this.products.filter(function(row) {
+          return Object.keys(row).some(function(key) {
+            return (
+              String(row[key])
+                .toLowerCase()
+                .indexOf(filterKey) > -1
+            );
+          });
+        });
+      }
+      return _.chunk(products, 3);
+    }
+  },
+  filters: {
+    capitalize: function(str) {
+      return str.charAt(0).toUpperCase() + str.slice(1);
     },
-    data: function () {
-        return {
-            columns: 3,
-            searchQuery: '',
-            perPack: 6
-        }
-    },
-    computed: {
-        filteredProducts: function () {
-            var filterKey = _.trim(this.searchQuery && this.searchQuery.toLowerCase())
-            var products = this.products
-            if (filterKey) {
-                products = this.products.filter(function (row) {
-                    return Object.keys(row).some(function (key) {
-                        return String(row[key]).toLowerCase().indexOf(filterKey) > -1
-                    })
-                })
-            }
-            return _.chunk(products, 3)
-        },
-    },
-    filters: {
-        capitalize: function (str) {
-            return str.charAt(0).toUpperCase() + str.slice(1)
-        },
-        feminize: function (num) {
-            if (num === 1) {
-                return "feminized"
-            }
-            return "regular"
-        }
-    },
-    methods: {
-        addToCart(e) {
-            this.user.cart.addProductId(this.product.id, this.user.id)
-            console.log(productId)
-            let pack = this.perPack
+    feminize: function(num) {
+      if (num === 1) {
+        return "feminized";
+      }
+      return "regular";
+    }
+  },
+  methods: {
+    addToCart(e) {
+      this.user.cart.addProductId(this.product.id, this.user.id);
+      console.log(productId);
+      let pack = this.perPack;
 
-            console.log(pack)
-
-        },
-        clearSearchQuery() {
-            this.searchQuery = ''
-        }
+      console.log(pack);
     },
-}
-
+    clearSearchQuery() {
+      this.searchQuery = "";
+    }
+  }
+};
 </script>
 
 <template>
-<div class="container text-center">
+  <div class="container text-center">
     <h3>Featured Seeds</h3>
     <div class="row text-center">
-        <div class="col-md-4 offset-md-4" style="margin-bottom:1em;">
-            <form id="search">
-                <div class="input-group">
-                    <input type="text" class="form-control form-inline" name="query" placeholder="Search to filter strains"
-                        v-model="searchQuery" autofocus />
-                    <div v-if="searchQuery !== ''" class="input-group-addon">
-                        <button v-on:click="clearSearchQuery()" for="query" class="btn btn-info input-group-addon form-inline">
-                            <i class="fa fa-close" id="clear_filter">
-                            </i>
-                        </button>
-                    </div>
-                </div>
-            </form>
-        </div>
+      <div class="col-md-4 offset-md-4" style="margin-bottom:1em;">
+        <form id="search">
+          <div class="input-group">
+            <input
+              type="text"
+              class="form-control form-inline"
+              name="query"
+              placeholder="Search to filter strains"
+              v-model="searchQuery"
+              autofocus
+            >
+            <div v-if="searchQuery !== ''" class="input-group-addon">
+              <button
+                v-on:click="clearSearchQuery()"
+                for="query"
+                class="btn btn-info input-group-addon form-inline"
+              >
+                <i class="fa fa-close" id="clear_filter"></i>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
     <div class="row" v-bind:key="products.uuid" v-for="products in filteredProducts">
-        <div class="col-sm-4 info strainlisting" v-bind:key="item.uuid" v-for="item in products">
-            <hr>
-            <h4><a :href="'/strains/' + item.uuid">{{item.name}}</a></h4>
-            <a :href="'/strains/' + item.uuid"><img :src="item.image" :alt="item.name" :title="item.name"></a>
-            <h5 style="margin-top:1em;">Premium {{item.feminized | feminize}} seeds</h5>
-            <form action="POST" target="/cart">
-                <!-- <div class="form-group">
+      <div class="col-sm-4 info strainlisting" v-bind:key="item.uuid" v-for="item in products">
+        <hr>
+        <h4>
+          <a :href="'/strains/' + item.uuid">
+            {{item.name}}
+            <div class="s1" v-if="item.s1 === 1">S1
+                <span class="tooltiptext">
+                    Breeders use various techniques to encourage the production of male
+                    flowers on female plants. When this pollen is used to pollinate
+                    the same "mother", or her clones, the seeds are called an "S1" generation. </span>
+            </div>
+
+
+          </a>
+        </h4>
+        <a :href="'/strains/' + item.uuid">
+          <img :src="item.image" :alt="item.name" :title="item.name">
+        </a>
+        <h5 style="margin-top:1em;">Premium {{item.feminized | feminize}} seeds</h5>
+        <form action="POST" target="/cart">
+          <!-- <div class="form-group">
                     <div class="form-group custom-control custom-radio custom-control-inline">
                         <input type="radio" class="custom-control-input" :id="'seed-pack-6-' + item.uuid" :name="'seed-pack-' + item.uuid"
                             v-model.number="item.selectedPack" value="6" checked />
@@ -93,92 +120,83 @@ export default {
                             12 seeds $100
                         </label>
                     </div>
-                </div> -->
-                <p><strong> Genetics:</strong> {{ item.genetics }}</p>
-                <p>6 seeds $60</p>
-                <p><sup>*</sup> Disabled: under development <sup>*</sup></p>
-                <div class="form-group form-inline" style="justify-content: center;">
-                    <input v-model.number="item.quantity" class="form-control form-inline input-group-sm" style="max-width:60px;margin-bottom:0.1rem;" type="number" :name="'quantity-' + item.uuid"
-                        min="1" max="10" :id="'quantity-' + item.uuid" />
-                    &nbsp;
-                    <button style="margin-bottom:0.1rem;" role="button" :id="'buy-now-' + item.uuid" class="btn btn-primary form-inline input-group-sm"
-                        disabled>
-                        BUY
-                    </button>
-                    &nbsp;
-                    <button style="margin-bottom:0.1rem;" role="button" :id="'add-to-cart-' + item.uuid" class="btn btn-outline-gray form-inline input-group-sm"
-                        v-on:click.stop.prevent="addToCart($event)" disabled>
-                        ADD TO CART
-                    </button>
-
-                </div>
-            </form>
-            <p style="margin-bottom:3rem;" class="straindescription"><a :href="'/strains/' + item.id" :title="item.name + ' details page'">{{item.description}}</a></p>
-        </div>
+          </div>-->
+          <p>
+            <strong>Genetics:</strong>
+            {{ item.genetics }}
+          </p>
+          <p>6 seeds $60</p>
+          <p>
+            <sup>*</sup> Disabled: under development
+            <sup>*</sup>
+          </p>
+          <div class="form-group form-inline" style="justify-content: center;">
+            <input
+              v-model.number="item.quantity"
+              class="form-control form-inline input-group-sm"
+              style="max-width:60px;margin-bottom:0.1rem;"
+              type="number"
+              :name="'quantity-' + item.uuid"
+              min="1"
+              max="10"
+              :id="'quantity-' + item.uuid"
+            >
+            &nbsp;
+            <button
+              style="margin-bottom:0.1rem;"
+              role="button"
+              :id="'buy-now-' + item.uuid"
+              class="btn btn-primary form-inline input-group-sm"
+              disabled
+            >BUY</button>
+            &nbsp;
+            <button
+              style="margin-bottom:0.1rem;"
+              role="button"
+              :id="'add-to-cart-' + item.uuid"
+              class="btn btn-outline-gray form-inline input-group-sm"
+              v-on:click.stop.prevent="addToCart($event)"
+              disabled
+            >ADD TO CART</button>
+          </div>
+        </form>
+        <p style="margin-bottom:3rem;" class="straindescription">
+          <a :href="'/strains/' + item.id" :title="item.name + ' details page'">{{item.description}}</a>
+        </p>
+      </div>
     </div>
-</div>
+  </div>
 </template>
 
 <style>
-body {
-    font-family: Helvetica Neue, Arial, sans-serif;
-    font-size: 14px;
-    color: #444;
+
+/* Tooltip container */
+.s1 {
+  position:relative;
+  display:inline-block;
+  border-bottom: 1px dotted hsla(212,25%, 27%, 0.95) !important;
 }
 
-table {
-    border: 2px solid #42b983;
-    border-radius: 3px;
-    background-color: #fff;
+/* Tooltip text */
+.tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  text-align: center;
+  padding: 5px;
+  border-radius: 6px;
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -60px;
+  font-size:0.75rem;
+  z-index: 1;
+  background-color:hsla(212,25%, 27%, 0.95);
+  color:white;
 }
 
-th {
-    background-color: #42b983;
-    color: rgba(255, 255, 255, 0.66);
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-
-td {
-    background-color: #f9f9f9;
-}
-
-th,
-td {
-    min-width: 120px;
-    padding: 10px 20px;
-}
-
-th.active {
-    color: #fff;
-}
-
-th.active .arrow {
-    opacity: 1;
-}
-
-.arrow {
-    display: inline-block;
-    vertical-align: middle;
-    width: 0;
-    height: 0;
-    margin-left: 5px;
-    opacity: 0.66;
-}
-
-.arrow.asc {
-    border-left: 4px solid transparent;
-    border-right: 4px solid transparent;
-    border-bottom: 4px solid #fff;
-}
-
-.arrow.dsc {
-    border-left: 4px solid transparent;
-    border-right: 4px solid transparent;
-    border-top: 4px solid #fff;
+.s1:hover .tooltiptext {
+  visibility: visible;
 }
 
 </style>

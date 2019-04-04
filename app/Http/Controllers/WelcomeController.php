@@ -30,6 +30,7 @@ class WelcomeController extends Controller
             $strains = $this->strain
             ->where('published', '=', true)
             ->with(['breeder', 'seedPacks'])
+            ->orderBy('s1', 'asc')
             ->orderBy('updated_at', 'desc')
             ->get();
 
