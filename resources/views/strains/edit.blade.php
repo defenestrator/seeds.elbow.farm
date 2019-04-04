@@ -40,16 +40,17 @@
                         Add New
                     </button>
                 </a>
-                <a style="margin:0 0.2rem;" href="/admin/strains">
-                    <button class="btn btn-warning">
-                        Edit
-                    </button>
-                </a>
                 <a style="margin:0 0.2rem;" onclick="deleteStrain({{ $strain->id }})" >
                     <button class="btn btn-danger">
                         Delete
                     </button>
                 </a>
+                <a style="margin:0 0.2rem;" href="/admin/strains">
+                    <button class="btn btn-warning">
+                        Show List
+                    </button>
+                </a>
+
         </div>
     </div>
     <div class="row">
@@ -64,13 +65,6 @@
                 <label class="btn btn-warning btn-file">
                     Change Image <input type="file" style="display: none;" onchange="previewFile()" name="image" value="{{$strain->image}}" >
                 </label>
-                </div>
-                <div class="form-group row">
-                    <div class="col-md-12">
-                        <p>Genetics:</p>
-                        <input id="genetics" name="genetics" class="form-control input" type="text" placeholder="genetics"
-                            value="{{ $strain->genetics }}">
-                    </div>
                 </div>
                 <div class="form-group row">
                     <div class="col-md-12"><p>Name:</p>

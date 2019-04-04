@@ -108,8 +108,8 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <div class="col-md-4 col-sm-6">
-                        <button class="btn btn-primary">Submit</button>
+                    <div class="col-md-12">
+                        <button style="width:100%;" class="btn btn-primary">Submit</button>
                     </div>
                 </div>
             </form>
