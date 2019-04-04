@@ -72,7 +72,7 @@
                     <div class="col-md-12">
                         <p>Genetics:</p>
                         <input id="genetics" name="genetics" class="form-control input" type="text" placeholder="genetics"
-                            value="{{$strain->genetics}}">
+                            value="{{ old('genetics') }}">
                     </div>
                 </div>
                 <div class="form-group row">
@@ -82,13 +82,17 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <div class="col-md-4">
-                        <label for="feminized">Feminized?</label>
+                    {{-- <div class="col-md-4">
+                        <label for="feminized">Fem?</label>
                         <input type="checkbox" name="feminized" id="feminized" />
-                    </div>
+                    </div> --}}
                     <div class="col-md-4">
                         <label for="published">Published?</label>
                         <input type="checkbox" name="published" id="published" />
+                    </div>
+                    <div class="col-md-4">
+                        <label for="s1">S1?</label>
+                        <input type="checkbox" name="s1" id="s1" />
                     </div>
                 </div>
                 <div class="form-group row">

@@ -60,6 +60,7 @@ class Strain extends BaseModel
         'name',
         'feminized',
         's1',
+        'uuid',
         'image',
         'image_id',
         'genetics',
@@ -69,6 +70,7 @@ class Strain extends BaseModel
         'flowering_time_min_weeks',
         'published',
     ];
+
     protected $attributes = [
         'feminized' => true
     ];

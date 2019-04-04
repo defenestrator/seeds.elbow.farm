@@ -5,7 +5,7 @@ namespace Heisen\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 
-class StrainRequest extends FormRequest
+class StoreStrainRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,6 +27,9 @@ class StrainRequest extends FormRequest
         return [
             'name'                      => 'required|min:2|max:140',
             'image'                     => 'required|image',
+            'max_flowering_time'        => 'required',
+            'min_flowering_time'        => 'required'
         ];
     }
 }
+

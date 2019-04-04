@@ -33,18 +33,30 @@
 
 @section('content')
 <div class="container">
-                <div class="row col-md-4">
-                <a href="/admin/strains/create">
-                    <button class="btn btn-danger">
-                        Add New Strain
+    <div class="row">
+        <div class="col-md-4">
+                <a style="margin:0 0.2rem;" href="/admin/strains/create">
+                    <button class="btn btn-primary">
+                        Add New
                     </button>
                 </a>
-            </div>
+                <a style="margin:0 0.2rem;" href="/admin/strains">
+                    <button class="btn btn-warning">
+                        Edit
+                    </button>
+                </a>
+                <a style="margin:0 0.2rem;" onclick="deleteStrain({{ $strain->id }})" >
+                    <button class="btn btn-danger">
+                        Delete
+                    </button>
+                </a>
+        </div>
+    </div>
     <div class="row">
         <div class="col-md-4 info">
             <img style="" id="preview" src="{{$strain->image}}" />
         </div>
-        <div class="col-md-8">
+        <div class="col-md-8" style="margin-top:1em;">
             <form class="form-horizontal new-content" role="form" enctype="multipart/form-data" method="POST" action="{{route('admin.strains.update', $strain->id)}}">
                 @csrf
                 <div class="form-group row col-md-12">
@@ -53,7 +65,13 @@
                     Change Image <input type="file" style="display: none;" onchange="previewFile()" name="image" value="{{$strain->image}}" >
                 </label>
                 </div>
-
+                <div class="form-group row">
+                    <div class="col-md-12">
+                        <p>Genetics:</p>
+                        <input id="genetics" name="genetics" class="form-control input" type="text" placeholder="genetics"
+                            value="{{ $strain->genetics }}">
+                    </div>
+                </div>
                 <div class="form-group row">
                     <div class="col-md-12"><p>Name:</p>
                     <input id="name" name="name" class="form-control input" type="text" placeholder="name" value="{{$strain->name}}">
@@ -71,16 +89,20 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                        <div class="col-md-4">
-                            <label for="feminized">Feminized?</label>
-
+                        {{-- <div class="col-md-4">
+                            <label for="feminized">Fem?</label>
                             <input type="checkbox" name="feminized" id="feminized" {{$femValue}} />
-                        </div>
+                        </div> --}}
                         <div class="col-md-4">
                             <label for="published">Published?</label>
                             <input type="checkbox" name="published" id="published" {{$pubValue}} />
                         </div>
+                        <div class="col-md-4">
+                            <label for="s1">S1?</label>
+                            <input type="checkbox" name="s1" id="s1" {{ $s1Value }}/>
+                        </div>
                     </div>
+
                     <div class="form-group row">
                         <div class="col-md-6">
                             <label for="min_flowering_time">Min Weeks</label>
@@ -92,18 +114,11 @@
                         </div>
                     </div>
                 <div class="form-group row">
-                    <div class="col-md-2 col-sm-4">
-                        <button class="btn btn-primary">Save</button>
+                    <div class="col-md-12">
+                        <button style="width:100%;" class="btn btn-primary">Save</button>
                     </div>
                 </div>
             </form>
-            <div class="col-md-2 col-sm-12 row">
-                <a href="{{route('admin.strains.delete', $strain->id)}}">
-                    <button class="btn btn-danger">
-                       Delete
-                    </button>
-                </a>
-            </div>
         </div>
     </div>
 </div>
@@ -131,6 +146,11 @@ function previewFile() {
     reader.readAsDataURL(file);
   }
 
+}
+function deleteStrain(id) {
+    if(confirm("Are you sure you want to delete this strain?")) { return window.location.href = "/admin/strains/destroy/" + String(id) }
+
+    return false;
 }
 </script>
 
