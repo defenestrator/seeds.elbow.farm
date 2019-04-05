@@ -67,7 +67,6 @@ const app = new Vue({
             cartActive: false,
             cartSlider: null,
             cartSliderButton: null,
-            selectedPack: 6,
             cart: {},
         }
     },

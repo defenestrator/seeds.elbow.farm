@@ -1,17 +1,21 @@
-import Axios from "axios";
+import axios from "axios";
 
 export default {
     methods: {
-        addToCart(item) {
-            let productId = item.id
-            Axios
-                .post('/cart/', item)
-                .then(response => {
-                    return response.data
-                })
-                .catch(error => {
-                    console.log(error)
-                })
+        addToCart(item, selectedPack) {
+            item.seed_packs.forEach((pack) => {
+                if (pack.id === this.selectedPack) {
+                    axios.post('/cart/', item)
+                    .then(response => {
+                        return response.data
+                    })
+                    .catch(error => {
+                        console.log(error)
+                    })
+                    return
+                }
+            })
+
         },
     }
 }

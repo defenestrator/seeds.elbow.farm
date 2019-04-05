@@ -1,53 +1,56 @@
 <script>
 import addToCart from '../addToCart'
 export default {
-  props: {
-    products: Array
-  },
-  data: function() {
-    return {
-      columns: 3,
-      searchQuery: "",
-      perPack: 6
-    };
-  },
-  computed: {
-    filteredProducts: function() {
-      var filterKey = _.trim(
-        this.searchQuery && this.searchQuery.toLowerCase()
-      );
-      var products = this.products;
-      if (filterKey) {
-        products = this.products.filter(function(row) {
-          return Object.keys(row).some(function(key) {
-            return (
-              String(row[key])
-                .toLowerCase()
-                .indexOf(filterKey) > -1
-            );
-          });
-        });
-      }
-      return _.chunk(products, 3);
-    }
-  },
-  filters: {
-    capitalize: function(str) {
-      return str.charAt(0).toUpperCase() + str.slice(1);
+    props: {
+        products: Array
     },
-    feminize: function(num) {
-      if (num === 1) {
-        return "feminized";
-      }
-      return "regular";
-    }
-  },
-  methods: {
-    clearSearchQuery() {
-      this.searchQuery = "";
-    }
-  },
-  mixins:[addToCart]
+    data: function () {
+        return {
+            columns: 3,
+            searchQuery: "",
+            selectedPack: 0
+        };
+    },
+    computed: {
+        filteredProducts: function () {
+            var filterKey = _.trim(
+                this.searchQuery && this.searchQuery.toLowerCase()
+            );
+            var products = this.products;
+            if (filterKey) {
+                products = this.products.filter(function (row) {
+                    return Object.keys(row).some(function (key) {
+                        return (
+                            String(row[key])
+                            .toLowerCase()
+                            .indexOf(filterKey) > -1
+                        );
+                    });
+                });
+            }
+            return _.chunk(products, 3);
+        }
+    },
+    filters: {
+        capitalize: function (str) {
+            return str.charAt(0).toUpperCase() + str.slice(1);
+        },
+        feminize: function (num) {
+            if (num === 1) {
+                return "feminized";
+            }
+            return "regular";
+        },
+    },
+    methods: {
+        clearSearchQuery() {
+            this.searchQuery = "";
+        },
+        addProductToCart(item) {
+
+        }
+    },
+    mixins: [addToCart]
 };
 </script>
 
@@ -98,7 +101,7 @@ export default {
         <a :href="'/strains/' + item.uuid">
           <img :src="item.image" :alt="item.name" :title="item.name">
         </a>
-        <h5 style="margin-top:1em;">6 {{item.feminized | feminize}} seeds</h5>
+        <h5 style="margin-top:1em;"> {{item.feminized | feminize | capitalize}} Cannabis seeds</h5>
         <form action="POST" target="/cart">
           <!-- <div class="form-group">
                     <div class="form-group custom-control custom-radio custom-control-inline">
@@ -116,8 +119,22 @@ export default {
                         </label>
                     </div>
           </div>-->
-          <p>$60 per pack</p>
+          <p v-if="item.seed_packs === undefined || item.seed_packs == 0">Out of stock</p>
 
+          <div class="form-group" v-else>
+            <div v-bind:key="pack.id" v-for="pack in item.seed_packs" class="form-group custom-control custom-radio custom-control-inline">
+                <input type="radio"
+                    v-model.number="selectedPack"
+                    class="custom-control-input"
+                    :id="'seed-pack-' + pack.id"
+                    :name="'seed-pack-' + pack.id"
+                    :value="pack.id"
+                />
+                <label class="custom-control-label" :for="'seed-pack-' + pack.id">
+                    {{ pack.qty_per_pack }} seeds ${{ pack.price }}
+                </label>
+            </div>
+          </div>
           <div class="form-group form-inline" style="justify-content: center;">
             <input
               v-model.number="item.quantity"
@@ -143,7 +160,7 @@ export default {
               role="button"
               :id="'add-to-cart-' + item.uuid"
               class="btn btn-outline-gray form-inline input-group-sm"
-              v-on:click.stop.prevent="addToCart(item)"
+              v-on:click.stop.prevent="addToCart(item, selectedPack)"
 
             >ADD TO CART</button>
           </div>
