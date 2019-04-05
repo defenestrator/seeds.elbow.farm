@@ -45,9 +45,6 @@ export default {
     methods: {
         clearSearchQuery() {
             this.searchQuery = "";
-        },
-        addProductToCart(item) {
-            console.log(item.images[0].large)
         }
     },
     mixins: [addToCart]
@@ -144,7 +141,7 @@ export default {
               role="button"
               :id="'add-to-cart-' + item.uuid"
               class="btn btn-outline-gray form-inline input-group-sm"
-              v-on:click.stop.prevent="addProductToCart(item, selectedPack)"
+              v-on:click.stop.prevent="addToCart(item, selectedPack)"
 
             >ADD TO CART</button>
           </div>

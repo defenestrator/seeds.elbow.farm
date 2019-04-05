@@ -31,8 +31,6 @@ class StrainController extends Controller
             ->get();
 
             $strains->map( function($value) {
-                $value->price = 60;
-                $value->perPack = 6;
                 $value->quantity = 1;
                 return $value;
             });
@@ -58,7 +56,10 @@ class StrainController extends Controller
                 ->with(['breeder', 'images', 'seedPacks'])
                 ->whereUuid($uuid)
                 ->first();
+
+            $strain->quantity = 1;
             $strain->feminized = "feminized";
+
             Cache::put('strain:'. $uuid, $strain, 666);
         }
 
