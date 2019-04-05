@@ -19,22 +19,27 @@
 <div>
     <div class="container">
         <div class="row">
-            <div class="col-lg-12 pagetitle">
+            <div class="col-sm-12 pagetitle">
                 <h1>{{ product.name }}</h1>
             </div>
-            <div class="col-lg-12"><h2>{{ product.genetics }}</h2></div>
+            <div class="col-sm-12"><h2>{{ product.genetics }}</h2></div>
         </div>
         <div class="row">
-            <div class="col-lg-8 info">
+            <div class="col-md-8 info">
                 <img :src="product.image"
                     :title="product.name + ' ' + product.feminized"
                     :alt="product.name + ' ' + product.feminized" />
             </div>
-            <div class="col-lg-4 info">
+            <div class="col-md-4 info">
                 <div class="card">
                     <div class="card-header">
                         <h5 class="card-title">
-                            Buy {{product.feminized}} {{product.name}} seeds
+                            Buy {{product.feminized}} {{product.name}} <div class="s1" v-if="product.s1 === 1">S1
+                <span class="tooltiptext">
+                    Breeders use various techniques to encourage the production of male
+                    flowers on female plants. When this pollen is used to pollinate
+                    the same "mother", or her clones, the seeds are called an "S1" generation.
+                </span></div> seeds
                         </h5>
                     </div>
                     <div class="card-body">
@@ -99,3 +104,35 @@
     </div>
 </div>
 </template>
+
+<style>
+
+/* Tooltip container */
+.s1 {
+  position:relative;
+  display:inline-block;
+  border-bottom: 1px dotted hsla(212,25%, 27%, 0.95) !important;
+}
+
+/* Tooltip text */
+.tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  text-align: center;
+  padding: 5px;
+  border-radius: 6px;
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -60px;
+  font-size:0.75rem;
+  z-index: 1;
+  background-color:hsla(212,25%, 27%, 0.95);
+  color:white;
+}
+
+.s1:hover .tooltiptext {
+  visibility: visible;
+}
+</style>
