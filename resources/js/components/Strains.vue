@@ -47,7 +47,7 @@ export default {
             this.searchQuery = "";
         },
         addProductToCart(item) {
-
+            console.log(item.images[0].large)
         }
     },
     mixins: [addToCart]
@@ -83,7 +83,7 @@ export default {
       </div>
     </div>
     <div class="row" v-bind:key="products.uuid" v-for="products in filteredProducts">
-      <div class="col-sm-4 info strainlisting" v-bind:key="item.uuid" v-for="item in products">
+      <div class="col-sm-4 info strainlisting" v-bind:key="item.id" v-for="item in products">
         <hr>
 
           <a :href="'/strains/' + item.uuid">
@@ -99,28 +99,12 @@ export default {
           </a>
 
         <a :href="'/strains/' + item.uuid">
-          <img :src="item.image" :alt="item.name" :title="item.name">
+            <img v-if="item.images === null" :src="item.image" :alt="item.name" :title="item.name" />
+            <img v-else :src="item.images.large" :alt="item.name" :title="item.name" />
         </a>
         <h5 style="margin-top:1em;"> {{item.feminized | feminize | capitalize}} Cannabis seeds</h5>
         <form action="POST" target="/cart">
-          <!-- <div class="form-group">
-                    <div class="form-group custom-control custom-radio custom-control-inline">
-                        <input type="radio" class="custom-control-input" :id="'seed-pack-6-' + item.uuid" :name="'seed-pack-' + item.uuid"
-                            v-model.number="item.selectedPack" value="6" checked />
-                        <label class="custom-control-label" :for="'seed-pack-6-' + item.uuid">
-                            6 seeds $60
-                        </label>
-                    </div>
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" class="custom-control-input" :id="'seed-pack-12-' + item.uuid" :name="'seed-pack-' + item.uuid"
-                            v-model.number="item.selectedPack" value="12" />
-                        <label class="custom-control-label" :for="'seed-pack-12-' + item.uuid">
-                            12 seeds $100
-                        </label>
-                    </div>
-          </div>-->
           <p v-if="item.seed_packs === undefined || item.seed_packs == 0">Out of stock</p>
-
           <div class="form-group" v-else>
             <div v-bind:key="pack.id" v-for="pack in item.seed_packs" class="form-group custom-control custom-radio custom-control-inline">
                 <input type="radio"
@@ -160,7 +144,7 @@ export default {
               role="button"
               :id="'add-to-cart-' + item.uuid"
               class="btn btn-outline-gray form-inline input-group-sm"
-              v-on:click.stop.prevent="addToCart(item, selectedPack)"
+              v-on:click.stop.prevent="addProductToCart(item, selectedPack)"
 
             >ADD TO CART</button>
           </div>

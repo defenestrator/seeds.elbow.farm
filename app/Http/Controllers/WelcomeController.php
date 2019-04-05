@@ -29,16 +29,16 @@ class WelcomeController extends Controller
         $strains = Cache::remember('welcomeStrains', 60, function() {
             $strains = $this->strain
             ->where('published', '=', true)
-            ->with(['breeder', 'seedPacks'])
+            ->with(['breeder', 'seedPacks', 'images'])
             ->orderBy('s1', 'asc')
             ->orderBy('updated_at', 'desc')
             ->get();
 
-            $strains->map( function($value) {
-                $value->price = 60;
-                $value->perPack = 6;
-                $value->quantity = 1;
-                return $value;
+            $strains->map( function($strain) {
+                $strain->price = 60;
+                $strain->perPack = 6;
+                $strain->quantity = 1;
+                return $strain;
             });
             return $strains;
         });

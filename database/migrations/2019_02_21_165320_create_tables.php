@@ -165,6 +165,7 @@ class CreateTables extends Migration
             $table->longText('exception');
             $table->timestamp('failed_at')->useCurrent();
         });
+
         Schema::create('seed_packs', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('strain_id');

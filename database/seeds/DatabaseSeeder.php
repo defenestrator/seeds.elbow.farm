@@ -12,12 +12,15 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        factory(Heisen\ShippingAddress::class, 36)->create();
-        factory(Heisen\Strain::class, 6)->create();
+        factory(Heisen\ShippingAddress::class, 30)->create();
+        factory(Heisen\Strain::class, 15)->create();
         factory(Heisen\Breeder::class, 2)->create();
         factory(Heisen\SeedPack::class, 12)->create();
+        factory(Heisen\Image::class, 15)->create();
+
+
         $tableNames = [
-            'users', 'strains', 'breeders', 'invoices', 'payment_methods'
+            'users', 'strains', 'breeders', 'invoices', 'payment_methods', 'seed_packs'
         ];
         foreach($tableNames as $tableName) {
             $records = DB::table($tableName)->where('uuid', '=', null)->get();
@@ -27,6 +30,7 @@ class DatabaseSeeder extends Seeder
                 ->update(['uuid' => $this->makeUuid()]);
             }
         }
+
 
     }
     public function makeUuid()

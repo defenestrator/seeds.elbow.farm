@@ -75,6 +75,11 @@ class Strain extends BaseModel
         'feminized' => true
     ];
 
+    public function images()
+    {
+        return $this->morphOne('Heisen\Image', 'imageable');
+    }
+
     public function breeder()
     {
         return $this->belongsTo(Breeder::class);

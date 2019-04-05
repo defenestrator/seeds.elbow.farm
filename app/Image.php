@@ -26,5 +26,10 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Image extends Model
 {
-    protected $fillable = ['thumb', 'large', 'small'];
+    protected $fillable = ['thumb', 'large', 'small', 'model_type', 'model_id'];
+
+    public function imageable()
+    {
+        return $this->morphTo();
+    }
 }

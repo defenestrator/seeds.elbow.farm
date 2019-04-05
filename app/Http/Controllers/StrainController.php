@@ -54,11 +54,14 @@ class StrainController extends Controller
         if (Cache::has('strain:'. $uuid)) {
             $strain = Cache::get('strain:'. $uuid);
         } else {
-            $strain = $this->strain->whereUuid($uuid)->first();
+            $strain = $this->strain
+                ->with(['breeder', 'images', 'seedPacks'])
+                ->whereUuid($uuid)
+                ->first();
             $strain->feminized = "feminized";
             Cache::put('strain:'. $uuid, $strain, 666);
         }
 
-        return view('strains.show', compact('strain'));
+        return view('strains.show', ['product' => $strain]);
     }
 }
