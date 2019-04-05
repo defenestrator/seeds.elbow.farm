@@ -12,9 +12,4 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-//
-Route::middleware('api')->namespace('Api')->name('api.')->group( function () {
-    Route::post('/cart', function() {
-        return 'yo';
-    });
-});
+

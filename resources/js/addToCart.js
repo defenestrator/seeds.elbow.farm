@@ -4,8 +4,14 @@ export default {
     methods: {
         addToCart(item) {
             let productId = item.id
-            Axios.post('/api/cart/', item)
-            console.log(item)
+            Axios
+                .post('/cart/', item)
+                .then(response => {
+                    return response.data
+                })
+                .catch(error => {
+                    console.log(error)
+                })
         },
     }
 }

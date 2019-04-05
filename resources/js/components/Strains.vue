@@ -144,7 +144,7 @@ export default {
               :id="'add-to-cart-' + item.uuid"
               class="btn btn-outline-gray form-inline input-group-sm"
               v-on:click.stop.prevent="addToCart(item)"
-              disabled
+
             >ADD TO CART</button>
           </div>
         </form>

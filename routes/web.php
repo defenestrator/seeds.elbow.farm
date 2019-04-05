@@ -29,6 +29,9 @@ Route::get('/breeders', 'BreederController@index')->name('breeders');
 Route::get('/strains', 'StrainController@index')->name('strains.index');
 Route::get('/strains/{uuid}', 'StrainController@show')->name('strains.show');
 
+// Cart
+Route::post('/cart', 'CartController@create');
+
 ///////////////    DANGER ZONE    !!    Admin Routes    !!    /////////////////////////////////////
 Route::prefix('/admin/')->name('admin.')->middleware('role:admin')->group( function () {
 
