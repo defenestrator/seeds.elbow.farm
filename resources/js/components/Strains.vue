@@ -144,9 +144,6 @@ export default {
             >ADD TO CART</button>
           </div>
         </form>
-        <p style="margin-bottom:3rem;" class="straindescription">
-          <a :href="'/strains/' + item.id" :title="item.name + ' details page'">{{item.description}}</a>
-        </p>
       </div>
     </div>
   </div>

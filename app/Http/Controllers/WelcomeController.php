@@ -40,13 +40,8 @@ class WelcomeController extends Controller
             });
             return $strains;
         });
+        $posts = $this->instagram->media();
 
-
-        $posts = [];
-
-        if (config('app.env') === 'production' && config('app.url') === 'https://heisenbeans.com') {
-            $posts = $this->instagram->media();
-        }
 
         return view('welcome', compact('posts', 'strains'));
     }
