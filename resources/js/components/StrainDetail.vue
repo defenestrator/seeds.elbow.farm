@@ -26,9 +26,19 @@
         </div>
         <div class="row">
             <div class="col-md-8 info">
-                <img :src="product.image"
-                    :title="product.name + ' ' + product.feminized"
-                    :alt="product.name + ' ' + product.feminized" />
+
+                <img v-if="product.images === null || product.images === undefined"
+                :src="product.image"
+                :alt="product.name + ' ' + product.feminized + ' seeds'"
+                :title="product.name  + ' ' + product.feminized + ' seeds'"
+                />
+
+                <img v-else
+                :src="product.images.large"
+                :alt="product.name + ' ' + product.feminized + ' seeds'"
+                :title="product.name  + ' ' + product.feminized + ' seeds'"
+                />
+
             </div>
             <div class="col-md-4 info">
                 <div class="card">

@@ -26,7 +26,7 @@ class StrainController extends Controller
         $strains = Cache::remember('strains', 666, function() {
             $strains = $this->strain
             ->where('published', '=', true)
-            ->with(['breeder', 'seedPacks'])
+            ->with(['breeder', 'seedPacks', 'images'])
             ->orderBy('updated_at', 'desc')
             ->get();
 

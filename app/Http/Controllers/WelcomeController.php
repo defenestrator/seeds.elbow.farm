@@ -35,8 +35,6 @@ class WelcomeController extends Controller
             ->get();
 
             $strains->map( function($strain) {
-                $strain->price = 60;
-                $strain->perPack = 6;
                 $strain->quantity = 1;
                 return $strain;
             });
