@@ -82,23 +82,23 @@ export default {
     <div class="row" v-bind:key="products.uuid" v-for="products in filteredProducts">
       <div class="col-sm-4 info strainlisting" v-bind:key="item.uuid" v-for="item in products">
         <hr>
-        <h4>
+
           <a :href="'/strains/' + item.uuid">
-            {{item.name}}
-            <div class="s1" v-if="item.s1 === 1">S1
+          <h4>{{item.name}} <div class="s1" v-if="item.s1 === 1">S1
                 <span class="tooltiptext">
                     Breeders use various techniques to encourage the production of male
                     flowers on female plants. When this pollen is used to pollinate
-                    the same "mother", or her clones, the seeds are called an "S1" generation. </span>
-            </div>
-
+                    the same "mother", or her clones, the seeds are called an "S1" generation.
+                </span>
+            </div></h4>
+            <h4>{{ item.genetics }}</h4>
 
           </a>
-        </h4>
+
         <a :href="'/strains/' + item.uuid">
           <img :src="item.image" :alt="item.name" :title="item.name">
         </a>
-        <h5 style="margin-top:1em;">Premium {{item.feminized | feminize}} seeds</h5>
+        <h5 style="margin-top:1em;">6 {{item.feminized | feminize}} seeds</h5>
         <form action="POST" target="/cart">
           <!-- <div class="form-group">
                     <div class="form-group custom-control custom-radio custom-control-inline">
@@ -116,15 +116,8 @@ export default {
                         </label>
                     </div>
           </div>-->
-          <p>
-            <strong>Genetics:</strong>
-            {{ item.genetics }}
-          </p>
-          <p>6 seeds $60</p>
-          <p>
-            <sup>*</sup> Disabled: under development
-            <sup>*</sup>
-          </p>
+          <p>$60 per pack</p>
+
           <div class="form-group form-inline" style="justify-content: center;">
             <input
               v-model.number="item.quantity"
@@ -142,6 +135,7 @@ export default {
               role="button"
               :id="'buy-now-' + item.uuid"
               class="btn btn-primary form-inline input-group-sm"
+              disabled
             >BUY</button>
             &nbsp;
             <button
@@ -150,6 +144,7 @@ export default {
               :id="'add-to-cart-' + item.uuid"
               class="btn btn-outline-gray form-inline input-group-sm"
               v-on:click.stop.prevent="addToCart(item)"
+              disabled
             >ADD TO CART</button>
           </div>
         </form>
