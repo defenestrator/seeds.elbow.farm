@@ -87,14 +87,14 @@ export default {
         <hr>
 
           <a :href="'/strains/' + item.uuid">
-          <h4>{{item.name}} <div class="s1" v-if="item.s1 === 1">S1
+          <h4 style="font-weight:800;">{{item.name}} <div class="s1" v-if="item.s1 === 1">S1
                 <span class="tooltiptext">
                     Breeders use various techniques to encourage the production of male
                     flowers on female plants. When this pollen is used to pollinate
                     the same "mother", or her clones, the seeds are called an "S1" generation.
                 </span>
             </div></h4>
-            <h4>{{ item.genetics }}</h4>
+            <h5>{{ item.genetics }}</h5>
 
           </a>
 
