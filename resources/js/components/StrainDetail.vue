@@ -29,13 +29,6 @@
                 <img :src="product.image"
                     :title="product.name + ' ' + product.feminized"
                     :alt="product.name + ' ' + product.feminized" />
-                    <div class="card">
-                    <div class="card-body">
-                        <div class="card-text">
-                            {{ product.description }}
-                        </div>
-                    </div>
-                </div>
             </div>
             <div class="col-md-4 info">
                 <div class="card">
@@ -80,8 +73,10 @@
 
                                 </div>
                             </form>
+                            <p>{{ product.description }}</p>
                         </div>
                     </div>
+
                 </div>
                 <div class="card-footer">
                     <p>
