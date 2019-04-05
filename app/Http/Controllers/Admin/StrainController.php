@@ -75,6 +75,7 @@ class StrainController extends ImageController
         ]);
         dd($newStrain);
         Cache::forget('strains');
+        Cache::forget('welcomeStrains');
         Cache::put('strain:'. $newStrain->id, $newStrain, 666);
         return redirect()->to('/admin/strains/'. $newStrain->id);
     }
@@ -174,6 +175,7 @@ class StrainController extends ImageController
             'image_id'                  => $strain->imageId
         ]);
         Cache::forget('strains');
+        Cache::forget('welcomeStrains');
         Cache::forget('strain:'. $strain->id);
         return back();
     }

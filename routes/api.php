@@ -13,6 +13,8 @@ use Illuminate\Http\Request;
 |
 */
 //
-Route::middleware('')->namespace('Api')->name('api.')->group( function () {
-
+Route::middleware('api')->namespace('Api')->name('api.')->group( function () {
+    Route::post('/cart', function() {
+        return 'yo';
+    });
 });

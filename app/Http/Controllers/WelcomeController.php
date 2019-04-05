@@ -26,7 +26,7 @@ class WelcomeController extends Controller
 
     public function index()
     {
-        $strains = Cache::remember('strains', 60, function() {
+        $strains = Cache::remember('welcomeStrains', 60, function() {
             $strains = $this->strain
             ->where('published', '=', true)
             ->with(['breeder', 'seedPacks'])
