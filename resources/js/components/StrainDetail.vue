@@ -19,18 +19,18 @@
 <div>
     <div class="container">
         <div class="row">
-            <div class="col-sm-12 pagetitle">
+            <div class="col-lg-12 pagetitle">
                 <h1>{{ product.name }}</h1>
             </div>
-            <div class="col-sm-12"><h2>{{ product.genetics }}</h2></div>
+            <div class="col-lg-12"><h2>{{ product.genetics }}</h2></div>
         </div>
         <div class="row">
-            <div class="col-md-8 info">
+            <div class="col-lg-8 info">
                 <img :src="product.image"
                     :title="product.name + ' ' + product.feminized"
                     :alt="product.name + ' ' + product.feminized" />
             </div>
-            <div class="col-md-4 info">
+            <div class="col-lg-4 info">
                 <div class="card">
                     <div class="card-header">
                         <h5 class="card-title">
