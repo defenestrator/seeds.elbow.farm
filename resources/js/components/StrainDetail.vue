@@ -25,7 +25,7 @@
             <div class="col-sm-12"><h2>{{ product.genetics }}</h2></div>
         </div>
         <div class="row">
-            <div class="col-md-8 info">
+            <div class="col-md-7 info">
 
                 <img v-if="product.images === null || product.images === undefined"
                 :src="product.image"
@@ -40,7 +40,7 @@
                 />
 
             </div>
-            <div class="col-md-4 info">
+            <div class="col-md-5 info">
                 <div class="card">
                     <div class="card-header">
                         <h5 class="card-title">
