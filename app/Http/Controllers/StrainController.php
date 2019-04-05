@@ -57,8 +57,8 @@ class StrainController extends Controller
                 ->whereUuid($uuid)
                 ->first();
 
-            $strain->quantity = 1;
-            $strain->feminized = "feminized";
+                $strain->quantity = 1;
+                $strain->feminized = "feminized";
 
             Cache::put('strain:'. $uuid, $strain, 666);
         }
