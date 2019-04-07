@@ -40,7 +40,7 @@
                 />
 
             </div>
-            <div class="col-md-5 info">
+            <div class="col-md info">
                 <div class="card">
                     <div class="card-header">
                         <h5 class="card-title">
