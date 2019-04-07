@@ -8,8 +8,10 @@
      <div class="row justify-content-center">
         <h2>Feminized Fire</h2>
     </div>
-    <strains :products="{{ $strains }}" />
-    <hr>
+
+
+    <strains :products="{{ $strains }}" ></strains>
+    <hr />
     <div class="row justify-content-center">
         <a style="text-align:center;" href="https://www.instagram.com/heisenbeans/">Follow us on IG</a>
     </div>
@@ -18,22 +20,22 @@
             <img src="http://i.heisenbeans.com/images/app-icon2-small.png">
         </a>
     </div>
-            @foreach(array_chunk(array_slice($posts, 0, 3), 3) as $postRow)
-                <div class="row justify-content-center">
-                    @foreach($postRow as $post)
-                        <div class="col-md-3 col-md-offset-1 info">
-                            <a href="{!! $post->link !!}">
-                                <img src="{!! $post->images->standard_resolution->url !!}">
-                            </a>
-                            <p>
-                                <a href="{!! $post->link !!}">{!! $post->caption->text !!}</a>
-                            </p>
-                        </div>
+        <div>
+        @foreach(array_chunk(array_slice($posts, 0, 3), 3) as $postRow)
+            <div class="row justify-content-center">
+                @foreach($postRow as $post)
+                    <div class="col-md-3 col-md-offset-1 info">
+                        <a href="{!! $post->link !!}">
+                            <img src="{!! $post->images->standard_resolution->url !!}">
+                        </a>
+                        <p>
+                            <a href="{!! $post->link !!}">{!! $post->caption->text !!}</a>
+                        </p>
+                    </div>
 
-                    @endforeach
-                </div>
-            @endforeach
-        </div>
+                @endforeach
+            </div>
+        @endforeach
     </div>
 </div>
 

@@ -54,35 +54,7 @@
 
 <template>
     <div class="container text-center">
-        <!-- <h3>Featured Seeds</h3>
-    <div class="row text-center">
-      <div class="col-md-4 offset-md-4" style="margin-bottom:1em;">
-        <form id="search">
-          <div class="input-group">
-            <input
-              type="text"
-              class="form-control form-inline"
-              name="query"
-              placeholder="Search to filter strains"
-              v-model="searchQuery"
-              autofocus
-            >
-            <div v-if="searchQuery !== ''" class="input-group-addon">
-              <button
-                v-on:click="clearSearchQuery()"
-                for="query"
-                class="btn btn-info input-group-addon form-inline"
-              >
-                <i class="fa fa-close" id="clear_filter"></i>
-              </button>
-            </div>
-          </div>
-        </form>
-      </div>
-    </div> -->
-
         <div class="row" v-bind:key="products.uuid" v-for="products in filteredProducts">
-
             <div class="col-sm-4 info strainlisting" v-bind:key="item.id" v-for="item in products">
                 <hr>
                 <a :href="'/strains/' + item.uuid">
@@ -130,7 +102,6 @@
                 </form>
             </div>
         </div>
-
     </div>
 </template>
 

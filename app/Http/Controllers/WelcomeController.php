@@ -40,6 +40,7 @@ class WelcomeController extends Controller
             });
             return $strains;
         });
+
         $posts = $this->instagram->media();
 
 
