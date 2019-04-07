@@ -50,7 +50,7 @@ class StrainController extends ImageController
         $image = $this->generateImages($request->image);
 
         $uuid = $this->strain->makeUuid();
-        // dd($uuid);
+
         $s1 = $pub = false;
 
         if ( $request->published == 'on' ) {
@@ -73,7 +73,6 @@ class StrainController extends ImageController
             's1'                        => $s1,
             'published'                 => $pub
         ]);
-        dd($newStrain);
         Cache::forget('strains');
         Cache::forget('welcomeStrains');
         Cache::put('strain:'. $newStrain->id, $newStrain, 666);
