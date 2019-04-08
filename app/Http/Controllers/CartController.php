@@ -4,6 +4,7 @@ namespace Heisen\Http\Controllers;
 
 use Heisen\Cart;
 use Heisen\User;
+use Heisen\SeedPack;
 use Illuminate\Http\Request;
 use Heisen\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
@@ -12,6 +13,11 @@ use Illuminate\Support\Facades\Hash;
 
 class CartController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -19,7 +25,7 @@ class CartController extends Controller
      */
     public function index()
     {
-        //
+        return view('cart.index');
     }
 
     /**
@@ -27,24 +33,19 @@ class CartController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create(Request $request, Cart $cart, SeedPack $seedPack)
     {
         Session::push('cart', ['product' => $request->all()]);
-
         $user = Auth::user();
 
-        if ( ! Auth::check() ) {
-            $password = Hash::make($this->generateRandomString());
-            $email = $this->generateRandomString(8) . '@example.com';
-            $user = $user = new User([
-                'name'          => 'Anonymous Seed Lover',
-                'email'         => $email,
-                'verified_at'   => now(),
-                'password'      => $password
-            ]);
-        }
+        $newCart = $cart->create([
+            'user_id' => $user->id,
+            'uuid' => $cart->uuid,
+            'quantity' => $request->quantity
+        ]);
+            $seeds = $cart->find($newCart->id);
+        $seeds->seedPacks()->attach($request->selectedPack, ['quantity' => $request->quantity]);
 
-        $newCart = new Cart($request->all());
         return ['user' => $user, 'cart' => $newCart];
     }
 
@@ -67,7 +68,7 @@ class CartController extends Controller
      */
     public function show(Cart $cart)
     {
-        //
+        return 'Your cart is empty';
     }
 
     /**

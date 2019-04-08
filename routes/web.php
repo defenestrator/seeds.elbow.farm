@@ -32,6 +32,7 @@ Route::get('/strains/{uuid}', 'StrainController@show')->name('strains.show');
 // Cart
 Route::post('/cart', 'CartController@create');
 
+Route::get('/cart', 'CartController@index');
 ///////////////    DANGER ZONE    !!    Admin Routes    !!    /////////////////////////////////////
 Route::prefix('/admin/')->name('admin.')->middleware('role:admin')->group( function () {
 

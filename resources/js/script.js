@@ -49,13 +49,12 @@ files.keys().map(key => {
  */
 
 
-import addToCart from './addToCart'
+import Cart from './Cart'
 
 const app = new Vue({
     el: '#app',
     store,
-    addToCart,
-    mixins: [addToCart],
+    mixins: [Cart],
     swal,
     currency,
     created() {

@@ -4,7 +4,8 @@ export default {
     methods: {
         addToCart(item, selectedPack) {
             item.seed_packs.forEach((pack) => {
-                if (pack.id === this.selectedPack) {
+                if (pack.id === selectedPack) {
+                    item.selectedPack = selectedPack
                     axios.post('/cart/', item)
                     .then(response => {
                         return response.data

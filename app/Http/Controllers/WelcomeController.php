@@ -10,8 +10,9 @@ use Cache;
 class WelcomeController extends Controller
 {
     protected $token = '';
-    protected $instagram = null;
+    protected $instagram;
     protected $strain;
+    protected $posts = [];
 
     /**
      * WelcomeController constructor.
@@ -20,22 +21,22 @@ class WelcomeController extends Controller
     public function __construct(Strain $strain)
     {
         $this->strain = $strain;
-        $this->token = config('app.instagram_token');
-        $this->instagram = new Instagram($this->token);
+        $this->posts = [];
+
+        if (config('app.env') === 'production') {
+            try {
+                $this->token = config('app.instagram_token');
+                $this->instagram = new Instagram($this->token);
+                $this->posts = $this->instagram->media();
+            } catch(Exception $e) {
+                Log::alert('Failed to retrieve IG posts');
+            }
+        }
     }
 
     public function index()
     {
-        $posts = [];
-
-        if (config('app.env') === 'production') {
-            try {
-                $posts = $this->instagram->media();
-            } catch(Exception $e) {
-                Log::alert('Failed to retrieve IG posts');
-            }
-
-        }
+        $posts = $this->posts;
 
         $strains = Cache::remember('welcomeStrains', 66666, function() {
             $strains = $this->strain
@@ -54,6 +55,6 @@ class WelcomeController extends Controller
 
 
 
-        return view('welcome', compact('posts', 'strains'));
+        return view('welcome', ['posts' => $this->posts, 'strains' => $strains]);
     }
 }

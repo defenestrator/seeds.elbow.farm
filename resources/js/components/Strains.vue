@@ -1,5 +1,5 @@
 <script>
-    import addToCart from '../addToCart'
+    import Cart from '../Cart'
     export default {
         props: {
             products: Array
@@ -47,7 +47,7 @@
                 this.searchQuery = "";
             }
         },
-        mixins: [addToCart]
+        mixins: [Cart]
     };
 
 </script>

@@ -2,9 +2,14 @@
 
 namespace Heisen;
 
-use Illuminate\Database\Eloquent\Model;
+use Heisen\BaseModel;
 
-class Cart extends Model
+class Cart extends BaseModel
 {
     protected $guarded = [];
+
+    public function seedPacks()
+    {
+        return $this->belongsToMany(SeedPack::class);
+    }
 }

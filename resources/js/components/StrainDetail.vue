@@ -1,5 +1,5 @@
 <script>
-    import addToCart from '../addToCart'
+    import Cart from '../Cart'
     export default {
         data() {
             return {
@@ -10,7 +10,7 @@
             product: Object
         },
 
-        mixins: [addToCart],
+        mixins: [Cart],
 
     }
 </script>
