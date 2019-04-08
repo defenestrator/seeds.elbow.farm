@@ -26,6 +26,12 @@ class WelcomeController extends Controller
 
     public function index()
     {
+        $posts = [];
+
+        if (config('app.env') === 'production') {
+            $posts = $this->instagram->media();
+        }
+
         $strains = Cache::remember('welcomeStrains', 66666, function() {
             $strains = $this->strain
             ->where('published', '=', true)
@@ -41,7 +47,6 @@ class WelcomeController extends Controller
             return $strains;
         });
 
-        $posts = $this->instagram->media();
 
 
         return view('welcome', compact('posts', 'strains'));
