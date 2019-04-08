@@ -75,7 +75,7 @@ class StrainController extends ImageController
         ]);
         Cache::forget('strains');
         Cache::forget('welcomeStrains');
-        Cache::put('strain:'. $newStrain->id, $newStrain, 666);
+        Cache::put('strain:'. $newStrain->id, $newStrain, 66666);
         return redirect()->to('/admin/strains/'. $newStrain->id);
     }
 
@@ -96,7 +96,7 @@ class StrainController extends ImageController
             } else {
                 $strain->feminized = "regular";
             }
-            Cache::put('strain:'. $id, $strain, 666);
+            Cache::put('strain:'. $id, $strain, 66666);
         }
 
         return view('strains.show', compact('strain'));
