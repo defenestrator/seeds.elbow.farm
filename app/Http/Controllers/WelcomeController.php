@@ -29,7 +29,12 @@ class WelcomeController extends Controller
         $posts = [];
 
         if (config('app.env') === 'production') {
-            $posts = $this->instagram->media();
+            try {
+                $posts = $this->instagram->media();
+            } catch(Exception $e) {
+                Log::alert('Failed to retrieve IG posts');
+            }
+
         }
 
         $strains = Cache::remember('welcomeStrains', 66666, function() {
