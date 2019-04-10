@@ -52,6 +52,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Strain whereUuid($value)
  * @property int $s1
  * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Strain whereS1($value)
+ * @property-read \Heisen\Image $images
  */
 class Strain extends BaseModel
 {

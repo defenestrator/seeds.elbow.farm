@@ -6,4 +6,4 @@
 </li>
 <li><a class="nav-link" href="{{ route('strains.index') }}">Strains</a></li>
 <li><a class="nav-link" target="_blank" href="https://chuckersparadise.com/threads/heisenbeans-genetics.6/">Forum</a></li>
-<li><a class="nav-link" href="{{ route('home') }}">Home</a></li>
+

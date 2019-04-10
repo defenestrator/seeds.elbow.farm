@@ -8,39 +8,97 @@
         </div>
     @endif
     <div class="row">
-        <div class="col-sm-4">
-            <div class="card" style="border:none;">
-                <div class="card-header"><h4>Shipping Addresses</h4></div>
-                <div class="card-body">
-                    <div class="d-flex container">
-                       <a href="/shipping-addresses"><i class="fa fa-5x fa-address-card"></i></a>
+        <div class="col-md-12">
+            <ul class="nav nav-tabs" id="homeTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active"
+                    id="shipping-addresses-tab"
+                    data-toggle="tab"
+                    href="#shipping-addresses"
+                    role="tab"
+                    aria-controls="shipping-addresses"
+                    aria-selected="true">
+                        Addresses
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"
+                    id="profile-tab"
+                    data-toggle="tab"
+                    href="#profile"
+                    role="tab"
+                    aria-controls="profile"
+                    aria-selected="false">
+                        Profile
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"
+                    id="contact-tab"
+                    data-toggle="tab"
+                    href="#contact"
+                    role="tab"
+                    aria-controls="contact"
+                    aria-selected="false">
+                        Invoices
+                    </a>
+                </li>
+            </ul>
+            <div class="tab-content" id="shipping-address-content">
+                <div class="card-body tab-pane fade show active"
+                id="profile"
+                role="tabpanel"
+                aria-labelledby="profile-tab">
+                <div class="d-flex flex-row">
+                    <i class="fa fa-5x fa-cog"></i>
+                    <h4>Edit Profile</h4>
+                </div>
+                <div class="container">
+                    <profile :initial_profile="{{ $initialProfile }}"></profile>
+                </div>
+                </div>
+                <div class="card-body tab-pane fade"
+                id="shipping-addresses"
+                role="tabpanel"
+                aria-labelledby="shipping-addresses-tab">
+                    <div class="d-flex flex-row">
+                        <i class="fa fa-5x fa-address-card"></i>
+                        <h4>Shipping Addresses</h4>
                     </div>
+                    <div class="container">
+                        {{-- <addresses :addresses={!!  $addresses !!}></addresses> --}}
+                    </div>
+                </div>
 
+                <div class="card-body tab-pane fade"
+                id="contact"
+                role="tabpanel"
+                aria-labelledby="contact-tab">
+                    <div class="d-flex flex-row">
+                        <i class="fa fa-5x fa-file-text"></i>
+                        <h4>Your Invoices</h4>
+                    </div>
+                    <div class="container">
+                        {{-- <invoices :invoices={!!  $invoices !!}></invoices> --}}
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-sm-4">
-            <div class="card" style="border:none;">
-                <div class="card-header"><h4>Your Invoices</h4></div>
-                <div class="card-body">
-                    <div class="d-flex container">
-                       <a href="/orders"><i class="fa fa-5x fa-file-text"></i></a>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-4">
-            <div class="card" style="border:none;">
-                <div class="card-header"><h4>Profile & Settings</h4></div>
-
-                <div class="card-body">
-                    <div class="d-flex container">
-                        <a href="/profile"><i class="fa fa-5x fa-cog"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
+@endsection
+@section('page_styles')
+<style>
+    .tab-content {
+        background-color:white;
+        border:1px solid #dee2e6;
+        border-top:none;
+
+        border-top-right-radius:4px;
+        border-top-left-radius:0;
+
+    }
+    h4 {
+        padding:1rem;
+    }
+</style>
 @endsection

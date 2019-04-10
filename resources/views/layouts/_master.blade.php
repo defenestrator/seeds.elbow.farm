@@ -27,7 +27,18 @@
         @endif
         @yield('top')
         <main class="py-4">
-            @yield('message')
+            <div class="container">
+                @if ($errors->any())
+                <div class="row col-md-12 alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
+                @yield('message')
+            </div>
             @yield('content')
 
             @yield('bottom')
@@ -41,8 +52,9 @@
                 </div>
             </div>
             <hr>
-
-            <p class="footer small">&copy; Heisenbeans &trade; {{ date('F jS, Y') }}</p>
+            <div class="container">
+                <p class="footer small">&copy; Heisenbeans &trade; {{ date('F jS, Y') }}</p>
+            </div>
         </main>
     </div>
     @yield('page_scripts')

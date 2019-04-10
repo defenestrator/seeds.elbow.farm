@@ -3,6 +3,7 @@
 namespace Heisen\Http\Controllers\Auth;
 
 use Heisen\User;
+use Heisen\Profile;
 use Heisen\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -64,11 +65,25 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
 
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'uuid' => User::makeUuid()
         ]);
+
+        $profile = Profile::create(
+            [
+                'user_id' => $user->id,
+                'avatar' => 'http://i.heisenbeans.com/images/heisenhead.png',
+                'riu_username' => 'Uncle Buck',
+                'user_title' => 'Seed Addict',
+                'instagram_handle' => 'myspacetom',
+                'facebook_url' => 'myspacetom',
+                'chuckers_paradise' => 'Uncle Buck',
+                'public' => false
+            ]
+        );
+        return [$user, $profile];
     }
 }

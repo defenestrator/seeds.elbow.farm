@@ -33,9 +33,10 @@ class CartController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request, Cart $cart, SeedPack $seedPack)
+    public function store(Request $request, Cart $cart, SeedPack $seedPack)
     {
-        Session::push('cart', ['product' => $request->all()]);
+        Session::push('cart', $request->all());
+
         $user = Auth::user();
 
         $newCart = $cart->create([
@@ -47,17 +48,6 @@ class CartController extends Controller
         $seeds->seedPacks()->attach($request->selectedPack, ['quantity' => $request->quantity]);
 
         return ['user' => $user, 'cart' => $newCart];
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
     }
 
     /**

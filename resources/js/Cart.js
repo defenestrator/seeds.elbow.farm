@@ -8,9 +8,11 @@ export default {
                     item.selectedPack = selectedPack
                     axios.post('/cart/', item)
                     .then(response => {
+                        Promise.resolve(response)
                         return response.data
                     })
                     .catch(error => {
+                        Promise.reject(error)
                         console.log(error)
                     })
                     return

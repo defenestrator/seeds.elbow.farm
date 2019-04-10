@@ -35,14 +35,28 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $chuckers_paradise
  * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Profile whereChuckersParadise($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Profile wherePublic($value)
+ * @property-read \Heisen\Image $image
+ * @property-read \Heisen\User $user
  */
 class Profile extends Model
 {
     protected $fillable = [
         'avatar',
         'riu_username',
-        'instagram',
+        'instagram_handle',
         'facebook_url',
-        'chuckers_paradise'
+        'chuckers_paradise',
+        'public',
+        'user_title',
+        'user_id'
     ];
+
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
+
+    public function image()
+    {
+        return $this->morphOne('Heisen\Image', 'imageable');
+    }
 }

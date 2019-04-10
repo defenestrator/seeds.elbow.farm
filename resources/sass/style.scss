@@ -194,3 +194,7 @@ form, input[type=text], input[type=number], input[type=select], textarea {
 .navbar-nav .dropdown-menu {
     background-color:  rgba(242,242,242,0.9);
 }
+
+a.dropdown-item.nav-link {
+    padding:0.5rem 1rem;
+}

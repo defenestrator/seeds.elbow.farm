@@ -30,14 +30,25 @@ Route::get('/strains', 'StrainController@index')->name('strains.index');
 Route::get('/strains/{uuid}', 'StrainController@show')->name('strains.show');
 
 // Cart
-Route::post('/cart', 'CartController@create');
+Route::post('/cart', 'CartController@store');
 
 Route::get('/cart', 'CartController@index');
-///////////////    DANGER ZONE    !!    Admin Routes    !!    /////////////////////////////////////
+
+Route::get('/profile/', 'ProfileController@index')->name('profile.index');
+/////////////////   USER ROUTES     !!///////////////////////////////////////////////////////
+Route::prefix('/user/')->name('user.')->group( function(){
+    Route::post('profile/', 'ProfileController@update')->name('profile.update');
+    Route::post('image', 'ImageController@create')->name('profile.avatar.update');
+    Route::get('invoices', 'InvoiceController@index')->name('invoices');
+});
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+///////////////    DANGER ZONE    !!    Admin Routes    !!    ///////////////////////////////
 Route::prefix('/admin/')->name('admin.')->middleware('role:admin')->group( function () {
 
-    Route::get('/strains/create', 'Admin\StrainController@create')->name('strains.create');
-    Route::get('/strains/', 'Admin\StrainController@index')->name('strains.index');
+    Route::get('strains/create', 'Admin\StrainController@create')->name('strains.create');
+    Route::get('strains/', 'Admin\StrainController@index')->name('strains.index');
     Route::get('strains/{id}', 'Admin\StrainController@edit')->name('strains.edit');
     Route::post('strains/', 'Admin\StrainController@store')->name('strains.store');
     Route::post('strains/{id}', 'Admin\StrainController@update')->name('strains.update');

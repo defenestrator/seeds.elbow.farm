@@ -2,14 +2,17 @@
 
 namespace Heisen\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use Heisen\Image as ImageModel;
 use Intervention\Image\Facades\Image;
-use Heisen\Requests\ImageRequest;
+use Heisen\Http\Requests\ImageRequest;
 use Illuminate\Support\Facades\Storage;
 
 class ImageController extends \Heisen\Http\Controllers\Controller
 {
+    public function __construct()
+    {
+
+    }
 
     protected $options = [
         'visibility'            =>  'public',
@@ -19,7 +22,7 @@ class ImageController extends \Heisen\Http\Controllers\Controller
     protected $small = 200;
     protected $thumb = 640;
     protected $large = 1280;
-    
+
     /**
      * wysiwygImageUpload
      *
@@ -29,7 +32,7 @@ class ImageController extends \Heisen\Http\Controllers\Controller
      */
     public function wysiwygImageUpload(ImageRequest $request)
     {
-        
+
         $large = $this->processImage($request->image, $this->large);
 
         return response()->json([

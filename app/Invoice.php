@@ -29,6 +29,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property string|null $customer_notes
  * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Invoice whereCustomerNotes($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Invoice whereUuid($value)
+ * @property int $shipping
+ * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Invoice whereShipping($value)
  */
 class Invoice extends Model
 {

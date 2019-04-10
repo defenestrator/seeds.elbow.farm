@@ -45,10 +45,11 @@ use Ramsey\Uuid\Exception\UnsatisfiedDependencyException;
  * @property-read \Illuminate\Database\Eloquent\Collection|\Heisen\Payments[] $payments
  * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Permission\Models\Permission[] $permissions
  * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\User whereUuid($value)
+ * @property-read \Heisen\Profile $profile
  */
-class User extends Authenticatable implements MustVerifyEmail 
+class User extends Authenticatable implements MustVerifyEmail
 {
-    
+
     use Notifiable;
     use VerifyEmail;
     use HasRoles;
@@ -70,35 +71,39 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $hidden = [
         'password', 'remember_token',
     ];
-    
-    public function makeUuid() 
+
+    public function makeUuid()
     {
         $uuid ='';
-        
+
         try {
             $uuid= Uuid::uuid1()->toString();
-        } catch (UnsatisfiedDependencyException $e) {            
+        } catch (UnsatisfiedDependencyException $e) {
             // Some dependency was not met. Either the method cannot be called on a
             // 32-bit system, or it can, but it relies on Moontoast\Math to be present.
             echo 'Caught exception: ' . $e->getMessage() . "\n";
         }
-                
+
         return $uuid;
     }
-        
-    public function shippingAddresses() 
+
+    public function shippingAddresses()
     {
         return $this->hasMany(ShippingAddress::class);
     }
-    
-    public function invoices() 
+
+    public function invoices()
     {
         return $this->hasMany(Invoice::class);
     }
-    
-    public function payments() 
+
+    public function payments()
     {
         return $this->hasManyThrough(Payments::class, Invoice::class);
+    }
+    public function profile()
+    {
+        return $this->hasOne(Profile::class);
     }
 
 }

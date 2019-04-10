@@ -5,21 +5,40 @@ namespace Heisen\Http\Controllers;
 use Illuminate\Http\Request;
 use Heisen\Image as ImageModel;
 use Intervention\Image\Facades\Image;
-use Heisen\Requests\ImageRequest;
+use Heisen\Http\Requests\ImageRequest;
 use Illuminate\Support\Facades\Storage;
 
-class ImageController extends Controller
+class ImageController extends \Heisen\Http\Controllers\Controller
 {
+    public function __construct()
+    {
+
+    }
+
+    public function create(ImageRequest $request)
+    {
+        $files = [];
+        $model = [
+            'imageable_type' => $request->imageable_type,
+            'imageable_id' => $request->imageable_id
+        ];
+        if($request->image) {
+            $files = $this->generateImages($request->image);
+        }
+        $data = array_merge($model, $files);
+        $store = ImageModel::create($data);
+        return $store;
+    }
 
     protected $options = [
-        'visibility'    => 'public',
-        'Cache-Control' => 'max-age=31536000'
+        'visibility'            =>  'public',
+        'Cache-Control' =>  'max-age=31536000'
     ];
 
     protected $small = 200;
     protected $thumb = 640;
     protected $large = 1280;
-    
+
     /**
      * wysiwygImageUpload
      *
@@ -29,7 +48,7 @@ class ImageController extends Controller
      */
     public function wysiwygImageUpload(ImageRequest $request)
     {
-        
+
         $large = $this->processImage($request->image, $this->large);
 
         return response()->json([
@@ -53,14 +72,14 @@ class ImageController extends Controller
 
         $largeImage = $this->processImage($file, $this->large);
 
-        $record = ImageModel::create([
+        $resized = [
             'small' => $smallImage,
             'thumb' => $thumbImage,
             'large' => $largeImage,
-        ]);
+        ];
 
 
-        return $record;
+        return $resized;
     }
 
     /**

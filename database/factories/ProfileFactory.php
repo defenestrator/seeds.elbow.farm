@@ -8,7 +8,8 @@ $factory->define(Heisen\Profile::class, function (Faker $faker) {
         'user_id' => $faker->numberBetween(1,6),
         'riu_username' => 'Uncle Buck',
         'user_title' => 'Seed Addict',
-        'intagram_handle' => 'myspacetom',
-        'facebook_url' => 'myspacetom'
+        'instagram_handle' => 'myspacetom',
+        'facebook_url' => 'myspacetom',
+        'chuckers_paradise' => 'Uncle Buck'
     ];
 });
