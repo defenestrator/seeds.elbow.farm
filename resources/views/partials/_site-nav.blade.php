@@ -9,11 +9,12 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left side of Navbar -->
             <ul class="navbar-nav mr-auto" style="padding-left:1rem; padding-right:2em;">
+
                 <li><a class="nav-link" href="#"></a></li>
             </ul>
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-auto">
-                @include('partials._guest-nav')
+                @include('partials._public-nav')
                 @guest
                 <li><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li>
                 <li><a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></li>

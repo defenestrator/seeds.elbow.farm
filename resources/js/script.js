@@ -63,41 +63,7 @@ const app = new Vue({
     },
     data() {
         return {
-            cartActive: false,
-            cartSlider: null,
-            cartSliderButton: null,
             cart: {},
         }
-    },
-    methods: {
-        toggleCartSlider() {
-            if (this.cartSlider.offsetWidth === 0) {
-                this.cartActive = true
-            } else {
-                this.cartActive = false
-            }
-        }
-    },
-
-    watch: {
-        cartActive: function (val) {
-            if (val === true) {
-                this.cartSlider.classList.add('cart-slider-active')
-                this.cartSliderButton.classList.remove('fa-shopping-cart')
-                this.cartSliderButton.classList.add('fa-window-close')
-                this.cartSliderButton.style.backgroundColor = 'transparent'
-            } else {
-                this.cartSliderButton.classList.remove('fa-window-close')
-                this.cartSliderButton.classList.add('fa-shopping-cart')
-                this.cartSlider.classList.remove('cart-slider-active')
-                this.cartSliderButton.style.backgroundColor = 'hsla(212,25%, 27%, 0.95)'
-            }
-        }
-    },
-
-    mounted() {
-        this.cartSlider = document.getElementById('cart-slider')
-        this.cartSliderButton = document.getElementById('cart-slider-button')
-
     }
 });

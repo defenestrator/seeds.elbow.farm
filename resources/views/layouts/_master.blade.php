@@ -22,25 +22,27 @@
 <body>
     <div id="app">
         @include('partials._site-nav')
-        <div class="d-flex flex-row-reverse cart-slider-wrapper">
-            <div id="cart-slider" class="cart-slider">
-                <div class="container cart-slider-contents">
-                    <h4>Shopping Cart</h4>
-                    <p>is currently under development.</p>
-                </div>
-            </div>
-            <i class="fa fa-lg fa-dark fa-shopping-cart cart-slider-button" id="cart-slider-button"
-                v-on:click="toggleCartSlider()"></i>
-        </div>
+        @if(Auth::check())
+        @include('partials._cart-slider')
+        @endif
         @yield('top')
         <main class="py-4">
             @yield('message')
             @yield('content')
+
             @yield('bottom')
+
             <div class="container">
-                <hr>
-                <p class="footer small">&copy; Heisenbeans &trade; {{ date('F jS, Y') }}</p>
+
+            <hr>
+            <div class="d-flex flex-row-reverse navbar-footer">
+                    <div><a class="p-2 nav-link" href="{{ route('contact.create') }}">Contact</a></div>
+                    <div><a class="p-2 nav-link" href="{{ route('testers') }}">Testers</a></div>
+                </div>
             </div>
+            <hr>
+
+            <p class="footer small">&copy; Heisenbeans &trade; {{ date('F jS, Y') }}</p>
         </main>
     </div>
     @yield('page_scripts')

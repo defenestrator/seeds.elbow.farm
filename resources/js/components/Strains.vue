@@ -47,7 +47,10 @@
                 this.searchQuery = "";
             }
         },
-        mixins: [Cart]
+        mixins: [Cart],
+        mounted() {
+
+        }
     };
 
 </script>
@@ -86,19 +89,21 @@
                             </label>
                         </div>
                     </div>
-                    <div class="form-group form-inline" style="justify-content: center;">
+                    <div v-if="item.seed_packs === undefined || item.seed_packs == 0">
+                            
+                    </div>
+                    <div v-else class="form-group form-inline" style="justify-content: center;">
                         <input v-model.number="item.quantity" class="form-control form-inline input-group-sm"
                             style="max-width:60px;margin-bottom:0.1rem;" type="number" :name="'quantity-' + item.uuid"
                             min="1" max="10" :id="'quantity-' + item.uuid">
                         &nbsp;
                         <button style="margin-bottom:0.1rem;" role="button" :id="'buy-now-' + item.uuid"
-                            class="btn btn-primary form-inline input-group-sm" disabled>BUY</button>
+                            class="btn btn-primary form-inline input-group-sm">BUY</button>
                         &nbsp;
                         <button style="margin-bottom:0.1rem;" role="button" :id="'add-to-cart-' + item.uuid"
                             class="btn btn-outline-gray form-inline input-group-sm"
                             v-on:click.stop.prevent="addToCart(item, selectedPack)">ADD TO CART</button>
                     </div>
-
                 </form>
             </div>
         </div>
