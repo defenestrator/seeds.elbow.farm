@@ -17,9 +17,9 @@ class AddProfilesToUsers extends Migration
     {
         $userCount = User::count();
 
-        for ($i = 0; $i <= $userCount; function(){
+        for ($i = 1; $i < $userCount;) {
             Profile::create([
-                'user_id' => $user->id,
+                'user_id' => $i,
                 'avatar' => 'http://i.heisenbeans.com/images/heisenhead.png',
                 'riu_username' => 'Uncle Buck',
                 'user_title' => 'Seed Addict',
@@ -28,7 +28,8 @@ class AddProfilesToUsers extends Migration
                 'chuckers_paradise' => 'Uncle Buck',
                 'public' => false
             ]);
-        });
+            $i++;
+        }
     }
 
     /**
