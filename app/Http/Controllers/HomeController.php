@@ -30,7 +30,7 @@ class HomeController extends Controller
     {
         $user = $user->whereId(Auth::user()->id)->first();
 
-        $profile = $profile->whereUserId($user->id)->firstorNew([]);
+        $profile = $profile->whereUserId($user->id)->first();
         $invoices = $invoice->whereUserId($user->id)->paginate();
         $addresses = $shippingAddress->whereUserId($user->id)->get();
         // dd(Auth::user()->id);
