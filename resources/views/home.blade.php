@@ -57,7 +57,7 @@
                         <h4>Shipping Addresses</h4>
                     </div>
                     <div class="container">
-                        <shipping-addresses :initial_shipping_addresses="{{ $addresses }}"></addresses>
+                        {{-- <shipping-addresses :initial_shipping_addresses="{{ $addresses }}"></addresses> --}}
                     </div>
                 </div>
 
