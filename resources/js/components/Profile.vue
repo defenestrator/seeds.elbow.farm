@@ -34,7 +34,7 @@ export default {
             formData.append('instagram_handle', this.profile.instagram_handle)
             formData.append('public', this.profile.public)
             formData.append('user_id', this.profile.user_id)
-            axios.post(this.baseUrl, formData, this.headers)
+            axios.post(this.baseProfileUrl, formData, this.headers)
             .then(response => {
                 Promise.resolve(response)
                 return response.data
