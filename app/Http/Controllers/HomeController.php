@@ -28,14 +28,12 @@ class HomeController extends Controller
      */
     public function index(User $user, Profile $profile, Invoice $invoice, ShippingAddress $shippingAddress)
     {
-        $invoices = new \stdClass;
-        $addresses = new \stdClass;
         $user = $user->whereId(Auth::user()->id)->first();
 
-        $initialProfile = $profile->whereUserId($user->id)->first();
+        $profile = $profile->whereUserId($user->id)->first();
         $invoices = $invoice->whereUserId($user->id)->paginate();
-        $addresses = $shippingAddress->whereUserId($user->id)->paginate();
+        $addresses = $shippingAddress->whereUserId($user->id)->get();
         // dd(Auth::user()->id);
-        return view('home', compact('user', 'initialProfile', 'invoices', 'addresses'));
+        return view('home', compact('user', 'profile', 'invoices', 'addresses'));
     }
 }

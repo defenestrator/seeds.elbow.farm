@@ -11,7 +11,7 @@ export default {
     },
     data() {
         return {
-            baseUrl: '/user/profile/',
+            baseProfileUrl: '/user/profile/',
             avatarUpdate: '/user/image',
             image: null,
             profile: this.initial_profile,
@@ -58,13 +58,12 @@ export default {
             .then(response => {
                 this.profile.avatar = response.data.small
                 Promise.resolve(response)
-                updateProfile
+                this.updateProfile()
                 return response.data
             })
             .catch(error => {
                 console.log(error)
                 Promise.reject(error)
-
             })
         },
         previewFile() {
@@ -89,15 +88,15 @@ export default {
 <template>
 <div class="container">
     <div class="row">
-        <div class="col-md-4 info">
+        <div class="col-sm-4 info">
             <img id="preview" :src="profile.avatar" />
         </div>
-        <div class="col-md-8">
+        <div class="col-sm-8">
             <form class="form-horizontal new-content"
             role="form"
             enctype="multipart/form-data">
                 <div class="form-group row col-md-12">
-                    <label class="btn btn-warning btn-file">
+                    <label class="btn btn-outline-gray btn-file">
                         Choose Image
                         <input ref="avatar"
                         type="file"

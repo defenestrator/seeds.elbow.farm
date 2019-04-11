@@ -11,25 +11,14 @@
         <div class="col-md-12">
             <ul class="nav nav-tabs" id="homeTab" role="tablist">
                 <li class="nav-item">
-                    <a class="nav-link active"
+                    <a class="nav-link"
                     id="shipping-addresses-tab"
                     data-toggle="tab"
                     href="#shipping-addresses"
                     role="tab"
                     aria-controls="shipping-addresses"
-                    aria-selected="true">
-                        Addresses
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link"
-                    id="profile-tab"
-                    data-toggle="tab"
-                    href="#profile"
-                    role="tab"
-                    aria-controls="profile"
                     aria-selected="false">
-                        Profile
+                        Addresses
                     </a>
                 </li>
                 <li class="nav-item">
@@ -43,20 +32,22 @@
                         Invoices
                     </a>
                 </li>
+
+                <li class="nav-item">
+                    <a class="nav-link active"
+                    id="profile-tab"
+                    data-toggle="tab"
+                    href="#profile"
+                    role="tab"
+                    aria-controls="profile"
+                    aria-selected="true">
+                        Profile
+                    </a>
+                </li>
+
             </ul>
             <div class="tab-content" id="shipping-address-content">
-                <div class="card-body tab-pane fade show active"
-                id="profile"
-                role="tabpanel"
-                aria-labelledby="profile-tab">
-                <div class="d-flex flex-row">
-                    <i class="fa fa-5x fa-cog"></i>
-                    <h4>Edit Profile</h4>
-                </div>
-                <div class="container">
-                    <profile :initial_profile="{{ $initialProfile }}"></profile>
-                </div>
-                </div>
+
                 <div class="card-body tab-pane fade"
                 id="shipping-addresses"
                 role="tabpanel"
@@ -66,7 +57,7 @@
                         <h4>Shipping Addresses</h4>
                     </div>
                     <div class="container">
-                        {{-- <addresses :addresses={!!  $addresses !!}></addresses> --}}
+                        <shipping-addresses :initial_shipping_addresses="{{ $addresses }}"></addresses>
                     </div>
                 </div>
 
@@ -82,6 +73,20 @@
                         {{-- <invoices :invoices={!!  $invoices !!}></invoices> --}}
                     </div>
                 </div>
+
+                <div class="card-body tab-pane fade show active"
+                id="profile"
+                role="tabpanel"
+                aria-labelledby="profile-tab">
+                    <div class="d-flex flex-row">
+                        <i class="fa fa-5x fa-cog"></i>
+                        <h4>Edit Profile</h4>
+                    </div>
+                    <div class="container">
+                        <profile :initial_profile="{{ $profile }}"></profile>
+                    </div>
+                </div>
+
             </div>
     </div>
 </div>
