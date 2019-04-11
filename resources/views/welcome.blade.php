@@ -8,7 +8,7 @@
         <h2>Grand Opening</h2>
     </div>
     <div class="row justify-content-center">
-        <h3>Saturday April 20th, 2019!</h3>
+        <h3>Saturday April 13th, 2019!</h3>
     </div>
     <strains :products="{{ $strains }}" ></strains>
     <hr />
