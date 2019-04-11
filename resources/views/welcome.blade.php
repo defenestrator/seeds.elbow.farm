@@ -1,15 +1,15 @@
 @extends('layouts._master')
 @section('content')
-<div class="container">
+<div class="container justify-content-center">
     <div class="row justify-content-center pagetitle">
         <h1>Heisenbeans</h1>
     </div>
-
      <div class="row justify-content-center">
-        <h2>Feminized Fire</h2>
+        <h2>Grand Opening</h2>
     </div>
-
-
+    <div class="row justify-content-center">
+        <h3>Saturday April 20th, 2019!</h3>
+    </div>
     <strains :products="{{ $strains }}" ></strains>
     <hr />
     <div class="row justify-content-center">
@@ -38,5 +38,4 @@
         @endforeach
     </div>
 </div>
-
 @endsection
