@@ -39,6 +39,6 @@ class ProfilePolicy
         return Auth::user()->id === $profile->user_id;
     }
 
-    
+
 
 }

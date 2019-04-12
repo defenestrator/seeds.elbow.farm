@@ -9,7 +9,7 @@ export default {
     },
     data() {
         return {
-            baseProfileUrl: '/user/profile/',
+            baseProfileUrl: '/profile',
             avatarUpdate: '/image',
             image: null,
             user: this.initial_user,
@@ -21,16 +21,18 @@ export default {
     },
     methods: {
         updateProfile() {
-            let formData = new FormData()
-            formData.append('avatar', this.profile.avatar)
-            formData.append('user_title', this.profile.user_title)
-            formData.append('chuckers_paradise', this.profile.chuckers_paradise)
-            formData.append('facebook_url', this.profile.facebook_url)
-            formData.append('riu_username', this.profile.riu_username)
-            formData.append('instagram_handle', this.profile.instagram_handle)
-            formData.append('public', this.profile.public)
-            formData.append('user_id', this.profile.user_id)
-            axios.put(this.baseProfileUrl, formData, this.headers)
+            let data = {
+            'avatar': this.profile.avatar,
+            'user_title': this.profile.user_title,
+            'chuckers_paradise': this.profile.chuckers_paradise,
+            'facebook_url': this.profile.facebook_url,
+            'riu_username': this.profile.riu_username,
+            'instagram_handle': this.profile.instagram_handle,
+            'public': this.profile.public,
+            'user_id': this.profile.user_id
+            }
+
+            axios.put(this.baseProfileUrl, data, this.headers)
             .then(response => {
                 Promise.resolve(response)
                 return response.data
@@ -41,12 +43,19 @@ export default {
             })
         },
         updateName() {
-            let formData = new FormData()
-            formData.append('name', this.user.name)
-            axios.put('/user/'+ this.user.id, formData, this.headers)
+            axios.put('/user/'+ this.user.id,
+                {'name': this.user.name},
+                {'Content-Type': 'application/json'})
+
             .then(response => {
+
                 Promise.resolve(response)
-                return swal('user name updated!')
+                return swal({
+                    title: 'user name',
+                    text: 'updated!',
+                    icon: 'success',
+                    button: "Aww yiss!",
+                    })
             })
             .catch(error => {
                 console.log(error)
@@ -163,7 +172,7 @@ export default {
                         class="form-control input"
                         type="text"
                         placeholder="Facebook URL"
-                        :value="profile.facebook_url">
+                        v-model="profile.facebook_url">
                     </div>
                 </div>
                 <div class="form-group row">
@@ -174,7 +183,7 @@ export default {
                         class="form-control input"
                         type="text"
                         placeholder="Instagram Handle"
-                        :value="profile.instagram_handle">
+                        v-model="profile.instagram_handle">
                     </div>
                 </div>
                 <div class="form-group row">
