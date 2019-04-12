@@ -20,8 +20,7 @@ class ProfileController extends Controller
 
     public function index(Profile $profile)
     {
-        return view('user.profile',
-        ['profile' => $profile->whereUserId(Auth::user()->id)->first()]);
+        //
     }
     /**
      * Display the specified resource.
@@ -29,9 +28,13 @@ class ProfileController extends Controller
      * @param  \Heisen\Profile  $profile
      * @return \Illuminate\Http\Response
      */
-    public function show(Profile $profile, $id)
+    public function show(Request $request, Profile $profile, $id)
     {
-        return $profile->whereUserId($id);
+        if($request->path() === 'user/profile') {
+            return view('user.profile',['profile' => $profile->whereUserId($id)->first()]);
+        }
+
+        return view('user.profile',['profile' => $profile->whereId($id)->first()]);
     }
 
     /**

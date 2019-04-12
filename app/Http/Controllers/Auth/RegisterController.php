@@ -84,6 +84,6 @@ class RegisterController extends Controller
                 'public' => false
             ]
         );
-        return [$user, $profile];
+        return $user;
     }
 }

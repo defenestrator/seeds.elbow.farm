@@ -7,8 +7,6 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Auth\MustVerifyEmail as VerifyEmail;
 use Spatie\Permission\Traits\HasRoles;
-use Spatie\Permission\Models\Role;
-use Spatie\Permission\Models\Permission;
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\Exception\UnsatisfiedDependencyException;
 
@@ -72,12 +70,12 @@ class User extends Authenticatable implements MustVerifyEmail
         'password', 'remember_token',
     ];
 
-    public function makeUuid()
+    public static function makeUuid()
     {
         $uuid ='';
 
         try {
-            $uuid= Uuid::uuid1()->toString();
+            $uuid= Uuid::uuid1();
         } catch (UnsatisfiedDependencyException $e) {
             // Some dependency was not met. Either the method cannot be called on a
             // 32-bit system, or it can, but it relies on Moontoast\Math to be present.

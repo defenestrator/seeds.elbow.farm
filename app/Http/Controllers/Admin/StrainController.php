@@ -7,15 +7,29 @@ use Heisen\Strain;
 use Heisen\Http\Requests\StoreStrainRequest;
 use Heisen\Http\Requests\UpdateStrainRequest;
 use Illuminate\Support\Facades\Cache;
+use Heisen\Image;
 
 
-class StrainController extends ImageController
+class StrainController extends AdminController
 {
     protected $strain;
+    protected $request;
+    protected $filePaths;
 
-    public function __construct (Strain $strain)
+    public function __construct(Strain $strain, Request $request)
     {
         $this->strain = $strain;
+        $this->request = $request;
+        if ($this->request->hasFile('image') && $this->request->file('image')->isValid()) {
+
+            $model = [
+                'imageable_type' => $request->imageable_type,
+                'imageable_id' => $request->imageable_id
+            ];
+
+            $this->filePaths = array_merge($this->generateImages($this->request->file('image')), $model);
+
+        }
     }
 
     /**
@@ -47,36 +61,43 @@ class StrainController extends ImageController
      */
     public function store(StoreStrainRequest $request)
     {
-        $image = $this->generateImages($request->image);
+        if($this->filePaths !== null) {
+            $image = Image::create($this->filePaths);
 
-        $uuid = $this->strain->makeUuid();
+            $uuid = $this->strain->makeUuid();
 
-        $s1 = $pub = false;
+            $s1 = $pub = false;
 
-        if ( $request->published == 'on' ) {
-            $pub = true;
+            if ( $request->published == 'on' ) {
+                $pub = true;
+            }
+
+            if ( $request->s1 == 'on' ) {
+                $s1 = true;
+            }
+            $newStrain = $this->strain->create([
+                'breeder_id'                => 1,
+                'uuid'                      => $uuid,
+                'genetics'                  => $request->genetics,
+                'flowering_time_min_weeks'  => $request->min_flowering_time,
+                'flowering_time_max_weeks'  => $request->max_flowering_time,
+                'description'               => $request->description,
+                'name'                      => $request->name,
+                'image'                     => $image['large'],
+                'image_id'                  => $image['id'],
+                's1'                        => $s1,
+                'published'                 => $pub
+            ]);
+            Cache::forget('strains');
+            Cache::forget('welcomeStrains');
+            Cache::put('strain:'. $newStrain->id, $newStrain, 66666);
+
+            return redirect()->to('/admin/strains/'. $newStrain->id);
         }
 
-        if ( $request->s1 == 'on' ) {
-            $s1 = true;
-        }
-        $newStrain = $this->strain->create([
-            'breeder_id'                => 1,
-            'uuid'                      => $uuid,
-            'genetics'                  => $request->genetics,
-            'flowering_time_min_weeks'  => $request->min_flowering_time,
-            'flowering_time_max_weeks'  => $request->max_flowering_time,
-            'description'               => $request->description,
-            'name'                      => $request->name,
-            'image'                     => $image['large'],
-            'image_id'                  => $image['id'],
-            's1'                        => $s1,
-            'published'                 => $pub
-        ]);
-        Cache::forget('strains');
-        Cache::forget('welcomeStrains');
-        Cache::put('strain:'. $newStrain->id, $newStrain, 66666);
-        return redirect()->to('/admin/strains/'. $newStrain->id);
+        return response('Error', 422, ['error' => 'Unprocessable Entity, this probably means the file you uploaded is corrupt or an unsupported file type.']);
+
+
     }
 
     /**
@@ -144,10 +165,10 @@ class StrainController extends ImageController
     {
         $strain = $this->strain->find($id);
 
-        if ($request->image) {
-            $images  = $this->generateImages($request->image);
-            $strain->image   = $images['large'];
-            $strain->imageId = $images['id'];
+        if($this->filePaths !== null) {
+            $image = Image::create($this->filePaths);
+            $strain->image   = $image['large'];
+            $strain->imageId = $image['id'];
         }
 
         $s1 = $pub = false;

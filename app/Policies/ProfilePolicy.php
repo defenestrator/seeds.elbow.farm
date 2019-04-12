@@ -10,6 +10,11 @@ class ProfilePolicy
 {
     use HandlesAuthorization;
 
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Determine whether the user can view the profile.
      *
@@ -17,7 +22,7 @@ class ProfilePolicy
      * @param  \Heisen\Profile  $profile
      * @return mixed
      */
-    public function view(Profile $profile)
+    public function view(User $user, Profile $profile)
     {
         return Auth::user()->id === $profile->user_id || $profile->public === true;
     }
@@ -29,9 +34,11 @@ class ProfilePolicy
      * @param  \Heisen\Profile  $profile
      * @return mixed
      */
-    public function update(Profile $profile)
+    public function update(User $user, Profile $profile)
     {
         return Auth::user()->id === $profile->user_id;
     }
+
+    
 
 }

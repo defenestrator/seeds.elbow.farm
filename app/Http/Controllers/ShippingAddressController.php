@@ -25,7 +25,7 @@ class ShippingAddressController extends Controller
      */
     public function index()
     {
-        //
+        return 'invoice index';
     }
 
     /**

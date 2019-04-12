@@ -2,110 +2,35 @@
 
 namespace Heisen\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Heisen\Image as ImageModel;
-use Intervention\Image\Facades\Image;
 use Heisen\Http\Requests\ImageRequest;
-use Illuminate\Support\Facades\Storage;
+use Heisen\Image;
 
-class ImageController extends \Heisen\Http\Controllers\Controller
+class ImageController extends Controller
 {
-    public function __construct()
-    {
 
-    }
-
-    public function create(ImageRequest $request)
+    protected $request;
+    protected $filePaths;
+    public function __construct(ImageRequest $request)
     {
-        $files = [];
-        $model = [
-            'imageable_type' => $request->imageable_type,
-            'imageable_id' => $request->imageable_id
-        ];
-        if($request->image) {
-            $files = $this->generateImages($request->image);
+        $this->request = $request;
+        if ($this->request->hasFile('image') && $this->request->file('image'->isValid())) {
+
+            $model = [
+                'imageable_type' => $request->imageable_type,
+                'imageable_id' => $request->imageable_id
+            ];
+
+            $this->filePaths = array_merge($this->generateImages($this->request->file('image')), $model);
+
         }
-        $data = array_merge($model, $files);
-        $store = ImageModel::create($data);
-        return $store;
     }
 
-    protected $options = [
-        'visibility'            =>  'public',
-        'Cache-Control' =>  'max-age=31536000'
-    ];
-
-    protected $small = 200;
-    protected $thumb = 640;
-    protected $large = 1280;
-
-    /**
-     * wysiwygImageUpload
-     *
-     * @param  mixed $request
-     *
-     * @return void
-     */
-    public function wysiwygImageUpload(ImageRequest $request)
+    public function create()
     {
-
-        $large = $this->processImage($request->image, $this->large);
-
-        return response()->json([
-            'large' => $large,
-            'success' => true,
-        ]);
-    }
-
-    /**
-     * generateImages
-     *
-     * @param  mixed $file
-     *
-     * @return void
-     */
-    public function generateImages($file)
-    {
-        $smallImage = $this->processImage($file, $this->small);
-
-        $thumbImage = $this->processImage($file, $this->thumb);
-
-        $largeImage = $this->processImage($file, $this->large);
-
-        $resized = [
-            'small' => $smallImage,
-            'thumb' => $thumbImage,
-            'large' => $largeImage,
-        ];
-
-
-        return $resized;
-    }
-
-    /**
-     * processImage
-     *
-     * @param  mixed $image
-     * @param  mixed $size
-     *
-     * @return void
-     */
-    public function processImage($image, $size)
-    {
-        $resize = Image::make($image)
-            ->resize($size, $size, function ($constraint) {
-                $constraint->aspectRatio();
-                $constraint->upsize();
-            })->encode('jpg', 70)->stream();
-        $hash = md5($resize->__toString());
-
-        if ( config('app.env') == 'production' ) {
-            Storage::disk('s3')->put('/images/'.$hash.'.jpg' , $resize->__toString(), $this->options);
-            $filePath=  'http://i.heisenbeans.com/images/'.$hash.'.jpg';
-        } else {
-            Storage::disk('local')->put('/public/images/'.$hash.'.jpg' , $resize->__toString());
-            $filePath = Storage::disk('local')->url('images/'.$hash.'.jpg');
+        if($this->filePaths !== null) {
+            return Image::create($this->filePaths);
         }
-        return $filePath;
+        return response('Error', 422, ['error' => 'Unprocessable Entity, this probably means the file you uploaded is corrupt or an unsupported file type.']);
     }
+
 }
