@@ -1,9 +1,6 @@
 <script>
 var Vue = require('vue');
 var axios = require('axios');
-var VueFormState = require('vue-form-state');
-
-Vue.use(VueFormState);
 
 export default {
     props: {
