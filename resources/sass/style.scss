@@ -21,6 +21,7 @@ body {
 .navbar-heisen {
   text-transform: uppercase;
   font-family:$font-family-sans-serif;
+  height:72px;
 }
 
 .navbar-heisen, a.dropdown-item {
@@ -128,8 +129,6 @@ form, input[type=text], input[type=number], input[type=select], textarea {
 .cart-slider-button{
     position: absolute;
     right:0;
-    margin:1rem;
-    margin-right:2rem;
     background-color:hsla(212,25%, 27%, 0.95);
     color:white;
     padding:0.8rem;
@@ -200,4 +199,8 @@ form, input[type=text], input[type=number], input[type=select], textarea {
 
 a.dropdown-item.nav-link {
     padding:0.5rem 1rem;
+}
+
+.navbar-brand, .cart-slider-button {
+    margin-right:1.0rem;
 }
