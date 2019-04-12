@@ -4,8 +4,12 @@
         {{ Auth::user()->name }} <span class="caret"></span>
     </a>
 
-    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-
+    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item nav-link" href="{{ route('home') }}">Dashboard</a>
+        <a class="dropdown-item nav-link" href="{{ route('user.profile.show', Auth::user()->id) }}">Profile</a>
+        <a class="dropdown-item nav-link" href="{{ route('user.invoices.index') }}">Invoices</a>
+        <a class="dropdown-item nav-link" href="{{ route('user.shipping_addresses.index') }}">Addresses</a>
+        <hr />
         @if(in_array(Auth::user()->email , ['jeremyblc@gmail.com', 'mike@elbowfarm.com', 'heisen@heisenbeans.com']))
             <a class="dropdown-item nav-link" href="/admin/strains"><i class="fa fa-edit"></i> Edit Strains</a>
             <a class="dropdown-item nav-link" href="/admin/strains/create"><i class="fa fa-plus-circle"></i> New Strain</a>
@@ -15,10 +19,7 @@
             </a>
             <hr />
         @endif
-        <a class="dropdown-item nav-link" href="{{ route('home') }}">Dashboard</a>
-        <a class="dropdown-item nav-link" href="{{ route('user.profile.show', Auth::user()->id) }}">Profile</a>
-        <a class="dropdown-item nav-link" href="{{ route('user.invoices.index') }}">Invoices</a>
-        <a class="dropdown-item nav-link" href="{{ route('user.shipping_addresses.index') }}">Shipping Addresses</a>
+
         <a class="dropdown-item nav-link" href="{{ route('logout') }}"
             onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">

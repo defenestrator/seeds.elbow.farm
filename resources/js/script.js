@@ -27,6 +27,7 @@ const mainFont = document.createElement('link');
         swa.href='htps://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.3.1/sweetalert2.min.css';
         swa.rel='stylesheet';
         document.getElementsByTagName('head')[0].appendChild(fa);
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -35,12 +36,12 @@ const mainFont = document.createElement('link');
  * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
  */
 
-
 const files = require.context('./components/', true, /\.vue$/i)
 
-files.keys().map(key => {
-    return Vue.component(_.last(key.split('/')).split('.')[0], files(key))
-})
+console.log(files)
+
+
+files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

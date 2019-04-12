@@ -1,6 +1,7 @@
 <script>
     import Cart from '../Cart'
     export default {
+        name: 'Strains',
         props: {
             products: Array
         },
@@ -90,7 +91,7 @@
                         </div>
                     </div>
                     <div v-if="item.seed_packs === undefined || item.seed_packs == 0">
-                            
+
                     </div>
                     <div v-else class="form-group form-inline" style="justify-content: center;">
                         <input v-model.number="item.quantity" class="form-control form-inline input-group-sm"
