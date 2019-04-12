@@ -4,26 +4,22 @@ var axios = require('axios');
 
 export default {
     props: {
-        initial_profile: Object
+        initial_profile: Object,
+        initial_user: Object
     },
     data() {
         return {
             baseProfileUrl: '/user/profile/',
-            avatarUpdate: '/user/image',
+            avatarUpdate: '/image',
             image: null,
+            user: this.initial_user,
             profile: this.initial_profile,
             headers: {
                     'Content-Type': 'multipart/form-data'
                 }
         }
     },
-    mounted() {
-
-    },
     methods: {
-        getProfile() {
-            window.location.href='/home'
-        },
         updateProfile() {
             let formData = new FormData()
             formData.append('avatar', this.profile.avatar)
@@ -34,7 +30,7 @@ export default {
             formData.append('instagram_handle', this.profile.instagram_handle)
             formData.append('public', this.profile.public)
             formData.append('user_id', this.profile.user_id)
-            axios.post(this.baseProfileUrl, formData, this.headers)
+            axios.put(this.baseProfileUrl, formData, this.headers)
             .then(response => {
                 Promise.resolve(response)
                 return response.data
@@ -42,6 +38,19 @@ export default {
             .catch(error => {
                 Promise.reject(error)
                 console.log(error)
+            })
+        },
+        updateName() {
+            let formData = new FormData()
+            formData.append('name', this.user.name)
+            axios.put('/user/'+ this.user.id, formData, this.headers)
+            .then(response => {
+                Promise.resolve(response)
+                return swal('user name updated!')
+            })
+            .catch(error => {
+                console.log(error)
+                Promise.reject(error)
             })
         },
         updateAvatar() {
@@ -53,7 +62,7 @@ export default {
             this.previewFile()
             axios.post(this.avatarUpdate, formData, this.headers)
             .then(response => {
-                this.profile.avatar = response.data.small
+                this.profile.avatar = response.data.large
                 Promise.resolve(response)
                 this.updateProfile()
                 return response.data
@@ -85,16 +94,39 @@ export default {
 <template>
 <div class="container">
     <div class="row">
-        <div class="col-sm-4 info">
-            <img id="preview" :src="profile.avatar" />
+        <div class="col-sm-8 offset-sm-4">
+            <form class="form-horizontal new-content">
+                <div class="form-group row">
+                    <div class="col-md-12">
+                        <p>Screen Name:</p>
+                        <input id="name"
+                        name="name"
+                        class="form-control input"
+                        type="text"
+                        v-model="user.name">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-12">
+                        <button style="width:100%;" class="btn btn-primary" v-on:click.prevent.stop="updateName()">Update</button>
+                    </div>
+                </div>
+            </form>
+            <hr />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4 justify-content-right info">
+            <img style="max-width:180px;" id="preview" :src="profile.avatar" />
         </div>
         <div class="col-sm-8">
+
             <form class="form-horizontal new-content"
             role="form"
             enctype="multipart/form-data">
                 <div class="form-group row col-md-12">
                     <label class="btn btn-outline-gray btn-file">
-                        Choose Image
+                        Change Image
                         <input ref="avatar"
                         type="file"
                         style="display: none;"

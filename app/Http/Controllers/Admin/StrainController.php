@@ -83,8 +83,8 @@ class StrainController extends AdminController
                 'flowering_time_max_weeks'  => $request->max_flowering_time,
                 'description'               => $request->description,
                 'name'                      => $request->name,
-                'image'                     => $image['large'],
-                'image_id'                  => $image['id'],
+                'image'                     => $image->large,
+                'image_id'                  => $image->id,
                 's1'                        => $s1,
                 'published'                 => $pub
             ]);
@@ -168,7 +168,7 @@ class StrainController extends AdminController
         if($this->filePaths !== null) {
             $image = Image::create($this->filePaths);
             $strain->image   = $image['large'];
-            $strain->imageId = $image['id'];
+            $strain->image_id = $image['id'];
         }
 
         $s1 = $pub = false;

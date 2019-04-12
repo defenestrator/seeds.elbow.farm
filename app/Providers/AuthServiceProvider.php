@@ -14,11 +14,11 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        'Heisen\Model'          => 'Heisen\Policies\ModelPolicy',
-        User::class             => \UserPolicy::class,
-        Profile::class          => \ProfilePolicy::class,
-        ShippingAddress::class  => \ShippingAddressPolicy::class,
-        Invoice::class          => \InvoicePolicy::class,
+        // 'Heisen\Model'          => 'Heisen\Policies\ModelPolicy',
+        // User::class             => \UserPolicy::class,
+        // Profile::class          => \ProfilePolicy::class,
+        // ShippingAddress::class  => \ShippingAddressPolicy::class,
+        // Invoice::class          => \InvoicePolicy::class,
     ];
 
     /**

@@ -35,11 +35,13 @@ Route::post('/cart', 'CartController@store');
 Route::get('/cart', 'CartController@index');
 
 Route::get('/profile/{id}', 'ProfileController@show')->name('profile.show');
+
+Route::post('image/', 'ImageController@create')->name('image.create');
 /////////////////   USER ROUTES     !!///////////////////////////////////////////////////////
 Route::prefix('/user/')->name('user.')->group( function(){
+    Route::put('/{id}', 'UserController@update')->name('update');
     Route::get('/profile/{user_id}', 'ProfileController@show')->name('profile.show');
-    Route::post('profile/', 'ProfileController@update')->name('profile.update');
-    Route::post('image/', 'ImageController@create')->name('profile.avatar.update');
+    Route::put('profile/', 'ProfileController@update')->name('profile.update');
     Route::get('invoices/', 'InvoiceController@index')->name('invoices.index');
     Route::get('shipping_addresses/', 'ShippingAddressesController@index')->name('shipping_addresses.index');
 });

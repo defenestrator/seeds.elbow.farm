@@ -2,22 +2,14 @@
 
 namespace Heisen\Http\Controllers;
 
-use Heisen\Profile;
 Use Auth;
+use Heisen\Profile;
+use Heisen\User;
 use Illuminate\Http\Request;
+
 
 class ProfileController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        return $this->middleware('auth');
-    }
-
     public function index(Profile $profile)
     {
         //
@@ -28,13 +20,21 @@ class ProfileController extends Controller
      * @param  \Heisen\Profile  $profile
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request, Profile $profile, $id)
+    public function show(Request $request, User $user, Profile $profile, $id)
     {
-        if($request->path() === 'user/profile') {
-            return view('user.profile',['profile' => $profile->whereUserId($id)->first()]);
+        $currentUser = $user->whereId(Auth::user()->id)->first();
+        if($request->path() === 'user/profile/'.$id) {
+            return view('user.profile',
+            [
+                'profile'   => $profile->whereUserId($id)->first(),
+                'user'      => $currentUser
+            ]);
         }
 
-        return view('user.profile',['profile' => $profile->whereId($id)->first()]);
+        return view('user.profile',[
+            'profile' => $profile->whereId($id)->first(),
+            'user'    => $currentUser
+            ]);
     }
 
     /**
@@ -65,6 +65,7 @@ class ProfileController extends Controller
         } elseif ($request->public === "false" || $request->public === "0") {
             $request->public = 0;
         }
+
         $new = $profile->whereUserId(Auth::user()->id)->update([
             'avatar' => $request->avatar,
             'public' => $request->public,

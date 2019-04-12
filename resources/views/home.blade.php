@@ -83,7 +83,7 @@
                         <h4>Edit Profile</h4>
                     </div>
                     <div class="container">
-                        <profile :initial_profile="{{ $profile }}"></profile>
+                        <profile :initial_profile="{{ $profile }}" :initial_user="{{ $user }}"></profile>
                     </div>
                 </div>
 

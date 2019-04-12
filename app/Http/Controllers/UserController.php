@@ -2,6 +2,7 @@
 
 namespace Heisen\Http\Controllers;
 
+use Heisen\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -66,9 +67,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user, $id)
     {
-        //
+        return $user->whereId($id)->update($request->all());
     }
 
     /**
