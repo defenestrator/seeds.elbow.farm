@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-light navbar-heisen">
+<nav class="navbar navbar-expand navbar-light navbar-heisen">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
             <img src="/i/heisenhead-60.png">
