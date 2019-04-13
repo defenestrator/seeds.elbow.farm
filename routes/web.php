@@ -57,5 +57,12 @@ Route::prefix('/admin/')->name('admin.')->middleware('role:admin')->group( funct
     Route::post('strains/', 'Admin\StrainController@store')->name('strains.store');
     Route::post('strains/{id}', 'Admin\StrainController@update')->name('strains.update');
     Route::get('strains/destroy/{id}', 'Admin\StrainController@destroy')->name('strains.delete');
+
+    Route::get('seed_packs/create', 'Admin\SeedPackController@create')->name('seed_packs.create');
+    Route::get('seed_packs/', 'Admin\SeedPackController@index')->name('seed_packs.index');
+    Route::get('seed_packs/{id}', 'Admin\SeedPackController@edit')->name('seed_packs.edit');
+    Route::post('seed_packs/', 'Admin\SeedPackController@store')->name('seed_packs.store');
+    Route::post('seed_packs/{id}', 'Admin\SeedPackController@update')->name('seed_packs.update');
+    Route::get('seed_packs/destroy/{id}', 'Admin\SeedPackController@destroy')->name('seed_packs.delete');
 });
 ////////////////   END   ADMIN   ROUTES   ///////////////////////////////////////////////////

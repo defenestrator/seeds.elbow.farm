@@ -1,11 +1,13 @@
 <?php
 
-namespace Heisen\Http\Controllers;
+namespace Heisen\Http\Controllers\Admin;
 
 use Heisen\SeedPack;
+use Heisen\Strain;
 use Illuminate\Http\Request;
+use Heisen\Http\Controllers\Admin\AdminController;
 
-class SeedPackController extends Controller
+class SeedPackController extends AdminController
 {
     protected $seedPack;
 
@@ -13,6 +15,7 @@ class SeedPackController extends Controller
     {
         $this->seedPack = $seedPack;
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -20,7 +23,8 @@ class SeedPackController extends Controller
      */
     public function index()
     {
-        return $this->seedPack()->with('strain')->all();
+        $content = $this->seedPack->with('strain')->get();
+        return view('seed_packs.list', compact('content'));
     }
 
     /**
@@ -28,31 +32,10 @@ class SeedPackController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Strain $strain)
     {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \Heisen\SeedPack  $seedPack
-     * @return \Illuminate\Http\Response
-     */
-    public function show(SeedPack $seedPack)
-    {
-        //
+        $strains = $strain->all();
+        return view('seed_packs.create', compact('strains'));
     }
 
     /**
@@ -61,9 +44,11 @@ class SeedPackController extends Controller
      * @param  \Heisen\SeedPack  $seedPack
      * @return \Illuminate\Http\Response
      */
-    public function edit(SeedPack $seedPack)
+    public function edit(SeedPack $seedPack, Strain $strain, $id)
     {
-        //
+        $content = $seedPack->find($id);
+        $strains = $strain->all();
+        return view('seed_packs.edit', compact('content', 'strains'));
     }
 
     /**

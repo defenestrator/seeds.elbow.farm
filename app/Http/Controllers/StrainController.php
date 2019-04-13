@@ -4,7 +4,6 @@ namespace Heisen\Http\Controllers;
 use Illuminate\Http\Request;
 use Heisen\Strain;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Collection;
 
 class StrainController extends Controller
 {

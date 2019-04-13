@@ -11,8 +11,12 @@
         {{-- <a class="dropdown-item nav-link" href="{{ route('user.shipping_addresses.index') }}">Addresses</a> --}}
         <hr />
         @if(in_array(Auth::user()->email , ['jeremyblc@gmail.com', 'mike@elbowfarm.com', 'heisen@heisenbeans.com']))
+
             <a class="dropdown-item nav-link" href="/admin/strains"><i class="fa fa-edit"></i> Edit Strains</a>
             <a class="dropdown-item nav-link" href="/admin/strains/create"><i class="fa fa-plus-circle"></i> New Strain</a>
+            <hr />
+            <a class="dropdown-item nav-link" href="/admin/seed_packs"><i class="fa fa-edit"></i>Edit Packs</a>
+            <a class="dropdown-item nav-link" href="/admin/seed_packs/create"><i class="fa fa-plus-circle"></i> New Packs</a>
             <hr />
             <a href="{{ route('log-viewer::logs.list') }}" class="dropdown-item nav-link">
                 <i class="fa fa-archive"></i> Logs
