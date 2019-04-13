@@ -26,12 +26,11 @@ class UpdateProfileRequest extends FormRequest
     public function rules()
     {
         return [
-            'avatar'            => 'min:2|max:140',
-            'riu_username'      => 'min:2|max:140',
-            'instagram_handle'  => 'min:2|max:140',
-            'facebook_url'      => 'min:2|max:140',
-            'chuckers_paradise' => 'min:2|max:140',
-            'user_title'        => 'min:2|max:140',
+            'riu_username'      => 'max:140',
+            'instagram_handle'  => 'max:140',
+            'facebook_url'      => 'max:140',
+            'chuckers_paradise' => 'max:140',
+            'user_title'        => 'max:140',
             'user_id'           => 'integer',
             'public'            => 'boolean'
         ];

@@ -69,6 +69,12 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user, $id)
     {
+        $request->validate([
+            'name'      => 'min:2|max:140',
+            'password'  => 'min:8',
+            'email'     => 'email|unique:users'
+        ]);
+
         return $user->whereId($id)->update($request->all());
     }
 

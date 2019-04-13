@@ -6,6 +6,7 @@ Use Auth;
 use Heisen\Profile;
 use Heisen\User;
 use Heisen\Http\Requests\UpdateProfileRequest;
+use Illuminate\Http\Request;
 
 
 class ProfileController extends Controller
@@ -58,7 +59,7 @@ class ProfileController extends Controller
      * @param  \Heisen\Profile  $profile
      * @return \Illuminate\Http\Response
      */
-    public function update(updateProfileRequest $request, Profile $profile)
+    public function update(UpdateProfileRequest $request, Profile $profile)
     {
         $new = $profile->whereUserId($request->user_id)->update($request->except('user_id'));
         return $new;
