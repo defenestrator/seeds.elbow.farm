@@ -111,7 +111,8 @@
 <script>
 
 function deleteSeedPack(id) {
-    if(confirm("Are you sure you want to delete this seed_pack?")) { return window.location.href = "/admin/seed_packs/destroy/" + String(id) }
+    if(confirm("Are you sure you want to delete this seed_pack?"))
+    { return window.location.href = "/admin/seed_packs/destroy/" + String(id) }
 
     return false;
 }

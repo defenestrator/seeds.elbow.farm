@@ -1,10 +1,21 @@
 @extends('layouts._master')
-
+@section('page_styles')
+<style>
+    a.btn {
+        color:white;
+    }
+    a.btn-info {
+        color:#345556;
+    }
+</style>
+@endsection
 @section('content')
+<div class="container">
     <div class="page-header mb-4">
         <h1>Logs</h1>
     </div>
-
+</div>
+<div style="width:95%; margin:0 auto;" class="d-flex justify-content-center">
     <div class="table-responsive">
         <table class="table table-sm table-hover">
             <thead>
@@ -65,6 +76,7 @@
     </div>
 
     {!! $rows->render() !!}
+</div>
 @endsection
 
 @section('modals')

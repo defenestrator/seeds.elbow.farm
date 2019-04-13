@@ -15,12 +15,15 @@
             <a class="dropdown-item nav-link" href="/admin/strains"><i class="fa fa-edit"></i> Edit Strains</a>
             <a class="dropdown-item nav-link" href="/admin/strains/create"><i class="fa fa-plus-circle"></i> New Strain</a>
             <hr />
-            <a class="dropdown-item nav-link" href="/admin/seed_packs"><i class="fa fa-edit"></i>Edit Packs</a>
+            <a class="dropdown-item nav-link" href="/admin/seed_packs"><i class="fa fa-edit"></i> Edit Packs</a>
             <a class="dropdown-item nav-link" href="/admin/seed_packs/create"><i class="fa fa-plus-circle"></i> New Packs</a>
             <hr />
             <a href="{{ route('log-viewer::logs.list') }}" class="dropdown-item nav-link">
                 <i class="fa fa-archive"></i> Logs
             </a>
+            <a href="{{ route('log-viewer::dashboard') }}" class="dropdown-item nav-link">
+                    <i class="fa fa-archive"></i> Dashboard
+                </a>
             <hr />
         @endif
 

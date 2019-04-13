@@ -43,7 +43,7 @@ Route::prefix('/user/')->name('user.')->group( function(){
     Route::put('/{id}', 'UserController@update')->name('update');
     Route::get('/profile/{user_id}', 'ProfileController@show')->name('profile.show');
     Route::get('invoices/', 'InvoiceController@index')->name('invoices.index');
-    Route::get('shipping_addresses/', 'ShippingAddressesController@index')->name('shipping_addresses.index');
+    Route::get('shipping_addresses/', 'ShippingAddressController@index')->name('shipping_addresses.index');
 });
 
 
