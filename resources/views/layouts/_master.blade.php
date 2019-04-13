@@ -22,9 +22,7 @@
 <body>
     <div id="app">
         @include('partials._site-nav')
-        @if(Auth::check())
         @include('partials._cart-slider')
-        @endif
         @yield('top')
         <main class="py-4">
             <div class="container">

@@ -16,11 +16,19 @@ export default {
             profile: this.initial_profile,
             headers: {
                     'Content-Type': 'multipart/form-data'
-                }
+                },
+            formBusy: false,
         }
     },
     methods: {
+        toggleForm() {
+            if( this.formBusy === false) {
+                return this.formBusy = true
+            }
+            return this.formBusy = false
+        },
         updateProfile() {
+            this.toggleForm()
             let data = {
             'avatar': this.profile.avatar,
             'user_title': this.profile.user_title,
@@ -35,34 +43,69 @@ export default {
             axios.put(this.baseProfileUrl, data, this.headers)
             .then(response => {
                 Promise.resolve(response)
-                return response.data
+                this.toggleForm()
+                return swal({
+                    title: 'updated!',
+                    text: 'profile',
+                    icon: 'success',
+                    button: {
+                        text: "Aww yiss!",
+                        color:'#7cd1f9'
+                        },
+                    timer: 3000
+                    })
             })
             .catch(error => {
+
                 Promise.reject(error)
-                console.log(error)
+                this.toggleForm()
+                return swal({
+                    title: 'fail!',
+                    text: error,
+                    icon: 'error',
+                    button: {
+                        text: "O Noes!",
+                        color:'#7cd1f9'
+                        },
+                    timer: 3000
+                    })
             })
         },
         updateName() {
+            this.toggleForm()
             axios.put('/user/'+ this.user.id,
                 {'name': this.user.name},
                 {'Content-Type': 'application/json'})
 
             .then(response => {
-
                 Promise.resolve(response)
+                this.toggleForm()
                 return swal({
-                    title: 'user name',
-                    text: 'updated!',
+                    title: 'updated!',
+                    text: 'user name',
                     icon: 'success',
                     button: "Aww yiss!",
+                    timer: 3000
                     })
             })
             .catch(error => {
                 console.log(error)
                 Promise.reject(error)
+                this.toggleForm()
+                return swal({
+                    title: 'fail!',
+                    text: error,
+                    icon: 'error',
+                    button: {
+                        text: "O Noes!",
+                        color:'#7cd1f9'
+                        },
+                    timer: 3000
+                    })
             })
         },
         updateAvatar() {
+            this.toggleForm()
             let formData = new FormData()
             this.image = this.$refs.avatar.files[0];
             formData.append('image', this.image)
@@ -72,13 +115,32 @@ export default {
             axios.post(this.avatarUpdate, formData, this.headers)
             .then(response => {
                 this.profile.avatar = response.data.large
+
                 Promise.resolve(response)
                 this.updateProfile()
-                return response.data
+                this.toggleForm()
+                return swal({
+                    title: 'updated!',
+                    text: 'avatar',
+                    icon: 'success',
+                    button: "Aww yiss!",
+                    timer:1500
+                    })
             })
             .catch(error => {
                 console.log(error)
                 Promise.reject(error)
+                this.toggleForm()
+                return swal({
+                    title: 'fail!',
+                    text: error,
+                    icon: 'error',
+                    button: {
+                        text: "O Noes!",
+                        color:'#7cd1f9'
+                        },
+                    timer: 3000
+                    })
             })
         },
         previewFile() {
@@ -117,7 +179,9 @@ export default {
                 </div>
                 <div class="form-group row">
                     <div class="col-md-12">
-                        <button style="width:100%;" class="btn btn-primary" v-on:click.prevent.stop="updateName()">Update</button>
+                        <button
+                        style="width:100%;" class="btn btn-primary"
+                        v-on:click.prevent.stop="updateName()" :disabled="formBusy">Update</button>
                     </div>
                 </div>
             </form>
@@ -126,7 +190,7 @@ export default {
     </div>
     <div class="row">
         <div class="col-sm-4 justify-content-right info">
-            <img style="max-width:180px;" id="preview" :src="profile.avatar" />
+            <img style="max-width:280px;" id="preview" :src="profile.avatar" />
         </div>
         <div class="col-sm-8">
 
@@ -140,7 +204,7 @@ export default {
                         type="file"
                         style="display: none;"
                         v-on:change="updateAvatar()"
-                        name="image">
+                        name="image" :disabled="formBusy">
                     </label>
                 </div>
                 <div class="form-group row">
@@ -200,17 +264,22 @@ export default {
                 <div class="form-group row">
                     <div class="col-md-12">
                         <label for="public">Make Profile Public?</label>
-                        <input v-model="profile.public" type="checkbox" name="public" id="public" />
+                        <input v-model="profile.public" class="custom-input-inline" type="checkbox" name="public" id="public" />
                     </div>
                 </div>
                 <div class="form-group row">
                     <div class="col-md-12">
-                        <button style="width:100%;" class="btn btn-primary" v-on:click.prevent.stop="updateProfile()">Save</button>
+                        <button style="width:100%;" class="btn btn-primary" v-on:click.prevent.stop="updateProfile()" :disabled="formBusy">Save</button>
                     </div>
                 </div>
             </form>
         </div>
     </div>
 </div>
-
+</template>
+<style>
+.formBusy{
+          background: #ccc;
+       }
+</style>
 

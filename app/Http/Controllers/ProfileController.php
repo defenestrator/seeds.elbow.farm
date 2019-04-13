@@ -5,7 +5,7 @@ namespace Heisen\Http\Controllers;
 Use Auth;
 use Heisen\Profile;
 use Heisen\User;
-use Illuminate\Http\Request;
+use Heisen\Http\Requests\UpdateProfileRequest;
 
 
 class ProfileController extends Controller
@@ -45,7 +45,7 @@ class ProfileController extends Controller
      */
     public function edit(Profile $profile, $user_id)
     {
-        if(Auth::user()->id == $user_id) {
+        if(Auth::user()->id === $user_id) {
             return $profile->whereUserId($user_id);
         }
 
@@ -58,7 +58,7 @@ class ProfileController extends Controller
      * @param  \Heisen\Profile  $profile
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Profile $profile)
+    public function update(updateProfileRequest $request, Profile $profile)
     {
         $new = $profile->whereUserId($request->user_id)->update($request->except('user_id'));
         return $new;
