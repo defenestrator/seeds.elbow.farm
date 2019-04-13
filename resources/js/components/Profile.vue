@@ -170,8 +170,8 @@ export default {
                 <div class="form-group row">
                     <div class="col-md-12">
                         <p>Screen Name:</p>
-                        <input id="name"
-                        name="name"
+                        <input id="screen_name"
+                        name="screen_name"
                         class="form-control input"
                         type="text"
                         v-model="user.name">
