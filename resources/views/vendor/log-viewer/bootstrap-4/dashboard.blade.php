@@ -10,12 +10,11 @@
     <div>
 @stop
 @section('content')
-
+<div class="container">
     <div class="row">
         <div class="col-md-6 col-lg-3">
             <canvas id="stats-doughnut-chart" height="300" class="mb-3"></canvas>
         </div>
-
         <div class="col-md-6 col-lg-9">
             <div class="row">
                 @foreach($percents as $level => $item)
@@ -40,6 +39,8 @@
             </div>
         </div>
     </div>
+</div>
+
 @endsection
 
 @section('scripts')
