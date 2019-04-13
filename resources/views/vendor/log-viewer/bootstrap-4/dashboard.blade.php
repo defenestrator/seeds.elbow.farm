@@ -3,7 +3,7 @@
 @section('top')
     <div class="container">
         <div class="row">
-            <div class=" mb-4">
+            <div class="page-header mb-4">
                 <h1>Dashboard</h1>
             </div>
         </div>
