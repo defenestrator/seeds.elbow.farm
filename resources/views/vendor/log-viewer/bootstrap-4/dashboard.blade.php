@@ -1,15 +1,16 @@
 @extends('layouts._master')
 
 @section('top')
-    <div class="container">
-        <div class="row">
-            <div class="page-header mb-4">
-                <h1>Dashboard</h1>
-            </div>
-        </div>
-    <div>
+
 @stop
 @section('content')
+<div class="container">
+    <div class="row">
+        <div class="page-header mb-4">
+            <h1>Dashboard</h1>
+        </div>
+    </div>
+<div>
 <div class="container">
     <div class="row">
         <div class="col-md-6 col-lg-3">
