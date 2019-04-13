@@ -21,10 +21,10 @@
         "ramsey/uuid": "^3.8",
         "spatie/laravel-permission": "^2.26",
         "spatie/laravel-responsecache": "^4.4",
-        "vinkla/instagram": "^9.1"
+        "vinkla/instagram": "^9.1",
+        "arcanedev/log-viewer": "^4.6"
     },
     "require-dev": {
-        "arcanedev/log-viewer": "^4.6",
         "barryvdh/laravel-ide-helper": "^2.5",
         "beyondcode/laravel-dump-server": "^1.0",
         "filp/whoops": "^2.0",
