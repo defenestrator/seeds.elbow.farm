@@ -18,12 +18,9 @@
             <a class="dropdown-item nav-link" href="/admin/seed_packs"><i class="fa fa-edit"></i> Edit Packs</a>
             <a class="dropdown-item nav-link" href="/admin/seed_packs/create"><i class="fa fa-plus-circle"></i> New Packs</a>
             <hr />
-            <a href="{{ route('log-viewer::logs.list') }}" class="dropdown-item nav-link">
+            <a href="/admin/log-viewer/logs" class="dropdown-item nav-link">
                 <i class="fa fa-archive"></i> Logs
             </a>
-            <a href="{{ route('log-viewer::dashboard') }}" class="dropdown-item nav-link">
-                    <i class="fa fa-archive"></i> Dashboard
-                </a>
             <hr />
         @endif
 
