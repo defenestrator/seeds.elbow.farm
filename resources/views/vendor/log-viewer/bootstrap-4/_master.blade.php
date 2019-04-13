@@ -209,7 +209,14 @@
         .badge.badge-env {
             background-color: #6A1B9A;
         }
+        a.btn {
+        color:white;
+        }
+        a.btn-info {
+            color:#345556;
+        }
     </style>
+    @yield('page_styles')
     <link href="{{ mix('css/style.css') }}" rel="stylesheet">
 </head>
 <body>

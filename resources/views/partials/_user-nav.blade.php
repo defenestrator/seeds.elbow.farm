@@ -19,6 +19,9 @@
             <a class="dropdown-item nav-link" href="/admin/seed_packs/create"><i class="fa fa-plus-circle"></i> New Packs</a>
             <hr />
             <a href="/admin/log-viewer/logs" class="dropdown-item nav-link">
+                <i class="fa fa-archive"></i> App Health
+            </a>
+            <a href="/admin/log-viewer/logs" class="dropdown-item nav-link">
                 <i class="fa fa-archive"></i> Logs
             </a>
             <hr />

@@ -1,4 +1,4 @@
-@extends('layouts._master')
+@extends('log-viewer::bootstrap-4._master')
 @section('page_styles')
 <style>
     a.btn {
@@ -107,7 +107,9 @@
     </div>
 @endsection
 
-@section('scripts')
+@section('page_scripts')
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
     <script>
         $(function () {
             var deleteLogModal = $('div#delete-log-modal'),

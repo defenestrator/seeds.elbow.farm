@@ -1,5 +1,14 @@
-@extends('layouts._master')
-
+@extends('log-viewer::bootstrap-4._master')
+@section('page_styles')
+<style>
+    a.btn {
+        color:white;
+    }
+    a.btn-info {
+        color:#345556;
+    }
+</style>
+@endsection
 @section('top')
 
 @stop
