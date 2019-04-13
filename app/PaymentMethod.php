@@ -26,7 +26,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\PaymentMethod whereNotes($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\PaymentMethod whereUuid($value)
  */
-class PaymentMethod extends Model
+class PaymentMethod extends BaseModel
 {
     protected $fillable = [
         'name',
@@ -36,4 +36,12 @@ class PaymentMethod extends Model
         'active',
         'image'
     ];
+
+        /**
+     * Indicates if the model should be timestamped.
+     *
+     * @var bool
+     */
+    public $timestamps = false;
+
 }

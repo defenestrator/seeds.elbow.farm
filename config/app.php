@@ -15,6 +15,7 @@ return [
 
     'name' => env('APP_NAME', 'Heisenbeans - Seeds'),
     'instagram_token' => env('INSTAGRAM_TOKEN', null),
+    'stripe_secret' => env('STRIPE_SECRET', null),
     /*
     |--------------------------------------------------------------------------
     | Application Environment

@@ -10,6 +10,9 @@
     <div class="row justify-content-center">
         <h3>Saturday April 13th, 2019!</h3>
     </div>
+    <div class="row justify-content-center">
+        <h4>...sorry for the delay, <br>seriously though, we're almost ready!</h4>
+    </div>
     <strains :products="{{ $strains }}" ></strains>
     <hr />
     <div class="row justify-content-center">
