@@ -21,7 +21,7 @@ class BaseModel extends Model
         $uuid ='';
 
         try {
-            $uuid= Uuid::uuid1();
+            $uuid= Uuid::uuid1()->toString();
         } catch (UnsatisfiedDependencyException $e) {
             // Some dependency was not met. Either the method cannot be called on a
             // 32-bit system, or it can, but it relies on Moontoast\Math to be present.

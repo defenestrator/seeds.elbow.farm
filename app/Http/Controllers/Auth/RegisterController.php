@@ -69,7 +69,7 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'uuid' => User::makeUuid()
+            'uuid' => User::makeUuid()->toString()
         ]);
 
         $profile = Profile::create(

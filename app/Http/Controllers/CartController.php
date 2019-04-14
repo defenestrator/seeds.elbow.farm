@@ -40,7 +40,7 @@ class CartController extends Controller
             $user = Auth::user();
         } else {
             $email = str_random(10) .'@example.com';
-            $uuid = $userModel->makeUuid();
+            $uuid = $userModel->makeUuid()->toString();
             $password = bcrypt(str_random(10));
             $user = factory(Heisen\User::class, 1)->create([
                 'email' => $email,
