@@ -8,7 +8,7 @@
         <h2>Grand Opening</h2>
     </div>
     <div class="row justify-content-center">
-        <h3>Saturday April 14th, 2019!</h3>
+        <h3>Sunday April 14th, 2019!</h3>
     </div>
     <div class="row justify-content-center">
         <h4>...sorry for the delay, <br>seriously though, we're almost ready!</h4>
