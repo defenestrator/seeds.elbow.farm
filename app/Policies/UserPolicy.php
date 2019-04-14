@@ -9,11 +9,6 @@ class UserPolicy
 {
     use HandlesAuthorization;
 
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     /**
      * Determine whether the user can view the model.
      *
@@ -24,17 +19,6 @@ class UserPolicy
     public function view(User $user, User $model)
     {
         return Auth::user()->id === $user->id && $user->id === $model->id;
-    }
-
-    /**
-     * Determine whether the user can create models.
-     *
-     * @param  \Heisen\User  $user
-     * @return mixed
-     */
-    public function create(User $user)
-    {
-        $this->middleware('guest');
     }
 
     /**

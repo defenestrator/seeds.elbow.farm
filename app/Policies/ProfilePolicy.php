@@ -10,11 +10,6 @@ class ProfilePolicy
 {
     use HandlesAuthorization;
 
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     /**
      * Determine whether the user can view the profile.
      *

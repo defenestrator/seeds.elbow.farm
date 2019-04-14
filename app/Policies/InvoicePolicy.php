@@ -17,7 +17,7 @@ class InvoicePolicy
      * @param  \Heisen\Invoice  $invoice
      * @return mixed
      */
-    public function view(User $user, Invoice $invoice)
+    public function view(Invoice $invoice)
     {
         return Auth::user()->id === $invoice->id;
     }
@@ -40,47 +40,9 @@ class InvoicePolicy
      * @param  \Heisen\Invoice  $invoice
      * @return mixed
      */
-    public function update(User $user, Invoice $invoice)
+    public function update(Invoice $invoice)
     {
         return Auth::user()->id === $invoice->id;
     }
 
-    /**
-     * Determine whether the user can delete the invoice.
-     *
-     * @param  \Heisen\User  $user
-     * @param  \Heisen\Invoice  $invoice
-     * @return mixed
-     */
-    public function delete(User $user, Invoice $invoice)
-    {
-        $this->middleware('role:admin');
-        return;
-    }
-
-    /**
-     * Determine whether the user can restore the invoice.
-     *
-     * @param  \Heisen\User  $user
-     * @param  \Heisen\Invoice  $invoice
-     * @return mixed
-     */
-    public function restore(User $user, Invoice $invoice)
-    {
-        $this->middleware('role:admin');
-        return;
-    }
-
-    /**
-     * Determine whether the user can permanently delete the invoice.
-     *
-     * @param  \Heisen\User  $user
-     * @param  \Heisen\Invoice  $invoice
-     * @return mixed
-     */
-    public function forceDelete(User $user, Invoice $invoice)
-    {
-        $this->middleware('role:admin');
-        return;
-    }
 }

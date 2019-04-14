@@ -10,10 +10,6 @@ class ShippingAddressPolicy
 {
     use HandlesAuthorization;
 
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
 
     /**
      * Determine whether the user can view the shipping address.
@@ -62,29 +58,4 @@ class ShippingAddressPolicy
         return Auth::user()->id === $shippingAddress->user_id;
     }
 
-    /**
-     * Determine whether the user can restore the shipping address.
-     *
-     * @param  \Heisen\User  $user
-     * @param  \Heisen\ShippingAddress  $shippingAddress
-     * @return mixed
-     */
-    public function restore(User $user, ShippingAddress $shippingAddress)
-    {
-        $this->middleware('role:admin');
-        return;
-    }
-
-    /**
-     * Determine whether the user can permanently delete the shipping address.
-     *
-     * @param  \Heisen\User  $user
-     * @param  \Heisen\ShippingAddress  $shippingAddress
-     * @return mixed
-     */
-    public function forceDelete(User $user, ShippingAddress $shippingAddress)
-    {
-        $this->middleware('role:admin');
-        return;
-    }
 }
