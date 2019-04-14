@@ -71,16 +71,16 @@
         },
         {
             "name": "arcanedev/log-viewer",
-            "version": "4.7.1",
+            "version": "4.7.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ARCANEDEV/LogViewer.git",
-                "reference": "fb9d1ac1ad6c0616c6c0e244c2cb42286554643a"
+                "reference": "9ae1d23f67d5d1c7490c69636b34303457fb0af3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ARCANEDEV/LogViewer/zipball/fb9d1ac1ad6c0616c6c0e244c2cb42286554643a",
-                "reference": "fb9d1ac1ad6c0616c6c0e244c2cb42286554643a",
+                "url": "https://api.github.com/repos/ARCANEDEV/LogViewer/zipball/9ae1d23f67d5d1c7490c69636b34303457fb0af3",
+                "reference": "9ae1d23f67d5d1c7490c69636b34303457fb0af3",
                 "shasum": ""
             },
             "require": {
@@ -134,7 +134,7 @@
                 "log-viewer",
                 "logviewer"
             ],
-            "time": "2019-03-19T18:28:51+00:00"
+            "time": "2019-04-13T10:01:41+00:00"
         },
         {
             "name": "arcanedev/support",
