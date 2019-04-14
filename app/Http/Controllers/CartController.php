@@ -33,11 +33,25 @@ class CartController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Cart $cart, SeedPack $seedPack)
+    public function store(Request $request, Cart $cart, SeedPack $seedPack, User $userModel)
     {
         Session::push('cart', $request->all());
+        if (Auth::check()) {
+            $user = Auth::user();
+        } else {
+            $email = str_random(10) .'@example.com';
+            $uuid = $userModel->makeUuid();
+            $password = bcrypt(str_random(10));
+            $user = factory(Heisen\User::class, 1)->create([
+                'email' => $email,
+                'uuid' => $uuid,
+                'name' => 'Guest Customer',
+                'email_verified_at' => now(),
+                'remember_token' => str_random(10),
+                'password' => $password
+            ]);
+        }
 
-        $user = Auth::user();
 
         $newCart = $cart->create([
             'user_id' => $user->id,
