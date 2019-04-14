@@ -30,9 +30,10 @@ Route::get('/strains', 'StrainController@index')->name('strains.index');
 Route::get('/strains/{uuid}', 'StrainController@show')->name('strains.show');
 
 // Cart
-Route::post('/cart', 'CartController@store');
-
-Route::get('/cart', 'CartController@index');
+Route::post('/cart', 'CartController@store')->name('cart.create');
+Route::put('/cart', 'CartController@update')->name('cart.update');
+Route::get('/cart', 'CartController@index')->name('cart.index');
+Route::get('/cart', 'CartController@show')->name('cart.edit');
 
 Route::get('/profile/{id}', 'ProfileController@show')->name('profile.show');
 Route::put('profile/', 'ProfileController@update')->name('profile.update');
@@ -64,5 +65,7 @@ Route::prefix('/admin/')->name('admin.')->middleware('role:admin')->group( funct
     Route::post('seed_packs/', 'Admin\SeedPackController@store')->name('seed_packs.store');
     Route::post('seed_packs/{id}', 'Admin\SeedPackController@update')->name('seed_packs.update');
     Route::get('seed_packs/destroy/{id}', 'Admin\SeedPackController@destroy')->name('seed_packs.delete');
+
+
 });
 ////////////////   END   ADMIN   ROUTES   ///////////////////////////////////////////////////
