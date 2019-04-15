@@ -8,11 +8,12 @@
         <h2>Grand Opening</h2>
     </div>
     <div class="row justify-content-center">
-        <h3>Monday April 14th, 2019!</h3>
+        <h3>Monday April 14th, 2019!? Yeesh</h3>
     </div>
     <div class="row justify-content-center">
         <h4>...turns out I need sleep.
-            <br> 3am update: I ran into some security concerns, cleaning up some potential problems before they happen. Stay tuned.</h4>
+            <br> 3am update: I ran into some security concerns, <br>
+            cleaning up some potential problems before they happen.<br> Stay tuned.</h4>
     </div>
     <strains :products="{{ $strains }}" ></strains>
     <hr />
