@@ -9,10 +9,10 @@
     </div>
     <div class="row justify-content-center">
         <h3>
-            Tuesday April 14th, 2019</h3>
+            Tuesday April 14th, 2019!</h3>
     </div>
     <div class="row justify-content-center">
-        <h4> Stay tuned. it is going to happen tomorrow, I quit my day job.</h4>
+        <h4>I quit my day job.</h4>
     </div>
     @auth
     <strains :products="{{ $strains }}" :initial_user="'{{ Auth::user()->uuid }}'" ></strains>
