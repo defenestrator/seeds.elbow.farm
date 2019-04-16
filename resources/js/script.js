@@ -47,21 +47,21 @@ files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(
  */
 
 
-import Cart from './Cart'
-
+import Client from './Client'
 const app = new Vue({
     el: '#app',
     store,
-    mixins: [Cart],
+    mixins: [Client],
+    props: {
+
+    },
     swal,
     currency,
-    created() {
 
-        this.products = [...document.getElementsByClassName('add-to-cart')];
+    created() {
     },
     data() {
         return {
-            cart: {},
         }
     }
 });

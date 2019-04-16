@@ -175,6 +175,7 @@ return [
         // Heisen\Providers\BroadcastServiceProvider::class,
         Heisen\Providers\EventServiceProvider::class,
         Heisen\Providers\RouteServiceProvider::class,
+        Heisen\Providers\ViewComposerServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class
     ],

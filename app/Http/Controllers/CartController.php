@@ -5,6 +5,7 @@ namespace Heisen\Http\Controllers;
 use Heisen\Cart;
 use Heisen\User;
 use Heisen\SeedPack;
+use Heisen\Strain;
 use Illuminate\Http\Request;
 use Heisen\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
@@ -15,7 +16,7 @@ class CartController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware('auth');
     }
 
     /**
@@ -33,35 +34,29 @@ class CartController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Cart $cart, SeedPack $seedPack, User $userModel)
+    public function store(Request $request, Cart $cartModel, SeedPack $seedPack, User $userModel)
     {
-        Session::push('cart', $request->all());
-        if (Auth::check()) {
-            $user = Auth::user();
-        } else {
-            $email = str_random(10) .'@example.com';
-            $uuid = $userModel->makeUuid()->toString();
-            $password = bcrypt(str_random(10));
-            $user = factory(Heisen\User::class, 1)->create([
-                'email' => $email,
-                'uuid' => $uuid,
-                'name' => 'Guest Customer',
-                'email_verified_at' => now(),
-                'remember_token' => str_random(10),
-                'password' => $password
-            ]);
+        $user = $userModel->whereUuid($request->uuid)->first();
+
+        $newCart = $cartModel->firstOrCreate(
+            ['user_id' => $user->id],
+            ['user_id' => $user->id, 'uuid' => $cartModel->makeUuid()]
+        );
+
+         foreach($request->except('uuid') as $key => $value) {
+            $newCart->seedPacks()->attach($key, ['quantity' => $value]);
         }
 
+        $items = $cartModel->whereUserId($newCart->user_id)->with('seedPacks')->first();
+        $seedPacks = collect($items->seedPacks()->get());
 
-        $newCart = $cart->create([
-            'user_id' => $user->id,
-            'uuid' => $cart->uuid,
-            'quantity' => $request->quantity
-        ]);
-            $seeds = $cart->find($newCart->id);
-        $seeds->seedPacks()->attach($request->selectedPack, ['quantity' => $request->quantity]);
+        $seedPacks->map( function($pack){
+            $pack->name = Strain::whereId($pack->strain_id)->get(['name']);
+            $pack->quantity = $pack->pivot->quantity;
+            return $pack;
+        });
 
-        return ['user' => $user, 'cart' => $newCart];
+        return ['cart' => $seedPacks];
     }
 
     /**
@@ -95,7 +90,7 @@ class CartController extends Controller
      */
     public function update(Request $request, Cart $cart)
     {
-        //
+        $cart->whereUserId(Auth::user()->id)->update($request->all());
     }
 
     /**

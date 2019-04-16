@@ -82,7 +82,7 @@ class User extends Authenticatable implements MustVerifyEmail
             echo 'Caught exception: ' . $e->getMessage() . "\n";
         }
 
-        return $uuid;
+        return $uuid->toString();
     }
 
     public function shippingAddresses()

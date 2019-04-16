@@ -28,7 +28,7 @@ export default {
             return this.formBusy = false
         },
         updateProfile() {
-            this.toggleForm()
+            this.formBusy = true
             let data = {
             'avatar': this.profile.avatar,
             'user_title': this.profile.user_title,
@@ -56,23 +56,10 @@ export default {
                     })
             })
             .catch(error => {
-
-                Promise.reject(error)
-                this.toggleForm()
-                return swal({
-                    title: 'fail!',
-                    text: error,
-                    icon: 'error',
-                    button: {
-                        text: "O Noes!",
-                        color:'#7cd1f9'
-                        },
-                    timer: 3000
-                    })
             })
         },
         updateName() {
-            this.toggleForm()
+            this.formBusy = true
             axios.put('/user/'+ this.user.id,
                 {'name': this.user.name},
                 {'Content-Type': 'application/json'})
@@ -89,58 +76,35 @@ export default {
                     })
             })
             .catch(error => {
-                console.log(error)
-                Promise.reject(error)
-                this.toggleForm()
-                return swal({
-                    title: 'fail!',
-                    text: error,
-                    icon: 'error',
-                    button: {
-                        text: "O Noes!",
-                        color:'#7cd1f9'
-                        },
-                    timer: 3000
-                    })
             })
         },
         updateAvatar() {
-            this.toggleForm()
+            this.formBusy = true
             let formData = new FormData()
             this.image = this.$refs.avatar.files[0];
             formData.append('image', this.image)
             formData.append('imageable_type', "Heisen\\Profile")
             formData.append('imageable_id', this.profile.id)
             this.previewFile()
+
             axios.post(this.avatarUpdate, formData, this.headers)
             .then(response => {
                 this.profile.avatar = response.data.large
-
                 Promise.resolve(response)
-                this.updateProfile()
-                this.toggleForm()
-                return swal({
+                swal({
                     title: 'updated!',
                     text: 'avatar',
                     icon: 'success',
                     button: "Aww yiss!",
                     timer:1500
-                    })
+                })
+                this.updateProfile()
+                this.formBusy = false
+                return Promise.resolve(response)
             })
             .catch(error => {
-                console.log(error)
-                Promise.reject(error)
-                this.toggleForm()
-                return swal({
-                    title: 'fail!',
-                    text: error,
-                    icon: 'error',
-                    button: {
-                        text: "O Noes!",
-                        color:'#7cd1f9'
-                        },
-                    timer: 3000
-                    })
+                this.formBusy = false
+                return Promise.reject(error)
             })
         },
         previewFile() {
@@ -164,30 +128,7 @@ export default {
 
 <template>
 <div class="container">
-    <div class="row">
-        <div class="col-sm-8 offset-sm-4">
-            <form class="form-horizontal new-content">
-                <div class="form-group row">
-                    <div class="col-md-12">
-                        <p>Screen Name:</p>
-                        <input id="screen_name"
-                        name="screen_name"
-                        class="form-control input"
-                        type="text"
-                        v-model="user.name">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <div class="col-md-12">
-                        <button
-                        style="width:100%;" class="btn btn-primary"
-                        v-on:click.prevent.stop="updateName()" :disabled="formBusy">Update</button>
-                    </div>
-                </div>
-            </form>
-            <hr />
-        </div>
-    </div>
+
     <div class="row">
         <div class="col-sm-4 justify-content-right info">
             <img style="max-width:280px;" id="preview" :src="profile.avatar" />
@@ -207,17 +148,6 @@ export default {
                         name="image" :disabled="formBusy">
                     </label>
                 </div>
-                <div class="form-group row">
-                    <div class="col-md-12">
-                        <p>User Title:</p>
-                        <input id="user_title"
-                        name="user_title"
-                        class="form-control input"
-                        type="text"
-                        v-model="profile.user_title">
-                    </div>
-                </div>
-
                 <div class="form-group row">
                     <div class="col-md-12">
                         <p>Chucker's Paradise user name:</p>
@@ -263,13 +193,47 @@ export default {
                 </div>
                 <div class="form-group row">
                     <div class="col-md-12">
-                        <label for="public">Make Profile Public?</label>
-                        <input v-model="profile.public" class="custom-input-inline" type="checkbox" name="public" id="public" />
+                        <p>User Title:</p>
+                        <input id="user_title"
+                        name="user_title"
+                        class="form-control input"
+                        type="text"
+                        v-model="profile.user_title">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-12">
+                        <label class="form-check-label" for="public">Make Profile Public?</label>
+                        <input v-model="profile.public" class="form-check-inline" type="checkbox" name="public" id="public" />
                     </div>
                 </div>
                 <div class="form-group row">
                     <div class="col-md-12">
                         <button style="width:100%;" class="btn btn-primary" v-on:click.prevent.stop="updateProfile()" :disabled="formBusy">Save</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-8 offset-sm-4">
+            <form class="form-horizontal new-content">
+                <div class="form-group row">
+                    <div class="col-md-12">
+                        <p>Screen Name:</p>
+                        <input id="screen_name"
+                        name="screen_name"
+                        class="form-control input"
+                        type="text"
+                        v-model="user.name">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-12">
+                        <button
+                        style="width:100%;" class="btn btn-primary"
+                        v-on:click.prevent.stop="updateName()" :disabled="formBusy">Update Screen Name</button>
                     </div>
                 </div>
             </form>

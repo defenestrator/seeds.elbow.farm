@@ -21,10 +21,16 @@
 
 <body>
     <div id="app">
+        @auth
+        <cart :initial_user="'{{ Auth::user()->uuid }}'"></cart>
+        @endauth
+        @guest
+        <cart :initial_user="'0'"></cart>
+        @endguest
         @include('partials._site-nav')
         @include('partials._cart-slider')
         @yield('top')
-        <main class="py-4">
+        <main class="py-1">
             <div class="container">
                 @if ($errors->any())
                 <div class="row col-md-12 alert alert-danger">

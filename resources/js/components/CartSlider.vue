@@ -1,20 +1,23 @@
 <script>
 import store from '../store'
+import Cart from '../Cart'
+import Client from '../Client'
+
 export default {
-    props: {
-        cart: Object
+    props:{
+        initial_user: String
     },
     store,
+    mixins: [Cart, Client],
     data() {
         return {
             cartActive: false,
             cartSlider: null,
-            cartSliderButton: null,
+            cartSliderButton: null
         }
     },
    methods: {
         toggleCartSlider() {
-            console.log(this.cartSlider.offsetWidth)
             if (this.cartSlider.offsetWidth === 0) {
                 this.cartActive = true
             } else {

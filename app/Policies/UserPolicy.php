@@ -18,7 +18,7 @@ class UserPolicy
      */
     public function view(User $user, User $model)
     {
-        return Auth::user()->id === $user->id && $user->id === $model->id;
+        // return Auth::user()->id === $user->id || $user->id === $model->id;
     }
 
     /**
@@ -30,7 +30,7 @@ class UserPolicy
      */
     public function update(User $user, User $model)
     {
-        return Auth::user()->id === $user->id && $user->id === $model->id;
+        // return Auth::user()->id === $user->id && $user->id === $model->id;
     }
 
     /**
@@ -54,9 +54,7 @@ class UserPolicy
      */
     public function restore(User $user, User $model)
     {
-        $this->middleware('role:admin');
-
-        return;
+        //
     }
 
     /**
@@ -68,8 +66,6 @@ class UserPolicy
      */
     public function forceDelete(User $user, User $model)
     {
-        $this->middleware('role:admin');
-
-        return;
+        //
     }
 }

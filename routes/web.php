@@ -29,18 +29,26 @@ Route::get('/breeders', 'BreederController@index')->name('breeders');
 Route::get('/strains', 'StrainController@index')->name('strains.index');
 Route::get('/strains/{uuid}', 'StrainController@show')->name('strains.show');
 
-// Cart
-Route::post('/cart', 'CartController@store')->name('cart.create');
-Route::put('/cart', 'CartController@update')->name('cart.update');
-Route::get('/cart', 'CartController@index')->name('cart.index');
-Route::get('/cart', 'CartController@show')->name('cart.edit');
-
 Route::get('/profile/{id}', 'ProfileController@show')->name('profile.show');
 Route::put('profile/', 'ProfileController@update')->name('profile.update');
 
 Route::post('image/', 'ImageController@create')->name('image.create');
+
+////////////////// AUTH ROUTES ////////////////////////////////////////////////////////////////
+Route::middleware(['auth'])->group( function(){
+    // Cart
+    Route::post('/cart', 'CartController@store')->name('cart.create');
+    Route::put('/cart', 'CartController@update')->name('cart.update');
+    Route::get('/cart', 'CartController@index')->name('cart.index');
+    Route::get('/cart', 'CartController@show')->name('cart.edit');
+
+    // Checkout
+    Route::get('/checkout', 'CheckoutController@show');
+});
+
 /////////////////   USER ROUTES     !!///////////////////////////////////////////////////////
-Route::prefix('/user/')->name('user.')->group( function(){
+Route::prefix('/user/')->name('user.')->middleware('auth')->group( function(){
+
     Route::put('/{id}', 'UserController@update')->name('update');
     Route::get('/profile/{user_id}', 'ProfileController@show')->name('profile.show');
     Route::get('invoices/', 'InvoiceController@index')->name('invoices.index');

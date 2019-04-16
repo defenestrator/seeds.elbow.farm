@@ -136,11 +136,13 @@ form, input[type=text], input[type=number], input[type=select], textarea {
     border-radius:50%;
     z-index:50;
     transition: all 0.25s ease-in-out;
+    margin:0.8rem;
 }
 
 .cart-slider-contents {
     padding:1.33rem;
     color:white;
+    transition: all 0.25s ease-in-out;
 }
 
 
@@ -208,4 +210,8 @@ a.dropdown-item.nav-link {
 
 .happySwalButton {
     background-color: $primary;
+}
+
+.sadSwalButton {
+    background-color: $danger;
 }

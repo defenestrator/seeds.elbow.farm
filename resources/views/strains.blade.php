@@ -3,30 +3,35 @@
 @section('title')
 
 @parent
-@stop
+@endsection
 
 @section('page_styles')
     <style>
     </style>
-@stop
+@endsection
 
 @section('top')
-@stop
+@endsection
 
 @section('content')
 <div class="container text-center pagetitle">
     <h1>Available Strains</h1>
 </div>
-    <strains :products="{{ $strains }}" />
+    @auth
+    <strains :products="{{ $strains }}" :initial_user="'{{ Auth::user()->uuid }}'" ></strains>
+    @endauth
+    @guest
+    <strains :products="{{ $strains }}" :initial_user="'0'" ></strains>
+    @endguest
 </div>
-@stop
+@endsection
 
 @section('bottom')
-@stop
+@endsection
 
 @section('page_scripts')
 <script>
 
 </script>
-@stop
+@endsection
 
