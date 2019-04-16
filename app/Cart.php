@@ -29,6 +29,10 @@ class Cart extends BaseModel
 
     public function seedPacks()
     {
-        return $this->belongsToMany(SeedPack::class);
+        return $this->belongsToMany(SeedPack::class)
+                            ->using(CartSeedPack::class)
+                            ->withPivot([
+                                'quantity'
+                            ]);
     }
 }

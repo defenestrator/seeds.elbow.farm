@@ -21,14 +21,10 @@
 
 <body>
     <div id="app">
-        @auth
-        <cart :initial_user="'{{ Auth::user()->uuid }}'"></cart>
-        @endauth
-        @guest
-        <cart :initial_user="'0'"></cart>
-        @endguest
         @include('partials._site-nav')
+        @auth
         @include('partials._cart-slider')
+        @endauth
         @yield('top')
         <main class="py-1">
             <div class="container">

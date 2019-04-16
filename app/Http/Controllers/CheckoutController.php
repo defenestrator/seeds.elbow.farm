@@ -49,12 +49,16 @@ class CheckoutController extends Controller
     public function show(Cart $cartModel, Strain $strain)
     {
         $items = $cartModel->find(Auth::user()->id);
+        $total = 0;
         foreach ($items->seedPacks as $seedPack) {
-            $seedPack->quantity = 1;
             $s = Strain::find($seedPack->strain_id);
-                $seedPack->strainName = $s->name; //
-            }
-        return view('checkout.show',  ['cart' => $items]);
+            $seedPack->strainName = $s->name;
+            $seedPack->strainImage = $s->image;
+            $seedPack->lineTotal = $seedPack->pivot->quantity * $seedPack->price;
+            $total += $seedPack->lineTotal;
+        }
+
+        return view('checkout.show',  ['cart' => $items, 'total' => $total]);
     }
 
     /**

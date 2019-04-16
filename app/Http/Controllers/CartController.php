@@ -43,20 +43,20 @@ class CartController extends Controller
             ['user_id' => $user->id, 'uuid' => $cartModel->makeUuid()]
         );
 
-         foreach($request->except('uuid') as $key => $value) {
+        foreach($request->except('uuid') as $key => $value) {
             $newCart->seedPacks()->attach($key, ['quantity' => $value]);
         }
 
-        $items = $cartModel->whereUserId($newCart->user_id)->with('seedPacks')->first();
-        $seedPacks = collect($items->seedPacks()->get());
-
-        $seedPacks->map( function($pack){
-            $pack->name = Strain::whereId($pack->strain_id)->get(['name']);
-            $pack->quantity = $pack->pivot->quantity;
-            return $pack;
-        });
-
-        return ['cart' => $seedPacks];
+        $items = $cartModel->find(Auth::user()->id);
+        $total = 0;
+        foreach ($items->seedPacks as $seedPack) {
+            $s = Strain::find($seedPack->strain_id);
+            $seedPack->strainName = $s->name;
+            $seedPack->strainImage = $s->image;
+            $seedPack->lineTotal = $seedPack->pivot->quantity * $seedPack->price;
+            $total += $seedPack->lineTotal;
+        }
+        return ['cart' => $items, 'total' => $total];
     }
 
     /**
@@ -65,9 +65,19 @@ class CartController extends Controller
      * @param  \Heisen\Cart  $cart
      * @return \Illuminate\Http\Response
      */
-    public function show(Cart $cart)
+    public function show(Cart $cartModel)
     {
-        return 'Your cart is empty';
+        $items = $cartModel->find(Auth::user()->id);
+        $total = 0;
+
+        foreach ($items->seedPacks as $seedPack) {
+            $s = Strain::find($seedPack->strain_id);
+            $seedPack->strainName = $s->name;
+            $seedPack->strainImage = $s->image;
+            $seedPack->lineTotal = $seedPack->pivot->quantity * $seedPack->price;
+            $total += $seedPack->lineTotal;
+        }
+        return ['cart' => $items, 'total' => $total];
     }
 
     /**
@@ -88,9 +98,13 @@ class CartController extends Controller
      * @param  \Heisen\Cart  $cart
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Cart $cart)
+    public function update(Request $request, Cart $cartModel)
     {
-        $cart->whereUserId(Auth::user()->id)->update($request->all());
+        $cart = $cartModel->whereUserId(Auth::user()->id);
+        foreach($request->except('uuid') as $key => $value) {
+            $cart->seedPacks()->attach($key, ['quantity' => $value]);
+        }
+
     }
 
     /**
