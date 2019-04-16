@@ -101,6 +101,7 @@ class CartController extends Controller
     public function update(Request $request, Cart $cartModel)
     {
         $cart = $cartModel->whereUserId(Auth::user()->id);
+
         foreach($request->except('uuid') as $key => $value) {
             $cart->seedPacks()->attach($key, ['quantity' => $value]);
         }
