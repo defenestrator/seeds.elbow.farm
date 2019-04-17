@@ -26,7 +26,7 @@
         @include('partials._cart-slider')
         @endauth
         @yield('top')
-        <main class="py-1">
+        <main class="py-2">
             <div class="container">
                 @if ($errors->any())
                 <div class="row col-md-12 alert alert-danger">

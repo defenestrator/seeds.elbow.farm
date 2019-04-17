@@ -5,19 +5,10 @@
         <h1>Heisenbeans</h1>
     </div>
     <div class="row justify-content-center">
-        <h2>Well shucks. I guess it has to be </h2>
+        <h2>Opening Day Forilla, 4/20/2019!</h2>
     </div>
     <div class="row justify-content-center">
-        <h3>4/20/2019!</h3>
-    </div>
-    <div class="row justify-content-center">
-        <h4>It will be really cool by then.</h4>
-    </div>
-    <div class="row justify-content-center">
-        <h5> I'mma call Heisen today.</h5>
-    </div>
-    <div class="row justify-content-center">
-        <h4>I quit my day job.</h4>
+        <h4>It will be really cool.</h4>
     </div>
     @auth
     <strains :products="{{ $strains }}" :initial_user="'{{ Auth::user()->uuid }}'"></strains>
