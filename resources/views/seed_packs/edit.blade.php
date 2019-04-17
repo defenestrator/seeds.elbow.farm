@@ -66,8 +66,8 @@
                             <div class="col-12">
                                 <p>Strain:</p>
                                 <select id="strain" name="strain" class="form-control select" value="{{ $content->strain->id }}" autofocus>
-                                    @foreach($strains as $strain)
-                                        <option value="{{ $strain->id }}">{{ $strain->name }}</option>
+                                    @foreach($contents as $content)
+                                        <option value="{{ $content->id }}">{{ $content->name }}</option>
                                     @endforeach
                                 </select>
                             </div>

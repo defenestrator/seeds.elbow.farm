@@ -51,7 +51,7 @@ Create Seed Pack Inventory
     </div>
     <div class="row">
         <div class="col-md-8 offset-md-2">
-            <form class="form-horizontal new-content" role="form" enctype="multipart/form-data" method="POST" action="{{route('admin.strains.store')}}">
+            <form class="form-horizontal new-content" role="form" enctype="multipart/form-data" method="POST" action="{{route('admin.seed_packs.store')}}">
                 @csrf
                 <div class="form-group row">
                     <div class="col-12">

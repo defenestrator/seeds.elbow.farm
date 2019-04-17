@@ -122,7 +122,9 @@ export default {
             axios.put('/cart', this.shit, this.headers)
                 .then(response => {
                     Promise.resolve(response)
+
                     localStorage.clear()
+                    this.cart.active = true
                 })
                 .catch(error => {
                     Promise.reject(error)

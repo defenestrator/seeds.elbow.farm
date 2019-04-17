@@ -38,6 +38,24 @@ class SeedPackController extends AdminController
         return view('seed_packs.create', compact('strains'));
     }
 
+     /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $attrs = [
+            'inventory'     => $request->inventory,
+            'uuid'          => $this->seedPack->makeUuid(),
+            'price'         => $request->price,
+            'qty_per_pack'  => $request->qty_per_pack,
+            'strain_id'     => $request->strain
+        ];
+
+        return $this->seedPack->create($attrs);
+    }
     /**
      * Show the form for editing the specified resource.
      *

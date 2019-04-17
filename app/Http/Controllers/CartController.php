@@ -114,8 +114,9 @@ class CartController extends Controller
      * @param  \Heisen\Cart  $cart
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Cart $cart)
+    public function destroy(Cart $cartModel)
     {
-        //
+        $cart = $cartModel->whereUserId(Auth::user()->id);
+        $cart->destroy($cart-id);
     }
 }

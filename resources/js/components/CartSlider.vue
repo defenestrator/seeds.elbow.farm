@@ -11,10 +11,12 @@ export default {
     mixins: [Cart],
     data() {
         return {
+            cart: {
+                active: false
+            },
             cartActive: false,
             cartSlider: null,
-            cartSliderButton: null,
-            tableWrapper: null
+            cartSliderButton: null
         }
     },
    methods: {
@@ -22,10 +24,12 @@ export default {
 
             if (this.cartSlider.offsetWidth === 0) {
                 this.cartActive = true
+                return this.getCart()
             } else {
                 this.cartActive = false
+                return
             }
-            return this.getCart()
+
         },
         getCart() {
 
@@ -34,9 +38,11 @@ export default {
                 Promise.resolve(response)
                 this.cart.items = response.data.cart.seed_packs
                 this.cart.total = response.data.total
+                return this.cart.active = true
             })
             .catch(error => {
-                return Promise.reject(error)
+                Promise.reject(error)
+                return this.cart.active = false
                 //  swal({
                 //     title: 'Uh Oh!',
                 //     text: "Retrieval of Cart failed",
@@ -83,32 +89,25 @@ export default {
     <div id="cart-slider" class="cart-slider">
         <div class="container cart-slider-contents">
             <div>
-                <span style="width:30%;font-size:1.2rem; margin:0 1em 0;">Your Cart</span>
-                <button
+                <span style="width:25%;font-size:1.2rem; margin:0 1em 0;">Cart</span>
+                <button v-if="cart.active === true"
                     class="btn btn-dark btn-outline-gray" style="margin:0 0 0.5rem;"
                 v-on:click="startCheckout()">Full Cart</button>
             </div>
             <div class="row">
                 <div id="table-wrapper" class="col-sm-12 table-wrap">
-                    <div v-if="cartActive" class="container">
-
-                            <div class="row ">
-                                <div class="col-sm-3 d-none" style="font-size:1.1rem;">Strain</div>
-                                <div class="col-sm-3 d-none" style="font-size:1.1rem;">Quantity</div>
-                                <div class="col-sm-3 d-none" style="font-size:1.1rem;">Price</div>
-                                <div class="col-sm-3 d-none" style="font-size:1.1rem;">Total</div>
-                            </div>
+                    <div v-if="cartActive === true" class="container">
                             <hr>
                             <div class="row" v-bind:key="item.id" v-for="item in this.cart.items">
-                                <div class="col-sm-3">
-                                    <img :src="item.strainImage" style="width:60px;margin-bottom:0.2rem;" />
+                                <div class="col-xs-3">
+                                    <img class="d-xs-none" :src="item.strainImage" style="width:40px;margin-bottom:0.2rem;" />
                                     <p>{{ item.strainName}} - {{  item.qty_per_pack }} pack</p>
                                 </div>
-                                <div class="col-sm-3">
-                                    <p>{{ item.pivot.quantity }}</p>
+                                <div class="col-xs-3 ">
+                                    <p><span class="d-block d-xs-none">Qty:<br></span>{{ item.pivot.quantity }}</p>
                                 </div>
-                                <div class="col-sm-3">${{ item.price }}</div>
-                                <div class="col-sm-3">${{ item.lineTotal }}</div>
+                                <div class="col-xs-3 d-xs-none"><span class="d-block">Price:</span>${{ item.price }}</div>
+                                <div class="col-xs-3d-xs-none"><span class="d-block">Total:</span>${{ item.lineTotal }}</div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-3">
@@ -119,7 +118,7 @@ export default {
                                 </div>
                             </div>
                     </div>
-                    <div v-else><p>Your cart is empty.</p></div>
+                    <div v-else><p>...is empty.</p></div>
                 </div>
             </div>
         </div>
