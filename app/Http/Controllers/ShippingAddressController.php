@@ -84,7 +84,7 @@ class ShippingAddressController extends LocationController
      */
     public function update(Request $request, ShippingAddress $shippingAddress)
     {
-        $this->validate([
+        $request->validate([
             'address_1' => 'required|min:7:max:140',
             'city' => 'required',
             'state' => 'required',
@@ -101,8 +101,8 @@ class ShippingAddressController extends LocationController
      * @param  \Heisen\ShippingAddress  $shippingAddress
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ShippingAddress $shippingAddress)
+    public function destroy(Request $request, ShippingAddress $shippingAddress)
     {
-        //
+        return $shippingAddress->find($request->id);
     }
 }

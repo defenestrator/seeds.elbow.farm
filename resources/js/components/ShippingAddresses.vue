@@ -48,7 +48,7 @@ export default {
             axios.put(this.baseShippingAddressUrl, this.currentAddress, this.headers)
                 .then(response => {
                     this.currentAddress = response.data
-                    this.edit = true
+                    this.edit = false
                     swal({
                         title: 'Updated',
                         text: 'Shipping Addresses'
@@ -60,9 +60,29 @@ export default {
                 })
         },
         newAddress() {this.edit = true},
-
+        async deleteAddress() {
+            await axios.delete(this.baseShippingAddressUrl, this.currentAddress.id, this.headers)
+                .then(response => {
+                    this.getAddresses()
+                    this.edit = false
+                    return Promise.resolve(response)
+                })
+                .catch(error => {
+                    return Promise.reject(error)
+                })
+        },
+        async getAddresses() {
+            await axios.get(this.baseShippingAddressUrl, this.headers)
+                .then(response => {
+                    return Promise.resolve(response)
+                })
+                .catch(error => {
+                    return Promise.reject(error)
+                })
+        },
         async doneEditing() {
             await this.updateAddress()
+            await this.getAddresses()
             this.edit = false
             this.currentAddress = {
                 'id': null,
@@ -116,6 +136,7 @@ export default {
     <div class="row" v-else>
         <button class="btn btn-primary" style="margin:1em;" v-on:click.prevent.stop="updateAddress()">Save</button>
         <button class="btn btn-secondary" style="margin:1em;" v-on:click.prevent.stop="doneEditing()">Done Editing</button>
+        <button v-if="currentAddress.id !== null" class="btn btn-danger" style="margin:1em;" v-on:click.prevent.stop="deleteAddress()">Delete</button>
         <button class="btn btn-warning" style="margin:1em;" v-on:click.prevent.stop="cancelEdit()">Cancel</button>
 
         <div class="col-12">
@@ -151,18 +172,18 @@ export default {
                         class="form-control input"
                         type="text"
                         placeholder="Address Line 2"
-                        :value="currentAddress.address_2">
+                        v-model="currentAddress.address_2">
                     </div>
                 </div>
                 <div class="form-group row">
                     <div class="col-12">
-                        <p>city:</p>
+                        <p>City:</p>
                         <input id="city"
                         name="city"
                         class="form-control input"
                         type="text"
                         placeholder="City"
-                        :value="currentAddress.city">
+                        v-model="currentAddress.city">
                     </div>
                 </div>
                 <div class="form-group row">
