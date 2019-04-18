@@ -75,15 +75,20 @@ export default {
                 <button class="btn btn-dark btn-outline-gray"
                 style="margin:0 0 0.5rem;"
                 v-on:click="startCheckout()">
-                    Full Cart
+                    View Cart
+                </button>
+                <button class="btn btn-dark btn-outline-gray"
+                style="margin:0 0 0.5rem;"
+                v-on:click="deleteCart()">
+                    Clear Cart
                 </button>
             </div>
             <div v-if="cart.active === true" class="row">
-                <div class="col-sm-12">
+                <div class="col-12">
                     <div class="container">
                             <hr>
                             <div class="row" v-bind:key="item.id" v-for="item in this.cart.items">
-                                <div class="col-xs-3">
+                                <div class="col-12">
                                     <ul>
                                         <li>
                                             <i v-on:click="incrementProduct(item)" class="fa fa-plus-circle fa-sm"></i>
@@ -98,19 +103,20 @@ export default {
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-sm-3">
+                                <div class="col-3">
                                     <h4 style="color:white;">Total:</h4>
                                 </div>
-                                <div class="col-sm-3">
+                                <div class="col-3">
                                     <h4 style="color:white;"> ${{ cart.total }}.00</h4>
                                 </div>
                             </div>
+
                             <div class="row">
-                                <div class="col-sm-6">
+                                <div class="col-12">
                                     <button class="btn btn-dark btn-outline-gray"
-                                        style="margin:0 0 0.5rem;"
-                                        v-on:click="deleteCart()">
-                                        Clear Cart
+                                    style="margin:0 0 0.5rem; width:100%;"
+                                    v-on:click="startCheckout()">
+                                        Checkout
                                     </button>
                                 </div>
                             </div>
@@ -118,6 +124,9 @@ export default {
                 </div>
             </div>
             <div v-else><h4>Your cart is empty.</h4></div>
+            <div v-show="cart.active === true" >
+
+            </div>
         </div>
 
 
