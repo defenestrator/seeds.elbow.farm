@@ -204,8 +204,8 @@ export default {
 
                 <div class="form-group row">
                     <div class="col-md-12">
+                        <input v-model="profile.public" class="form-check form-check-inline" type="checkbox" name="public" id="public" />
                         <label class="form-check-label" for="public">Make Profile Public?</label>
-                        <input v-model="profile.public" class="form-check-inline" type="checkbox" name="public" id="public" />
                     </div>
                 </div>
                 <div class="form-group row">
@@ -245,5 +245,8 @@ export default {
 .formBusy{
           background: #ccc;
        }
+input[type=checkbox] {
+    top:0;
+}
 </style>
 

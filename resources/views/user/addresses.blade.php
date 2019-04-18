@@ -16,7 +16,7 @@ Create Shipping Address
 
 @section('content')
 <div class="container">
-        <shipping-addresses :initial_addresses="{{ $addresses }}"></shipping-addresses>
+        <shipping-addresses :initial_user="{{Auth::user()}}" :initial_addresses="{{ $addresses }}"></shipping-addresses>
 </div>
 @endsection
 

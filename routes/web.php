@@ -46,14 +46,15 @@ Route::middleware(['auth', 'verified'])->group( function(){
     Route::get('/checkout', 'CheckoutController@show');
 
     // Shipping Addresses
-    Route::get('/shipping_addresses/', 'ShippingAddressController@index')->name('shipping_addresses.index');
+
+    Route::get('/shipping_addresses/', 'ShippingAddressController@show')->name('shipping_addresses.show');
     Route::get('/shipping_addresses/{id}', 'ShippingAddressController@edit')->name('shipping_addresses.edit');
     Route::put('/shipping_addresses/', 'ShippingAddressController@update')->name('shipping_addresses.update');
 });
 
 /////////////////   USER ROUTES     !!///////////////////////////////////////////////////////
 Route::prefix('/user/')->name('user.')->middleware(['auth', 'verified'])->group( function(){
-
+    Route::get('shipping_addresses/', 'ShippingAddressController@index')->name('shipping_addresses.index');
     Route::put('/{id}', 'UserController@update')->name('update');
     Route::get('/profile/{user_id}', 'ProfileController@show')->name('profile.show');
     Route::get('invoices/', 'InvoiceController@index')->name('invoices.index');

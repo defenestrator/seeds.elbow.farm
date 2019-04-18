@@ -29,7 +29,7 @@ class ShippingAddressController extends LocationController
         $addresses = $shippingAddress->whereUserId(Auth::user()->id)->get();
         $states = $this->states;
         $provinces = $this->provinces;
-        return compact('addresses', 'states', 'provinces');
+        return view('user.addresses', compact('addresses', 'states', 'provinces'));
     }
 
     /**
@@ -61,7 +61,7 @@ class ShippingAddressController extends LocationController
      */
     public function show(ShippingAddress $shippingAddress)
     {
-        //
+        return $shippingAddress->whereUserId(Auth::user()->id)->get();
     }
 
     /**
