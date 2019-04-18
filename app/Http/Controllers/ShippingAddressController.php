@@ -4,8 +4,9 @@ namespace Heisen\Http\Controllers;
 
 use Heisen\ShippingAddress;
 use Illuminate\Http\Request;
+use Auth;
 
-class ShippingAddressController extends Controller
+class ShippingAddressController extends LocationController
 {
 
     /**
@@ -23,9 +24,12 @@ class ShippingAddressController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(ShippingAddress $shippingAddress)
     {
-        return 'invoice index';
+        $addresses = $shippingAddress->whereUserId(Auth::user()->id)->get();
+        $states = $this->states;
+        $provinces = $this->provinces;
+        return compact('addresses', 'states', 'provinces');
     }
 
     /**
@@ -66,9 +70,9 @@ class ShippingAddressController extends Controller
      * @param  \Heisen\ShippingAddress  $shippingAddress
      * @return \Illuminate\Http\Response
      */
-    public function edit(ShippingAddress $shippingAddress)
+    public function edit(ShippingAddress $shippingAddress, $id)
     {
-        //
+        return $shippingAddress->find($id);
     }
 
     /**
@@ -80,7 +84,15 @@ class ShippingAddressController extends Controller
      */
     public function update(Request $request, ShippingAddress $shippingAddress)
     {
-        //
+        $this->validate([
+            'address_1' => 'required|min:7:max:140',
+            'city' => 'required',
+            'state' => 'required',
+            'postcode' => 'required',
+            'country' => 'required',
+            'ship_to_name' => 'required',
+        ]);
+        return $shippingAddress->updateOrCreate($request->all());
     }
 
     /**

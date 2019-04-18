@@ -23,6 +23,7 @@ export default {
     },
     mounted() {
         this.$emit('update:initial_user', this.initial_user)
+        this.getCart()
     },
     methods: {
         checkAuth() {
@@ -39,11 +40,11 @@ export default {
                 return false
             }
         },
-        addAndCheckout(item, selectedPack) {
+        async addAndCheckout(item, selectedPack) {
             if (this.checkAuth() === false) {
                 return
             }
-            this.addToCart(item, selectedPack)
+            await this.addToCart(item, selectedPack)
             return this.startCheckout()
         },
         startCheckout() {
@@ -54,7 +55,55 @@ export default {
             window.location.href = '/checkout'
 
         },
-        addToCart(item, selectedPack) {
+        incrementProduct(item) {
+            if (this.checkAuth() === false) {
+                return
+            }
+
+            let product = {
+                'pack_id':  item.pivot.seed_pack_id,
+                'quantity': 1,
+                'name': item.strainName
+            }
+
+            this.pushToLocalStorage(product)
+            this.updateCart()
+        },
+        decrementProduct(item) {
+            if (this.checkAuth() === false) {
+                return
+            }
+
+            let product = {
+                'pack_id':  item.pivot.seed_pack_id,
+                'quantity': -1,
+                'name': item.strainName
+            }
+
+            this.pushToLocalStorage(product)
+
+            if (Number(localStorage.getItem('pack_id_' + String(product.pack_id))) <= 0) {
+                this.removeProduct(item)
+            }
+
+            this.updateCart()
+        },
+        removeProduct(item) {
+            if (this.checkAuth() === false) {
+                return
+            }
+
+            let product = {
+                'pack_id':  item.pivot.seed_pack_id,
+                'quantity': -100,
+                'name': item.strainName
+            }
+            this.removeFromLocalStorage(product)
+
+            return this.updateCart()
+
+        },
+        async addToCart(item, selectedPack) {
             if (this.checkAuth() === false) {
                 return
             }
@@ -70,42 +119,80 @@ export default {
                 })
             }
 
-            let product = {
-                'pack_id': selectedPack,
-                'quantity': item.quantity,
-                'name': item.name
-            }
-            this.pushToLocalStorage(product)
+            let selectionValid = false
 
-            if (this.cart.active === true) {
-                this.updateCart()
-            } else {
-                this.createCart()
-            }
-
-            return swal({
-                title: 'Updated Cart',
-                text: "Added " + item.quantity + " packs of " + item.name + " to your cart.",
-                button: {
-                    text: 'Joy!',
-                    className: "happySwalButton",
-                    icon: 'success'
-                },
-                timer: 3000
+            item.seed_packs.forEach(function (pack) {
+                if (Number(selectedPack) === Number(pack.id)) {
+                    return selectionValid = true
+                }
             })
+
+            if (selectionValid === true) {
+                let product = {
+                    'pack_id': selectedPack,
+                    'quantity': item.quantity,
+                    'name': item.name
+                }
+
+                this.pushToLocalStorage(product)
+
+                if (this.cart.active === true) {
+                    await this.updateCart()
+                } else {
+                    await this.createCart()
+                }
+                return swal({
+                    title: 'Updated Cart',
+                    text: "Added " + item.quantity + " packs of " + item.name + " to your cart.",
+                    button: {
+                        text: 'Joy!',
+                        className: "happySwalButton",
+                        icon: 'success'
+                    },
+                    timer: 2000
+                })
+            } else {
+                return swal({
+                    title: 'Uh Oh!',
+                    text: "You clicked on an unselected pack. Please select a pack from this strain",
+                    button: {
+                        text: 'oops',
+                        className: "sadSwalButton",
+                        icon: 'warning'
+                    }
+                })
+            }
         },
-        createCart() {
-            this.buildFromLocalStorage()
-            axios.post('/cart', this.shit, this.headers)
+        getCart() {
+            axios.get('/cart', this.headers)
                 .then(response => {
                     Promise.resolve(response)
-                    localStorage.clear()
-                    this.cart.active = true
-                    this.cart = response.data
-                    this.cart.total = response.data.total
+                    if (response.data.cart !== undefined) {
+                        this.cart.items = response.data.cart.seed_packs
+                        this.cart.total = response.data.total
+                    }
+                    if (response.status === 200) {return this.cart.active = true}
+                    return
+
                 })
                 .catch(error => {
                     Promise.reject(error)
+                    return this.cart.active = false
+                })
+        },
+        async createCart() {
+            this.buildFromLocalStorage()
+            await axios.post('/cart', this.shit, this.headers)
+                .then(response => {
+                    this.cart.active = true
+                    this.cart = response.data
+                    this.cart.total = response.data.total
+                    this.getCart()
+                    return Promise.resolve(response)
+                })
+                .catch(error => {
+                    Promise.reject(error)
+                    this.cart.active = false
                     return swal({
                         title: 'Uh Oh!',
                         text: "Cart save failed",
@@ -117,27 +204,82 @@ export default {
                     })
                 })
         },
-        updateCart() {
+        async updateCart() {
             this.buildFromLocalStorage()
-            axios.put('/cart', this.shit, this.headers)
-                .then(response => {
-                    Promise.resolve(response)
+            await axios.put('/cart', this.shit, this.headers)
+            .then(response => {
+                if (response.data.cart === undefined) {
+                    axios.delete('/cart', this.user, this.headers)
+                        .then(response => {
+                            localStorage.clear()
+                            this.cart.active = false
+                            this.getCart()
+                            return Promise.resolve(response)
+                        })
+                        .catch(error => {
+                            return Promise.reject(error)
+                        })
+                }
+                this.getCart()
 
-                    localStorage.clear()
-                    this.cart.active = true
+                if (response.status === 204) {
+                    return this.cart.active = false
+                }
+                this.$emit('update:initial_user', this.initial_user)
+                this.cart.active = true
+                return Promise.resolve(response)
+            })
+            .catch(error => {
+                Promise.reject(error)
+                return swal({
+                    title: 'Uh Oh!',
+                    text: "Failed to update cart.",
+                    button: {
+                        text: 'Despair!',
+                        className: "sadSwalButton",
+                        icon: 'error'
+                    }
                 })
-                .catch(error => {
-                    Promise.reject(error)
-                    return swal({
-                        title: 'Uh Oh!',
-                        text: "Checkout step failed",
-                        button: {
-                            text: 'Despair!',
-                            className: "sadSwalButton",
-                            icon: 'error'
-                        }
-                    })
-                })
+            })
+        },
+        async deleteCart() {
+            await swal({
+                title: "Are you sure?",
+                text: "Do you want to empty you cart completely?",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+              })
+              .then((willDelete) => {
+                  if (willDelete) {
+                      axios.delete('/cart', this.user, this.headers)
+                          .then(response => {
+                              Promise.resolve(response)
+                              localStorage.clear()
+                              this.cart.active = false
+                              this.getCart()
+                              return swal("Poof! Your cart has been deleted!", {
+                                  icon: "success",
+                                  timer:1500
+                              });
+                          })
+                          .catch(error => {
+                            Promise.reject(error)
+                            return swal({
+                                title: 'Uh Oh!',
+                                text: "Failed to delete your cart.",
+                                button: {
+                                    text: 'Despair!',
+                                    className: "sadSwalButton",
+                                    icon: 'error'
+                                }
+                            })
+                          })
+                } else {
+                  swal("Your cart is safe!");
+                }
+              });
+
         },
         pushToLocalStorage(product) {
             const id = 'pack_id_' + product.pack_id
@@ -158,11 +300,14 @@ export default {
                 let key = localStorage.key(i).substr(8)
                 this.shit[key] = localStorage.getItem(localStorage.key(i))
             }
+        },
+        removeFromLocalStorage(product) {
+            return localStorage.removeItem('pack_id_' + product.pack_id)
         }
-
     },
     watch: {
 
     }
 }
+
 

@@ -35,24 +35,29 @@ Route::put('profile/', 'ProfileController@update')->name('profile.update');
 Route::post('image/', 'ImageController@create')->name('image.create');
 
 ////////////////// AUTH ROUTES ////////////////////////////////////////////////////////////////
-Route::middleware(['auth'])->group( function(){
+Route::middleware(['auth', 'verified'])->group( function(){
     // Cart
     Route::post('/cart', 'CartController@store')->name('cart.create');
     Route::put('/cart', 'CartController@update')->name('cart.update');
-    Route::get('/cart', 'CartController@index')->name('cart.index');
-    Route::get('/cart', 'CartController@show')->name('cart.edit');
+    Route::delete('/cart', 'CartController@destroy')->name('cart.delete');
+    Route::get('/cart', 'CartController@show')->name('cart.show');
 
     // Checkout
     Route::get('/checkout', 'CheckoutController@show');
+
+    // Shipping Addresses
+    Route::get('/shipping_addresses/', 'ShippingAddressController@index')->name('shipping_addresses.index');
+    Route::get('/shipping_addresses/{id}', 'ShippingAddressController@edit')->name('shipping_addresses.edit');
+    Route::put('/shipping_addresses/', 'ShippingAddressController@update')->name('shipping_addresses.update');
 });
 
 /////////////////   USER ROUTES     !!///////////////////////////////////////////////////////
-Route::prefix('/user/')->name('user.')->middleware('auth')->group( function(){
+Route::prefix('/user/')->name('user.')->middleware(['auth', 'verified'])->group( function(){
 
     Route::put('/{id}', 'UserController@update')->name('update');
     Route::get('/profile/{user_id}', 'ProfileController@show')->name('profile.show');
     Route::get('invoices/', 'InvoiceController@index')->name('invoices.index');
-    Route::get('shipping_addresses/', 'ShippingAddressController@index')->name('shipping_addresses.index');
+
 });
 
 

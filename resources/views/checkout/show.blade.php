@@ -11,6 +11,7 @@
         <hr>
         <div class="row">
         <div class="col-md-12">
+        @if(! is_array($cart))
         <table class="table table-striped table-inverse">
             <thead class="thead-inverse">
             <tr>
@@ -41,6 +42,9 @@
                 </tr>
             </tfoot>
         </table>
+        @else
+        <h2>Your cart is empty</h2>
+        @endif
         </div>
         </div>
     </div>

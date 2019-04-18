@@ -48,17 +48,21 @@ class CheckoutController extends Controller
      */
     public function show(Cart $cartModel, Strain $strain)
     {
-        $items = $cartModel->find(Auth::user()->id);
-        $total = 0;
-        foreach ($items->seedPacks as $seedPack) {
-            $s = Strain::find($seedPack->strain_id);
-            $seedPack->strainName = $s->name;
-            $seedPack->strainImage = $s->image;
-            $seedPack->lineTotal = $seedPack->pivot->quantity * $seedPack->price;
-            $total += $seedPack->lineTotal;
-        }
+        $items = [];
+        if ($cartModel->whereUserId( Auth::user()->id)->exists()) {
+            $items = $cartModel->whereUserId(Auth::user()->id)->first();
+            $total = 0;
+            foreach ($items->seedPacks as $seedPack) {
+                $s = Strain::find($seedPack->strain_id);
+                $seedPack->strainName = $s->name;
+                $seedPack->strainImage = $s->image;
+                $seedPack->lineTotal = $seedPack->pivot->quantity * $seedPack->price;
+                $total += $seedPack->lineTotal;
+            }
 
-        return view('checkout.show',  ['cart' => $items, 'total' => $total]);
+            return view('checkout.show',  ['cart' => $items, 'total' => $total]);
+        }
+        return view('checkout.show',  ['cart' => $items, 'total' => 0]);
     }
 
     /**

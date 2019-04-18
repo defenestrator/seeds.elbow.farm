@@ -76,7 +76,7 @@
                                         type="number" :name="'quantity-' + product.id" value="1" min="1" max="10" :id="'quantity-'+product.id" />
                                     &nbsp;
                                     <button role="button" id="buy-now"
-                                        class="btn btn-primary form-inline input-group-sm" disabled>
+                                        class="btn btn-primary form-inline input-group-sm" v-on:click.stop.prevent="addAndCheckout(product, selectedPack)">
                                         BUY
                                     </button>
                                     &nbsp;

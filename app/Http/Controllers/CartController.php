@@ -14,21 +14,6 @@ use Illuminate\Support\Facades\Hash;
 
 class CartController extends Controller
 {
-    public function __construct()
-    {
-        // $this->middleware('auth');
-    }
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        return view('cart.index');
-    }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -44,19 +29,18 @@ class CartController extends Controller
         );
 
         foreach($request->except('uuid') as $key => $value) {
-            $newCart->seedPacks()->attach($key, ['quantity' => $value]);
+            $newCart->seedPacks()->sync([$key => ['quantity' => $value]]);
         }
 
-        $items = $cartModel->find(Auth::user()->id);
         $total = 0;
-        foreach ($items->seedPacks as $seedPack) {
+        foreach ($newCart->fresh()->seedPacks as $seedPack) {
             $s = Strain::find($seedPack->strain_id);
             $seedPack->strainName = $s->name;
             $seedPack->strainImage = $s->image;
             $seedPack->lineTotal = $seedPack->pivot->quantity * $seedPack->price;
             $total += $seedPack->lineTotal;
         }
-        return ['cart' => $items, 'total' => $total];
+        return ['cart' => $newCart->fresh(), 'total' => $total];
     }
 
     /**
@@ -67,28 +51,21 @@ class CartController extends Controller
      */
     public function show(Cart $cartModel)
     {
-        $items = $cartModel->find(Auth::user()->id);
-        $total = 0;
-
-        foreach ($items->seedPacks as $seedPack) {
-            $s = Strain::find($seedPack->strain_id);
-            $seedPack->strainName = $s->name;
-            $seedPack->strainImage = $s->image;
-            $seedPack->lineTotal = $seedPack->pivot->quantity * $seedPack->price;
-            $total += $seedPack->lineTotal;
+        if ($cartModel->whereUserId(Auth::user()->id)->exists()) {
+            $total = 0;
+            $items = $cartModel->whereUserId(Auth::user()->id)->first();
+            foreach ($items->seedPacks as $seedPack) {
+                $s = Strain::find($seedPack->strain_id);
+                $seedPack->strainName = $s->name;
+                $seedPack->strainImage = $s->image;
+                $seedPack->lineTotal = $seedPack->pivot->quantity * $seedPack->price;
+                $total += $seedPack->lineTotal;
+            }
+            return ['cart' => $items, 'total' => $total];
         }
-        return ['cart' => $items, 'total' => $total];
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \Heisen\Cart  $cart
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Cart $cart)
-    {
-        //
+        return response('', 204);
+
     }
 
     /**
@@ -100,12 +77,29 @@ class CartController extends Controller
      */
     public function update(Request $request, Cart $cartModel)
     {
-        $cart = $cartModel->whereUserId(Auth::user()->id);
+        if ($cartModel->whereUserId(Auth::user()->id)->exists()) {
+            $cart = $cartModel->whereUserId(Auth::user()->id)->first();
+            $products = $request->except('uuid');
+            $cart->seedPacks()->detach();
+            if (empty($products)) {
+                return response('OK', 200);
+            }
+            foreach($request->except('uuid') as $key => $value) {
+                $cart->seedPacks()->attach($key, ['quantity' => $value]);
+            }
 
-        foreach($request->except('uuid') as $key => $value) {
-            $cart->seedPacks()->attach($key, ['quantity' => $value]);
+            $total = 0;
+            foreach ($cart->fresh()->seedPacks as $seedPack) {
+                $s = Strain::find($seedPack->strain_id);
+                $seedPack->strainName = $s->name;
+                $seedPack->strainImage = $s->image;
+                $seedPack->lineTotal = $seedPack->pivot->quantity * $seedPack->price;
+                $total += $seedPack->lineTotal;
+            }
+            return ['cart' => $cart->fresh(), 'total' => $total];
         }
 
+        return response('',204);
     }
 
     /**
@@ -116,7 +110,12 @@ class CartController extends Controller
      */
     public function destroy(Cart $cartModel)
     {
-        $cart = $cartModel->whereUserId(Auth::user()->id);
-        $cart->destroy($cart-id);
+        if ($cartModel->whereUserId(Auth::user()->id)->exists()) {
+            $cart = $cartModel->whereUserId(Auth::user()->id)->first();
+            $cart->seedPacks()->detach();
+            $cart->destroy($cart->id);
+            return response('Resource marked for deletion', 202);
+        }
+        return response('Resource not found', 501);
     }
 }

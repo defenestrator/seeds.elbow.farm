@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 
 class LocationController extends Controller
 {
-
     public $provinces = array(0 => 'Alberta',
         1 => 'British Columbia',
         2 => 'Manitoba',

@@ -20,6 +20,7 @@
                     aria-selected="false">
                         Addresses
                     </a>
+
                 </li>
                 <li class="nav-item">
                     <a class="nav-link"
@@ -57,7 +58,7 @@
                         <h4>Shipping Addresses</h4>
                     </div>
                     <div class="container">
-                        {{-- <shipping-addresses :initial_shipping_addresses="{{ $addresses }}"></addresses> --}}
+                    <shipping-addresses :initial_user="{{Auth::user()}}" :initial_addresses="{{ $addresses }}"></shipping-addresses>
                     </div>
                 </div>
 

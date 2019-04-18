@@ -11,9 +11,14 @@ export default {
     mixins: [Cart],
     data() {
         return {
+            user: this.initial_user,
             cart: {
-                active: false
+                'active': false,
+                'user': this.initial_user,
+                'items': {},
+                'total': 0
             },
+            auth: false,
             cartActive: false,
             cartSlider: null,
             cartSliderButton: null
@@ -21,38 +26,16 @@ export default {
     },
    methods: {
         toggleCartSlider() {
-
             if (this.cartSlider.offsetWidth === 0) {
                 this.cartActive = true
-                return this.getCart()
+                this.getCart()
+                this.$emit('update:cart', this.cart)
+                return
             } else {
                 this.cartActive = false
                 return
             }
 
-        },
-        getCart() {
-
-        axios.get('/cart', this.headers)
-            .then(response => {
-                Promise.resolve(response)
-                this.cart.items = response.data.cart.seed_packs
-                this.cart.total = response.data.total
-                return this.cart.active = true
-            })
-            .catch(error => {
-                Promise.reject(error)
-                return this.cart.active = false
-                //  swal({
-                //     title: 'Uh Oh!',
-                //     text: "Retrieval of Cart failed",
-                //     button: {
-                //         text: 'Despair!',
-                //         className: "sadSwalButton",
-                //         icon: 'error'
-                //     }
-                // })
-            })
         }
     },
 
@@ -76,7 +59,6 @@ export default {
     mounted() {
         this.cartSlider = document.getElementById('cart-slider')
         this.cartSliderButton = document.getElementById('cart-slider-button')
-        this.tableWrapper = document.getElementById('table-wrapper')
 
 
     }
@@ -88,39 +70,54 @@ export default {
 <div class="d-flex flex-row-reverse cart-slider-wrapper">
     <div id="cart-slider" class="cart-slider">
         <div class="container cart-slider-contents">
-            <div>
-                <span style="width:25%;font-size:1.2rem; margin:0 1em 0;">Cart</span>
-                <button v-if="cart.active === true"
-                    class="btn btn-dark btn-outline-gray" style="margin:0 0 0.5rem;"
-                v-on:click="startCheckout()">Full Cart</button>
+            <div v-show="cart.active === true" >
+                <span style="width:25%;font-size:1.2rem; margin:0 1em 0;">Cart Preview</span>
+                <button class="btn btn-dark btn-outline-gray"
+                style="margin:0 0 0.5rem;"
+                v-on:click="startCheckout()">
+                    Full Cart
+                </button>
             </div>
-            <div class="row">
-                <div id="table-wrapper" class="col-sm-12 table-wrap">
-                    <div v-if="cartActive === true" class="container">
+            <div v-if="cart.active === true" class="row">
+                <div class="col-sm-12">
+                    <div class="container">
                             <hr>
                             <div class="row" v-bind:key="item.id" v-for="item in this.cart.items">
                                 <div class="col-xs-3">
-                                    <img class="d-xs-none" :src="item.strainImage" style="width:40px;margin-bottom:0.2rem;" />
-                                    <p>{{ item.strainName}} - {{  item.qty_per_pack }} pack</p>
+                                    <ul>
+                                        <li>
+                                            <i v-on:click="incrementProduct(item)" class="fa fa-plus-circle fa-sm"></i>
+                                            <i v-on:click="decrementProduct(item)" class="fa fa-minus-circle fa-sm"></i>
+                                            {{ item.pivot.quantity }}:
+                                            {{ item.strainName}} -
+                                            {{  item.qty_per_pack }} pack.
+                                            ${{ item.lineTotal }}
+                                            <i v-on:click="removeProduct(item)" class="fa fa-times-circle fa-sm" style="margin:0 0.2em; padding: 0; color:red; background-color:white; border-radius:50%;"></i>
+                                        </li>
+                                    </ul>
                                 </div>
-                                <div class="col-xs-3 ">
-                                    <p><span class="d-block d-xs-none">Qty:<br></span>{{ item.pivot.quantity }}</p>
-                                </div>
-                                <div class="col-xs-3 d-xs-none"><span class="d-block">Price:</span>${{ item.price }}</div>
-                                <div class="col-xs-3d-xs-none"><span class="d-block">Total:</span>${{ item.lineTotal }}</div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <h4>Total:</h4>
+                                    <h4 style="color:white;">Total:</h4>
                                 </div>
                                 <div class="col-sm-3">
-                                    <h4> ${{ cart.total }}.00</h4>
+                                    <h4 style="color:white;"> ${{ cart.total }}.00</h4>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <button class="btn btn-dark btn-outline-gray"
+                                        style="margin:0 0 0.5rem;"
+                                        v-on:click="deleteCart()">
+                                        Clear Cart
+                                    </button>
                                 </div>
                             </div>
                     </div>
-                    <div v-else><p>...is empty.</p></div>
                 </div>
             </div>
+            <div v-else><h4>Your cart is empty.</h4></div>
         </div>
 
 
@@ -132,13 +129,26 @@ export default {
 </template>
 
 <style>
-table { position:relative; }
-table tr { height:1em;  }
-td { overflow:hidden; white-space: nowrap; }
-.table-wrap {
-    position:relative;
-}
-.table-scroll {
-    overflow:auto;
-}
+    table { position:relative; }
+    table tr { height:1em;  }
+    td { overflow:hidden; white-space: nowrap; }
+    .table-wrap {
+        position:relative;
+    }
+    .table-scroll {
+        overflow:auto;
+    }
+    .cart-slider-contents li {
+        list-style-type: none;
+        border-bottom: 1px solid #ccc;
+
+    }
+    i {
+    padding:0 0.1rem;
+    cursor:pointer;
+    }
+
+    ul {
+        padding-left:0;
+    }
 </style>
