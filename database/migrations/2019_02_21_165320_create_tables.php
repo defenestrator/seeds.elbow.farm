@@ -60,6 +60,7 @@ class CreateTables extends Migration
             $table->string('name');
             $table->string('image')->default('i.heisenbeans.com/images/heisenhead.png');
             $table->longText('genetics')->nullable();
+            
             $table->longText('description')->nullable();
             $table->boolean('feminized')->default(false);
             $table->boolean('published')->default(false);
