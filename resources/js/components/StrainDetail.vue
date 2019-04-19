@@ -55,7 +55,7 @@
                     <div class="card-body">
                         <div class="card-text">
                             <form action="POST" target="/cart">
-                                <p v-if="product.seed_packs === undefined || product.seed_packs == 0">Out of stock</p>
+                                <p v-if="product.seed_packs === undefined || product.seed_packs == 0"></p>
                                 <div class="form-group" v-else>
                                     <div v-bind:key="pack.id" v-for="pack in product.seed_packs" class="form-group custom-control custom-radio custom-control-inline">
                                         <input type="radio"
@@ -70,7 +70,8 @@
                                         </label>
                                     </div>
                                 </div>
-                                <div class="form-group form-inline">
+                                 <p v-if="product.seed_packs === undefined || product.seed_packs == 0">Out of stock</p>
+                                <div class="form-group form-inline" v-else>
                                     <label for="quantity" class="form-label form-inline"></label>
                                     <input v-model.number="product.quantity" class="form-control form-inline input-group-sm" style="width:60px;"
                                         type="number" :name="'quantity-' + product.id" value="1" min="1" max="10" :id="'quantity-'+product.id" />
