@@ -47,15 +47,19 @@ class SeedPack extends BaseModel
         return $this->belongsTo(Strain::class);
     }
 
-    public function invoices()
-    {
-        return $this->hasMany(Invoice::class);
-    }
-
     public function carts()
     {
         return $this->belongsToMany(Cart::class)
                     ->using(CartSeedPack::class)
+                    ->withPivot([
+                        'quantity'
+                    ]);
+    }
+
+    public function invoices()
+    {
+        return $this->belongsToMany(Invoice::class)
+                    ->using(InvoiceSeedPack::class)
                     ->withPivot([
                         'quantity'
                     ]);

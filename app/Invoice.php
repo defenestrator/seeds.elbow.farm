@@ -32,12 +32,16 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $shipping
  * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Invoice whereShipping($value)
  */
-class Invoice extends Model
+class Invoice extends BaseModel
 {
-    protected $fillable = [
-        'total',
-        'user_id',
-        'payment_type_id',
-        'status',
-    ];
+    protected $guarded = [];
+
+    public function seedPacks()
+    {
+        return $this->belongsToMany(SeedPack::class)
+                    ->using(InvoiceSeedPack::class)
+                    ->withPivot([
+                        'quantity'
+                    ]);
+    }
 }

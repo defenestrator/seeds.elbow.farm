@@ -5,26 +5,28 @@ namespace Heisen\Http\Controllers;
 use Heisen\Invoice;
 use Illuminate\Http\Request;
 
+use Auth;
 class InvoiceController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Invoice $invoice)
     {
-        return 'invoice index';
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $invoices = $invoice->whereUserId(Auth::user()->id)->get();
+        return view('user.invoices', ['invoices' => $invoices]);
     }
 
     /**
@@ -33,9 +35,24 @@ class InvoiceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Invoice $invoice)
     {
-        //
+        $uuid = $invoice->makeUuid();
+        $new = $invoice->create([
+            'total' => $request->total,
+            'uuid' => $uuid,
+            'user_id' => $request->user_id,
+            'payment_method_id' => $request->payment_method_id,
+            'customer_notes' => $request->customer_notes,
+            'status' => 'new'
+        ]);
+        $total = 0;
+        foreach($request->items as $value) {
+            $new->seedPacks()->attach([$value['pivot']['seed_pack_id'] => ['quantity' => $value['pivot']['quantity']]]);
+        }
+
+        $new->fresh();
+        return ['invoice' => $new];
     }
 
     /**

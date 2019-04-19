@@ -54,6 +54,7 @@ class CheckoutController extends Controller
         $items = [];
         $addresses = [];
         $total = 0;
+        $paymentMethods = $paymentMethod->get();
         if ($cartModel->whereUserId( Auth::user()->id)->exists()) {
             $items = $cartModel->whereUserId(Auth::user()->id)->first();
 
@@ -62,17 +63,17 @@ class CheckoutController extends Controller
                 $seedPack->strainName = $s->name;
                 $seedPack->strainImage = $s->image;
                 $seedPack->lineTotal = $seedPack->pivot->quantity * $seedPack->price;
-                $total += $seedPack->lineTotal;
+            $total += $seedPack->lineTotal;
             }
             $addresses = $shippingAddress->whereUserId( Auth::user()->id )->get();
-            $paymentMethods = $paymentMethod->get();
+            return view('checkout.show',  [
+                'cart' => $items,
+                'total' => $total,
+                'addresses' => $addresses,
+                'paymentMethods' => $paymentMethods
+                ]);
         }
-        return view('checkout.show',  [
-            'cart' => $items,
-            'total' => $total,
-            'addresses' => $addresses,
-            'paymentMethods' => $paymentMethods
-            ]);
+        return redirect('/')->withErrors(['error' => 'your cart is empty']);
     }
 
     /**

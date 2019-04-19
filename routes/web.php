@@ -44,6 +44,7 @@ Route::middleware(['auth', 'verified'])->group( function(){
 
     // Checkout
     Route::get('/checkout', 'CheckoutController@show');
+    Route::post('/invoices', 'InvoiceController@store');
 
     // Shipping Addresses
     Route::get('/shipping_addresses/', 'ShippingAddressController@show')->name('shipping_addresses.show');

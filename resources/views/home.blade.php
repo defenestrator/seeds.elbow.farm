@@ -71,7 +71,7 @@
                         <h4>Your Invoices</h4>
                     </div>
                     <div class="container">
-                        {{-- <invoices :invoices={!!  $invoices !!}></invoices> --}}
+                        <invoices :initial_user="{{Auth::user()}}" :initial_invoices={{  $invoices }}></invoices>
                     </div>
                 </div>
 
