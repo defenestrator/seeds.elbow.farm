@@ -103,6 +103,6 @@ class ShippingAddressController extends LocationController
      */
     public function destroy(Request $request, ShippingAddress $shippingAddress)
     {
-        return $shippingAddress->find($request->id);
+        return $shippingAddress->destroy($request->id);
     }
 }

@@ -60,11 +60,13 @@ export default {
                 })
         },
         newAddress() {this.edit = true},
-        async deleteAddress() {
-            await axios.delete(this.baseShippingAddressUrl, this.currentAddress.id, this.headers)
+        deleteAddress() {
+
+            axios.delete(this.baseShippingAddressUrl + this.currentAddress.id, this.headers)
                 .then(response => {
+                    this.cancelEdit()
                     this.getAddresses()
-                    this.edit = false
+                    this.$emit('update:initial_addresses', this.addresses)
                     return Promise.resolve(response)
                 })
                 .catch(error => {
@@ -74,6 +76,7 @@ export default {
         async getAddresses() {
             await axios.get(this.baseShippingAddressUrl, this.headers)
                 .then(response => {
+                    this.shipping_addresses = response.data
                     return Promise.resolve(response)
                 })
                 .catch(error => {

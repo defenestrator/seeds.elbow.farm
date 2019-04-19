@@ -49,7 +49,7 @@ Route::middleware(['auth', 'verified'])->group( function(){
     Route::get('/shipping_addresses/', 'ShippingAddressController@show')->name('shipping_addresses.show');
     Route::get('/shipping_addresses/{id}', 'ShippingAddressController@edit')->name('shipping_addresses.edit');
     Route::put('/shipping_addresses/', 'ShippingAddressController@update')->name('shipping_addresses.update');
-    Route::delete('/shipping_addresses/', 'ShippingAddressController@destroy')->name('shipping_addresses.delete');
+    Route::delete('/shipping_addresses/{id}', 'ShippingAddressController@destroy')->name('shipping_addresses.delete');
 });
 
 /////////////////   USER ROUTES     !!///////////////////////////////////////////////////////
