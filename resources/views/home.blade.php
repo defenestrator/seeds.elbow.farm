@@ -11,13 +11,13 @@
         <div class="col-md-12">
             <ul class="nav nav-tabs" id="homeTab" role="tablist">
                 <li class="nav-item">
-                    <a class="nav-link"
+                    <a class="nav-link active"
                     id="shipping-addresses-tab"
                     data-toggle="tab"
                     href="#shipping-addresses"
                     role="tab"
                     aria-controls="shipping-addresses"
-                    aria-selected="false">
+                    aria-selected="true">
                         Addresses
                     </a>
 
@@ -35,13 +35,13 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link active"
+                    <a class="nav-link"
                     id="profile-tab"
                     data-toggle="tab"
                     href="#profile"
                     role="tab"
                     aria-controls="profile"
-                    aria-selected="true">
+                    aria-selected="false">
                         Profile
                     </a>
                 </li>
@@ -49,7 +49,7 @@
             </ul>
             <div class="tab-content" id="shipping-address-content">
 
-                <div class="card-body tab-pane fade"
+                <div class="card-body tab-pane fade show active"
                 id="shipping-addresses"
                 role="tabpanel"
                 aria-labelledby="shipping-addresses-tab">
@@ -75,7 +75,7 @@
                     </div>
                 </div>
 
-                <div class="card-body tab-pane fade show active"
+                <div class="card-body tab-pane fade"
                 id="profile"
                 role="tabpanel"
                 aria-labelledby="profile-tab">

@@ -53,6 +53,7 @@ export default {
                         title: 'Updated',
                         text: 'Shipping Addresses'
                     })
+                    this.getAddresses()
                     return Promise.resolve(response)
                 })
                 .catch(error => {
