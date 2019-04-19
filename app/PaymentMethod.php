@@ -37,6 +37,7 @@ class PaymentMethod extends BaseModel
         'image'
     ];
 
+    protected $hidden = ['account'];
         /**
      * Indicates if the model should be timestamped.
      *

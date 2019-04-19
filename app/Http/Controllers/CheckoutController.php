@@ -5,6 +5,8 @@ namespace Heisen\Http\Controllers;
 use Illuminate\Http\Request;
 use Heisen\Cart;
 use Heisen\Strain;
+use Heisen\ShippingAddress;
+use Heisen\PaymentMethod;
 use Auth;
 
 class CheckoutController extends Controller
@@ -46,12 +48,15 @@ class CheckoutController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Cart $cartModel, Strain $strain)
+    public function show(Cart $cartModel,
+    Strain $strain, ShippingAddress $shippingAddress, PaymentMethod $paymentMethod)
     {
         $items = [];
+        $addresses = [];
+        $total = 0;
         if ($cartModel->whereUserId( Auth::user()->id)->exists()) {
             $items = $cartModel->whereUserId(Auth::user()->id)->first();
-            $total = 0;
+
             foreach ($items->seedPacks as $seedPack) {
                 $s = Strain::find($seedPack->strain_id);
                 $seedPack->strainName = $s->name;
@@ -59,10 +64,15 @@ class CheckoutController extends Controller
                 $seedPack->lineTotal = $seedPack->pivot->quantity * $seedPack->price;
                 $total += $seedPack->lineTotal;
             }
-
-            return view('checkout.show',  ['cart' => $items, 'total' => $total]);
+            $addresses = $shippingAddress->whereUserId( Auth::user()->id )->get();
+            $paymentMethods = $paymentMethod->get();
         }
-        return view('checkout.show',  ['cart' => $items, 'total' => 0]);
+        return view('checkout.show',  [
+            'cart' => $items,
+            'total' => $total,
+            'addresses' => $addresses,
+            'paymentMethods' => $paymentMethods
+            ]);
     }
 
     /**
