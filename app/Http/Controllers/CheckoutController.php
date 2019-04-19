@@ -54,7 +54,7 @@ class CheckoutController extends Controller
         $items = [];
         $addresses = [];
         $total = 0;
-        $paymentMethods = $paymentMethod->get();
+        $paymentMethods = $paymentMethod->whereActive(true)->get();
         if ($cartModel->whereUserId( Auth::user()->id)->exists()) {
             $items = $cartModel->whereUserId(Auth::user()->id)->first();
 

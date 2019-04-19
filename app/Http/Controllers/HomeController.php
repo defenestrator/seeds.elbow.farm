@@ -29,11 +29,11 @@ class HomeController extends Controller
     public function index(User $user, Profile $profile, Invoice $invoice, ShippingAddress $shippingAddress)
     {
         $user = $user->whereId(Auth::user()->id)->first();
-
         $profile = $profile->whereUserId($user->id)->first();
-        $invoices = $invoice->whereUserId($user->id)->paginate();
+        if ($invoice->whereUserId(Auth::user()->id)->exists()) {
+            $invoices = $invoice->whereUserId(Auth::user()->id)->get();
+        }
         $addresses = $shippingAddress->whereUserId($user->id)->get();
-        // dd(Auth::user()->id);
         return view('home', compact('user', 'profile', 'invoices', 'addresses'));
     }
 }

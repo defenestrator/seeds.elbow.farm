@@ -3,18 +3,21 @@
 namespace Heisen\Http\Controllers;
 
 use Heisen\Invoice;
+use Heisen\Cart;
 use Illuminate\Http\Request;
 
 use Auth;
 class InvoiceController extends Controller
 {
+    protected $death;
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(CartController $death)
     {
+        $this->death = $death;
         $this->middleware('auth');
     }
 
@@ -25,8 +28,12 @@ class InvoiceController extends Controller
      */
     public function index(Invoice $invoice)
     {
-        $invoices = $invoice->whereUserId(Auth::user()->id)->get();
-        return view('user.invoices', ['invoices' => $invoices]);
+        $invoices = 'none';
+        if ($invoice->whereUserId(Auth::user()->id)->exists()) {
+            $invoices = $invoice->whereUserId(Auth::user()->id)->get();
+        }
+
+        return view('user.invoices', compact('invoices'));
     }
 
     /**
@@ -35,7 +42,7 @@ class InvoiceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Invoice $invoice)
+    public function store(Request $request, Invoice $invoice, Cart $cartModel)
     {
         $uuid = $invoice->makeUuid();
         $new = $invoice->create([
@@ -46,13 +53,21 @@ class InvoiceController extends Controller
             'customer_notes' => $request->customer_notes,
             'status' => 'new'
         ]);
+
         $total = 0;
+
         foreach($request->items as $value) {
             $new->seedPacks()->attach([$value['pivot']['seed_pack_id'] => ['quantity' => $value['pivot']['quantity']]]);
         }
-
         $new->fresh();
-        return ['invoice' => $new];
+        if ($cartModel->whereUserId(Auth::user()->id)->exists()) {
+            $cart = $cartModel->whereUserId(Auth::user()->id)->first();
+            $cart->seedPacks()->detach();
+            $cart->destroy($cart->id);
+            return redirect()->action('WelcomeController@index')->withErrors(['thanks' => 'Your order has been placed.']);
+        }
+
+        return back()->withErrors(['error' => 'Your order was not placed.']);
     }
 
     /**
@@ -95,8 +110,14 @@ class InvoiceController extends Controller
      * @param  \Heisen\Invoice  $invoice
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Invoice $invoice)
+    public function destroy(Cart $cartModel)
     {
-        //
+        if ($cartModel->whereUserId(Auth::user()->id)->exists()) {
+            $cart = $cartModel->whereUserId(Auth::user()->id)->first();
+            $cart->seedPacks()->detach();
+            $cart->destroy($cart->id);
+            return response('Resource marked for deletion', 202);
+        }
+        return response('Resource not found', 501);
     }
 }

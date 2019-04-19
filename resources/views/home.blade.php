@@ -22,7 +22,7 @@
                     </a>
 
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link"
                     id="contact-tab"
                     data-toggle="tab"
@@ -32,7 +32,7 @@
                     aria-selected="false">
                         Invoices
                     </a>
-                </li>
+                </li> --}}
 
                 <li class="nav-item">
                     <a class="nav-link"
@@ -71,7 +71,7 @@
                         <h4>Your Invoices</h4>
                     </div>
                     <div class="container">
-                        <invoices :initial_user="{{Auth::user()}}" :initial_invoices={{  $invoices }}></invoices>
+                        {{-- <invoices :initial_user="{{Auth::user()}}" :initial_invoices={{ $invoices }}></invoices> --}}
                     </div>
                 </div>
 

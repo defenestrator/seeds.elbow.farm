@@ -66,7 +66,7 @@
                         return Promise.reject(error)
                     })
             },
-            processCheckout(cart) {
+            async processCheckout(cart) {
                 let invoice = {
                     'user_id': cart.user.id,
                     'items': cart.items,
@@ -78,7 +78,8 @@
                     .then(response => {
                         console.log('Response: ' + response)
                         localStorage.clear()
-                        return Promise.resolve(response)
+                        Promise.resolve(response)
+                        return location.href = '/home'
                     })
                     .catch(error => {
                         console.log('Error: ' + error)
