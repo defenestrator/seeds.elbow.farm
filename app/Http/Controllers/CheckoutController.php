@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Heisen\Cart;
 use Heisen\Strain;
 use Heisen\ShippingAddress;
+
 use Heisen\PaymentMethod;
 use Auth;
 

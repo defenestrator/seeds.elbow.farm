@@ -4,12 +4,12 @@ namespace Heisen\Http\Controllers;
 
 use Heisen\Invoice;
 use Heisen\Cart;
+use Heisen\SeedPack;
 use Illuminate\Http\Request;
 
 use Auth;
 class InvoiceController extends Controller
 {
-    protected $death;
     /**
      * Create a new controller instance.
      *
@@ -17,7 +17,6 @@ class InvoiceController extends Controller
      */
     public function __construct(CartController $death)
     {
-        $this->death = $death;
         $this->middleware('auth');
     }
 
@@ -42,7 +41,7 @@ class InvoiceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Invoice $invoice, Cart $cartModel)
+    public function store(Request $request, Invoice $invoice, Cart $cartModel, SeedPack $seedPackModel)
     {
         $uuid = $invoice->makeUuid();
         $new = $invoice->create([
@@ -57,9 +56,16 @@ class InvoiceController extends Controller
         $total = 0;
 
         foreach($request->items as $value) {
+            $pack = $seedPackModel->whereId($value['pivot']['seed_pack_id'])->get();
+            $newInventory = $pack->inventory - $value['pivot']['quantity'];
+            return dd($newInventory);
             $new->seedPacks()->attach([$value['pivot']['seed_pack_id'] => ['quantity' => $value['pivot']['quantity']]]);
+
+
+
         }
         $new->fresh();
+
         if ($cartModel->whereUserId(Auth::user()->id)->exists()) {
             $cart = $cartModel->whereUserId(Auth::user()->id)->first();
             $cart->seedPacks()->detach();

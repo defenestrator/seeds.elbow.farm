@@ -66,7 +66,8 @@ class SeedPackController extends AdminController
     {
         $content = $seedPack->find($id);
         $strains = $strain->all();
-        return view('seed_packs.edit', compact('content', 'strains'));
+        $strain = $content->strain;
+        return view('seed_packs.edit', compact('content', 'strains', 'strain'));
     }
 
     /**
@@ -76,9 +77,20 @@ class SeedPackController extends AdminController
      * @param  \Heisen\SeedPack  $seedPack
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, SeedPack $seedPack)
+    public function update(Request $request, SeedPack $seedPack, Strain $strain, $id)
     {
-        //
+
+        $attrs = [
+            'inventory'     => $request->inventory,
+            'price'         => $request->price,
+            'qty_per_pack'  => $request->qty_per_pack,
+            'strain_id'     => $request->strain
+        ];
+        $this->seedPack->whereId($id)->update($attrs);
+        $content = $seedPack->find($id);
+        $strains = $strain->all();
+        $strain = $content->strain;
+        return back()->with(compact('content', 'strains', 'strain'));
     }
 
     /**

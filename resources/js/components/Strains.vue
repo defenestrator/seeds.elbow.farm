@@ -78,13 +78,17 @@
                 <form action="POST" target="/cart">
                     <p v-if="item.seed_packs === undefined || item.seed_packs == 0">Out of stock</p>
                     <div class="form-group" v-else>
-                        <div v-bind:key="pack.id" v-for="pack in item.seed_packs"
-                            class="form-group custom-control custom-radio custom-control-inline">
+                        <div v-bind:key="pack.id" v-for="pack in item.seed_packs">
+                            <span>{{ pack.inventory }} available.</span> <br>
+                        <div class="form-group custom-control custom-radio custom-control-inline">
                             <input type="radio" v-model.number="selectedPack" class="custom-control-input"
                                 :id="'seed-pack-' + pack.id" :name="'seed-pack-' + pack.id" :value="pack.id" />
                             <label class="custom-control-label" :for="'seed-pack-' + pack.id">
                                 {{ pack.qty_per_pack }} seeds ${{ pack.price }}
                             </label>
+
+                            </div>
+
                         </div>
                     </div>
                     <div v-if="item.seed_packs === undefined || item.seed_packs == 0">

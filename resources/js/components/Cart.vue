@@ -79,7 +79,7 @@
                         console.log('Response: ' + response)
                         localStorage.clear()
                         Promise.resolve(response)
-                        return location.href = '/home'
+                        // return location.href = '/home'
                     })
                     .catch(error => {
                         console.log('Error: ' + error)

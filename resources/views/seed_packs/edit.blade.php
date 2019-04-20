@@ -42,7 +42,7 @@
             <div class="col-md-8 offset-md-2">
                 <a style="margin:0 0.2rem;" href="/admin/seed_packs/create">
                     <button class="btn btn-primary">
-                        Add New
+                        Edit Seed Pack
                     </button>
                 </a>
                 <a style="margin:0 0.2rem;" onclick="deleteSeedPack({{ $content->id }})" >
@@ -60,14 +60,14 @@
         <div class="row">
 
             <div class="col-md-8 offset-md-2" style="margin-top:1em;">
-                <form class="form-horizontal new-content" role="form" enctype="multipart/form-data" method="POST" action="{{route('admin.strains.update', $content->id)}}">
+                <form class="form-horizontal new-content" role="form" enctype="multipart/form-data" method="POST" action="{{route('admin.seed_packs.update', $content->id)}}">
                     @csrf
                     <div class="form-group row">
                             <div class="col-12">
                                 <p>Strain:</p>
-                                <select id="strain" name="strain" class="form-control select" value="{{ $content->strain->id }}" autofocus>
-                                    @foreach($contents as $content)
-                                        <option value="{{ $content->id }}">{{ $content->name }}</option>
+                                <select id="strain" name="strain" class="form-control select" value="{{ $strain->id }}" autofocus>
+                                    @foreach($strains as $s)
+                                        <option value="{{ $s->id }}">{{ $s->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -79,7 +79,7 @@
                                 name="inventory"
                                 class="form-control input"
                                 type="number"
-                                value="{{ $content->inventory }}" />
+                                value="{{$content->inventory }}" />
                             </div>
                             <div class="col-4">
                                 <p>Price:</p>
