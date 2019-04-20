@@ -53,8 +53,8 @@ class SeedPackController extends AdminController
             'qty_per_pack'  => $request->qty_per_pack,
             'strain_id'     => $request->strain
         ];
-
-        return $this->seedPack->create($attrs);
+        $this->seedPack->create($attrs);
+        return back();
     }
     /**
      * Show the form for editing the specified resource.

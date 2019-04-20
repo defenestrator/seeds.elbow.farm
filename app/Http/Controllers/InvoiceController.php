@@ -56,9 +56,8 @@ class InvoiceController extends Controller
         $total = 0;
 
         foreach($request->items as $value) {
-            $pack = $seedPackModel->whereId($value['pivot']['seed_pack_id'])->get();
+            $pack = $seedPackModel->fine($value['pivot']['seed_pack_id']);
             $newInventory = $pack->inventory - $value['pivot']['quantity'];
-            return dd($newInventory);
             $new->seedPacks()->attach([$value['pivot']['seed_pack_id'] => ['quantity' => $value['pivot']['quantity']]]);
 
 
