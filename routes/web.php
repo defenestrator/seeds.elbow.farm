@@ -43,7 +43,7 @@ Route::middleware(['auth', 'verified'])->group( function(){
     Route::get('/cart', 'CartController@show')->name('cart.show');
 
     // Checkout
-    Route::get('/checkout', 'CheckoutController@show');
+    Route::get('/checkout', 'CheckoutController@show')->name('checkout.show');
     Route::post('/invoices', 'InvoiceController@store');
 
     // Shipping Addresses

@@ -76,10 +76,22 @@
                 }
                 axios.post('/invoices', invoice, this.headers)
                     .then(response => {
-                        console.log('Response: ' + response)
                         localStorage.clear()
                         Promise.resolve(response)
-                        // return location.href = '/home'
+
+
+                      swal({
+                    title: 'Thank you!',
+                    text: "Order placed, expect an email soon!",
+                    button: {
+                        text: 'Joy!',
+                        className: "happySwalButton",
+                        icon: 'success'
+                    },
+                    timer: 5000
+                    })
+                    setInterval(5000, location.href = '/')
+
                     })
                     .catch(error => {
                         console.log('Error: ' + error)

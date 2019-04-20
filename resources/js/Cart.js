@@ -149,7 +149,7 @@ export default {
                         className: "happySwalButton",
                         icon: 'success'
                     },
-                    timer: 2000
+                    timer: 1500
                 })
             } else {
                 return swal({

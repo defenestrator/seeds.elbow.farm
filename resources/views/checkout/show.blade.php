@@ -6,3 +6,10 @@
     :initial_user="{{Auth::user()}}">
 </cart>
 @endsection
+
+@section('pacge_scripts')
+<script>
+
+</script>
+
+@endsection
