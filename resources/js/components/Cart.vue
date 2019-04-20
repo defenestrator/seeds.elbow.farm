@@ -90,7 +90,7 @@
                     },
                     timer: 5000
                     })
-                    setInterval(5000, location.href = '/')
+                    setTimeout(function() { location.href = '/'}, 5000)
 
                     })
                     .catch(error => {
