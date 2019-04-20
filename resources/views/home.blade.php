@@ -63,7 +63,8 @@
                 </div>
 
                 <div class="card-body tab-pane fade"
-                id="contact"
+                id="contact"go
+                
                 role="tabpanel"
                 aria-labelledby="contact-tab">
                     <div class="d-flex flex-row">

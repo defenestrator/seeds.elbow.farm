@@ -34,6 +34,6 @@ class HomeController extends Controller
             $invoices = $invoice->whereUserId(Auth::user()->id)->get();
         }
         $addresses = $shippingAddress->whereUserId($user->id)->get();
-        return view('home', compact('user', 'profile', 'invoices', 'addresses'));
+        return view('home', compact('user', 'profile', 'addresses'));
     }
 }
