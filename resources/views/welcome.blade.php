@@ -5,14 +5,9 @@
         <h1>Heisenbeans</h1>
     </div>
     <div class="row justify-content-center">
-        <h2>Opening Day</h2>
+    Come get it! Expect an email soon after your order.
     </div>
-    <div class="row justify-content-center">
-        <h4>4/20/2019!</h4>
-    </div>
-    <div class="row justify-content-center">
-        <h3>Finally!</h3>
-    </div>
+    <div class="row justify-content-center">Please add heisenbeans.com to your safe senders list.</div>
 
     @auth
     <strains :products="{{ $strains }}" :initial_user="'{{ Auth::user()->uuid }}'"></strains>
