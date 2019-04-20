@@ -29,7 +29,7 @@
         <main class="py-2">
             <div class="row px-2 container">
                 @if ($errors->any())
-                <div class="col-md-6 offset-md-3 alert alert-danger">
+                <div class="col-md-5 offset-md-5 alert alert-danger">
                     <ul>
                         @foreach ($errors->all() as $error)
                         <li>{{ $error }}</li>
