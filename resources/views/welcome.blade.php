@@ -8,6 +8,7 @@
     Come get it! Expect an email soon after your order.
     </div>
     <div class="row justify-content-center">Please add heisenbeans.com to your safe senders list.</div>
+    <p>Please report bugs <a href="/contact">here.</a>
 
     @auth
     <strains :products="{{ $strains }}" :initial_user="'{{ Auth::user()->uuid }}'"></strains>
