@@ -33,7 +33,7 @@ export default {
         <div class="col-md-12">
             <div class="row" v-for="invoice in invoices">
                 <div class="col-md-12">
-                    {{invoice}}
+                    {{invoice.created_at}}
                 </div>
             </div>
         </div>
