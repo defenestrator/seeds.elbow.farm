@@ -94,6 +94,15 @@
 
                     })
                     .catch(error => {
+                        return swal({
+                    title: 'Uh Oh!',
+                    text: "Something went horribly wrong. Refresh this page and try again?",
+                    button: {
+                        text: 'oops',
+                        className: "sadSwalButton",
+                        icon: 'error'
+                    }
+                })
                         console.log('Error: ' + error)
                         return Promise.reject(error)
                     })
