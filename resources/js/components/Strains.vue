@@ -99,8 +99,8 @@
                             style="max-width:60px;margin-bottom:0.1rem;" type="number" :name="'quantity-' + item.uuid"
                             min="1" max="10" :id="'quantity-' + item.uuid">
                         &nbsp;
-                        <button style="margin-bottom:0.1rem;" role="button" :id="'buy-now-' + item.uuid"
-                            class="btn btn-primary form-inline input-group-sm" v-on:click.stop.prevent="addAndCheckout(item, selectedPack)">BUY</button>
+                        <!-- <button style="margin-bottom:0.1rem;" role="button" :id="'buy-now-' + item.uuid"
+                            class="btn btn-primary form-inline input-group-sm" v-on:click.stop.prevent="addAndCheckout(item, selectedPack)">BUY</button> -->
                         &nbsp;
                         <button style="margin-bottom:0.1rem;" role="button" :id="'add-to-cart-' + item.uuid"
                             class="btn btn-outline-gray form-inline input-group-sm"

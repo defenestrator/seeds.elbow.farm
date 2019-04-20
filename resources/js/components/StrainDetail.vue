@@ -76,10 +76,10 @@
                                     <input v-model.number="product.quantity" class="form-control form-inline input-group-sm" style="width:60px;"
                                         type="number" :name="'quantity-' + product.id" value="1" min="1" max="10" :id="'quantity-'+product.id" />
                                     &nbsp;
-                                    <button role="button" id="buy-now"
+                                    <!-- <button role="button" id="buy-now"
                                         class="btn btn-primary form-inline input-group-sm" v-on:click.stop.prevent="addAndCheckout(product, selectedPack)">
                                         BUY
-                                    </button>
+                                    </button> -->
                                     &nbsp;
                                     <button role="button" id="add-to-cart"
                                         class="btn btn-outline-gray form-inline input-group-sm"
