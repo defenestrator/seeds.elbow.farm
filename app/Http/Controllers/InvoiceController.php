@@ -29,7 +29,7 @@ class InvoiceController extends Controller
     {
         $invoices = 'none';
         if ($invoice->whereUserId(Auth::user()->id)->exists()) {
-            $invoices = $invoice->whereUserId(Auth::user()->id)->get();
+            $invoices = $invoice->whereUserId(Auth::user()->id)->with(['user', 'seedPacks'])->get();
         }
 
         return view('user.invoices', compact('invoices'));
@@ -120,7 +120,7 @@ class InvoiceController extends Controller
         if ($cartModel->whereUserId(Auth::user()->id)->exists()) {
             $cart = $cartModel->whereUserId(Auth::user()->id)->first();
             $cart->seedPacks()->detach();
-            $cart->destroy($cart->id);
+            $cart->delete($cart->id);
             return response('Resource marked for deletion', 202);
         }
         return response('Resource not found', 501);

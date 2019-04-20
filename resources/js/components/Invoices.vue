@@ -33,7 +33,7 @@ export default {
         <div class="col-md-12">
             <div class="row" v-for="invoice in invoices">
                 <div class="col-md-12">
-                    {{invoice.created_at}}
+                    {{invoice.created_at}} - total: ${{ invoice.total }} - <span v-for="pack in invoice.seed_packs" v-bind:key="pack">{{ pack.id}}:{{pack.pivot.quantity}}</span>
                 </div>
             </div>
         </div>

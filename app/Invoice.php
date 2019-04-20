@@ -44,4 +44,9 @@ class Invoice extends BaseModel
                         'quantity'
                     ]);
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

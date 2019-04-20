@@ -11,8 +11,9 @@
         {{-- <a class="dropdown-item nav-link" href="{{ route('user.invoices.index') }}">Invoices</a> --}}
         <a class="dropdown-item nav-link" href="{{ route('user.shipping_addresses.index') }}">Addresses</a>
         <hr />
-        @if(in_array(Auth::user()->email , ['jeremyblc@gmail.com', 'mike@elbowfarm.com', 'heisen@heisenbeans.com']))
-
+        @if(Auth::user()->can('role:admin'))
+        <a class="dropdown-item nav-link" href="/admin/invoices"><i class="fa fa-edit"></i> All user Invoices</a>
+        <hr>
             <a class="dropdown-item nav-link" href="/admin/strains"><i class="fa fa-edit"></i> Edit Strains</a>
             <a class="dropdown-item nav-link" href="/admin/strains/create"><i class="fa fa-plus-circle"></i> New Strain</a>
             <hr />

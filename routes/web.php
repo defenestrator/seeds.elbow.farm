@@ -80,6 +80,8 @@ Route::prefix('/admin/')->name('admin.')->middleware('role:admin')->group( funct
     Route::post('seed_packs/', 'Admin\SeedPackController@store')->name('seed_packs.store');
     Route::post('seed_packs/{id}', 'Admin\SeedPackController@update')->name('seed_packs.update');
     Route::get('seed_packs/destroy/{id}', 'Admin\SeedPackController@destroy')->name('seed_packs.delete');
+
+    //invoices
     Route::get('invoices/', 'InvoiceController@index')->name('invoices.index');
 
 
