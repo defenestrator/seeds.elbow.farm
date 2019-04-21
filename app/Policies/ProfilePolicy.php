@@ -20,7 +20,7 @@ class ProfilePolicy
      */
     public function view(User $user, Profile $profile)
     {
-        // return Auth::user()->id === $profile->user_id || $profile->public === true;
+        return true;// return Auth::user()->id === $profile->user_id || $profile->public === true;
     }
 
     /**
