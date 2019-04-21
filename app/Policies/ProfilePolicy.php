@@ -4,6 +4,7 @@ namespace Heisen\Policies;
 
 use Auth;
 use Heisen\Profile;
+use Heisen\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class ProfilePolicy
@@ -19,7 +20,7 @@ class ProfilePolicy
      */
     public function view(User $user, Profile $profile)
     {
-        return Auth::user()->id === $profile->user_id || $profile->public === true;
+        // return Auth::user()->id === $profile->user_id || $profile->public === true;
     }
 
     /**
