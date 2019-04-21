@@ -50,7 +50,8 @@ class InvoiceController extends Controller
             'user_id' => $request->user_id,
             'payment_method_id' => $request->payment_method_id,
             'customer_notes' => $request->customer_notes,
-            'status' => 'new'
+            'status' => 'new',
+            'shipping_address_id' => $request->shipping_address_id
         ]);
 
         $total = 0;

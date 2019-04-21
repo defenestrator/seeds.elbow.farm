@@ -35,7 +35,7 @@ Route::put('profile/', 'ProfileController@update')->name('profile.update');
 Route::post('image/', 'ImageController@create')->name('image.create');
 
 ////////////////// AUTH ROUTES ////////////////////////////////////////////////////////////////
-Route::middleware(['auth', 'verified'])->group( function(){
+Route::middleware(['auth'])->group( function(){
     // Cart
     Route::post('/cart', 'CartController@store')->name('cart.create');
     Route::put('/cart', 'CartController@update')->name('cart.update');
@@ -54,7 +54,7 @@ Route::middleware(['auth', 'verified'])->group( function(){
 });
 
 /////////////////   USER ROUTES     !!///////////////////////////////////////////////////////
-Route::prefix('/user/')->name('user.')->middleware(['auth', 'verified'])->group( function(){
+Route::prefix('/user/')->name('user.')->middleware(['auth'])->group( function(){
     Route::get('shipping_addresses/', 'ShippingAddressController@index')->name('shipping_addresses.index');
     Route::put('/{id}', 'UserController@update')->name('update');
     Route::get('/profile/{user_id}', 'ProfileController@show')->name('profile.show');

@@ -28,13 +28,20 @@ export default {
 </script>
 
 <template>
+
 <div class="container">
+    <div class="container"><h3>Work in progress</h3></div>
     <div class="row">
         <div class="col-md-12">
             <div class="row" v-for="invoice in invoices">
                 <div class="col-md-12">
-                    {{invoice.created_at}} - total: ${{ invoice.total }} - <span v-for="pack in invoice.seed_packs" v-bind:key="pack">{{ pack.id}}:{{pack.pivot.quantity}}</span>
+                    {{invoice.created_at}} - total: ${{ invoice.total }} - <span v-for="pack in invoice.seed_packs" v-bind:key="pack">{{ pack.id}} quantity:{{pack.pivot.quantity}}</span>
                 </div>
+                <div class="row">
+                <div class="col-md-12">
+                    {{invoice}}</span>
+                </div>
+            </div>
             </div>
         </div>
     </div>

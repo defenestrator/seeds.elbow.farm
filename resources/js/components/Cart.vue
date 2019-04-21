@@ -72,7 +72,8 @@
                     'items': cart.items,
                     'payment_method_id': this.payment_method,
                     'total': this.cart.total,
-                    'customer_notes': this.customerNotes
+                    'customer_notes': this.customerNotes,
+                    'shipping_address_id': this.address
                 }
                 axios.post('/invoices', invoice, this.headers)
                     .then(response => {

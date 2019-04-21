@@ -31,6 +31,12 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Invoice whereUuid($value)
  * @property int $shipping
  * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Invoice whereShipping($value)
+ * @property string $status
+ * @property string|null $data
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Heisen\SeedPack[] $seedPacks
+ * @property-read \Heisen\User $user
+ * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Invoice whereData($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Invoice whereStatus($value)
  */
 class Invoice extends BaseModel
 {
@@ -48,5 +54,10 @@ class Invoice extends BaseModel
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function shippingAddress()
+    {
+        return $this->hasOne(ShippingAdddress::class);
     }
 }
