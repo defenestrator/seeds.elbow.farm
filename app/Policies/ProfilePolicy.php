@@ -4,7 +4,7 @@ namespace Heisen\Policies;
 
 use Auth;
 use Heisen\Profile;
-use Heisen\User;
+use Heisen\Policies\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class ProfilePolicy
