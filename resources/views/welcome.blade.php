@@ -15,6 +15,10 @@
     <strains :products="{{ $strains }}" :initial_user="'{{ Auth::user()->uuid }}'"></strains>
     @endauth
 
+    @guest
+    <strains :products="{{ $strains }}" :initial_user="'0'"></strains>
+    @endguest
+
     <hr />
     <div class="row justify-content-center">
         <a style="text-align:center;" href="https://www.instagram.com/heisenbeans_genetics/">Follow us on IG</a>

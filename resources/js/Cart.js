@@ -23,7 +23,9 @@ export default {
     },
     mounted() {
         this.$emit('update:initial_user', this.initial_user)
-        this.getCart()
+        if (this.user !== '0') {
+            this.getCart()
+        }
     },
     methods: {
         checkAuth() {
