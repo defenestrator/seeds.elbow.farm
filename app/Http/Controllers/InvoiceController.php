@@ -27,10 +27,7 @@ class InvoiceController extends Controller
      */
     public function index(Invoice $invoice)
     {
-        $invoices = null;
-        if (Auth::user()->can('role:admin')) {
-            $invoices = $invoice->with(['user', 'seedPacks'])->get();
-        }
+        $invoices = $invoice->with(['user', 'seedPacks'])->get();
 
         return view('user.invoices', compact('invoices'));
     }
