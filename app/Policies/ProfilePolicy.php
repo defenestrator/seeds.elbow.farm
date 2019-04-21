@@ -32,7 +32,7 @@ class ProfilePolicy
      */
     public function update(User $user, Profile $profile)
     {
-        return Auth::user()->id === $profile->user_id;
+        return true;
     }
 
 
