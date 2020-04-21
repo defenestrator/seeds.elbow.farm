@@ -1,8 +1,5 @@
-<nav class="navbar navbar-expand navbar-light navbar-heisen">
+<nav class="navbar navbar-expand navbar-light navbar-cheeba">
     <div class="container">
-        <a class="navbar-brand" href="{{ url('/') }}">
-            <img src="/i/heisenhead-60.png">
-        </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -10,7 +7,7 @@
             <!-- Left side of Navbar -->
             <ul class="navbar-nav mr-auto" style="padding-left:1rem; padding-right:2em;">
 
-                <li><a class="nav-link" href="#"></a></li>
+                <li><a class="nav-link" href="/"><img src="/i/logo.png"></a></li>
             </ul>
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-auto">
@@ -20,6 +17,7 @@
                 <li><a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></li>
                 @else
                 @include('partials._user-nav')
+                
                 @endguest
             </ul>
         </div>

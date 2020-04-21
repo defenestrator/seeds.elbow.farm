@@ -1,60 +1,43 @@
 <?php
 
-namespace Heisen\Http\Controllers;
+namespace Seeds\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Vinkla\Instagram\Instagram;
-use Heisen\Strain;
+use Seeds\Flower;
 use Cache;
 
 class WelcomeController extends Controller
 {
-    protected $token = '';
-    protected $instagram;
-    protected $strain;
-    protected $posts = [];
+    protected $flower;
 
     /**
      * WelcomeController constructor.
-     * @param Strain $strain
+     * @param Flower $flower
      */
-    public function __construct(Strain $strain)
+    public function __construct(Flower $flower)
     {
-        $this->strain = $strain;
+        $this->flower = $flower;
         $this->posts = [];
-
-        if (config('app.env') === 'production') {
-            try {
-                $this->token = config('app.instagram_token');
-                $this->instagram = new Instagram($this->token);
-                $this->posts = $this->instagram->media();
-            } catch(Exception $e) {
-                Log::alert('Failed to retrieve IG posts');
-            }
-        }
     }
 
     public function index()
     {
-        $posts = $this->posts;
-
-        $strains = Cache::remember('welcomeStrains', 66666, function() {
-            $strains = $this->strain
+        $flowers = Cache::remember('welcomeFlowers', 66666, function() {
+            $flowers = $this->flower
             ->where('published', '=', true)
-            ->with(['breeder', 'seedPacks', 'images'])
-            ->orderBy('s1', 'asc')
             ->orderBy('updated_at', 'desc')
             ->get();
 
-            $strains->map( function($strain) {
-                $strain->quantity = 1;
-                return $strain;
+            $flowers->map( function($flower) {
+                $flower->quantity = 1;
+                return $flower;
             });
-            return $strains;
+            return $flowers;
         });
 
 
 
-        return view('welcome', ['posts' => $this->posts, 'strains' => $strains]);
+        return view('welcome', ['posts' => $this->posts, 'flowers' => $flowers]);
     }
 }

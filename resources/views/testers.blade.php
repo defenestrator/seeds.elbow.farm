@@ -92,7 +92,7 @@
                     </div>
                 </form>
             </div>
-            <div class="col-sm-3 info"><img style="width:100%;" src="/i/tester.jpg" alt="Become an official Heisenbeans Gear Tester!" title="Become an official Heisenbeans Tester!"></div>
+            <div class="col-sm-3 info"><img style="width:100%;" src="/i/tester.jpg" alt="Become an official The Cheeba Shack Gear Tester!" title="Become an official The Cheeba Shack Tester!"></div>
         </div>
 
 

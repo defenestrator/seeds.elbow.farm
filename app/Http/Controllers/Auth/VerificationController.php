@@ -1,8 +1,8 @@
 <?php
 
-namespace Heisen\Http\Controllers\Auth;
+namespace Seeds\Http\Controllers\Auth;
 
-use Heisen\Http\Controllers\Controller;
+use Seeds\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\VerifiesEmails;
 
 class VerificationController extends Controller

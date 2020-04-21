@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-use Heisen\PaymentMethod;
+use Seeds\PaymentMethod;
 
 class AddRecordsToPaymentMethodsTable extends Migration
 {
@@ -17,7 +17,7 @@ class AddRecordsToPaymentMethodsTable extends Migration
         PaymentMethod::create([
             'name' => 'Cash',
             'active' => true,
-            'image' => 'http://i.heisenbeans.com/images/cash.png',
+            'image' => 'http://i.thecheebashack.com/images/cash.png',
             'notes' => 'Cash or Money Orders by Mail',
             'account' => 'P.O. Box 32583 Milton, FL 32570'
         ]);
@@ -25,23 +25,23 @@ class AddRecordsToPaymentMethodsTable extends Migration
         PaymentMethod::create([
             'name' => 'Paypal',
             'active' => true,
-            'image' => 'http://i.heisenbeans.com/images/paypal.png',
-            'notes' => 'heisen@heisenbeans.com',
-            'account' => 'heisen@heisenbeans.com'
+            'image' => 'http://i.thecheebashack.com/images/paypal.png',
+            'notes' => 'cheeba@thecheebashack.com',
+            'account' => 'cheeba@thecheebashack.com'
         ]);
 
         PaymentMethod::create([
             'name' => 'Square Cash App - https://cash.app',
             'active' => true,
-            'image' => 'http://i.heisenbeans.com/images/cash.app.png',
-            'notes' => 'CashTag: $heisenbeans',
-            'account' => '$heisenbeans'
+            'image' => 'http://i.thecheebashack.com/images/cash.app.png',
+            'notes' => 'CashTag: $The Cheeba Shack',
+            'account' => '$The Cheeba Shack'
         ]);
 
         PaymentMethod::create([
             'name' => 'Credit/Debit',
             'active' => false,
-            'image' => 'http://i.heisenbeans.com/images/visa.png',
+            'image' => 'http://i.thecheebashack.com/images/visa.png',
             'notes' => 'Secure, Token-based Credit and Debit',
             'account' => config('app.stripe_secret')
         ]);

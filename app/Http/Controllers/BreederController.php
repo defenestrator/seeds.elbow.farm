@@ -1,12 +1,12 @@
 <?php
 
-namespace Heisen\Http\Controllers;
+namespace Seeds\Http\Controllers;
 
 use Illuminate\Http\Request;
 
 class BreederController extends Controller
 {
     public function index() {
-        return view('breeders');
+        return view('breeders' );
     }
 }

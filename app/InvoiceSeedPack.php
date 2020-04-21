@@ -1,21 +1,21 @@
 <?php
 
-namespace Heisen;
+namespace Seeds;
 
 use Illuminate\Database\Eloquent\Relations\Pivot;
 
 /**
- * Heisen\InvoiceSeedPack
+ * Seeds\InvoiceSeedPack
  *
  * @property int $invoice_id
  * @property int $seed_pack_id
  * @property int $quantity
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\InvoiceSeedPack newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\InvoiceSeedPack newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\InvoiceSeedPack query()
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\InvoiceSeedPack whereInvoiceId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\InvoiceSeedPack whereQuantity($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\InvoiceSeedPack whereSeedPackId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\InvoiceSeedPack newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\InvoiceSeedPack newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\InvoiceSeedPack query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\InvoiceSeedPack whereInvoiceId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\InvoiceSeedPack whereQuantity($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\InvoiceSeedPack whereSeedPackId($value)
  * @mixin \Eloquent
  */
 class InvoiceSeedPack extends Pivot

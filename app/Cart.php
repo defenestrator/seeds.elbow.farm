@@ -1,26 +1,26 @@
 <?php
 
-namespace Heisen;
+namespace Seeds;
 
-use Heisen\BaseModel;
+use Seeds\BaseModel;
 
 /**
- * Heisen\Cart
+ * Seeds\Cart
  *
  * @property int $id
  * @property string $uuid
  * @property int $user_id
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection|\Heisen\SeedPack[] $seedPacks
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Cart newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Cart newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Cart query()
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Cart whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Cart whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Cart whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Cart whereUserId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Cart whereUuid($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Seeds\SeedPack[] $seedPacks
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\Cart newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\Cart newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\Cart query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\Cart whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\Cart whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\Cart whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\Cart whereUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\Cart whereUuid($value)
  * @mixin \Eloquent
  */
 class Cart extends BaseModel

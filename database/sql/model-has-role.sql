@@ -6,7 +6,7 @@
 # https://github.com/sequelpro/sequelpro
 #
 # Host: 127.0.0.1 (MySQL 5.7.24-0ubuntu0.18.04.1)
-# Database: heisen
+# Database: seeds
 # Generation Time: 2019-02-13 21:52:42 +0000
 # ************************************************************
 
@@ -28,7 +28,7 @@ LOCK TABLES `model_has_roles` WRITE;
 
 INSERT INTO `model_has_roles` (`role_id`, `model_type`, `model_id`)
 VALUES
-	(1,'Heisen\\User',1);
+	(1,'Seeds\\User',1);
 
 /*!40000 ALTER TABLE `model_has_roles` ENABLE KEYS */;
 UNLOCK TABLES;

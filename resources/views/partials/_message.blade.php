@@ -1,4 +1,4 @@
-<div class="container" id="errors">
+<div class="container align-content-center" id="errors">
     @if ($errors->any())
     <div class="alert alert-danger">
         <ul>

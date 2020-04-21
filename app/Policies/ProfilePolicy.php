@@ -1,10 +1,10 @@
 <?php
 
-namespace Heisen\Policies;
+namespace Seeds\Policies;
 
 use Auth;
-use Heisen\Profile;
-use Heisen\User;
+use Seeds\Profile;
+use Seeds\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class ProfilePolicy
@@ -14,27 +14,29 @@ class ProfilePolicy
     /**
      * Determine whether the user can view the profile.
      *
-     * @param  \Heisen\User  $user
-     * @param  \Heisen\Profile  $profile
+     * @param  \Seeds\User  $user
+     * @param  \Seeds\Profile  $profile
      * @return mixed
      */
-    public function view(User $user, Profile $profile)
+    public function view()
     {
-        $current = $user->find(Auth::user()->id);
-        return $current->id === $profile->user_id || $profile->public === true;
+        if (Profile::find(Auth::user()->id) || $profile->public == true) {
+            return true;
+        }
+        return false;
     }
 
     /**
      * Determine whether the user can update the profile.
      *
-     * @param  \Heisen\User  $user
-     * @param  \Heisen\Profile  $profile
-     * @return mixed
+     * @return bool
      */
-    public function update(User $user, Profile $profile)
+    public function update($user)
     {
-        $current = $user->find(Auth::user()->id);
-        return $current->id === $profile->user_id;
+        if (Auth::user()->profile_id == $user->profile_id) {
+            return true;
+        }
+        return false;
     }
 
 

@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Heisenbeans - Seeds'),
+    'name' => env('APP_NAME', 'The Cheeba Shack - Seeds'),
     'instagram_token' => env('INSTAGRAM_TOKEN', null),
     'stripe_secret' => env('STRIPE_SECRET', null),
     /*
@@ -170,11 +170,11 @@ return [
         /*
          * Application Service Providers...
          */
-        Heisen\Providers\AppServiceProvider::class,
-        Heisen\Providers\AuthServiceProvider::class,
-        // Heisen\Providers\BroadcastServiceProvider::class,
-        Heisen\Providers\EventServiceProvider::class,
-        Heisen\Providers\RouteServiceProvider::class,
+        Seeds\Providers\AppServiceProvider::class,
+        Seeds\Providers\AuthServiceProvider::class,
+        // Seeds\Providers\BroadcastServiceProvider::class,
+        Seeds\Providers\EventServiceProvider::class,
+        Seeds\Providers\RouteServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class
     ],

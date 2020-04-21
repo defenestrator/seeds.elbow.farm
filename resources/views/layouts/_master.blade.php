@@ -18,7 +18,6 @@
     <!-- Page level Styles -->
     @yield('page_styles', '')
 </head>
-
 <body>
     <div id="app">
         @include('partials._site-nav')
@@ -27,12 +26,12 @@
         @endauth
         @yield('top')
         <main class="py-2">
-            <div class="row px-2 container">
+            <div class="p-4">
                 @if ($errors->any())
-                <div class="col-md-5 offset-md-5 alert alert-danger">
-                    <ul>
+                <div class="col-md-4 offset-md-4 alert alert-danger">
+                    <ul style="margin:0;">
                         @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
+                        <li style="padding:0.5rem; list-style-type:none; text-transform:uppercase;">{{ $error }}</li>
                         @endforeach
                     </ul>
                 </div>
@@ -48,14 +47,14 @@
             <hr>
             <div class="d-flex flex-row-reverse navbar-footer">
                     <div><a class="p-2 nav-link" href="{{ route('strains.index') }}">Strains</a></div>
-                    <div><a class="p-2 nav-link" target="_blank" href="https://chuckersparadise.com/threads/heisenbeans-genetics.6/">Forum</a></div>
+                    <div><a class="p-2 nav-link" href="/forum">Forum</a></div>
                     <div><a class="p-2 nav-link" href="{{ route('contact.create') }}">Contact</a></div>
-                    <div><a class="p-2 nav-link" href="{{ route('testers') }}">Testers</a></div>
+                    {{-- <div><a class="p-2 nav-link" href="{{ route('testers') }}">Testers</a></div> --}}
                 </div>
             </div>
             <hr>
             <div class="container">
-                <p class="footer small">&copy; Heisenbeans &trade; {{ date('F jS, Y') }}</p>
+                <p class="footer small">&copy; The Cheeba Shack {{ date('F jS, Y') }}</p>
             </div>
         </main>
     </div>

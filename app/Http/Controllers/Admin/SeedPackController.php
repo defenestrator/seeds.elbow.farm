@@ -1,11 +1,11 @@
 <?php
 
-namespace Heisen\Http\Controllers\Admin;
+namespace Seeds\Http\Controllers\Admin;
 
-use Heisen\SeedPack;
-use Heisen\Strain;
+use Seeds\SeedPack;
+use Seeds\Strain;
 use Illuminate\Http\Request;
-use Heisen\Http\Controllers\Admin\AdminController;
+use Seeds\Http\Controllers\Admin\AdminController;
 
 class SeedPackController extends AdminController
 {
@@ -59,7 +59,7 @@ class SeedPackController extends AdminController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \Heisen\SeedPack  $seedPack
+     * @param  \Seeds\SeedPack  $seedPack
      * @return \Illuminate\Http\Response
      */
     public function edit(SeedPack $seedPack, Strain $strain, $id)
@@ -74,7 +74,7 @@ class SeedPackController extends AdminController
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \Heisen\SeedPack  $seedPack
+     * @param  \Seeds\SeedPack  $seedPack
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, SeedPack $seedPack, Strain $strain, $id)
@@ -96,7 +96,7 @@ class SeedPackController extends AdminController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \Heisen\SeedPack  $seedPack
+     * @param  \Seeds\SeedPack  $seedPack
      * @return \Illuminate\Http\Response
      */
     public function destroy(SeedPack $seedPack)

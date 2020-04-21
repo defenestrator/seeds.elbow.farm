@@ -14,13 +14,13 @@ class CreatePaymentsTable extends Migration
     public function up()
     {
         Schema::create('payments', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->uuid('uuid')->unique();
-            $table->unsignedInteger('invoice_id');
+            $table->unsignedBigInteger('invoice_id');
             $table->foreign('invoice_id')
                 ->references('id')
                 ->on('invoices');
-            $table->unsignedInteger('payment_method_id');
+            $table->unsignedBigInteger('payment_method_id');
             $table->foreign('payment_method_id')
                 ->references('id')
                 ->on('payment_methods');

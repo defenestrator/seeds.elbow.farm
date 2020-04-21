@@ -6,7 +6,7 @@
 # https://github.com/sequelpro/sequelpro
 #
 # Host: 127.0.0.1 (MySQL 5.7.24-0ubuntu0.18.04.1)
-# Database: heisen
+# Database: seeds
 # Generation Time: 2019-02-10 15:34:38 +0000
 # ************************************************************
 

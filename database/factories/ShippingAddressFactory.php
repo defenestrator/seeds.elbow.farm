@@ -2,7 +2,7 @@
 
 use Faker\Generator as Faker;
 
-$factory->define(Heisen\ShippingAddress::class, function (Faker $faker) {
+$factory->define(Seeds\ShippingAddress::class, function (Faker $faker) {
     $states =
     array(
         0 => 'Alabama',

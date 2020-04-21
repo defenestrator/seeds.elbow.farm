@@ -23,7 +23,6 @@
         "jquery": "^3.2",
         "laravel-mix": "^4.0.15",
         "lodash": "^4.17.5",
-        "popper.js": "^1.15.0",
         "resolve-url-loader": "^2.3.1",
         "sass": "^1.17.4",
         "sass-loader": "^7.1.0",
@@ -36,5 +35,7 @@
         "vue-trumbowyg": "^3.4.2",
         "vuex": "^3.1.0"
     },
-    "dependencies": {}
+    "dependencies": {
+        "popper.js": "^1.16.1"
+    }
 }

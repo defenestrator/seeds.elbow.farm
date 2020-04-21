@@ -3,8 +3,8 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-use Heisen\User;
-use Heisen\Profile;
+use Seeds\User;
+use Seeds\Profile;
 
 class AddProfilesToUsers extends Migration
 {
@@ -20,7 +20,7 @@ class AddProfilesToUsers extends Migration
         for ($i = 1; $i < $userCount;) {
             Profile::create([
                 'user_id' => $i,
-                'avatar' => 'http://i.heisenbeans.com/images/heisenhead.png',
+                'avatar' => 'http://picusm.photos/640',
                 'riu_username' => 'Uncle Buck',
                 'user_title' => 'Seed Addict',
                 'instagram_handle' => 'myspacetom',

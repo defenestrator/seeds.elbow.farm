@@ -1,8 +1,8 @@
 <?php
 
-namespace Heisen\Providers;
+namespace Seeds\Providers;
 
-use Heisen\Policies;
+use Seeds\Policies;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
@@ -14,7 +14,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        // 'Heisen\Model'          => 'Heisen\Policies\ModelPolicy',
+        // 'Seeds\Model'          => 'Seeds\Policies\ModelPolicy',
         // User::class             => \UserPolicy::class,
         // Profile::class          => \ProfilePolicy::class,
         // ShippingAddress::class  => \ShippingAddressPolicy::class,

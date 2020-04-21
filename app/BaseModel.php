@@ -1,16 +1,16 @@
 <?php
 
-namespace Heisen;
+namespace Seeds;
 
 use Illuminate\Database\Eloquent\Model;
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\Exception\UnsatisfiedDependencyException;
 /**
- * Heisen\BaseModel
+ * Seeds\BaseModel
  *
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\BaseModel newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\BaseModel newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\BaseModel query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\BaseModel newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\BaseModel newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\BaseModel query()
  * @mixin \Eloquent
  */
 class BaseModel extends Model

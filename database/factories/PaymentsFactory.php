@@ -2,7 +2,7 @@
 
 use Faker\Generator as Faker;
 
-$factory->define(Heisen\Payments::class, function (Faker $faker) {
+$factory->define(Seeds\Payments::class, function (Faker $faker) {
     return [
         //
     ];

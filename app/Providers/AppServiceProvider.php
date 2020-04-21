@@ -1,11 +1,11 @@
 <?php
 
-namespace Heisen\Providers;
+namespace Seeds\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
-use Heisen\Repos\StrainCache;
-use Heisen\Repos\StrainQuery;
+use Seeds\Repos\StrainCache;
+use Seeds\Repos\StrainQuery;
 
 class AppServiceProvider extends ServiceProvider
 {

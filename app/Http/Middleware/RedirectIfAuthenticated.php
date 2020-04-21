@@ -1,6 +1,6 @@
 <?php
 
-namespace Heisen\Http\Middleware;
+namespace Seeds\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;

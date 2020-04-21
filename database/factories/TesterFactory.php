@@ -2,7 +2,7 @@
 
 use Faker\Generator as Faker;
 
-$factory->define(Heisen\Tester::class, function (Faker $faker) {
+$factory->define(Seeds\Tester::class, function (Faker $faker) {
     return [
         //
     ];

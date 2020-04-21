@@ -1,13 +1,13 @@
 <?php
 
-namespace Heisen\Http\Controllers;
+namespace Seeds\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Heisen\Cart;
-use Heisen\Strain;
-use Heisen\ShippingAddress;
+use Seeds\Cart;
+use Seeds\Strain;
+use Seeds\ShippingAddress;
 
-use Heisen\PaymentMethod;
+use Seeds\PaymentMethod;
 use Auth;
 
 class CheckoutController extends Controller

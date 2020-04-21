@@ -1,7 +1,7 @@
 <?php
 
 use Faker\Generator as Faker;
-use Heisen\User;
+use Seeds\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +14,7 @@ use Heisen\User;
 |
 */
 
-$factory->define(Heisen\User::class, function (Faker $faker) {
+$factory->define(Seeds\User::class, function (Faker $faker) {
 
     return [
         'name' => $faker->name,

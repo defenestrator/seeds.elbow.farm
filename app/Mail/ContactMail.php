@@ -1,6 +1,6 @@
 <?php
 
-namespace Heisen\Mail;
+namespace Seeds\Mail;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;

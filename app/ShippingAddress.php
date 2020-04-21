@@ -1,11 +1,11 @@
 <?php
 
-namespace Heisen;
+namespace Seeds;
 
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Heisen\ShippingAddress
+ * Seeds\ShippingAddress
  *
  * @property int $id
  * @property string $ship_to_name
@@ -18,23 +18,23 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $postcode
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Heisen\User $users
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\ShippingAddress newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\ShippingAddress newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\ShippingAddress query()
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\ShippingAddress whereAddress1($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\ShippingAddress whereAddress2($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\ShippingAddress whereCity($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\ShippingAddress whereCountry($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\ShippingAddress whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\ShippingAddress whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\ShippingAddress wherePostcode($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\ShippingAddress whereShipToName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\ShippingAddress whereState($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\ShippingAddress whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\ShippingAddress whereUserId($value)
+ * @property-read \Seeds\User $users
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\ShippingAddress newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\ShippingAddress newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\ShippingAddress query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\ShippingAddress whereAddress1($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\ShippingAddress whereAddress2($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\ShippingAddress whereCity($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\ShippingAddress whereCountry($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\ShippingAddress whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\ShippingAddress whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\ShippingAddress wherePostcode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\ShippingAddress whereShipToName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\ShippingAddress whereState($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\ShippingAddress whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\ShippingAddress whereUserId($value)
  * @mixin \Eloquent
- * @property-read \Heisen\User $user
+ * @property-read \Seeds\User $user
  */
 class ShippingAddress extends Model
 {

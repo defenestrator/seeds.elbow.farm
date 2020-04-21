@@ -1,6 +1,6 @@
 {
     "name": "defenestrator/hb",
-    "description": "Heisenbeans - Feminized Seeds",
+    "description": "The Cheeba Shack - Feminized Seeds",
     "keywords": ["application"],
     "license": "None",
     "type": "project",
@@ -42,7 +42,7 @@
             "database/factories"
         ],
         "psr-4": {
-            "Heisen\\": "app/"
+            "Seeds\\": "app/"
         }
     },
     "autoload-dev": {

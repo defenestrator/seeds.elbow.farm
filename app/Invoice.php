@@ -1,11 +1,11 @@
 <?php
 
-namespace Heisen;
+namespace Seeds;
 
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Heisen\Invoice
+ * Seeds\Invoice
  *
  * @property int $id
  * @property int $user_id
@@ -14,29 +14,29 @@ use Illuminate\Database\Eloquent\Model;
  * @property string|null $deleted_at
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Invoice newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Invoice newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Invoice query()
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Invoice whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Invoice whereDeletedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Invoice whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Invoice wherePaymentMethodId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Invoice whereTotal($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Invoice whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Invoice whereUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\Invoice newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\Invoice newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\Invoice query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\Invoice whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\Invoice whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\Invoice whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\Invoice wherePaymentMethodId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\Invoice whereTotal($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\Invoice whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\Invoice whereUserId($value)
  * @mixin \Eloquent
  * @property string|null $uuid
  * @property string|null $customer_notes
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Invoice whereCustomerNotes($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Invoice whereUuid($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\Invoice whereCustomerNotes($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\Invoice whereUuid($value)
  * @property int $shipping
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Invoice whereShipping($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\Invoice whereShipping($value)
  * @property string $status
  * @property string|null $data
- * @property-read \Illuminate\Database\Eloquent\Collection|\Heisen\SeedPack[] $seedPacks
- * @property-read \Heisen\User $user
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Invoice whereData($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Invoice whereStatus($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Seeds\SeedPack[] $seedPacks
+ * @property-read \Seeds\User $user
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\Invoice whereData($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\Invoice whereStatus($value)
  */
 class Invoice extends BaseModel
 {

@@ -123,7 +123,7 @@ export default {
                     </div>
                 </div>
             </div>
-            <div v-else><h4>Your cart is empty.</h4></div>
+            <div v-else><h4 style="color:white;">Your cart is empty.</h4></div>
             <div v-show="cart.active === true" >
 
             </div>

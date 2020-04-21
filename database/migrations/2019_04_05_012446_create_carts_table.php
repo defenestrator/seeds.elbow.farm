@@ -14,19 +14,19 @@ class CreateCartsTable extends Migration
     public function up()
     {
         Schema::create('carts', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->uuid('uuid')->unique();
-            $table->unsignedInteger('user_id');
+            $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
 
         Schema::create('cart_seed_pack', function (Blueprint $table){
-            $table->unsignedInteger('cart_id');
+            $table->unsignedBigInteger('cart_id');
             $table->foreign('cart_id')->references('id')->on('carts');
-            $table->unsignedInteger('seed_pack_id');
+            $table->unsignedBigInteger('seed_pack_id');
             $table->foreign('seed_pack_id')->references('id')->on('seed_packs');
-            $table->unsignedInteger('quantity');
+            $table->unsignedBigInteger('quantity');
         });
 
         Schema::rename('invoice_seed_packs', 'invoice_seed_pack');
@@ -36,7 +36,7 @@ class CreateCartsTable extends Migration
         });
 
         Schema::table('invoices', function(Blueprint $table){
-            $table->unsignedInteger('shipping')->default(0);
+            $table->unsignedBigInteger('shipping')->default(0);
         });
 
         Schema::table('images', function(Blueprint $table){

@@ -32,7 +32,6 @@ export default {
             let data = {
             'avatar': this.profile.avatar,
             'user_title': this.profile.user_title,
-            'chuckers_paradise': this.profile.chuckers_paradise,
             'facebook_url': this.profile.facebook_url,
             'riu_username': this.profile.riu_username,
             'instagram_handle': this.profile.instagram_handle,
@@ -83,7 +82,7 @@ export default {
             let formData = new FormData()
             this.image = this.$refs.avatar.files[0];
             formData.append('image', this.image)
-            formData.append('imageable_type', "Heisen\\Profile")
+            formData.append('imageable_type', "cheeba\\Profile")
             formData.append('imageable_id', this.profile.id)
             this.previewFile()
 
@@ -147,16 +146,6 @@ export default {
                         v-on:change="updateAvatar()"
                         name="image" :disabled="formBusy">
                     </label>
-                </div>
-                <div class="form-group row">
-                    <div class="col-md-12">
-                        <p>Chucker's Paradise user name:</p>
-                        <input id="chuckers_paradise"
-                        name="chuckers_paradise"
-                        class="form-control input"
-                        type="text"
-                        v-model="profile.chuckers_paradise">
-                    </div>
                 </div>
                 <div class="form-group row">
                     <div class="col-md-12">

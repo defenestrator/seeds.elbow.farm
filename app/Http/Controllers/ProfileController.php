@@ -1,11 +1,11 @@
 <?php
 
-namespace Heisen\Http\Controllers;
+namespace Seeds\Http\Controllers;
 
 Use Auth;
-use Heisen\Profile;
-use Heisen\User;
-use Heisen\Http\Requests\UpdateProfileRequest;
+use Seeds\Profile;
+use Seeds\User;
+use Seeds\Http\Requests\UpdateProfileRequest;
 use Illuminate\Http\Request;
 
 
@@ -18,7 +18,7 @@ class ProfileController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \Heisen\Profile  $profile
+     * @param  \Seeds\Profile  $profile
      * @return \Illuminate\Http\Response
      */
     public function show(Request $request, User $user, Profile $profile, $id)
@@ -41,7 +41,7 @@ class ProfileController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \Heisen\Profile  $profile
+     * @param  \Seeds\Profile  $profile
      * @return \Illuminate\Http\Response
      */
     public function edit(Profile $profile, $user_id)
@@ -56,7 +56,7 @@ class ProfileController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \Heisen\Profile  $profile
+     * @param  \Seeds\Profile  $profile
      * @return \Illuminate\Http\Response
      */
     public function update(UpdateProfileRequest $request, Profile $profile)

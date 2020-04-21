@@ -11,20 +11,20 @@
 
 body {
   background:#fff radial-gradient(rgba(255,255,255,1.0) 50%, rgba(220,220,220,1.0)) no-repeat;
+  background-size: cover;
   min-height:100vh;
   font-family:$font-family-sans-serif;
   font-display:fallback;
-  color:#677789;
-  transition: all 0.25s ease-in-out;
+  color:#464646;
 }
 
-.navbar-heisen {
+.navbar-cheeba {
   text-transform: uppercase;
   font-family:$font-family-sans-serif;
   height:72px;
 }
 
-.navbar-heisen, a.dropdown-item {
+.navbar-cheeba, a.dropdown-item {
     font-size: 0.9rem;
 }
 
@@ -32,8 +32,8 @@ h1 {
   font-family: $font-family-cursive;
   font-size:48px;
   font-weight:100;
-  text-shadow: #666 1px 1px 2px, #94ffa5 1px 1px 2px;
-  color:#344456;
+  text-shadow: #666 1px 1px 2px, #99ffa5 1px 1px 2px;
+  color:#444;
 }
 
 .pagetitle {
@@ -45,7 +45,8 @@ h2, h3 {
     font-weight: 600;
 }
 h4 {
-    color:#677789;
+    color:#456755;
+    letter-spacing: 0.2rem;
 }
 .info {
     margin: 0.5rem 0;
@@ -60,7 +61,7 @@ h4 {
 
 
 .info > img, .info > a > img, .info > a > div {
-    box-shadow: #000 1px 1px 2px, #94ffa5 2px 2px 2px;
+    box-shadow: #000 1px 1px 2px, #dddd66 2px 2px 2px;
     border:1px solid #678889;
     border-radius:0.25rem;
     max-width:660px;
@@ -69,8 +70,12 @@ h4 {
 }
 
 a:link, a:hover, a:active, a:visited {
-    color:#777789;
+    color:#678977;
     text-decoration:none;
+}
+
+a:hover, a:active {
+    color:#9abcaa;
 }
 
 input[type="checkbox"] {
@@ -120,11 +125,13 @@ form, input[type=text], input[type=number], input[type=select], textarea {
     height:0;
     z-index:50;
     border:1px solid white;
-    border-bottom-left-radius:1.333em;
+    border-bottom-left-radius:1.333rem;
+    border-top-left-radius:1.333rem;
     border-top:none;
     border-right:none;
     background-color:hsla(212,25%, 27%, 0.95);
     transition: all 0.25s ease-in-out;
+    top:-69px;
 }
 
 .cart-slider-button{
@@ -189,7 +196,7 @@ form, input[type=text], input[type=number], input[type=select], textarea {
 .input-group>.form-control,
 .input-group>.form-control-plaintext,
 .form-control:focus {
-    box-shadow: 1px 1px 2px #666, 1px 1px 2px #94ffa5;
+    box-shadow: 1px 1px 1px #666, 1px 1px 1px #94ffa5;
 }
 
 .form-control:focus {

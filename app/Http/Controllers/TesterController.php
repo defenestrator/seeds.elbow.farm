@@ -1,10 +1,10 @@
 <?php
 
-namespace Heisen\Http\Controllers;
+namespace Seeds\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Heisen\Tester;
-use Heisen\Mail\TesterRequestNotification;
+use Seeds\Tester;
+use Seeds\Mail\TesterRequestNotification;
 use Illuminate\Contracts\Mail\Mailer;
 
 class TesterController extends LocationController
@@ -57,7 +57,7 @@ class TesterController extends LocationController
             'journal_link' => $request->get('journal-link')
         ]);
 
-        $this->mail->to('heisen@heisenbeans.com')->queue(new TesterRequestNotification($data));
+        $this->mail->to('cheeba@thecheebashack.com')->queue(new TesterRequestNotification($data));
         return view('thanks')->with('message', 'We will get back to you as quick as we can!');
     }
 
@@ -73,7 +73,7 @@ class TesterController extends LocationController
             'country' => $this->country,
             'postcode' => '66669',
             'message' => 'This is a silly test message',
-            'journal_link' => 'https://heisenbeans.com'
+            'journal_link' => 'https://thecheebashack.com'
         ]);
         return new TesterRequestNotification($data);
     }

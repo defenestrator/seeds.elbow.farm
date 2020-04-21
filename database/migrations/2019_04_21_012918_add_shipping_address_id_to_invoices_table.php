@@ -14,7 +14,7 @@ class AddShippingAddressIdToInvoicesTable extends Migration
     public function up()
     {
         Schema::table('invoices', function (Blueprint $table) {
-            $table->unsignedInteger('shipping_address_id')->after('user_id')->nullable();
+            $table->unsignedBigInteger('shipping_address_id')->after('user_id')->nullable();
             // $table->foreign('shipping_address_id')->references('id')->on('shipping_addresses');
         });
     }

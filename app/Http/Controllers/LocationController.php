@@ -1,6 +1,6 @@
 <?php
 
-namespace Heisen\Http\Controllers;
+namespace Seeds\Http\Controllers;
 
 use Illuminate\Http\Request;
 

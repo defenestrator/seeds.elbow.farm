@@ -1,13 +1,13 @@
 <?php
 
-namespace Heisen\Http\Controllers\Admin;
+namespace Seeds\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use Heisen\Strain;
-use Heisen\Http\Requests\StoreStrainRequest;
-use Heisen\Http\Requests\UpdateStrainRequest;
+use Seeds\Strain;
+use Seeds\Http\Requests\StoreStrainRequest;
+use Seeds\Http\Requests\UpdateStrainRequest;
 use Illuminate\Support\Facades\Cache;
-use Heisen\Image;
+use Seeds\Image;
 
 
 class StrainController extends AdminController

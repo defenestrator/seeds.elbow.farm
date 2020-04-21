@@ -1,10 +1,10 @@
 <?php
 
-namespace Heisen\Http\Requests;
+namespace Seeds\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Auth;
-use Heisen\Profile;
+use Seeds\Profile;
 class UpdateProfileRequest extends FormRequest
 {
     /**

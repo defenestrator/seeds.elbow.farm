@@ -1,9 +1,9 @@
 <?php
 
-namespace Heisen\Http\Controllers;
+namespace Seeds\Http\Controllers;
 
-use Heisen\Http\Requests\ImageRequest;
-use Heisen\Image;
+use Seeds\Http\Requests\ImageRequest;
+use Seeds\Image;
 
 class ImageController extends Controller
 {

@@ -1,10 +1,10 @@
 <?php
 
-namespace Heisen\Http\Controllers\Auth;
+namespace Seeds\Http\Controllers\Auth;
 
-use Heisen\User;
-use Heisen\Profile;
-use Heisen\Http\Controllers\Controller;
+use Seeds\User;
+use Seeds\Profile;
+use Seeds\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -60,7 +60,7 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \Heisen\User
+     * @return \Seeds\User
      */
     protected function create(array $data)
     {
@@ -75,15 +75,16 @@ class RegisterController extends Controller
         $profile = Profile::create(
             [
                 'user_id' => $user->id,
-                'avatar' => 'http://i.heisenbeans.com/images/heisenhead.png',
+                'avatar' => 'http://i.thecheebashack.com/images/heisenhead.png',
                 'riu_username' => 'Uncle Buck',
                 'user_title' => 'Seed Addict',
                 'instagram_handle' => 'myspacetom',
                 'facebook_url' => 'myspacetom',
-                'chuckers_paradise' => 'Uncle Buck',
                 'public' => false
             ]
         );
-        return $user;
+        $user->update(['profile_id' => $profile->id]);
+
+        return redirect()->route('/home');
     }
 }

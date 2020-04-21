@@ -1,30 +1,30 @@
 <?php
 
-namespace Heisen;
+namespace Seeds;
 
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Heisen\PaymentMethod
+ * Seeds\PaymentMethod
  *
  * @property int $id
  * @property string $name
  * @property string $image
  * @property int $active
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\PaymentMethod newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\PaymentMethod newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\PaymentMethod query()
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\PaymentMethod whereActive($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\PaymentMethod whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\PaymentMethod whereImage($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\PaymentMethod whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\PaymentMethod newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\PaymentMethod newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\PaymentMethod query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\PaymentMethod whereActive($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\PaymentMethod whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\PaymentMethod whereImage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\PaymentMethod whereName($value)
  * @mixin \Eloquent
  * @property string|null $uuid
  * @property string|null $notes
  * @property string|null $account
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\PaymentMethod whereAccount($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\PaymentMethod whereNotes($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\PaymentMethod whereUuid($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\PaymentMethod whereAccount($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\PaymentMethod whereNotes($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\PaymentMethod whereUuid($value)
  */
 class PaymentMethod extends BaseModel
 {

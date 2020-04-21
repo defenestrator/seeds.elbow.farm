@@ -14,7 +14,7 @@ class ModifyInvoiceSeedPacksTable extends Migration
     public function up()
     {
         Schema::table('invoice_seed_packs', function (Blueprint $table) {
-            $table->unsignedInteger('quantity')->after('seed_pack_id');
+            $table->unsignedBigInteger('quantity')->after('seed_pack_id');
         });
     }
 

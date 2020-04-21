@@ -1,6 +1,6 @@
 <?php
 
-namespace Heisen\Http\Middleware;
+namespace Seeds\Http\Middleware;
 
 use Illuminate\Cookie\Middleware\EncryptCookies as Middleware;
 

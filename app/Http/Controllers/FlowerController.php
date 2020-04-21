@@ -2,10 +2,10 @@
 
 namespace Seeds\Http\Controllers;
 
-use Seeds\Payments;
+use Seeds\Flower;
 use Illuminate\Http\Request;
 
-class PaymentsController extends Controller
+class FlowerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class PaymentsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \Seeds\Payments  $payments
+     * @param  \Seeds\Flower  $flower
      * @return \Illuminate\Http\Response
      */
-    public function show(Payments $payments)
+    public function show(Flower $flower)
     {
         //
     }
@@ -52,10 +52,10 @@ class PaymentsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \Seeds\Payments  $payments
+     * @param  \Seeds\Flower  $flower
      * @return \Illuminate\Http\Response
      */
-    public function edit(Payments $payments)
+    public function edit(Flower $flower)
     {
         //
     }
@@ -64,10 +64,10 @@ class PaymentsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \Seeds\Payments  $payments
+     * @param  \Seeds\Flower  $flower
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Payments $payments)
+    public function update(Request $request, Flower $flower)
     {
         //
     }
@@ -75,10 +75,10 @@ class PaymentsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \Seeds\Payments  $payments
+     * @param  \Seeds\Flower  $flower
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Payments $payments)
+    public function destroy(Flower $flower)
     {
         //
     }

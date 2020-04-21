@@ -1,13 +1,13 @@
 <?php
 
-namespace Heisen\Http\Controllers;
+namespace Seeds\Http\Controllers;
 
-use Heisen\Cart;
-use Heisen\User;
-use Heisen\SeedPack;
-use Heisen\Strain;
+use Seeds\Cart;
+use Seeds\User;
+use Seeds\SeedPack;
+use Seeds\Strain;
 use Illuminate\Http\Request;
-use Heisen\Http\Controllers\Controller;
+use Seeds\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -46,7 +46,7 @@ class CartController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \Heisen\Cart  $cart
+     * @param  \Seeds\Cart  $cart
      * @return \Illuminate\Http\Response
      */
     public function show(Cart $cartModel)
@@ -72,7 +72,7 @@ class CartController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \Heisen\Cart  $cart
+     * @param  \Seeds\Cart  $cart
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Cart $cartModel)
@@ -105,7 +105,7 @@ class CartController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \Heisen\Cart  $cart
+     * @param  \Seeds\Cart  $cart
      * @return \Illuminate\Http\Response
      */
     public function destroy(Cart $cartModel)

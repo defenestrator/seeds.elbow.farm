@@ -1,13 +1,13 @@
 <?php
 
-namespace Heisen\Http\Controllers;
+namespace Seeds\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Heisen\Profile;
-use Heisen\User;
-use Heisen\Invoice;
+use Seeds\Profile;
+use Seeds\User;
+use Seeds\Invoice;
 use Auth;
-use Heisen\ShippingAddress;
+use Seeds\ShippingAddress;
 
 class HomeController extends Controller
 {

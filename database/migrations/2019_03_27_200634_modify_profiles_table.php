@@ -14,7 +14,6 @@ class ModifyProfilesTable extends Migration
     public function up()
     {
         Schema::table('profiles', function (Blueprint $table) {
-            $table->string('chuckers_paradise')->after('facebook_url')->default('');
             $table->boolean('public')->after('user_id')->default(false);
         });
     }

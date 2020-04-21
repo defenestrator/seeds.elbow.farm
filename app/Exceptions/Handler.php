@@ -1,6 +1,6 @@
 <?php
 
-namespace Heisen\Exceptions;
+namespace Seeds\Exceptions;
 
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;

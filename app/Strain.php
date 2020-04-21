@@ -1,11 +1,11 @@
 <?php
 
-namespace Heisen;
+namespace Seeds;
 
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Heisen\Strain
+ * Seeds\Strain
  *
  * @property int $id
  * @property bool $feminized
@@ -19,48 +19,46 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $flowering_time_max_weeks
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Heisen\Breeder $breeders
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Strain newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Strain newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Strain query()
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Strain whereBreederId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Strain whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Strain whereDescription($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Strain whereFloweringTimeMaxWeeks($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Strain whereFloweringTimeMinWeeks($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Strain whereGenetics($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Strain whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Strain whereImage($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Strain whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Strain whereRetailPrice($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Strain whereFeminized($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Strain whereUpdatedAt($value)
+ * @property-read \Seeds\Breeder $breeders
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\Strain newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\Strain newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\Strain query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\Strain whereBreederId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\Strain whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\Strain whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\Strain whereFloweringTimeMaxWeeks($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\Strain whereFloweringTimeMinWeeks($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\Strain whereGenetics($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\Strain whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\Strain whereImage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\Strain whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\Strain whereRetailPrice($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\Strain whereFeminized($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\Strain whereUpdatedAt($value)
  * @mixin \Eloquent
- * @property-read \Heisen\Breeder $breeder
+ * @property-read \Seeds\Breeder $breeder
  * @property int $qty_per_pack
  * @property int $inventory
  * @property int $published
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Strain whereInventory($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Strain wherePublished($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Strain whereQtyPerPack($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\Strain whereInventory($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\Strain wherePublished($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\Strain whereQtyPerPack($value)
  * @property int $seed_pack_id
  * @property int|null $image_id
- * @property-read \Illuminate\Database\Eloquent\Collection|\Heisen\SeedPack[] $seedPacks
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Strain whereImageId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Strain whereSeedPackId($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Seeds\SeedPack[] $seedPacks
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\Strain whereImageId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\Strain whereSeedPackId($value)
  * @property string|null $uuid
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Strain whereUuid($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\Strain whereUuid($value)
  * @property int $s1
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\Strain whereS1($value)
- * @property-read \Heisen\Image $images
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\Strain whereS1($value)
+ * @property-read \Seeds\Image $images
  */
 class Strain extends BaseModel
 {
 
     protected $fillable = [
         'name',
-        'feminized',
-        's1',
         'uuid',
         'image',
         'image_id',
@@ -73,12 +71,11 @@ class Strain extends BaseModel
     ];
 
     protected $attributes = [
-        'feminized' => true
     ];
 
     public function images()
     {
-        return $this->morphOne('Heisen\Image', 'imageable');
+        return $this->morphOne('Seeds\Image', 'imageable');
     }
 
     public function breeder()

@@ -67,7 +67,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => Heisen\User::class,
+            'model' => Seeds\User::class,
         ],
 
         // 'users' => [

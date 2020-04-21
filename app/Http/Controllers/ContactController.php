@@ -1,10 +1,10 @@
 <?php
 
-namespace Heisen\Http\Controllers;
+namespace Seeds\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Heisen\Http\Requests\ContactRequest;
-use Heisen\Mail\ContactMail;
+use Seeds\Http\Requests\ContactRequest;
+use Seeds\Mail\ContactMail;
 use Illuminate\Contracts\Mail\Mailer;
 
 class ContactController extends Controller
@@ -41,7 +41,7 @@ class ContactController extends Controller
      */
     public function store(ContactRequest $request)
     {
-        $toAddress = 'heisen@heisenbeans.com';
+        $toAddress = 'cheeba@thecheebashack.com';
         if ($request->contact_subject == 'technical support') {
             $toAddress = 'mike@elbowfarm.com';
         }

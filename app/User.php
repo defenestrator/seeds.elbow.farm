@@ -1,6 +1,6 @@
 <?php
 
-namespace Heisen;
+namespace Seeds;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -11,7 +11,7 @@ use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\Exception\UnsatisfiedDependencyException;
 
 /**
- * Heisen\User
+ * Seeds\User
  *
  * @property int $id
  * @property string $name
@@ -22,28 +22,28 @@ use Ramsey\Uuid\Exception\UnsatisfiedDependencyException;
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
- * @property-read \Illuminate\Database\Eloquent\Collection|\Heisen\ShippingAddress[] $shippingAddresses
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\User newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\User newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\User query()
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\User whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\User whereEmail($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\User whereEmailVerifiedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\User whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\User whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\User wherePassword($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\User whereRememberToken($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\User whereUpdatedAt($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Seeds\ShippingAddress[] $shippingAddresses
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\User newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\User newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\User query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\User whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\User whereEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\User whereEmailVerifiedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\User whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\User whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\User wherePassword($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\User whereRememberToken($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\User whereUpdatedAt($value)
  * @mixin \Eloquent
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\User permission($permissions)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\User permission($permissions)
  * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Permission\Models\Role[] $roles
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\User role($roles, $guard = null)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\User role($roles, $guard = null)
  * @property string|null $uuid
- * @property-read \Illuminate\Database\Eloquent\Collection|\Heisen\Invoice[] $invoices
- * @property-read \Illuminate\Database\Eloquent\Collection|\Heisen\Payments[] $payments
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Seeds\Invoice[] $invoices
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Seeds\Payments[] $payments
  * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Permission\Models\Permission[] $permissions
- * @method static \Illuminate\Database\Eloquent\Builder|\Heisen\User whereUuid($value)
- * @property-read \Heisen\Profile $profile
+ * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\User whereUuid($value)
+ * @property-read \Seeds\Profile $profile
  */
 class User extends Authenticatable implements MustVerifyEmail
 {

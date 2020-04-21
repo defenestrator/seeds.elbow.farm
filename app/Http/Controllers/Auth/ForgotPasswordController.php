@@ -1,8 +1,8 @@
 <?php
 
-namespace Heisen\Http\Controllers\Auth;
+namespace Seeds\Http\Controllers\Auth;
 
-use Heisen\Http\Controllers\Controller;
+use Seeds\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 
 class ForgotPasswordController extends Controller

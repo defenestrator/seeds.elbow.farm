@@ -1,12 +1,12 @@
 <?php
 
-namespace Heisen\Mail;
+namespace Seeds\Mail;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Heisen\Tester;
+use Seeds\Tester;
 
 class TesterRequestNotification extends Mailable implements ShouldQueue
 {

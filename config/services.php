@@ -31,7 +31,7 @@ return [
     ],
 
     'stripe' => [
-        'model' => Heisen\User::class,
+        'model' => Seeds\User::class,
         'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
         'webhook' => [

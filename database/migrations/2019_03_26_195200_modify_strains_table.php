@@ -15,8 +15,7 @@ class ModifyStrainsTable extends Migration
     {
         Schema::table('strains', function (Blueprint $table) {
             $table->dropColumn('seed_pack_id');
-            $table->boolean('s1')->default(false);
-            $table->boolean('feminized')->default(true)->change();
+            $table->dropColumn('feminized');
         });
     }
 

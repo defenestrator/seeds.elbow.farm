@@ -1,8 +1,8 @@
 <?php
 
-namespace Heisen\Http\Controllers;
+namespace Seeds\Http\Controllers;
 
-use Heisen\User;
+use Seeds\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller

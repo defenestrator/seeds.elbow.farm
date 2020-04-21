@@ -1,7 +1,7 @@
 <script>
     import Cart from '../Cart'
     export default {
-        name: 'Strains',
+        name: 'Flowers',
         mixins: [Cart],
         props: {
             products: Array
@@ -10,7 +10,6 @@
             return {
                 columns: 3,
                 searchQuery: "",
-                selectedPack: 0
             };
         },
         computed: {
@@ -37,12 +36,6 @@
             capitalize: function (str) {
                 return str.charAt(0).toUpperCase() + str.slice(1);
             },
-            feminize: function (num) {
-                if (num === 1) {
-                    return "feminized";
-                }
-                return "regular";
-            },
         },
         methods: {
             clearSearchQuery() {
@@ -56,7 +49,7 @@
 <template>
     <div class="container text-center">
         <div class="row" v-bind:key="products.uuid" v-for="products in filteredProducts">
-            <div class="col-sm-4 info strainlisting" v-bind:key="item.id" v-for="item in products">
+            <div class="col-sm-4 info strainlisting" v-bind:key="item.uuid" v-for="item in products">
                 <hr>
                 <a :href="'/strains/' + item.uuid">
                     <h4 style="">{{item.name}} <div class="s1" v-if="item.s1 === 1">S1
@@ -70,41 +63,24 @@
                     <h5>{{ item.genetics }}</h5>
                 </a>
 
-                <a :href="'/strains/' + item.uuid">
+                <a :href="'/flowers/' + item.uuid">
                     <img v-if="item.images === null" :src="item.image" :alt="item.name" :title="item.name" />
                     <img v-else :src="item.images.large" :alt="item.name" :title="item.name" />
                 </a>
-                <h5 style="margin-top:1em;"> {{item.feminized | feminize | capitalize}} Cannabis seeds</h5>
+                <h5 style="margin-top:1em;"> Premium Cannabis Flower</h5>
                 <form action="POST" target="/cart">
-                    <p v-if="item.seed_packs === undefined || item.seed_packs == 0">Out of stock</p>
-                    <div class="form-group" v-else>
-                        <div v-bind:key="pack.id" v-for="pack in item.seed_packs">
-                            <span>{{ pack.inventory }} available.</span> <br>
-                        <div class="form-group custom-control custom-radio custom-control-inline">
-                            <input type="radio" v-model.number="selectedPack" class="custom-control-input"
-                                :id="'seed-pack-' + pack.id" :name="'seed-pack-' + pack.id" :value="pack.id" />
-                            <label class="custom-control-label" :for="'seed-pack-' + pack.id">
-                                {{ pack.qty_per_pack }} seeds ${{ pack.price }}
-                            </label>
-
-                            </div>
-
-                        </div>
-                    </div>
-                    <div v-if="item.seed_packs === undefined || item.seed_packs == 0">
-
-                    </div>
+                    <p v-if="item.inventory === undefined || item.inventory == 0">Out of stock</p>
                     <div v-else class="form-group form-inline" style="justify-content: center;">
                         <input v-model.number="item.quantity" class="form-control form-inline input-group-sm"
                             style="max-width:60px;margin-bottom:0.1rem;" type="number" :name="'quantity-' + item.uuid"
                             min="1" max="10" :id="'quantity-' + item.uuid">
                         &nbsp;
-                        <!-- <button style="margin-bottom:0.1rem;" role="button" :id="'buy-now-' + item.uuid"
-                            class="btn btn-primary form-inline input-group-sm" v-on:click.stop.prevent="addAndCheckout(item, selectedPack)">BUY</button> -->
+                        <button style="margin-bottom:0.1rem;" role="button" :id="'buy-now-' + item.uuid"
+                            class="btn btn-primary form-inline input-group-sm" v-on:click.stop.prevent="addAndCheckout(item, selectedPack)">BUY</button>
                         &nbsp;
                         <button style="margin-bottom:0.1rem;" role="button" :id="'add-to-cart-' + item.uuid"
                             class="btn btn-outline-gray form-inline input-group-sm"
-                            v-on:click.stop.prevent="addToCart(item, selectedPack)">ADD TO CART</button>
+                            v-on:click.stop.prevent="addToCart(item)">ADD TO CART</button>
                     </div>
                 </form>
             </div>

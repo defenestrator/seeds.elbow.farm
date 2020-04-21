@@ -1,8 +1,8 @@
 <?php
-namespace Heisen\Http\Controllers;
+namespace Seeds\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Heisen\Strain;
+use Seeds\Strain;
 use Illuminate\Support\Facades\Cache;
 
 class StrainController extends Controller

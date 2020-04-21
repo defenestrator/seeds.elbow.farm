@@ -15,6 +15,8 @@ class ModifySeedPacksTable extends Migration
     {
         Schema::table('seed_packs', function (Blueprint $table) {
             $table->dropColumn('available_since');
+            $table->boolean('s1')->default(false);
+            $table->boolean('feminized')->default(true);
         });
     }
 

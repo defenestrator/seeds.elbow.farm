@@ -1,9 +1,9 @@
 <?php
 
-namespace Heisen\Http\Controllers\Admin;
+namespace Seeds\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use Heisen\Http\Controllers\Controller;
+use Seeds\Http\Controllers\Controller;
 
 class AdminController extends Controller
 {

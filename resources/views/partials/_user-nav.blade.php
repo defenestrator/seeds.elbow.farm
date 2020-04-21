@@ -1,8 +1,11 @@
-
-<li class="nav-item"><a class="dropdown-item nav-link" href="{{ route('checkout.show') }}">Checkout</a></li>
+@php
+$user = Auth::user()->profile()->first();
+@endphp
+<div style="display: flex; align-items:center; align:baseline; ">
+<li class="nav-item"><a class="nav-link" href="{{ route('checkout.show') }}">Checkout</a></li>
 <li class="nav-item dropdown">
     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-        {{ Auth::user()->name }} <span class="caret"></span>
+        <img style="width:60px; max-height:69px; border-radius:12.5%; padding:0.1rem;" src="{{ $user->avatar }}" alt="{{Auth::user()->id}}"> <span class="caret"></span>
     </a>
 
     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -11,7 +14,7 @@
         {{-- <a class="dropdown-item nav-link" href="{{ route('user.invoices.index') }}">Invoices</a> --}}
         <a class="dropdown-item nav-link" href="{{ route('user.shipping_addresses.index') }}">Addresses</a>
         <hr />
-        @if(in_array(Auth::user()->email , ['jeremyblc@gmail.com', 'mike@elbowfarm.com', 'heisen@heisenbeans.com']))
+        @if(in_array(Auth::user()->email , ['jeremyblc@gmail.com', 'mike@elbowfarm.com', 'cheeba@thecheebashack.com']))
         <a class="dropdown-item nav-link" href="/admin/invoices"><i class="fa fa-edit"></i> All user Invoices</a>
         <hr>
             <a class="dropdown-item nav-link" href="/admin/strains"><i class="fa fa-edit"></i> Edit Strains</a>
@@ -39,3 +42,4 @@
         </form>
     </div>
 </li>
+</div>
