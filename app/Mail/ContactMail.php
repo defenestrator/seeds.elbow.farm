@@ -1,6 +1,6 @@
 <?php
 
-namespace Seeds\Mail;
+namespace Cheeba\Mail;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;

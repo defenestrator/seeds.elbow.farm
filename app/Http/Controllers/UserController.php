@@ -1,8 +1,8 @@
 <?php
 
-namespace Seeds\Http\Controllers;
+namespace Cheeba\Http\Controllers;
 
-use Seeds\User;
+use Cheeba\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller

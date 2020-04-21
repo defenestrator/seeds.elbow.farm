@@ -1,9 +1,9 @@
 <?php
 
-namespace Seeds\Http\Controllers;
+namespace Cheeba\Http\Controllers;
 
 use Cache;
-use Seeds\Image as ImageModel;
+use Cheeba\Image as ImageModel;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;

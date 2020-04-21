@@ -1,8 +1,8 @@
 <?php
 
-namespace Seeds\Http\Controllers\Auth;
+namespace Cheeba\Http\Controllers\Auth;
 
-use Seeds\Http\Controllers\Controller;
+use Cheeba\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 
 class ForgotPasswordController extends Controller

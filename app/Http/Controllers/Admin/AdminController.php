@@ -1,9 +1,9 @@
 <?php
 
-namespace Seeds\Http\Controllers\Admin;
+namespace Cheeba\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use Seeds\Http\Controllers\Controller;
+use Cheeba\Http\Controllers\Controller;
 
 class AdminController extends Controller
 {

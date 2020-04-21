@@ -170,11 +170,11 @@ return [
         /*
          * Application Service Providers...
          */
-        Seeds\Providers\AppServiceProvider::class,
-        Seeds\Providers\AuthServiceProvider::class,
-        // Seeds\Providers\BroadcastServiceProvider::class,
-        Seeds\Providers\EventServiceProvider::class,
-        Seeds\Providers\RouteServiceProvider::class,
+        Cheeba\Providers\AppServiceProvider::class,
+        Cheeba\Providers\AuthServiceProvider::class,
+        // Cheeba\Providers\BroadcastServiceProvider::class,
+        Cheeba\Providers\EventServiceProvider::class,
+        Cheeba\Providers\RouteServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class
     ],

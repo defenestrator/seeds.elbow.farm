@@ -1,6 +1,6 @@
 <?php
 
-namespace Seeds\Http\Middleware;
+namespace Cheeba\Http\Middleware;
 
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
 

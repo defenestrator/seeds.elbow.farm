@@ -1,10 +1,10 @@
 <?php
 
-namespace Seeds\Policies;
+namespace Cheeba\Policies;
 
 use Auth;
-use Seeds\Profile;
-use Seeds\User;
+use Cheeba\Profile;
+use Cheeba\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class ProfilePolicy
@@ -14,8 +14,8 @@ class ProfilePolicy
     /**
      * Determine whether the user can view the profile.
      *
-     * @param  \Seeds\User  $user
-     * @param  \Seeds\Profile  $profile
+     * @param  \Cheeba\User  $user
+     * @param  \Cheeba\Profile  $profile
      * @return mixed
      */
     public function view()

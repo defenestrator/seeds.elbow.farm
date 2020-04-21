@@ -2,7 +2,7 @@
 
 use Faker\Generator as Faker;
 
-$factory->define(Seeds\Breeder::class, function (Faker $faker) {
+$factory->define(Cheeba\Breeder::class, function (Faker $faker) {
     return [
         'name' => $faker->firstName(),
         'description' => $faker->sentence(),

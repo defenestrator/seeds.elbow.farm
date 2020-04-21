@@ -2,7 +2,7 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use Seeds\Flower;
+use Cheeba\Flower;
 use Faker\Generator as Faker;
 
 $factory->define(Flower::class, function (Faker $faker) {

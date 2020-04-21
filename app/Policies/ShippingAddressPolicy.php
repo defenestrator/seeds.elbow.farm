@@ -1,9 +1,9 @@
 <?php
 
-namespace Seeds\Policies;
+namespace Cheeba\Policies;
 
-use Seeds\User;
-use Seeds\ShippingAddress;
+use Cheeba\User;
+use Cheeba\ShippingAddress;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class ShippingAddressPolicy
@@ -14,8 +14,8 @@ class ShippingAddressPolicy
     /**
      * Determine whether the user can view the shipping address.
      *
-     * @param  \Seeds\User  $user
-     * @param  \Seeds\ShippingAddress  $shippingAddress
+     * @param  \Cheeba\User  $user
+     * @param  \Cheeba\ShippingAddress  $shippingAddress
      * @return mixed
      */
     public function view(ShippingAddress $shippingAddress)
@@ -26,7 +26,7 @@ class ShippingAddressPolicy
     /**
      * Determine whether the user can create shipping addresses.
      *
-     * @param  \Seeds\User  $user
+     * @param  \Cheeba\User  $user
      * @return mixed
      */
     public function create(User $user)
@@ -37,8 +37,8 @@ class ShippingAddressPolicy
     /**
      * Determine whether the user can update the shipping address.
      *
-     * @param  \Seeds\User  $user
-     * @param  \Seeds\ShippingAddress  $shippingAddress
+     * @param  \Cheeba\User  $user
+     * @param  \Cheeba\ShippingAddress  $shippingAddress
      * @return mixed
      */
     public function update(User $user, ShippingAddress $shippingAddress)
@@ -49,8 +49,8 @@ class ShippingAddressPolicy
     /**
      * Determine whether the user can delete the shipping address.
      *
-     * @param  \Seeds\User  $user
-     * @param  \Seeds\ShippingAddress  $shippingAddress
+     * @param  \Cheeba\User  $user
+     * @param  \Cheeba\ShippingAddress  $shippingAddress
      * @return mixed
      */
     public function delete(User $user, ShippingAddress $shippingAddress)

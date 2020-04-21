@@ -2,7 +2,7 @@
 
 use Faker\Generator as Faker;
 
-$factory->define(Seeds\Payments::class, function (Faker $faker) {
+$factory->define(Cheeba\Payments::class, function (Faker $faker) {
     return [
         //
     ];

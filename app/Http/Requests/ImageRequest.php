@@ -1,6 +1,6 @@
 <?php
 
-namespace Seeds\Http\Requests;
+namespace Cheeba\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Auth;

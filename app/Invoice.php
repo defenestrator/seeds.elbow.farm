@@ -1,11 +1,11 @@
 <?php
 
-namespace Seeds;
+namespace Cheeba;
 
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Seeds\Invoice
+ * Cheeba\Invoice
  *
  * @property int $id
  * @property int $user_id
@@ -14,29 +14,29 @@ use Illuminate\Database\Eloquent\Model;
  * @property string|null $deleted_at
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\Invoice newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\Invoice newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\Invoice query()
- * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\Invoice whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\Invoice whereDeletedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\Invoice whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\Invoice wherePaymentMethodId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\Invoice whereTotal($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\Invoice whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\Invoice whereUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\Invoice newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\Invoice newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\Invoice query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\Invoice whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\Invoice whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\Invoice whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\Invoice wherePaymentMethodId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\Invoice whereTotal($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\Invoice whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\Invoice whereUserId($value)
  * @mixin \Eloquent
  * @property string|null $uuid
  * @property string|null $customer_notes
- * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\Invoice whereCustomerNotes($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\Invoice whereUuid($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\Invoice whereCustomerNotes($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\Invoice whereUuid($value)
  * @property int $shipping
- * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\Invoice whereShipping($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\Invoice whereShipping($value)
  * @property string $status
  * @property string|null $data
- * @property-read \Illuminate\Database\Eloquent\Collection|\Seeds\SeedPack[] $seedPacks
- * @property-read \Seeds\User $user
- * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\Invoice whereData($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\Invoice whereStatus($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Cheeba\SeedPack[] $seedPacks
+ * @property-read \Cheeba\User $user
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\Invoice whereData($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\Invoice whereStatus($value)
  */
 class Invoice extends BaseModel
 {

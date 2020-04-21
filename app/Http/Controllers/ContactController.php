@@ -1,10 +1,10 @@
 <?php
 
-namespace Seeds\Http\Controllers;
+namespace Cheeba\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Seeds\Http\Requests\ContactRequest;
-use Seeds\Mail\ContactMail;
+use Cheeba\Http\Requests\ContactRequest;
+use Cheeba\Mail\ContactMail;
 use Illuminate\Contracts\Mail\Mailer;
 
 class ContactController extends Controller

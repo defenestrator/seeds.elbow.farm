@@ -67,7 +67,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => Seeds\User::class,
+            'model' => Cheeba\User::class,
         ],
 
         // 'users' => [

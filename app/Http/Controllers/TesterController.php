@@ -1,10 +1,10 @@
 <?php
 
-namespace Seeds\Http\Controllers;
+namespace Cheeba\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Seeds\Tester;
-use Seeds\Mail\TesterRequestNotification;
+use Cheeba\Tester;
+use Cheeba\Mail\TesterRequestNotification;
 use Illuminate\Contracts\Mail\Mailer;
 
 class TesterController extends LocationController

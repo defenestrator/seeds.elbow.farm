@@ -1,12 +1,12 @@
 <?php
 
-namespace Seeds\Mail;
+namespace Cheeba\Mail;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Seeds\Tester;
+use Cheeba\Tester;
 
 class TesterRequestNotification extends Mailable implements ShouldQueue
 {

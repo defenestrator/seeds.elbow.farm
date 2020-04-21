@@ -47,7 +47,7 @@
             <hr>
             <div class="d-flex flex-row-reverse navbar-footer">
                     <div><a class="p-2 nav-link" href="{{ route('strains.index') }}">Strains</a></div>
-                    <div><a class="p-2 nav-link" href="/forum">Forum</a></div>
+                    <div><a class="p-2 nav-link" href="https://forum.thecheebashack.com">Forum</a></div>
                     <div><a class="p-2 nav-link" href="{{ route('contact.create') }}">Contact</a></div>
                     {{-- <div><a class="p-2 nav-link" href="{{ route('testers') }}">Testers</a></div> --}}
                 </div>

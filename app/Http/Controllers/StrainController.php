@@ -1,8 +1,8 @@
 <?php
-namespace Seeds\Http\Controllers;
+namespace Cheeba\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Seeds\Strain;
+use Cheeba\Strain;
 use Illuminate\Support\Facades\Cache;
 
 class StrainController extends Controller

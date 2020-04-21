@@ -1,6 +1,6 @@
 <?php
 
-namespace Seeds;
+namespace Cheeba;
 
 use Illuminate\Database\Eloquent\Model;
 

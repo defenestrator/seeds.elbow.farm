@@ -1,9 +1,9 @@
 <?php
 
-namespace Seeds\Http\Controllers;
+namespace Cheeba\Http\Controllers;
 
-use Seeds\Http\Requests\ImageRequest;
-use Seeds\Image;
+use Cheeba\Http\Requests\ImageRequest;
+use Cheeba\Image;
 
 class ImageController extends Controller
 {

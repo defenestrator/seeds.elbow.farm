@@ -1,13 +1,13 @@
 <?php
 
-namespace Seeds\Http\Controllers;
+namespace Cheeba\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Seeds\Profile;
-use Seeds\User;
-use Seeds\Invoice;
+use Cheeba\Profile;
+use Cheeba\User;
+use Cheeba\Invoice;
 use Auth;
-use Seeds\ShippingAddress;
+use Cheeba\ShippingAddress;
 
 class HomeController extends Controller
 {

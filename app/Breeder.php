@@ -1,11 +1,11 @@
 <?php
 
-namespace Seeds;
+namespace Cheeba;
 
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Seeds\Breeder
+ * Cheeba\Breeder
  *
  * @property int $id
  * @property int $user_id
@@ -14,21 +14,21 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $image
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Seeds\User $users
- * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\Breeder newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\Breeder newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\Breeder query()
- * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\Breeder whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\Breeder whereDescription($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\Breeder whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\Breeder whereImage($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\Breeder whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\Breeder whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\Breeder whereUserId($value)
+ * @property-read \Cheeba\User $users
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\Breeder newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\Breeder newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\Breeder query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\Breeder whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\Breeder whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\Breeder whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\Breeder whereImage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\Breeder whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\Breeder whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\Breeder whereUserId($value)
  * @mixin \Eloquent
- * @property-read \Illuminate\Database\Eloquent\Collection|\Seeds\Strain[] $strains
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Cheeba\Strain[] $strains
  * @property string|null $uuid
- * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\Breeder whereUuid($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\Breeder whereUuid($value)
  */
 class Breeder extends Model
 {

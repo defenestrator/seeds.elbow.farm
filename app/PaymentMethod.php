@@ -1,30 +1,30 @@
 <?php
 
-namespace Seeds;
+namespace Cheeba;
 
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Seeds\PaymentMethod
+ * Cheeba\PaymentMethod
  *
  * @property int $id
  * @property string $name
  * @property string $image
  * @property int $active
- * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\PaymentMethod newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\PaymentMethod newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\PaymentMethod query()
- * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\PaymentMethod whereActive($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\PaymentMethod whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\PaymentMethod whereImage($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\PaymentMethod whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\PaymentMethod newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\PaymentMethod newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\PaymentMethod query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\PaymentMethod whereActive($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\PaymentMethod whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\PaymentMethod whereImage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\PaymentMethod whereName($value)
  * @mixin \Eloquent
  * @property string|null $uuid
  * @property string|null $notes
  * @property string|null $account
- * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\PaymentMethod whereAccount($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\PaymentMethod whereNotes($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\PaymentMethod whereUuid($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\PaymentMethod whereAccount($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\PaymentMethod whereNotes($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\PaymentMethod whereUuid($value)
  */
 class PaymentMethod extends BaseModel
 {

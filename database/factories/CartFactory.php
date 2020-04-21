@@ -2,7 +2,7 @@
 
 use Faker\Generator as Faker;
 
-$factory->define(Seeds\Cart::class, function (Faker $faker) {
+$factory->define(Cheeba\Cart::class, function (Faker $faker) {
     return [
         //
     ];

@@ -1,7 +1,7 @@
 <?php
 
 use Faker\Generator as Faker;
-use Seeds\User;
+use Cheeba\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +14,7 @@ use Seeds\User;
 |
 */
 
-$factory->define(Seeds\User::class, function (Faker $faker) {
+$factory->define(Cheeba\User::class, function (Faker $faker) {
 
     return [
         'name' => $faker->name,

@@ -1,26 +1,26 @@
 <?php
 
-namespace Seeds;
+namespace Cheeba;
 
-use Seeds\BaseModel;
+use Cheeba\BaseModel;
 
 /**
- * Seeds\Cart
+ * Cheeba\Cart
  *
  * @property int $id
  * @property string $uuid
  * @property int $user_id
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection|\Seeds\SeedPack[] $seedPacks
- * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\Cart newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\Cart newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\Cart query()
- * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\Cart whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\Cart whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\Cart whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\Cart whereUserId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\Cart whereUuid($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Cheeba\SeedPack[] $seedPacks
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\Cart newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\Cart newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\Cart query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\Cart whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\Cart whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\Cart whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\Cart whereUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\Cart whereUuid($value)
  * @mixin \Eloquent
  */
 class Cart extends BaseModel

@@ -1,38 +1,38 @@
 <?php
 
-namespace Seeds;
+namespace Cheeba;
 
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Seeds\SeedPack
+ * Cheeba\SeedPack
  *
  * @property int $id
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\SeedPack newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\SeedPack newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\SeedPack query()
- * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\SeedPack whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\SeedPack whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\SeedPack whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\SeedPack newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\SeedPack newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\SeedPack query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\SeedPack whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\SeedPack whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\SeedPack whereUpdatedAt($value)
  * @mixin \Eloquent
  * @property int $strain_id
  * @property string $available_since
  * @property int $qty_per_pack
  * @property int $price
  * @property int $inventory
- * @property-read \Seeds\Strain $strain
- * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\SeedPack whereAvailableSince($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\SeedPack whereInventory($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\SeedPack wherePrice($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\SeedPack whereQtyPerPack($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\SeedPack whereStrainId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\SeedPack whereInvoiceId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\SeedPack whereUuid($value)
- * @property-read \Illuminate\Database\Eloquent\Collection|\Seeds\Invoice[] $invoices
+ * @property-read \Cheeba\Strain $strain
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\SeedPack whereAvailableSince($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\SeedPack whereInventory($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\SeedPack wherePrice($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\SeedPack whereQtyPerPack($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\SeedPack whereStrainId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\SeedPack whereInvoiceId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\SeedPack whereUuid($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Cheeba\Invoice[] $invoices
  * @property string $uuid
- * @property-read \Illuminate\Database\Eloquent\Collection|\Seeds\Cart[] $carts
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Cheeba\Cart[] $carts
  */
 class SeedPack extends BaseModel
 {

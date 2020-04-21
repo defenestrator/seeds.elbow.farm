@@ -1,6 +1,6 @@
 <?php
 
-namespace Seeds\Providers;
+namespace Cheeba\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Broadcast;

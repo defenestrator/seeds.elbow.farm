@@ -2,7 +2,7 @@
 
 use Faker\Generator as Faker;
 
-$factory->define(Seeds\Profile::class, function (Faker $faker) {
+$factory->define(Cheeba\Profile::class, function (Faker $faker) {
     return [
         'avatar' => 'http://i.thecheebashack.com/images/heisenhead.png',
         'user_id' => $faker->numberBetween(1,6),

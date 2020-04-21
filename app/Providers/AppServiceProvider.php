@@ -1,11 +1,11 @@
 <?php
 
-namespace Seeds\Providers;
+namespace Cheeba\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
-use Seeds\Repos\StrainCache;
-use Seeds\Repos\StrainQuery;
+use Cheeba\Repos\StrainCache;
+use Cheeba\Repos\StrainQuery;
 
 class AppServiceProvider extends ServiceProvider
 {

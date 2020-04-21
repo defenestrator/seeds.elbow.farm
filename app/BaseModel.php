@@ -1,16 +1,16 @@
 <?php
 
-namespace Seeds;
+namespace Cheeba;
 
 use Illuminate\Database\Eloquent\Model;
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\Exception\UnsatisfiedDependencyException;
 /**
- * Seeds\BaseModel
+ * Cheeba\BaseModel
  *
- * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\BaseModel newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\BaseModel newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\Seeds\BaseModel query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\BaseModel newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\BaseModel newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\BaseModel query()
  * @mixin \Eloquent
  */
 class BaseModel extends Model

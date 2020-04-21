@@ -1,10 +1,10 @@
 <?php
 
-namespace Seeds\Http\Controllers\Auth;
+namespace Cheeba\Http\Controllers\Auth;
 
-use Seeds\User;
-use Seeds\Profile;
-use Seeds\Http\Controllers\Controller;
+use Cheeba\User;
+use Cheeba\Profile;
+use Cheeba\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -60,7 +60,7 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \Seeds\User
+     * @return \Cheeba\User
      */
     protected function create(array $data)
     {

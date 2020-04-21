@@ -1,13 +1,13 @@
 <?php
 
-namespace Seeds\Http\Controllers\Admin;
+namespace Cheeba\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use Seeds\Strain;
-use Seeds\Http\Requests\StoreStrainRequest;
-use Seeds\Http\Requests\UpdateStrainRequest;
+use Cheeba\Strain;
+use Cheeba\Http\Requests\StoreStrainRequest;
+use Cheeba\Http\Requests\UpdateStrainRequest;
 use Illuminate\Support\Facades\Cache;
-use Seeds\Image;
+use Cheeba\Image;
 
 
 class StrainController extends AdminController

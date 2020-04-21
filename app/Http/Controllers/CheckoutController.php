@@ -1,13 +1,13 @@
 <?php
 
-namespace Seeds\Http\Controllers;
+namespace Cheeba\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Seeds\Cart;
-use Seeds\Strain;
-use Seeds\ShippingAddress;
+use Cheeba\Cart;
+use Cheeba\Strain;
+use Cheeba\ShippingAddress;
 
-use Seeds\PaymentMethod;
+use Cheeba\PaymentMethod;
 use Auth;
 
 class CheckoutController extends Controller

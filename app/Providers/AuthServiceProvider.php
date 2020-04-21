@@ -1,8 +1,8 @@
 <?php
 
-namespace Seeds\Providers;
+namespace Cheeba\Providers;
 
-use Seeds\Policies;
+use Cheeba\Policies;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
@@ -14,7 +14,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        // 'Seeds\Model'          => 'Seeds\Policies\ModelPolicy',
+        // 'Cheeba\Model'          => 'Cheeba\Policies\ModelPolicy',
         // User::class             => \UserPolicy::class,
         // Profile::class          => \ProfilePolicy::class,
         // ShippingAddress::class  => \ShippingAddressPolicy::class,

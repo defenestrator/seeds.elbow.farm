@@ -1,9 +1,9 @@
 <?php
 
-namespace Seeds\Policies;
+namespace Cheeba\Policies;
 
-use Seeds\User;
-use Seeds\Invoice;
+use Cheeba\User;
+use Cheeba\Invoice;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class InvoicePolicy
@@ -13,8 +13,8 @@ class InvoicePolicy
     /**
      * Determine whether the user can view the invoice.
      *
-     * @param  \Seeds\User  $user
-     * @param  \Seeds\Invoice  $invoice
+     * @param  \Cheeba\User  $user
+     * @param  \Cheeba\Invoice  $invoice
      * @return mixed
      */
     public function view(Invoice $invoice)
@@ -25,7 +25,7 @@ class InvoicePolicy
     /**
      * Determine whether the user can create invoices.
      *
-     * @param  \Seeds\User  $user
+     * @param  \Cheeba\User  $user
      * @return mixed
      */
     public function create(User $user)
@@ -36,8 +36,8 @@ class InvoicePolicy
     /**
      * Determine whether the user can update the invoice.
      *
-     * @param  \Seeds\User  $user
-     * @param  \Seeds\Invoice  $invoice
+     * @param  \Cheeba\User  $user
+     * @param  \Cheeba\Invoice  $invoice
      * @return mixed
      */
     public function update(Invoice $invoice)

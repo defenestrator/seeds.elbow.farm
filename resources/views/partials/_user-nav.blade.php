@@ -3,6 +3,7 @@ $user = Auth::user()->profile()->first();
 @endphp
 <div style="display: flex; align-items:center; align:baseline; ">
 <li class="nav-item"><a class="nav-link" href="{{ route('checkout.show') }}">Checkout</a></li>
+
 <li class="nav-item dropdown">
     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
         <img style="width:60px; max-height:69px; border-radius:12.5%; padding:0.1rem;" src="{{ $user->avatar }}" alt="{{Auth::user()->id}}"> <span class="caret"></span>
