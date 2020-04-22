@@ -11,6 +11,9 @@
         <h3>Coming soon, keep it tight.</h3>
     </div>
     <div class="row justify-content-center">
+        <h3>Join us in the <a href="https://forum.thecheebashack.com">forum</a>.</h3>
+    </div>
+    <div class="row justify-content-center">
         <p>
             Please report bugs
             <a href="{{route('contact.create', ['contact_subject' =>'technical support'])}}">
