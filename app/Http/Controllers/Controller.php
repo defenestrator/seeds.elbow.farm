@@ -72,7 +72,7 @@ class Controller extends BaseController
 
         if ( config('app.env') == 'production' ) {
             Storage::disk('s3')->getDriver()->put('/images/'.$hash.'.jpg' , $resize->__toString(), $options);
-            $filePath=  'http://i.thecheebashack.com/images/'.$hash.'.jpg';
+            $filePath=  'https://s3-us-west-2.amazonaws.com/i.thecheebashack.com/images/'.$hash.'.jpg';
         } else {
             Storage::disk('local')->put('/public/images/'.$hash.'.jpg' , $resize->__toString());
             $filePath = Storage::disk('local')->url('images/'.$hash.'.jpg');
