@@ -6,6 +6,8 @@
     </div>
     <div class="row justify-content-center">
         <h2>Artisanal Cannabis Marketplace</h2>
+    </div>
+    <div class="row justify-content-center">
         <h3>Coming soon, keep it tight.</h3>
     </div>
     <div class="row justify-content-center">
