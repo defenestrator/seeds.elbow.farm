@@ -182,6 +182,7 @@ class CreateTables extends Migration
         Schema::create('flowers', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('strain_id');
+            $table->longText('description');
             $table->boolean('available')->default(false);
             $table->date('harvest_date')->default(now('America/Denver'));
             $table->unsignedInteger('price_per_gram')->default(10);

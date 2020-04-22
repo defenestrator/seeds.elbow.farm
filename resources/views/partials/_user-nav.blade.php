@@ -1,7 +1,7 @@
 @php
 $user = Auth::user()->profile()->first();
 @endphp
-<div style="display: flex; align-items:center; align:baseline; ">
+
 <li class="nav-item"><a class="nav-link" href="{{ route('checkout.show') }}">Checkout</a></li>
 
 <li class="nav-item dropdown">
@@ -43,4 +43,4 @@ $user = Auth::user()->profile()->first();
         </form>
     </div>
 </li>
-</div>
+

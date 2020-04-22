@@ -7,13 +7,12 @@ use Faker\Generator as Faker;
 
 $factory->define(Flower::class, function (Faker $faker) {
     return [
-        'image_id' => $faker->numberBetween(1,6),
-        'strain_id' => $faker->numberBetween(1,6),
-        'image' => 'https://picsum.photos/' .  '640',
-        'name'=> $faker->unique()->name(),
+        'strain_id' => factory(Cheeba\Strain::class)->create(),
         'description'=> $faker->paragraph(),
         'published' => $faker->boolean,
         'available' => $faker->boolean,
-        'harvest_date' =>$faker->date(now(days(-21)))
+        'price_per_gram' => $faker->numberBetween(5,15),
+        'inventory_grams' => $faker->numberBetween(0,454),
+        'harvest_date' =>$faker->date(now()->subDays(21))
     ];
 });

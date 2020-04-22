@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
         factory(Cheeba\Breeder::class, 2)->create();
         factory(Cheeba\SeedPack::class, 12)->create();
         factory(Cheeba\Image::class, 15)->create();
+        factory(Cheeba\Flower::class, 15)->create();
 
 
         $tableNames = [
