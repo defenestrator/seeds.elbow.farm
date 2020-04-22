@@ -17,7 +17,7 @@ class CreateProfilesTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->string('avatar')->default('https://i.thecheebashack.com/images/heisenhead.png');
+            $table->string('avatar')->default('https://i.thecheebashack.com/images/logo.png');
             $table->string('user_title')->default('Anonymous Seed Addict');
             $table->string('riu_username')->default('Uncle Buck');
             $table->string('instagram_handle')->default('myspacetom');

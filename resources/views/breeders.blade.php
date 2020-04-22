@@ -20,7 +20,7 @@
         <div class="row">
             <div class="col-sm-6">
                 <h3>The Cheeba Shack</h3>
-                <img style="width:25%;" src="/i/heisenhead.png"></div>
+                <img style="width:25%;" src="/i/logo.png"></div>
             <div class="col-sm-6">
                 <h3>Shoreline Genetics</h3>
                 <img style="width:25%;" src="/i/shoreline-logo.png"></div>

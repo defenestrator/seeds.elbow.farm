@@ -49,7 +49,7 @@ class CreateTables extends Migration
             $table->bigIncrements('id');
             $table->string('name')->nullable();
             $table->text('description')->nullable();
-            $table->string('image')->default('/i/heisenhead.png');
+            $table->string('image')->default('/i/logo.png');
             $table->timestamps();
         });
 
@@ -59,7 +59,7 @@ class CreateTables extends Migration
             $table->unsignedBigInteger('breeder_id')->default(1);
             $table->unsignedBigInteger('image_id')->nullable();
             $table->string('name');
-            $table->string('image')->default('i.thecheebashack.com/images/heisenhead.png');
+            $table->string('image')->default('i.thecheebashack.com/images/logo.png');
             $table->longText('genetics')->nullable();
 
             $table->longText('description')->nullable();

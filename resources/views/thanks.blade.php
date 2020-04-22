@@ -26,7 +26,7 @@
             <h2>
                 <a href="/">Thanks!</a>
             </h2>
-            <img src="/i/heisenhead.png" style="border-radius:1em;"
+            <img src="/i/logo.png" style="border-radius:1em;"
                  alt="Dropping fire like 'what?'"
                  title="Dropping fire like 'what?'"
             >

@@ -16,7 +16,7 @@ class CreateInvoicesTable extends Migration
         Schema::create('payment_methods', function (Blueprint $table){
             $table->bigIncrements('id');
             $table->string('name')->unique();
-            $table->string('image')->default('http://thecheebashack.com/images/heisenhead.png');
+            $table->string('image')->default('http://thecheebashack.com/images/logo.png');
             $table->boolean('active')->default(false);
         });
 

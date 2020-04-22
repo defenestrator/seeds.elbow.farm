@@ -65,7 +65,7 @@ return [
             'cache' => [
                 'store' => 'redis',
                 'expire' => 31356000,
-                'prefix' => '{heisen_image_cache}'
+                'prefix' => '{cheeba_image_cache}'
                 ],
         ],
 
