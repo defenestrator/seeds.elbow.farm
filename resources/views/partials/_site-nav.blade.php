@@ -16,10 +16,8 @@
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ml-auto">
                     <div style="display: flex; align-items:center; align:baseline; ">
-
                     @guest
-                    <li><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li>
-                    <li><a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></li>
+
                     @else
                     @include('partials._user-nav')
 

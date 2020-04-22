@@ -29,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -75,7 +75,7 @@ class RegisterController extends Controller
         $profile = Profile::create(
             [
                 'user_id' => $user->id,
-                'avatar' => 'http://i.thecheebashack.com/images/heisenhead.png',
+                'avatar' => 'https://thecheebashack.com/i/logo.png',
                 'riu_username' => 'Uncle Buck',
                 'user_title' => 'Seed Addict',
                 'instagram_handle' => 'myspacetom',

@@ -50,6 +50,9 @@
                     <div><a class="p-2 nav-link" href="https://forum.thecheebashack.com">Forum</a></div>
                     <div><a class="p-2 nav-link" href="{{ route('contact.create') }}">Contact</a></div>
                     {{-- <div><a class="p-2 nav-link" href="{{ route('testers') }}">Testers</a></div> --}}
+                    @guest
+                    <div><a class="p-2 nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></div>
+                    @endguest
                 </div>
             </div>
             <hr>
