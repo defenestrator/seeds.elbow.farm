@@ -3,8 +3,8 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-use Seeds\User;
-use Seeds\Profile;
+use Cheeba\User;
+use Cheeba\Profile;
 
 class AddProfilesToUsers extends Migration
 {

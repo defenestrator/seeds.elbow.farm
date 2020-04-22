@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'The Cheeba Shack - Seeds'),
+    'name' => env('APP_NAME', 'The Cheeba Shack - Cheeba'),
     'instagram_token' => env('INSTAGRAM_TOKEN', null),
     'stripe_secret' => env('STRIPE_SECRET', null),
     /*

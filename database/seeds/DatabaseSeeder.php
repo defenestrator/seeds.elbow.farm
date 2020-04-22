@@ -12,11 +12,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        factory(Seeds\ShippingAddress::class, 30)->create();
-        factory(Seeds\Strain::class, 15)->create();
-        factory(Seeds\Breeder::class, 2)->create();
-        factory(Seeds\SeedPack::class, 12)->create();
-        factory(Seeds\Image::class, 15)->create();
+        factory(Cheeba\ShippingAddress::class, 30)->create();
+        factory(Cheeba\Strain::class, 15)->create();
+        factory(Cheeba\Breeder::class, 2)->create();
+        factory(Cheeba\SeedPack::class, 12)->create();
+        factory(Cheeba\Image::class, 15)->create();
 
 
         $tableNames = [
