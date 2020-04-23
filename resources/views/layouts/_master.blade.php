@@ -44,7 +44,6 @@
 
             <div class="container">
 
-            <hr>
             <div class="d-flex flex-row-reverse navbar-footer">
                     <div><a class="p-2 nav-link" href="{{ route('strains.index') }}">Strains</a></div>
                     <div><a class="p-2 nav-link" href="https://forum.thecheebashack.com">Forum</a></div>
@@ -55,7 +54,6 @@
                     @endguest
                 </div>
             </div>
-            <hr>
             <div class="container">
                 <p class="footer small">&copy; The Cheeba Shack {{ date('F jS, Y') }}</p>
             </div>

@@ -26,10 +26,11 @@
             <h2>
                 <a href="/">Thanks!</a>
             </h2>
+            <a href="/">
             <img src="/i/logo.png" style="border-radius:1em;"
                  alt="Dropping fire like 'what?'"
                  title="Dropping fire like 'what?'"
-            >
+            ></a>
         </div>
     </div>
     <hr>

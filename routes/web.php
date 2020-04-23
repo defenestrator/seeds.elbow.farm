@@ -33,35 +33,32 @@ Route::put('profile/', 'ProfileController@update')->name('profile.update');
 
 Route::post('image/', 'ImageController@create')->name('image.create');
 
+// Cart
+Route::post('/cart', 'CartController@store')->name('cart.create');
+Route::put('/cart', 'CartController@update')->name('cart.update');
+Route::delete('/cart', 'CartController@destroy')->name('cart.delete');
+Route::get('/cart', 'CartController@show')->name('cart.show');
+
+// Checkout
+Route::get('/checkout', 'CheckoutController@show')->name('checkout.show');
+Route::post('/invoices', 'InvoiceController@store');
+
+// Shipping Addresses
+Route::get('/shipping_addresses/', 'ShippingAddressController@show')->name('shipping_addresses.show');
+Route::get('/shipping_addresses/{id}', 'ShippingAddressController@edit')->name('shipping_addresses.edit');
+Route::put('/shipping_addresses/', 'ShippingAddressController@update')->name('shipping_addresses.update');
+Route::delete('/shipping_addresses/{id}', 'ShippingAddressController@destroy')->name('shipping_addresses.delete');
+
+
 ////////////////// AUTH ROUTES ////////////////////////////////////////////////////////////////
 Route::middleware(['auth'])->group( function(){
-    // Cart
-    Route::post('/cart', 'CartController@store')->name('cart.create');
-    Route::put('/cart', 'CartController@update')->name('cart.update');
-    Route::delete('/cart', 'CartController@destroy')->name('cart.delete');
-    Route::get('/cart', 'CartController@show')->name('cart.show');
-
-    // Checkout
-    Route::get('/checkout', 'CheckoutController@show')->name('checkout.show');
-    Route::post('/invoices', 'InvoiceController@store');
-
-    // Shipping Addresses
-    Route::get('/shipping_addresses/', 'ShippingAddressController@show')->name('shipping_addresses.show');
-    Route::get('/shipping_addresses/{id}', 'ShippingAddressController@edit')->name('shipping_addresses.edit');
-    Route::put('/shipping_addresses/', 'ShippingAddressController@update')->name('shipping_addresses.update');
-    Route::delete('/shipping_addresses/{id}', 'ShippingAddressController@destroy')->name('shipping_addresses.delete');
+    /////////////////   USER ROUTES     !!///////////////////////////////////////////////////////
+    Route::prefix('/user/')->name('user.')->middleware(['auth'])->group( function(){
+        Route::get('shipping_addresses/', 'ShippingAddressController@index')->name('shipping_addresses.index');
+        Route::put('/{id}', 'UserController@update')->name('update');
+        Route::get('/profile/{user_id}', 'ProfileController@show')->name('profile.show');
+    });
 });
-
-/////////////////   USER ROUTES     !!///////////////////////////////////////////////////////
-Route::prefix('/user/')->name('user.')->middleware(['auth'])->group( function(){
-    Route::get('shipping_addresses/', 'ShippingAddressController@index')->name('shipping_addresses.index');
-    Route::put('/{id}', 'UserController@update')->name('update');
-    Route::get('/profile/{user_id}', 'ProfileController@show')->name('profile.show');
-
-
-});
-
-
 /////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////    DANGER ZONE    !!    Admin Routes    !!    ///////////////////////////////
 Route::prefix('/admin/')->name('admin.')->middleware('role:admin')->group( function () {

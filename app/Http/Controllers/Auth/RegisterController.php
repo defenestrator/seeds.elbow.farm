@@ -85,6 +85,6 @@ class RegisterController extends Controller
         );
         $user->update(['profile_id' => $profile->id]);
 
-        return redirect()->route('/home');
+        return redirect()->route('home');
     }
 }

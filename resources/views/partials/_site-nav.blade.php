@@ -7,7 +7,7 @@
 
 
                 <!-- Left side of Navbar -->
-                <ul class="navbar-nav mr-auto" style="padding-left:1rem; padding-right:2em;">
+                <ul class="navbar-nav mr-auto">
                     <div style="display: flex; align-items:center; align:baseline; ">
                     <li><a class="nav-link" href="/"><img src="/i/logo.png"></a></li>
                     @include('partials._public-nav')
@@ -16,9 +16,11 @@
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ml-auto">
                     <div style="display: flex; align-items:center; align:baseline; ">
+
                     @guest
 
                     @else
+                    <li class="nav-item"><a class="nav-link" href="{{ route('checkout.show') }}">Checkout</a></li>
                     @include('partials._user-nav')
 
                     @endguest

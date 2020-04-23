@@ -59,8 +59,8 @@ return [
 
         'redis' => [
             'driver' => 'redis',
-            'connection' => 'heisen_queue',
-            'queue' => env('REDIS_QUEUE', '{heisen_queue}'),
+            'connection' => 'cheeba_queue',
+            'queue' => env('REDIS_QUEUE', '{cheeba_queue}'),
             'retry_after' => 90,
             'block_for' => null,
         ],
