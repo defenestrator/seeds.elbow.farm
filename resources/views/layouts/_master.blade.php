@@ -46,7 +46,7 @@
 
             <div class="d-flex flex-row-reverse navbar-footer">
                 @guest
-                <div><a class="p-2 nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></div>
+                {{-- <div><a class="p-2 nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></div> --}}
                 @endguest
                     <div><a class="p-2 nav-link" href="{{ route('testers') }}">Testers</a></div>
                     <div><a class="p-2 nav-link" href="{{ route('contact.create') }}">Contact</a></div>
