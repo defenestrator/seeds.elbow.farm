@@ -92,7 +92,9 @@
                     </div>
                 </form>
             </div>
-            <div class="col-sm-3 info"><img style="width:100%;" src="/i/tester.jpg" alt="Become an official Shoreline Genetics Gear Tester!" title="Become an official Shoreline Genetics Tester!"></div>
+            <div class="col-sm-3 info">
+                {{-- <img style="width:100%;" src="/i/tester.jpg" alt="Become an official Shoreline Genetics Gear Tester!" title="Become an official Shoreline Genetics Tester!"> --}}
+            </div>
         </div>
 
 
