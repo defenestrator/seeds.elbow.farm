@@ -1,9 +1,9 @@
 <?php
 
-namespace Cheeba\Http\Controllers;
+namespace Shoreline\Http\Controllers;
 
 use Cache;
-use Cheeba\Image as ImageModel;
+use Shoreline\Image as ImageModel;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;

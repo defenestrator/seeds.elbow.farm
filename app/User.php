@@ -1,6 +1,6 @@
 <?php
 
-namespace Cheeba;
+namespace Shoreline;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -11,7 +11,7 @@ use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\Exception\UnsatisfiedDependencyException;
 
 /**
- * Cheeba\User
+ * Shoreline\User
  *
  * @property int $id
  * @property string $name
@@ -22,28 +22,28 @@ use Ramsey\Uuid\Exception\UnsatisfiedDependencyException;
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
- * @property-read \Illuminate\Database\Eloquent\Collection|\Cheeba\ShippingAddress[] $shippingAddresses
- * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\User newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\User newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\User query()
- * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\User whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\User whereEmail($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\User whereEmailVerifiedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\User whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\User whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\User wherePassword($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\User whereRememberToken($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\User whereUpdatedAt($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Shoreline\ShippingAddress[] $shippingAddresses
+ * @method static \Illuminate\Database\Eloquent\Builder|\Shoreline\User newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Shoreline\User newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Shoreline\User query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Shoreline\User whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Shoreline\User whereEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Shoreline\User whereEmailVerifiedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Shoreline\User whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Shoreline\User whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Shoreline\User wherePassword($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Shoreline\User whereRememberToken($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Shoreline\User whereUpdatedAt($value)
  * @mixin \Eloquent
- * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\User permission($permissions)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Shoreline\User permission($permissions)
  * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Permission\Models\Role[] $roles
- * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\User role($roles, $guard = null)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Shoreline\User role($roles, $guard = null)
  * @property string|null $uuid
- * @property-read \Illuminate\Database\Eloquent\Collection|\Cheeba\Invoice[] $invoices
- * @property-read \Illuminate\Database\Eloquent\Collection|\Cheeba\Payments[] $payments
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Shoreline\Invoice[] $invoices
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Shoreline\Payments[] $payments
  * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Permission\Models\Permission[] $permissions
- * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\User whereUuid($value)
- * @property-read \Cheeba\Profile $profile
+ * @method static \Illuminate\Database\Eloquent\Builder|\Shoreline\User whereUuid($value)
+ * @property-read \Shoreline\Profile $profile
  */
 class User extends Authenticatable implements MustVerifyEmail
 {

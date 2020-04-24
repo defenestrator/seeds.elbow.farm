@@ -1,10 +1,10 @@
 <?php
 
-namespace Cheeba\Http\Requests;
+namespace Shoreline\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Auth;
-use Cheeba\Profile;
+use Shoreline\Profile;
 class UpdateProfileRequest extends FormRequest
 {
     /**

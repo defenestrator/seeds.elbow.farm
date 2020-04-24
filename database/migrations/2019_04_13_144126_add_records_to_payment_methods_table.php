@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-use Cheeba\PaymentMethod;
+use Shoreline\PaymentMethod;
 
 class AddRecordsToPaymentMethodsTable extends Migration
 {
@@ -34,8 +34,8 @@ class AddRecordsToPaymentMethodsTable extends Migration
             'name' => 'Square Cash App - https://cash.app',
             'active' => true,
             'image' => 'http://i.thecheebashack.com/images/cash.app.png',
-            'notes' => 'CashTag: $The Cheeba Shack',
-            'account' => '$The Cheeba Shack'
+            'notes' => 'CashTag: $Shoreline Genetics',
+            'account' => '$Shoreline Genetics'
         ]);
 
         PaymentMethod::create([

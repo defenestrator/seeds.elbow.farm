@@ -1,6 +1,6 @@
 <?php
 
-namespace Cheeba\Http\Middleware;
+namespace Shoreline\Http\Middleware;
 
 use Closure;
 

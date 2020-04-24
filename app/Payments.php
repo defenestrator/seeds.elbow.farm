@@ -1,15 +1,15 @@
 <?php
 
-namespace Cheeba;
+namespace Shoreline;
 
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Cheeba\Payments
+ * Shoreline\Payments
  *
- * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\Payments newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\Payments newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\Payments query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Shoreline\Payments newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Shoreline\Payments newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Shoreline\Payments query()
  * @mixin \Eloquent
  * @property int $id
  * @property string $uuid
@@ -20,15 +20,15 @@ use Illuminate\Database\Eloquent\Model;
  * @property string|null $deleted_at
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\Payments whereAmount($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\Payments whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\Payments whereCustomerNotes($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\Payments whereDeletedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\Payments whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\Payments whereInvoiceId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\Payments wherePaymentMethodId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\Payments whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\Payments whereUuid($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Shoreline\Payments whereAmount($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Shoreline\Payments whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Shoreline\Payments whereCustomerNotes($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Shoreline\Payments whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Shoreline\Payments whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Shoreline\Payments whereInvoiceId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Shoreline\Payments wherePaymentMethodId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Shoreline\Payments whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Shoreline\Payments whereUuid($value)
  */
 class Payments extends Model
 {

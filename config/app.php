@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'The Cheeba Shack - Cheeba'),
+    'name' => env('APP_NAME', 'Shoreline Genetics - Shoreline'),
     'instagram_token' => env('INSTAGRAM_TOKEN', null),
     'stripe_secret' => env('STRIPE_SECRET', null),
     /*
@@ -170,11 +170,11 @@ return [
         /*
          * Application Service Providers...
          */
-        Cheeba\Providers\AppServiceProvider::class,
-        Cheeba\Providers\AuthServiceProvider::class,
-        // Cheeba\Providers\BroadcastServiceProvider::class,
-        Cheeba\Providers\EventServiceProvider::class,
-        Cheeba\Providers\RouteServiceProvider::class,
+        Shoreline\Providers\AppServiceProvider::class,
+        Shoreline\Providers\AuthServiceProvider::class,
+        // Shoreline\Providers\BroadcastServiceProvider::class,
+        Shoreline\Providers\EventServiceProvider::class,
+        Shoreline\Providers\RouteServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class
     ],

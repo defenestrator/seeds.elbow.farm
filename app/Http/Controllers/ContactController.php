@@ -1,10 +1,10 @@
 <?php
 
-namespace Cheeba\Http\Controllers;
+namespace Shoreline\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Cheeba\Http\Requests\ContactRequest;
-use Cheeba\Mail\ContactMail;
+use Shoreline\Http\Requests\ContactRequest;
+use Shoreline\Mail\ContactMail;
 use Illuminate\Contracts\Mail\Mailer;
 
 class ContactController extends Controller

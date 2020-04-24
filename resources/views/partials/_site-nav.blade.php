@@ -9,7 +9,7 @@
                 <!-- Left side of Navbar -->
                 <ul class="navbar-nav mr-auto">
                     <div style="display: flex; align-items:center; align:baseline; ">
-                    <li><a class="nav-link" href="/"><img src="/i/logo.png"></a></li>
+                    <li><a class="nav-link" href="/"><img src="/images/shoreline.png" style="max-width:70px;"></a></li>
                     @include('partials._public-nav')
                     </div>
                 </ul>

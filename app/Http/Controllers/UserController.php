@@ -1,8 +1,8 @@
 <?php
 
-namespace Cheeba\Http\Controllers;
+namespace Shoreline\Http\Controllers;
 
-use Cheeba\User;
+use Shoreline\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller

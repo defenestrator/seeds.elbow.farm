@@ -1,11 +1,11 @@
 <?php
 
-namespace Cheeba;
+namespace Shoreline;
 
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Cheeba\Profile
+ * Shoreline\Profile
  *
  * @property int $id
  * @property int $user_id
@@ -17,26 +17,26 @@ use Illuminate\Database\Eloquent\Model;
  * @property string|null $deleted_at
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\Profile newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\Profile newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\Profile query()
- * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\Profile whereAvatar($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\Profile whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\Profile whereDeletedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\Profile whereFacebookUrl($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\Profile whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\Profile whereInstagramHandle($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\Profile whereRiuUsername($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\Profile whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\Profile whereUserId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\Profile whereUserTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Shoreline\Profile newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Shoreline\Profile newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Shoreline\Profile query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Shoreline\Profile whereAvatar($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Shoreline\Profile whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Shoreline\Profile whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Shoreline\Profile whereFacebookUrl($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Shoreline\Profile whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Shoreline\Profile whereInstagramHandle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Shoreline\Profile whereRiuUsername($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Shoreline\Profile whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Shoreline\Profile whereUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Shoreline\Profile whereUserTitle($value)
  * @mixin \Eloquent
  * @property int $public
  * @property string $chuckers_paradise
- * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\Profile whereChuckersParadise($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\Profile wherePublic($value)
- * @property-read \Cheeba\Image $image
- * @property-read \Cheeba\User $user
+ * @method static \Illuminate\Database\Eloquent\Builder|\Shoreline\Profile whereChuckersParadise($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Shoreline\Profile wherePublic($value)
+ * @property-read \Shoreline\Image $image
+ * @property-read \Shoreline\User $user
  */
 class Profile extends Model
 {
@@ -57,6 +57,6 @@ class Profile extends Model
 
     public function image()
     {
-        return $this->morphOne('Cheeba\Image', 'imageable');
+        return $this->morphOne('Shoreline\Image', 'imageable');
     }
 }

@@ -1,10 +1,10 @@
 <?php
 
-namespace Cheeba\Policies;
+namespace Shoreline\Policies;
 
 use Auth;
-use Cheeba\Profile;
-use Cheeba\User;
+use Shoreline\Profile;
+use Shoreline\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class ProfilePolicy
@@ -14,8 +14,8 @@ class ProfilePolicy
     /**
      * Determine whether the user can view the profile.
      *
-     * @param  \Cheeba\User  $user
-     * @param  \Cheeba\Profile  $profile
+     * @param  \Shoreline\User  $user
+     * @param  \Shoreline\Profile  $profile
      * @return mixed
      */
     public function view()

@@ -2,7 +2,7 @@
 
 use Faker\Generator as Faker;
 
-$factory->define(Cheeba\ShippingAddress::class, function (Faker $faker) {
+$factory->define(Shoreline\ShippingAddress::class, function (Faker $faker) {
     $states =
     array(
         0 => 'Alabama',

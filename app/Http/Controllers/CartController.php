@@ -1,13 +1,13 @@
 <?php
 
-namespace Cheeba\Http\Controllers;
+namespace Shoreline\Http\Controllers;
 
-use Cheeba\Cart;
-use Cheeba\User;
-use Cheeba\SeedPack;
-use Cheeba\Strain;
+use Shoreline\Cart;
+use Shoreline\User;
+use Shoreline\SeedPack;
+use Shoreline\Strain;
 use Illuminate\Http\Request;
-use Cheeba\Http\Controllers\Controller;
+use Shoreline\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -46,7 +46,7 @@ class CartController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \Cheeba\Cart  $cart
+     * @param  \Shoreline\Cart  $cart
      * @return \Illuminate\Http\Response
      */
     public function show(Cart $cartModel)
@@ -72,7 +72,7 @@ class CartController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \Cheeba\Cart  $cart
+     * @param  \Shoreline\Cart  $cart
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Cart $cartModel)
@@ -105,7 +105,7 @@ class CartController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \Cheeba\Cart  $cart
+     * @param  \Shoreline\Cart  $cart
      * @return \Illuminate\Http\Response
      */
     public function destroy(Cart $cartModel)

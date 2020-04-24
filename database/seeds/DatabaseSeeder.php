@@ -12,12 +12,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        factory(Cheeba\ShippingAddress::class, 30)->create();
-        factory(Cheeba\Strain::class, 15)->create();
-        factory(Cheeba\Breeder::class, 2)->create();
-        factory(Cheeba\SeedPack::class, 12)->create();
-        factory(Cheeba\Image::class, 15)->create();
-        factory(Cheeba\Flower::class, 15)->create();
+        factory(Shoreline\ShippingAddress::class, 30)->create();
+        factory(Shoreline\Strain::class, 15)->create();
+        factory(Shoreline\Breeder::class, 2)->create();
+        factory(Shoreline\SeedPack::class, 12)->create();
+        factory(Shoreline\Image::class, 15)->create();
+        factory(Shoreline\Flower::class, 15)->create();
 
 
         $tableNames = [

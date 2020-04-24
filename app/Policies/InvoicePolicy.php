@@ -1,9 +1,9 @@
 <?php
 
-namespace Cheeba\Policies;
+namespace Shoreline\Policies;
 
-use Cheeba\User;
-use Cheeba\Invoice;
+use Shoreline\User;
+use Shoreline\Invoice;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class InvoicePolicy
@@ -13,8 +13,8 @@ class InvoicePolicy
     /**
      * Determine whether the user can view the invoice.
      *
-     * @param  \Cheeba\User  $user
-     * @param  \Cheeba\Invoice  $invoice
+     * @param  \Shoreline\User  $user
+     * @param  \Shoreline\Invoice  $invoice
      * @return mixed
      */
     public function view(Invoice $invoice)
@@ -25,7 +25,7 @@ class InvoicePolicy
     /**
      * Determine whether the user can create invoices.
      *
-     * @param  \Cheeba\User  $user
+     * @param  \Shoreline\User  $user
      * @return mixed
      */
     public function create(User $user)
@@ -36,8 +36,8 @@ class InvoicePolicy
     /**
      * Determine whether the user can update the invoice.
      *
-     * @param  \Cheeba\User  $user
-     * @param  \Cheeba\Invoice  $invoice
+     * @param  \Shoreline\User  $user
+     * @param  \Shoreline\Invoice  $invoice
      * @return mixed
      */
     public function update(Invoice $invoice)

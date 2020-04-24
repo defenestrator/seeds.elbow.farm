@@ -1,8 +1,8 @@
 <?php
-namespace Cheeba\Http\Controllers;
+namespace Shoreline\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Cheeba\Strain;
+use Shoreline\Strain;
 use Illuminate\Support\Facades\Cache;
 
 class StrainController extends Controller

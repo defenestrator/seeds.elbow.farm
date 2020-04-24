@@ -1,8 +1,8 @@
 <?php
 
-namespace Cheeba\Http\Controllers\Auth;
+namespace Shoreline\Http\Controllers\Auth;
 
-use Cheeba\Http\Controllers\Controller;
+use Shoreline\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller

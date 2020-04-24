@@ -1,6 +1,6 @@
 <?php
 
-namespace Cheeba\Http\Controllers;
+namespace Shoreline\Http\Controllers;
 
 use Illuminate\Http\Request;
 

@@ -1,6 +1,6 @@
 {
     "name": "defenestrator/hb",
-    "description": "The Cheeba Shack - Feminized Cheeba",
+    "description": "Shoreline Genetics - Feminized Shoreline",
     "keywords": ["application"],
     "license": "None",
     "type": "project",
@@ -42,7 +42,7 @@
             "database/factories"
         ],
         "psr-4": {
-            "Cheeba\\": "app/"
+            "Shoreline\\": "app/"
         }
     },
     "autoload-dev": {

@@ -2,7 +2,7 @@
 
 use Faker\Generator as Faker;
 
-$factory->define(Cheeba\Breeder::class, function (Faker $faker) {
+$factory->define(Shoreline\Breeder::class, function (Faker $faker) {
     return [
         'name' => $faker->firstName(),
         'description' => $faker->sentence(),

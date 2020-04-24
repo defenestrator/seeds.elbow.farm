@@ -1,9 +1,9 @@
 <?php
 
-namespace Cheeba\Policies;
+namespace Shoreline\Policies;
 
-use Cheeba\User;
-use Cheeba\ShippingAddress;
+use Shoreline\User;
+use Shoreline\ShippingAddress;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class ShippingAddressPolicy
@@ -14,8 +14,8 @@ class ShippingAddressPolicy
     /**
      * Determine whether the user can view the shipping address.
      *
-     * @param  \Cheeba\User  $user
-     * @param  \Cheeba\ShippingAddress  $shippingAddress
+     * @param  \Shoreline\User  $user
+     * @param  \Shoreline\ShippingAddress  $shippingAddress
      * @return mixed
      */
     public function view(ShippingAddress $shippingAddress)
@@ -26,7 +26,7 @@ class ShippingAddressPolicy
     /**
      * Determine whether the user can create shipping addresses.
      *
-     * @param  \Cheeba\User  $user
+     * @param  \Shoreline\User  $user
      * @return mixed
      */
     public function create(User $user)
@@ -37,8 +37,8 @@ class ShippingAddressPolicy
     /**
      * Determine whether the user can update the shipping address.
      *
-     * @param  \Cheeba\User  $user
-     * @param  \Cheeba\ShippingAddress  $shippingAddress
+     * @param  \Shoreline\User  $user
+     * @param  \Shoreline\ShippingAddress  $shippingAddress
      * @return mixed
      */
     public function update(User $user, ShippingAddress $shippingAddress)
@@ -49,8 +49,8 @@ class ShippingAddressPolicy
     /**
      * Determine whether the user can delete the shipping address.
      *
-     * @param  \Cheeba\User  $user
-     * @param  \Cheeba\ShippingAddress  $shippingAddress
+     * @param  \Shoreline\User  $user
+     * @param  \Shoreline\ShippingAddress  $shippingAddress
      * @return mixed
      */
     public function delete(User $user, ShippingAddress $shippingAddress)

@@ -1,6 +1,6 @@
 <?php
 
-namespace Cheeba;
+namespace Shoreline;
 
 use Illuminate\Database\Eloquent\Model;
 

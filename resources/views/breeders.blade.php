@@ -19,7 +19,7 @@
         <h2>Coming Soon</h2>
         <div class="row">
             <div class="col-sm-6">
-                <h3>The Cheeba Shack</h3>
+                <h3>Shoreline Genetics</h3>
                 <img style="width:25%;" src="/i/logo.png"></div>
             <div class="col-sm-6">
                 <h3>Shoreline Genetics</h3>

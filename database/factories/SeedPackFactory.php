@@ -4,7 +4,7 @@ use Faker\Generator as Faker;
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\Exception\UnsatisfiedDependencyException;
 
-$factory->define(Cheeba\SeedPack::class, function (Faker $faker) {
+$factory->define(Shoreline\SeedPack::class, function (Faker $faker) {
 
     $qty = $faker->numberBetween(6,36);
     return [

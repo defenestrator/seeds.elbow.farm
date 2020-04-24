@@ -1,11 +1,11 @@
 <?php
 
-namespace Cheeba\Http\Controllers;
+namespace Shoreline\Http\Controllers;
 
 Use Auth;
-use Cheeba\Profile;
-use Cheeba\User;
-use Cheeba\Http\Requests\UpdateProfileRequest;
+use Shoreline\Profile;
+use Shoreline\User;
+use Shoreline\Http\Requests\UpdateProfileRequest;
 use Illuminate\Http\Request;
 
 
@@ -18,7 +18,7 @@ class ProfileController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \Cheeba\Profile  $profile
+     * @param  \Shoreline\Profile  $profile
      * @return \Illuminate\Http\Response
      */
     public function show(Request $request, User $user, Profile $profile, $id)
@@ -41,7 +41,7 @@ class ProfileController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \Cheeba\Profile  $profile
+     * @param  \Shoreline\Profile  $profile
      * @return \Illuminate\Http\Response
      */
     public function edit(Profile $profile, $user_id)
@@ -56,7 +56,7 @@ class ProfileController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \Cheeba\Profile  $profile
+     * @param  \Shoreline\Profile  $profile
      * @return \Illuminate\Http\Response
      */
     public function update(UpdateProfileRequest $request, Profile $profile)

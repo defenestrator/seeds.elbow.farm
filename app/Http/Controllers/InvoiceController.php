@@ -1,10 +1,10 @@
 <?php
 
-namespace Cheeba\Http\Controllers;
+namespace Shoreline\Http\Controllers;
 
-use Cheeba\Invoice;
-use Cheeba\Cart;
-use Cheeba\SeedPack;
+use Shoreline\Invoice;
+use Shoreline\Cart;
+use Shoreline\SeedPack;
 use Illuminate\Http\Request;
 
 use Auth;
@@ -76,7 +76,7 @@ class InvoiceController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \Cheeba\Invoice  $invoice
+     * @param  \Shoreline\Invoice  $invoice
      * @return \Illuminate\Http\Response
      */
     public function show(Invoice $invoice)
@@ -87,7 +87,7 @@ class InvoiceController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \Cheeba\Invoice  $invoice
+     * @param  \Shoreline\Invoice  $invoice
      * @return \Illuminate\Http\Response
      */
     public function edit(Invoice $invoice)
@@ -99,7 +99,7 @@ class InvoiceController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \Cheeba\Invoice  $invoice
+     * @param  \Shoreline\Invoice  $invoice
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Invoice $invoice)
@@ -110,7 +110,7 @@ class InvoiceController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \Cheeba\Invoice  $invoice
+     * @param  \Shoreline\Invoice  $invoice
      * @return \Illuminate\Http\Response
      */
     public function destroy(Cart $cartModel)

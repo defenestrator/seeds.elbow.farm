@@ -2,16 +2,16 @@
 @section('content')
 <div class="container justify-content-center">
     <div class="row justify-content-center">
-        <h1>The Cheeba Shack</h1>
+        <img src="/images/shoreline.png" alt="Shoreline Genetics. Keepers in Every Pack.">
+    </div>
+    <div class="row justify-content-center">
+        <h1 style="font-style:italic;">Shoreline Genetics</h1>
     </div>
     <div class="row justify-content-center">
         <h2>Artisanal Cannabis</h2>
     </div>
     <div class="row justify-content-center">
-        <h3>Coming soon.</h3>
-    </div>
-    <div class="row justify-content-center">
-        <h3>Join us in the <a href="https://forum.thecheebashack.com">forum</a>.</h3>
+        <h3>Keepers in Every Pack.</h3>
     </div>
     <div class="row justify-content-center">
         <p>

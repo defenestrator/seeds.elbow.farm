@@ -1,10 +1,10 @@
 <?php
 
-namespace Cheeba\Http\Controllers\Auth;
+namespace Shoreline\Http\Controllers\Auth;
 
-use Cheeba\User;
-use Cheeba\Profile;
-use Cheeba\Http\Controllers\Controller;
+use Shoreline\User;
+use Shoreline\Profile;
+use Shoreline\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -60,7 +60,7 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \Cheeba\User
+     * @return \Shoreline\User
      */
     protected function create(array $data)
     {
@@ -75,7 +75,7 @@ class RegisterController extends Controller
         $profile = Profile::create(
             [
                 'user_id' => $user->id,
-                'avatar' => 'https://thecheebashack.com/i/logo.png',
+                'avatar' => 'https://shorelinegenetics.com/i/logo.png',
                 'riu_username' => 'Uncle Buck',
                 'user_title' => 'Seed Addict',
                 'instagram_handle' => 'myspacetom',

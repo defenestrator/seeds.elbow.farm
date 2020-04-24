@@ -1,16 +1,16 @@
 <?php
 
-namespace Cheeba;
+namespace Shoreline;
 
 use Illuminate\Database\Eloquent\Model;
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\Exception\UnsatisfiedDependencyException;
 /**
- * Cheeba\BaseModel
+ * Shoreline\BaseModel
  *
- * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\BaseModel newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\BaseModel newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\BaseModel query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Shoreline\BaseModel newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Shoreline\BaseModel newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Shoreline\BaseModel query()
  * @mixin \Eloquent
  */
 class BaseModel extends Model

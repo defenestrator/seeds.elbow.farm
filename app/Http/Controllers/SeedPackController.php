@@ -1,8 +1,8 @@
 <?php
 
-namespace Cheeba\Http\Controllers;
+namespace Shoreline\Http\Controllers;
 
-use Cheeba\SeedPack;
+use Shoreline\SeedPack;
 use Illuminate\Http\Request;
 
 class SeedPackController extends Controller
@@ -47,7 +47,7 @@ class SeedPackController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \Cheeba\SeedPack  $seedPack
+     * @param  \Shoreline\SeedPack  $seedPack
      * @return \Illuminate\Http\Response
      */
     public function show(SeedPack $seedPack)
@@ -58,7 +58,7 @@ class SeedPackController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \Cheeba\SeedPack  $seedPack
+     * @param  \Shoreline\SeedPack  $seedPack
      * @return \Illuminate\Http\Response
      */
     public function edit(SeedPack $seedPack)
@@ -70,7 +70,7 @@ class SeedPackController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \Cheeba\SeedPack  $seedPack
+     * @param  \Shoreline\SeedPack  $seedPack
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, SeedPack $seedPack)
@@ -81,7 +81,7 @@ class SeedPackController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \Cheeba\SeedPack  $seedPack
+     * @param  \Shoreline\SeedPack  $seedPack
      * @return \Illuminate\Http\Response
      */
     public function destroy(SeedPack $seedPack)

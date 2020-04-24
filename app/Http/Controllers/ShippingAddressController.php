@@ -1,8 +1,8 @@
 <?php
 
-namespace Cheeba\Http\Controllers;
+namespace Shoreline\Http\Controllers;
 
-use Cheeba\ShippingAddress;
+use Shoreline\ShippingAddress;
 use Illuminate\Http\Request;
 use Auth;
 
@@ -56,7 +56,7 @@ class ShippingAddressController extends LocationController
     /**
      * Display the specified resource.
      *
-     * @param  \Cheeba\ShippingAddress  $shippingAddress
+     * @param  \Shoreline\ShippingAddress  $shippingAddress
      * @return \Illuminate\Http\Response
      */
     public function show(ShippingAddress $shippingAddress)
@@ -67,7 +67,7 @@ class ShippingAddressController extends LocationController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \Cheeba\ShippingAddress  $shippingAddress
+     * @param  \Shoreline\ShippingAddress  $shippingAddress
      * @return \Illuminate\Http\Response
      */
     public function edit(ShippingAddress $shippingAddress, $id)
@@ -79,7 +79,7 @@ class ShippingAddressController extends LocationController
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \Cheeba\ShippingAddress  $shippingAddress
+     * @param  \Shoreline\ShippingAddress  $shippingAddress
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, ShippingAddress $shippingAddress)
@@ -98,7 +98,7 @@ class ShippingAddressController extends LocationController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \Cheeba\ShippingAddress  $shippingAddress
+     * @param  \Shoreline\ShippingAddress  $shippingAddress
      * @return \Illuminate\Http\Response
      */
     public function destroy(Request $request, ShippingAddress $shippingAddress)

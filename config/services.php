@@ -31,7 +31,7 @@ return [
     ],
 
     'stripe' => [
-        'model' => Cheeba\User::class,
+        'model' => Shoreline\User::class,
         'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
         'webhook' => [

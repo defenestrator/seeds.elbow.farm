@@ -1,6 +1,6 @@
 <?php
 
-namespace Cheeba\Exceptions;
+namespace Shoreline\Exceptions;
 
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;

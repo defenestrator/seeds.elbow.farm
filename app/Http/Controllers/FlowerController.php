@@ -1,8 +1,8 @@
 <?php
 
-namespace Cheeba\Http\Controllers;
+namespace Shoreline\Http\Controllers;
 
-use Cheeba\Flower;
+use Shoreline\Flower;
 use Illuminate\Http\Request;
 
 class FlowerController extends Controller
@@ -41,7 +41,7 @@ class FlowerController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \Cheeba\Flower  $flower
+     * @param  \Shoreline\Flower  $flower
      * @return \Illuminate\Http\Response
      */
     public function show(Flower $flower)
@@ -52,7 +52,7 @@ class FlowerController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \Cheeba\Flower  $flower
+     * @param  \Shoreline\Flower  $flower
      * @return \Illuminate\Http\Response
      */
     public function edit(Flower $flower)
@@ -64,7 +64,7 @@ class FlowerController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \Cheeba\Flower  $flower
+     * @param  \Shoreline\Flower  $flower
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Flower $flower)
@@ -75,7 +75,7 @@ class FlowerController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \Cheeba\Flower  $flower
+     * @param  \Shoreline\Flower  $flower
      * @return \Illuminate\Http\Response
      */
     public function destroy(Flower $flower)

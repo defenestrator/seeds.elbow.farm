@@ -1,7 +1,7 @@
 <?php
 
 use Faker\Generator as Faker;
-use Cheeba\User;
+use Shoreline\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +14,7 @@ use Cheeba\User;
 |
 */
 
-$factory->define(Cheeba\User::class, function (Faker $faker) {
+$factory->define(Shoreline\User::class, function (Faker $faker) {
 
     return [
         'name' => $faker->name,

@@ -1,13 +1,13 @@
 <?php
 
-namespace Cheeba\Http\Controllers;
+namespace Shoreline\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Cheeba\Cart;
-use Cheeba\Strain;
-use Cheeba\ShippingAddress;
+use Shoreline\Cart;
+use Shoreline\Strain;
+use Shoreline\ShippingAddress;
 
-use Cheeba\PaymentMethod;
+use Shoreline\PaymentMethod;
 use Auth;
 
 class CheckoutController extends Controller

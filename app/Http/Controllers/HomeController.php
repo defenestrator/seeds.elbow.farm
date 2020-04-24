@@ -1,13 +1,13 @@
 <?php
 
-namespace Cheeba\Http\Controllers;
+namespace Shoreline\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Cheeba\Profile;
-use Cheeba\User;
-use Cheeba\Invoice;
+use Shoreline\Profile;
+use Shoreline\User;
+use Shoreline\Invoice;
 use Auth;
-use Cheeba\ShippingAddress;
+use Shoreline\ShippingAddress;
 
 class HomeController extends Controller
 {

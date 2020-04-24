@@ -67,7 +67,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => Cheeba\User::class,
+            'model' => Shoreline\User::class,
         ],
 
         // 'users' => [

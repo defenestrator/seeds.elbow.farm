@@ -1,6 +1,6 @@
 <?php
 
-namespace Cheeba\Http\Middleware;
+namespace Shoreline\Http\Middleware;
 
 use Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode as Middleware;
 

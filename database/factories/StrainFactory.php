@@ -2,7 +2,7 @@
 
 use Faker\Generator as Faker;
 
-$factory->define(Cheeba\Strain::class, function (Faker $faker) {
+$factory->define(Shoreline\Strain::class, function (Faker $faker) {
     return [
         'breeder_id' => $faker->numberBetween(1,2),
         'image_id' => $faker->numberBetween(1,6),

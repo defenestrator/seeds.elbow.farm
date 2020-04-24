@@ -2,12 +2,12 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use Cheeba\Flower;
+use Shoreline\Flower;
 use Faker\Generator as Faker;
 
 $factory->define(Flower::class, function (Faker $faker) {
     return [
-        'strain_id' => factory(Cheeba\Strain::class)->create(),
+        'strain_id' => factory(Shoreline\Strain::class)->create(),
         'description'=> $faker->paragraph(),
         'published' => $faker->boolean,
         'available' => $faker->boolean,

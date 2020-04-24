@@ -1,6 +1,6 @@
 <?php
 
-namespace Cheeba\Http\Requests;
+namespace Shoreline\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Auth;

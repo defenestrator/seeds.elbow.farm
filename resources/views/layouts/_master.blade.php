@@ -9,7 +9,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title', config('app.name'))</title>
     <!-- Fonts -->
-    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    {{-- <link rel="dns-prefetch" href="https://fonts.googleapis.com"> --}}
     <link rel="icon" href="/favicon-100.png" sizes="100x100">
     <!-- deferred loading of js -->
     <script src="{{ mix('js/script.js') }}" defer></script>
@@ -45,17 +45,16 @@
             <div class="container">
 
             <div class="d-flex flex-row-reverse navbar-footer">
-                    <div><a class="p-2 nav-link" href="{{ route('strains.index') }}">Strains</a></div>
-                    <div><a class="p-2 nav-link" href="https://forum.thecheebashack.com">Forum</a></div>
+                @guest
+                <div><a class="p-2 nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></div>
+                @endguest
+                    <div><a class="p-2 nav-link" href="{{ route('testers') }}">Testers</a></div>
                     <div><a class="p-2 nav-link" href="{{ route('contact.create') }}">Contact</a></div>
-                    {{-- <div><a class="p-2 nav-link" href="{{ route('testers') }}">Testers</a></div> --}}
-                    @guest
-                    <div><a class="p-2 nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></div>
-                    @endguest
+                    <div><a class="p-2 nav-link" href="{{ route('strains.index') }}">Strains</a></div>
                 </div>
             </div>
             <div class="container">
-                <p class="footer small">&copy; The Cheeba Shack {{ date('F jS, Y') }}</p>
+                <p class="footer small">&copy; Shoreline Genetics {{ date('F jS, Y') }}</p>
             </div>
         </main>
     </div>

@@ -1,8 +1,8 @@
 <?php
 
-namespace Cheeba\Http\Controllers;
+namespace Shoreline\Http\Controllers;
 
-use Cheeba\Payments;
+use Shoreline\Payments;
 use Illuminate\Http\Request;
 
 class PaymentsController extends Controller
@@ -41,7 +41,7 @@ class PaymentsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \Cheeba\Payments  $payments
+     * @param  \Shoreline\Payments  $payments
      * @return \Illuminate\Http\Response
      */
     public function show(Payments $payments)
@@ -52,7 +52,7 @@ class PaymentsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \Cheeba\Payments  $payments
+     * @param  \Shoreline\Payments  $payments
      * @return \Illuminate\Http\Response
      */
     public function edit(Payments $payments)
@@ -64,7 +64,7 @@ class PaymentsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \Cheeba\Payments  $payments
+     * @param  \Shoreline\Payments  $payments
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Payments $payments)
@@ -75,7 +75,7 @@ class PaymentsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \Cheeba\Payments  $payments
+     * @param  \Shoreline\Payments  $payments
      * @return \Illuminate\Http\Response
      */
     public function destroy(Payments $payments)

@@ -1,9 +1,9 @@
 <?php
 
-namespace Cheeba\Http\Controllers;
+namespace Shoreline\Http\Controllers;
 
-use Cheeba\Http\Requests\ImageRequest;
-use Cheeba\Image;
+use Shoreline\Http\Requests\ImageRequest;
+use Shoreline\Image;
 
 class ImageController extends Controller
 {

@@ -1,10 +1,10 @@
 <?php
 
-namespace Cheeba\Http\Controllers;
+namespace Shoreline\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Cheeba\Tester;
-use Cheeba\Mail\TesterRequestNotification;
+use Shoreline\Tester;
+use Shoreline\Mail\TesterRequestNotification;
 use Illuminate\Contracts\Mail\Mailer;
 
 class TesterController extends LocationController
@@ -73,7 +73,7 @@ class TesterController extends LocationController
             'country' => $this->country,
             'postcode' => '66669',
             'message' => 'This is a silly test message',
-            'journal_link' => 'https://thecheebashack.com'
+            'journal_link' => 'https://shorelinegenetics.com'
         ]);
         return new TesterRequestNotification($data);
     }

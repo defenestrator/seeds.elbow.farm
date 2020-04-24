@@ -1,9 +1,9 @@
 <?php
 
-namespace Cheeba\Http\Controllers\Admin;
+namespace Shoreline\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use Cheeba\Http\Controllers\Controller;
+use Shoreline\Http\Controllers\Controller;
 
 class AdminController extends Controller
 {

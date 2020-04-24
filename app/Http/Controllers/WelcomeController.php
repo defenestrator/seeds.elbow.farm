@@ -1,10 +1,10 @@
 <?php
 
-namespace Cheeba\Http\Controllers;
+namespace Shoreline\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Vinkla\Instagram\Instagram;
-use Cheeba\Flower;
+use Shoreline\Flower;
 use Cache;
 
 class WelcomeController extends Controller

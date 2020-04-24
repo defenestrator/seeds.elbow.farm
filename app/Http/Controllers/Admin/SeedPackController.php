@@ -1,11 +1,11 @@
 <?php
 
-namespace Cheeba\Http\Controllers\Admin;
+namespace Shoreline\Http\Controllers\Admin;
 
-use Cheeba\SeedPack;
-use Cheeba\Strain;
+use Shoreline\SeedPack;
+use Shoreline\Strain;
 use Illuminate\Http\Request;
-use Cheeba\Http\Controllers\Admin\AdminController;
+use Shoreline\Http\Controllers\Admin\AdminController;
 
 class SeedPackController extends AdminController
 {
@@ -59,7 +59,7 @@ class SeedPackController extends AdminController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \Cheeba\SeedPack  $seedPack
+     * @param  \Shoreline\SeedPack  $seedPack
      * @return \Illuminate\Http\Response
      */
     public function edit(SeedPack $seedPack, Strain $strain, $id)
@@ -74,7 +74,7 @@ class SeedPackController extends AdminController
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \Cheeba\SeedPack  $seedPack
+     * @param  \Shoreline\SeedPack  $seedPack
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, SeedPack $seedPack, Strain $strain, $id)
@@ -96,7 +96,7 @@ class SeedPackController extends AdminController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \Cheeba\SeedPack  $seedPack
+     * @param  \Shoreline\SeedPack  $seedPack
      * @return \Illuminate\Http\Response
      */
     public function destroy(SeedPack $seedPack)

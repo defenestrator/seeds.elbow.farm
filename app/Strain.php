@@ -1,11 +1,11 @@
 <?php
 
-namespace Cheeba;
+namespace Shoreline;
 
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Cheeba\Strain
+ * Shoreline\Strain
  *
  * @property int $id
  * @property bool $feminized
@@ -19,40 +19,40 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $flowering_time_max_weeks
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Cheeba\Breeder $breeders
- * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\Strain newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\Strain newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\Strain query()
- * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\Strain whereBreederId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\Strain whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\Strain whereDescription($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\Strain whereFloweringTimeMaxWeeks($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\Strain whereFloweringTimeMinWeeks($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\Strain whereGenetics($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\Strain whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\Strain whereImage($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\Strain whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\Strain whereRetailPrice($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\Strain whereFeminized($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\Strain whereUpdatedAt($value)
+ * @property-read \Shoreline\Breeder $breeders
+ * @method static \Illuminate\Database\Eloquent\Builder|\Shoreline\Strain newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Shoreline\Strain newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Shoreline\Strain query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Shoreline\Strain whereBreederId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Shoreline\Strain whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Shoreline\Strain whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Shoreline\Strain whereFloweringTimeMaxWeeks($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Shoreline\Strain whereFloweringTimeMinWeeks($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Shoreline\Strain whereGenetics($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Shoreline\Strain whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Shoreline\Strain whereImage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Shoreline\Strain whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Shoreline\Strain whereRetailPrice($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Shoreline\Strain whereFeminized($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Shoreline\Strain whereUpdatedAt($value)
  * @mixin \Eloquent
- * @property-read \Cheeba\Breeder $breeder
+ * @property-read \Shoreline\Breeder $breeder
  * @property int $qty_per_pack
  * @property int $inventory
  * @property int $published
- * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\Strain whereInventory($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\Strain wherePublished($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\Strain whereQtyPerPack($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Shoreline\Strain whereInventory($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Shoreline\Strain wherePublished($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Shoreline\Strain whereQtyPerPack($value)
  * @property int $seed_pack_id
  * @property int|null $image_id
- * @property-read \Illuminate\Database\Eloquent\Collection|\Cheeba\SeedPack[] $seedPacks
- * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\Strain whereImageId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\Strain whereSeedPackId($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Shoreline\SeedPack[] $seedPacks
+ * @method static \Illuminate\Database\Eloquent\Builder|\Shoreline\Strain whereImageId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Shoreline\Strain whereSeedPackId($value)
  * @property string|null $uuid
- * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\Strain whereUuid($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Shoreline\Strain whereUuid($value)
  * @property int $s1
- * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\Strain whereS1($value)
- * @property-read \Cheeba\Image $images
+ * @method static \Illuminate\Database\Eloquent\Builder|\Shoreline\Strain whereS1($value)
+ * @property-read \Shoreline\Image $images
  */
 class Strain extends BaseModel
 {
@@ -75,7 +75,7 @@ class Strain extends BaseModel
 
     public function images()
     {
-        return $this->morphOne('Cheeba\Image', 'imageable');
+        return $this->morphOne('Shoreline\Image', 'imageable');
     }
 
     public function breeder()

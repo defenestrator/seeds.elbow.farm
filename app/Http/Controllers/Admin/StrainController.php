@@ -1,13 +1,13 @@
 <?php
 
-namespace Cheeba\Http\Controllers\Admin;
+namespace Shoreline\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use Cheeba\Strain;
-use Cheeba\Http\Requests\StoreStrainRequest;
-use Cheeba\Http\Requests\UpdateStrainRequest;
+use Shoreline\Strain;
+use Shoreline\Http\Requests\StoreStrainRequest;
+use Shoreline\Http\Requests\UpdateStrainRequest;
 use Illuminate\Support\Facades\Cache;
-use Cheeba\Image;
+use Shoreline\Image;
 
 
 class StrainController extends AdminController

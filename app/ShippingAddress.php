@@ -1,11 +1,11 @@
 <?php
 
-namespace Cheeba;
+namespace Shoreline;
 
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Cheeba\ShippingAddress
+ * Shoreline\ShippingAddress
  *
  * @property int $id
  * @property string $ship_to_name
@@ -18,23 +18,23 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $postcode
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Cheeba\User $users
- * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\ShippingAddress newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\ShippingAddress newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\ShippingAddress query()
- * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\ShippingAddress whereAddress1($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\ShippingAddress whereAddress2($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\ShippingAddress whereCity($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\ShippingAddress whereCountry($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\ShippingAddress whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\ShippingAddress whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\ShippingAddress wherePostcode($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\ShippingAddress whereShipToName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\ShippingAddress whereState($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\ShippingAddress whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Cheeba\ShippingAddress whereUserId($value)
+ * @property-read \Shoreline\User $users
+ * @method static \Illuminate\Database\Eloquent\Builder|\Shoreline\ShippingAddress newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Shoreline\ShippingAddress newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Shoreline\ShippingAddress query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Shoreline\ShippingAddress whereAddress1($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Shoreline\ShippingAddress whereAddress2($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Shoreline\ShippingAddress whereCity($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Shoreline\ShippingAddress whereCountry($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Shoreline\ShippingAddress whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Shoreline\ShippingAddress whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Shoreline\ShippingAddress wherePostcode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Shoreline\ShippingAddress whereShipToName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Shoreline\ShippingAddress whereState($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Shoreline\ShippingAddress whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Shoreline\ShippingAddress whereUserId($value)
  * @mixin \Eloquent
- * @property-read \Cheeba\User $user
+ * @property-read \Shoreline\User $user
  */
 class ShippingAddress extends Model
 {
